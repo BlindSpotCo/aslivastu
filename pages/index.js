@@ -9,7 +9,7 @@ const CSS = `
     --accent: #e23744;
     --bg: #080808;
     --text: #f0ede8;
-    --muted: #555;
+    --muted: #9a9a9a;
     --card: #111;
     --border: rgba(255,255,255,0.06);
   }
@@ -211,7 +211,7 @@ const CSS = `
   .card-brand {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 13px; letter-spacing: 3px;
-    color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.5);
   }
 
   .card-chip {
@@ -236,7 +236,7 @@ const CSS = `
 
   .card-area {
     font-size: 10px; letter-spacing: 0.15em;
-    text-transform: uppercase; color: rgba(255,255,255,0.35);
+    text-transform: uppercase; color: rgba(255,255,255,0.55);
   }
 
   .card-name {
@@ -254,7 +254,7 @@ const CSS = `
 
   .card-score-label {
     font-size: 9px; letter-spacing: 0.2em;
-    text-transform: uppercase; color: rgba(255,255,255,0.3);
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
   }
 
   .card-score-val {
@@ -276,7 +276,7 @@ const CSS = `
 
   .card-verdict-label {
     font-size: 9px; letter-spacing: 0.15em;
-    text-transform: uppercase; color: rgba(255,255,255,0.3);
+    text-transform: uppercase; color: rgba(255,255,255,0.5);
     display: block; margin-bottom: 4px;
   }
 
@@ -622,7 +622,7 @@ const CSS = `
   .transition-sub {
     position: absolute; bottom: 38%; left: 50%;
     transform: translateX(-50%);
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.6);
     font-size: 12px; letter-spacing: 0.3em;
     text-transform: uppercase;
     opacity: 0;
@@ -1883,13 +1883,13 @@ export default function Landing() {
               ].map(({ val, lbl }) => (
                 <div key={lbl} style={{ display:'flex', flexDirection:'column', gap:3 }}>
                   <span style={{ fontSize:24, fontWeight:700, color:'#f0ede8', fontFamily:'Bebas Neue, sans-serif', letterSpacing:'1px', lineHeight:1 }}>{val}</span>
-                  <span style={{ fontSize:10, color:'rgba(255,255,255,0.3)', letterSpacing:'0.1em', textTransform:'uppercase' }}>{lbl}</span>
+                  <span style={{ fontSize:10, color:'rgba(255,255,255,0.5)', letterSpacing:'0.1em', textTransform:'uppercase' }}>{lbl}</span>
                 </div>
               ))}
             </div>
 
             {/* CTA nudge */}
-            <p style={{ fontSize:13, color:'rgba(255,255,255,0.4)', lineHeight:1.6, maxWidth:360, margin:0 }}>
+            <p style={{ fontSize:13, color:'rgba(255,255,255,0.6)', lineHeight:1.6, maxWidth:360, margin:0 }}>
               Government data. No broker spin. Updated daily.<br/>
               <span style={{ color:'rgba(226,55,68,0.8)' }}>Scroll down to check your area →</span>
             </p>
@@ -2039,7 +2039,7 @@ export default function Landing() {
                     onMouseLeave={e => e.currentTarget.style.background='transparent'}
                   >
                     <span style={{ color:'#f0ede8', fontSize:14, fontWeight:500 }}>{name}</span>
-                    <span style={{ color:'rgba(255,255,255,0.3)', fontSize:12, fontFamily:'monospace' }}>{pin}</span>
+                    <span style={{ color:'rgba(255,255,255,0.5)', fontSize:12, fontFamily:'monospace' }}>{pin}</span>
                   </div>
                 ))}
               </div>
@@ -2048,19 +2048,19 @@ export default function Landing() {
 
           {/* Sample area pills */}
           <div style={{ display:'flex', flexWrap:'wrap', gap:8, justifyContent:'center', marginTop:16 }}>
-            <span style={{ fontSize:11, color:'rgba(255,255,255,0.25)', letterSpacing:'0.08em', textTransform:'uppercase', alignSelf:'center', marginRight:4 }}>Try</span>
+            <span style={{ fontSize:11, color:'rgba(255,255,255,0.5)', letterSpacing:'0.08em', textTransform:'uppercase', alignSelf:'center', marginRight:4 }}>Try</span>
             {[['Hauz Khas','110016'],['Vasant Kunj','110070'],['Gurugram','122001'],['Indirapuram','201014'],['Rohini','110085'],['Noida Sec 62','201309']].map(([name, pin]) => (
               <button key={pin} onClick={() => go(name)}
                 style={{
                   padding:'6px 14px', background:'none',
                   border:'1px solid rgba(255,255,255,0.1)',
                   borderRadius:100, fontSize:12, cursor:'pointer',
-                  color:'rgba(255,255,255,0.45)',
+                  color:'rgba(255,255,255,0.62)',
                   fontFamily:'DM Sans, sans-serif',
                   transition:'all 0.2s',
                 }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(226,55,68,0.5)'; e.currentTarget.style.color='#e23744' }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.1)'; e.currentTarget.style.color='rgba(255,255,255,0.45)' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.1)'; e.currentTarget.style.color='rgba(255,255,255,0.62)' }}
               >{name}</button>
             ))}
           </div>
@@ -2091,8 +2091,8 @@ export default function Landing() {
             display:'block', objectFit:'cover', border:'2px solid rgba(226,55,68,0.4)',
           }} />
           <p style={{ fontSize:17, fontWeight:700, color:'#f0ede8', margin:'0 0 4px' }}>Gurshaan Singh Baweja</p>
-          <p style={{ fontSize:12, color:'rgba(255,255,255,0.35)', margin:'0 0 16px', textTransform:'uppercase', letterSpacing:'0.08em' }}>Built AsliVastu</p>
-          <p style={{ fontSize:14, lineHeight:1.7, color:'rgba(255,255,255,0.6)', margin:'0 0 22px' }}>
+          <p style={{ fontSize:12, color:'rgba(255,255,255,0.55)', margin:'0 0 16px', textTransform:'uppercase', letterSpacing:'0.08em' }}>Built AsliVastu</p>
+          <p style={{ fontSize:14, lineHeight:1.7, color:'rgba(255,255,255,0.68)', margin:'0 0 22px' }}>
             Buying a home in Delhi NCR means digging through a dozen government portals just to figure out if an area is actually safe, breathable, and well-connected. I built AsliVastu to put all of that in one place — real data, one score, no guesswork.
           </p>
           <a href="https://www.linkedin.com/in/gurshaan-singh-baweja" target="_blank" rel="noopener noreferrer"

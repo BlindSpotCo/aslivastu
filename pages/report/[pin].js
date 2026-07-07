@@ -451,7 +451,7 @@ function CommuteChecker({ fromPin, fromName, dark }) {
   const card   = dark ? '#161616' : '#f8f8f8'
   const border = dark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'
   const text   = dark ? '#f0ede8' : '#111'
-  const muted  = dark ? '#555' : '#888'
+  const muted  = dark ? '#9a9a9a' : '#666'
   const accent = '#e23744'
 
   function onSearch(v) {
@@ -817,7 +817,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
   const card   = dark ? '#161616' : '#ffffff'
   const border = dark ? '#ffffff08' : '#f0f0f0'
   const text   = dark ? '#f0f0f0' : '#111111'
-  const muted  = dark ? '#666666' : '#666666'
+  const muted  = dark ? '#9a9a9a' : '#595959'
   const subtle = dark ? '#1e1e1e' : '#f7f7f7'
 
   function handleQueryChange(val) {

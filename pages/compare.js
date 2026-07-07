@@ -146,7 +146,7 @@ export default function Compare() {
   const card   = dark ? '#1a1a1a' : '#ffffff'
   const border = dark ? '#2a2a2a' : '#ebebeb'
   const text   = dark ? '#f0f0f0' : '#111111'
-  const muted  = dark ? '#888888' : '#666666'
+  const muted  = dark ? '#9a9a9a' : '#595959'
   const subtle = dark ? '#222222' : '#f5f5f5'
 
   function handleChange(val, side) {
