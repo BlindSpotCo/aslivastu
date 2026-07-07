@@ -1262,7 +1262,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                     Score breakdown
                   </p>
                   <p style={{ margin:'0 0 20px', fontSize:12, color:muted, lineHeight:1.5 }}>
-                    The {report.nqi_composite ?? '—'} above is a weighted average of the dimensions below — the % next to each
+                    The {report.nqi_composite ?? '—'} NQI is a weighted average of the dimensions below — the % next to each
                     one is exactly how much it counts.
                     {report.dimensions_scored != null && report.dimensions_total != null && report.dimensions_scored < report.dimensions_total && (
                       <> Only {report.dimensions_scored} of {report.dimensions_total} had data for this pin, so the rest were rescaled to still add up to 100%.</>
