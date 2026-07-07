@@ -180,6 +180,17 @@ const GRADE_COLOR = {
 
 const ACCENT = '#e23744'
 
+// Maps scoring.py's dimension keys to the labels already used in the
+// hand-authored methodology copy below, so the dynamic weight breakdown
+// lines up with the static text instead of introducing new terminology.
+const DIMENSION_LABELS = [
+  { key: 'crime',          label: 'Safety' },
+  { key: 'infrastructure', label: 'Infrastructure' },
+  { key: 'air',            label: 'Air Quality' },
+  { key: 'power',          label: 'Power' },
+  { key: 'schools',        label: 'Schools' },
+]
+
 function getVerdict(scores, composite) {
   if (composite >= 75) return { label:"Strong buy",    color:"#22c55e", reason:"This neighborhood scores well across safety, infrastructure and environment — above NCR average on most dimensions." }
   if (composite >= 60) return { label:"Consider",      color:"#eab308", reason:"Decent overall but has some weak spots. Review each dimension carefully before deciding." }
@@ -1533,6 +1544,46 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                         <br/>CBSE affiliation database. School density and pass percentage where available. Last verified 2023.
                       </p>
                     </div>
+
+                    {/* Per-pin weight breakdown — computed live from this pin's
+                        actual weights_applied/weights_base, not hardcoded, since
+                        missing dimensions get dropped and the rest reweighted. */}
+                    {report.weights_applied && Object.keys(report.weights_applied).length > 0 && (
+                      <div style={{ marginTop:16, padding:'12px 14px', background: dark?'#0f1a14':'#f0fdf4', border:`1px solid ${dark?'#16653455':'#bbf7d0'}`, borderRadius:10 }}>
+                        <p style={{ margin:'0 0 8px', fontSize:12, fontWeight:600, color: dark?'#4ade80':'#15803d' }}>
+                          How the {report.nqi_composite ?? '—'} for this pin was actually weighted
+                        </p>
+                        {report.dimensions_scored != null && report.dimensions_total != null && report.dimensions_scored < report.dimensions_total && (
+                          <p style={{ margin:'0 0 10px', fontSize:11, color: dark?'#86efac':'#166534', lineHeight:1.6 }}>
+                            Only {report.dimensions_scored} of {report.dimensions_total} dimensions had data for this pin.
+                            The missing dimension(s) were excluded rather than scored as zero, and the weights below
+                            were rescaled so the remaining dimensions still add up to 100%.
+                          </p>
+                        )}
+                        <div style={{ display:'flex', flexDirection:'column', gap:5 }}>
+                          {DIMENSION_LABELS.filter(d => report.weights_applied[d.key] !== undefined).map(d => {
+                            const base = report.weights_base?.[d.key]
+                            const applied = report.weights_applied[d.key]
+                            const changed = base !== undefined && Math.abs(applied - base) > 0.001
+                            return (
+                              <div key={d.key} style={{ display:'flex', justifyContent:'space-between', fontSize:11 }}>
+                                <span style={{ color:muted }}>{d.label}</span>
+                                <span>
+                                  {changed && (
+                                    <span style={{ textDecoration:'line-through', opacity:0.55, color:muted, marginRight:6 }}>
+                                      {Math.round(base * 100)}%
+                                    </span>
+                                  )}
+                                  <strong style={{ color: changed ? '#22c55e' : text }}>
+                                    {Math.round(applied * 100)}%
+                                  </strong>
+                                </span>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Legal disclaimer box */}
                     <div style={{ marginTop:16, padding:'12px 14px', background: dark?'#1f1a0a':'#fffbeb', border:`1px solid ${dark?'#92400e44':'#fcd34d'}`, borderRadius:10 }}>
