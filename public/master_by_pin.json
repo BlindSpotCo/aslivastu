@@ -40,7 +40,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 6,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788977"
+    "merged_at": "2026-07-07T00:00:21.962760"
   },
   {
     "pin_code": "110094",
@@ -83,7 +83,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 16,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788981"
+    "merged_at": "2026-07-07T00:00:21.962767"
   },
   {
     "pin_code": "110016",
@@ -126,7 +126,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788984"
+    "merged_at": "2026-07-07T00:00:21.962769"
   },
   {
     "pin_code": "110001",
@@ -169,12 +169,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 0,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788985",
-    "schools_count": 15,
-    "schools_cbse": 15,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962770"
   },
   {
     "pin_code": "110095",
@@ -217,7 +212,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788987"
+    "merged_at": "2026-07-07T00:00:21.962771"
   },
   {
     "pin_code": "110070",
@@ -260,7 +255,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788989"
+    "merged_at": "2026-07-07T00:00:21.962771"
   },
   {
     "pin_code": "110077",
@@ -303,7 +298,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788990"
+    "merged_at": "2026-07-07T00:00:21.962772"
   },
   {
     "pin_code": "110037",
@@ -346,7 +341,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 0,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788991"
+    "merged_at": "2026-07-07T00:00:21.962773"
   },
   {
     "pin_code": "110068",
@@ -389,7 +384,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 2,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788993"
+    "merged_at": "2026-07-07T00:00:21.962774"
   },
   {
     "pin_code": "110002",
@@ -432,7 +427,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 0,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788994"
+    "merged_at": "2026-07-07T00:00:21.962775"
   },
   {
     "pin_code": "110067",
@@ -475,7 +470,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788996"
+    "merged_at": "2026-07-07T00:00:21.962776"
   },
   {
     "pin_code": "110033",
@@ -518,7 +513,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 22,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788997"
+    "merged_at": "2026-07-07T00:00:21.962776"
   },
   {
     "pin_code": "110073",
@@ -561,7 +556,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.788999"
+    "merged_at": "2026-07-07T00:00:21.962777"
   },
   {
     "pin_code": "110040",
@@ -604,7 +599,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 16,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789000"
+    "merged_at": "2026-07-07T00:00:21.962778"
   },
   {
     "pin_code": "110065",
@@ -647,7 +642,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 12,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789002"
+    "merged_at": "2026-07-07T00:00:21.962779"
   },
   {
     "pin_code": "110021",
@@ -690,7 +685,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789003"
+    "merged_at": "2026-07-07T00:00:21.962780"
   },
   {
     "pin_code": "110025",
@@ -733,7 +728,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 4,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789005"
+    "merged_at": "2026-07-07T00:00:21.962780"
   },
   {
     "pin_code": "110010",
@@ -776,7 +771,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 0,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789006"
+    "merged_at": "2026-07-07T00:00:21.962781"
   },
   {
     "pin_code": "110092",
@@ -819,7 +814,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 7,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789007"
+    "merged_at": "2026-07-07T00:00:21.962782"
   },
   {
     "pin_code": "110012",
@@ -862,7 +857,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789009"
+    "merged_at": "2026-07-07T00:00:21.962783"
   },
   {
     "pin_code": "110022",
@@ -905,7 +900,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789010"
+    "merged_at": "2026-07-07T00:00:21.962784"
   },
   {
     "pin_code": "110085",
@@ -948,7 +943,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 6,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789012"
+    "merged_at": "2026-07-07T00:00:21.962784"
   },
   {
     "pin_code": "110020",
@@ -991,7 +986,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 15,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789013"
+    "merged_at": "2026-07-07T00:00:21.962785"
   },
   {
     "pin_code": "110041",
@@ -1034,7 +1029,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 24,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789014"
+    "merged_at": "2026-07-07T00:00:21.962786"
   },
   {
     "pin_code": "110052",
@@ -1077,7 +1072,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 4,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789016"
+    "merged_at": "2026-07-07T00:00:21.962787"
   },
   {
     "pin_code": "110036",
@@ -1120,7 +1115,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 14,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789017"
+    "merged_at": "2026-07-07T00:00:21.962788"
   },
   {
     "pin_code": "110049",
@@ -1163,7 +1158,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789019"
+    "merged_at": "2026-07-07T00:00:21.962789"
   },
   {
     "pin_code": "110039",
@@ -1206,7 +1201,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 20,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789020"
+    "merged_at": "2026-07-07T00:00:21.962789"
   },
   {
     "pin_code": "110084",
@@ -1249,7 +1244,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 14,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789021"
+    "merged_at": "2026-07-07T00:00:21.962790"
   },
   {
     "pin_code": "110003",
@@ -1292,7 +1287,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789023"
+    "merged_at": "2026-07-07T00:00:21.962791"
   },
   {
     "pin_code": "110042",
@@ -1335,7 +1330,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 5,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789024"
+    "merged_at": "2026-07-07T00:00:21.962792"
   },
   {
     "pin_code": "110026",
@@ -1378,7 +1373,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 2,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789026"
+    "merged_at": "2026-07-07T00:00:21.962793"
   },
   {
     "pin_code": "110043",
@@ -1421,7 +1416,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789027"
+    "merged_at": "2026-07-07T00:00:21.962793"
   },
   {
     "pin_code": "110007",
@@ -1464,7 +1459,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 4,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789028"
+    "merged_at": "2026-07-07T00:00:21.962794"
   },
   {
     "pin_code": "110032",
@@ -1507,7 +1502,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 18,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789030"
+    "merged_at": "2026-07-07T00:00:21.962795"
   },
   {
     "pin_code": "110006",
@@ -1550,7 +1545,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 12,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789031"
+    "merged_at": "2026-07-07T00:00:21.962796"
   },
   {
     "pin_code": "110078",
@@ -1593,7 +1588,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789033"
+    "merged_at": "2026-07-07T00:00:21.962797"
   },
   {
     "pin_code": "122051",
@@ -1636,7 +1631,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 3,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789034"
+    "merged_at": "2026-07-07T00:00:21.962797"
   },
   {
     "pin_code": "121102",
@@ -1679,7 +1674,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 9,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789035"
+    "merged_at": "2026-07-07T00:00:21.962798"
   },
   {
     "pin_code": "122413",
@@ -1722,7 +1717,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 5,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789037"
+    "merged_at": "2026-07-07T00:00:21.962799"
   },
   {
     "pin_code": "121001",
@@ -1765,7 +1760,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 8,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789038"
+    "merged_at": "2026-07-07T00:00:21.962800"
   },
   {
     "pin_code": "125050",
@@ -1776,8 +1771,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools"
+      "sewerage"
     ],
     "aqi_avg": 33.3,
     "aqi_category": "Good",
@@ -1809,12 +1803,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 14,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789040",
-    "schools_count": 6,
-    "schools_cbse": 6,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962801"
   },
   {
     "pin_code": "122001",
@@ -1857,7 +1846,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 5,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789041"
+    "merged_at": "2026-07-07T00:00:21.962801"
   },
   {
     "pin_code": "132103",
@@ -1900,7 +1889,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 8,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789042"
+    "merged_at": "2026-07-07T00:00:21.962802"
   },
   {
     "pin_code": "124001",
@@ -1943,31 +1932,17 @@
     "open_drains": true,
     "flooding_incidents_annual": 9,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789044"
+    "merged_at": "2026-07-07T00:00:21.962803"
   },
   {
     "pin_code": "123106",
     "sources": [
-      "cpcb_aqi",
-      "delhi_crime",
-      "power",
-      "infrastructure"
+      "cpcb_aqi"
     ],
     "aqi_avg": 52.3,
     "aqi_category": "Satisfactory",
     "data_completeness": 1,
-    "merged_at": "2026-04-10T09:42:54.789045",
-    "total_cognizable_crimes": 342,
-    "discom": "DHBVN",
-    "outage_frequency": 2,
-    "avg_outage_hours": 7.0,
-    "reliability": "Poor",
-    "zone_type": "Mixed",
-    "metro_stations_nearby": 0,
-    "metro_planned_stations": 0,
-    "highway_proximity": "High",
-    "smart_city_project": false,
-    "infra_score_raw": 52
+    "merged_at": "2026-07-07T00:00:21.962804"
   },
   {
     "pin_code": "124507",
@@ -2010,7 +1985,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789047"
+    "merged_at": "2026-07-07T00:00:21.962805"
   },
   {
     "pin_code": "135001",
@@ -2053,7 +2028,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789048"
+    "merged_at": "2026-07-07T00:00:21.962805"
   },
   {
     "pin_code": "125055",
@@ -2064,8 +2039,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools"
+      "sewerage"
     ],
     "aqi_avg": 14.0,
     "aqi_category": "Good",
@@ -2097,12 +2071,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 15,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789050",
-    "schools_count": 6,
-    "schools_cbse": 6,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962806"
   },
   {
     "pin_code": "131001",
@@ -2145,7 +2114,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 9,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789051"
+    "merged_at": "2026-07-07T00:00:21.962807"
   },
   {
     "pin_code": "122101",
@@ -2156,8 +2125,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools"
+      "sewerage"
     ],
     "aqi_avg": 62.4,
     "aqi_category": "Satisfactory",
@@ -2189,12 +2157,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789052",
-    "schools_count": 16,
-    "schools_cbse": 16,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962808"
   },
   {
     "pin_code": "122108",
@@ -2205,8 +2168,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools"
+      "sewerage"
     ],
     "aqi_avg": 62.4,
     "aqi_category": "Satisfactory",
@@ -2238,12 +2200,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 16,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789054",
-    "schools_count": 9,
-    "schools_cbse": 9,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962809"
   },
   {
     "pin_code": "122103",
@@ -2254,8 +2211,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools"
+      "sewerage"
     ],
     "aqi_avg": 62.4,
     "aqi_category": "Satisfactory",
@@ -2287,12 +2243,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 5,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789055",
-    "schools_count": 22,
-    "schools_cbse": 22,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962809"
   },
   {
     "pin_code": "122505",
@@ -2303,8 +2254,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools"
+      "sewerage"
     ],
     "aqi_avg": 40.5,
     "aqi_category": "Good",
@@ -2336,12 +2286,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 18,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789057",
-    "schools_count": 6,
-    "schools_cbse": 6,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962810"
   },
   {
     "pin_code": "123001",
@@ -2352,8 +2297,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools"
+      "sewerage"
     ],
     "aqi_avg": 60.3,
     "aqi_category": "Satisfactory",
@@ -2385,12 +2329,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 12,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789058",
-    "schools_count": 9,
-    "schools_cbse": 9,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962811"
   },
   {
     "pin_code": "123401",
@@ -2401,8 +2340,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools"
+      "sewerage"
     ],
     "aqi_avg": 62.4,
     "aqi_category": "Satisfactory",
@@ -2434,12 +2372,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 13,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789060",
-    "schools_count": 8,
-    "schools_cbse": 8,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962812"
   },
   {
     "pin_code": "131029",
@@ -2450,8 +2383,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools"
+      "sewerage"
     ],
     "aqi_avg": 60.3,
     "aqi_category": "Satisfactory",
@@ -2483,12 +2415,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 8,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789061",
-    "schools_count": 9,
-    "schools_cbse": 9,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962813"
   },
   {
     "pin_code": "131027",
@@ -2499,8 +2426,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools"
+      "sewerage"
     ],
     "aqi_avg": 60.3,
     "aqi_category": "Satisfactory",
@@ -2532,12 +2458,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789062",
-    "schools_count": 7,
-    "schools_cbse": 7,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962813"
   },
   {
     "pin_code": "122502",
@@ -2548,8 +2469,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools"
+      "sewerage"
     ],
     "aqi_avg": 62.4,
     "aqi_category": "Satisfactory",
@@ -2581,12 +2501,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 12,
     "data_completeness": 7,
-    "merged_at": "2026-04-10T09:42:54.789064",
-    "schools_count": 11,
-    "schools_cbse": 11,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962814"
   },
   {
     "pin_code": "110005",
@@ -2596,8 +2511,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 445,
     "zone_type": "Mixed",
@@ -2627,9 +2541,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 5,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789066",
-    "aqi_avg": 55.6,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962815"
   },
   {
     "pin_code": "110024",
@@ -2639,8 +2551,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 350,
     "zone_type": "Residential",
@@ -2670,9 +2581,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 4,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789067",
-    "aqi_avg": 80.8,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962816"
   },
   {
     "pin_code": "110017",
@@ -2682,8 +2591,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 290,
     "zone_type": "Residential",
@@ -2713,9 +2621,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789069",
-    "aqi_avg": 49.9,
-    "aqi_category": "Good"
+    "merged_at": "2026-07-07T00:00:21.962817"
   },
   {
     "pin_code": "122002",
@@ -2725,8 +2631,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 310,
     "zone_type": "Commercial",
@@ -2756,9 +2661,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789070",
-    "aqi_avg": 62.4,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962817"
   },
   {
     "pin_code": "201301",
@@ -2768,8 +2671,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 380,
     "zone_type": "Mixed",
@@ -2799,14 +2701,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 2,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789071",
-    "aqi_avg": 110.0,
-    "aqi_category": "Moderate",
-    "schools_count": 47,
-    "schools_cbse": 47,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962818"
   },
   {
     "pin_code": "110009",
@@ -2816,8 +2711,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 240,
     "zone_type": "Residential",
@@ -2847,9 +2741,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789073",
-    "aqi_avg": 68.6,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962819"
   },
   {
     "pin_code": "110018",
@@ -2859,8 +2751,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 355,
     "zone_type": "Residential",
@@ -2890,9 +2781,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 7,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789074",
-    "aqi_avg": 58.1,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962820"
   },
   {
     "pin_code": "110019",
@@ -2902,8 +2791,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 320,
     "zone_type": "Residential",
@@ -2933,14 +2821,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789076",
-    "aqi_avg": 162.0,
-    "aqi_category": "Moderate",
-    "schools_count": 40,
-    "schools_cbse": 40,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962821"
   },
   {
     "pin_code": "110044",
@@ -2950,8 +2831,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 402,
     "zone_type": "Mixed",
@@ -2981,9 +2861,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789077",
-    "aqi_avg": 58.1,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962821"
   },
   {
     "pin_code": "110053",
@@ -2993,8 +2871,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 435,
     "zone_type": "Mixed",
@@ -3024,9 +2901,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789078",
-    "aqi_avg": 63.0,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962822"
   },
   {
     "pin_code": "110058",
@@ -3036,8 +2911,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 318,
     "zone_type": "Residential",
@@ -3067,9 +2941,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789080",
-    "aqi_avg": 59.9,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962823"
   },
   {
     "pin_code": "110063",
@@ -3079,8 +2951,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 305,
     "zone_type": "Residential",
@@ -3110,9 +2981,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789081",
-    "aqi_avg": 59.9,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962824"
   },
   {
     "pin_code": "122003",
@@ -3122,8 +2991,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 268,
     "zone_type": "Residential",
@@ -3153,9 +3021,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 4,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789083",
-    "aqi_avg": 62.4,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962824"
   },
   {
     "pin_code": "122107",
@@ -3165,8 +3031,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 445,
     "zone_type": "Mixed",
@@ -3196,9 +3061,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 18,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789084",
-    "aqi_avg": 62.4,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962825"
   },
   {
     "pin_code": "201001",
@@ -3208,8 +3071,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 538,
     "zone_type": "Mixed",
@@ -3239,14 +3101,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 7,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789085",
-    "aqi_avg": 99.0,
-    "aqi_category": "Satisfactory",
-    "schools_count": 35,
-    "schools_cbse": 35,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962826"
   },
   {
     "pin_code": "201304",
@@ -3256,8 +3111,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 225,
     "zone_type": "Residential",
@@ -3287,14 +3141,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 2,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789087",
-    "aqi_avg": 103.0,
-    "aqi_category": "Moderate",
-    "schools_count": 28,
-    "schools_cbse": 28,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962827"
   },
   {
     "pin_code": "201309",
@@ -3304,8 +3151,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 298,
     "zone_type": "Commercial",
@@ -3335,14 +3181,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 4,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789088",
-    "aqi_avg": 67.0,
-    "aqi_category": "Satisfactory",
-    "schools_count": 22,
-    "schools_cbse": 22,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
+    "merged_at": "2026-07-07T00:00:21.962828"
   },
   {
     "pin_code": "121002",
@@ -3352,8 +3191,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "cpcb_aqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 465,
     "zone_type": "Mixed",
@@ -3383,9 +3221,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789090",
-    "aqi_avg": 48.5,
-    "aqi_category": "Good"
+    "merged_at": "2026-07-07T00:00:21.962828"
   },
   {
     "pin_code": "201102",
@@ -3395,9 +3231,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 548,
     "zone_type": "Mixed",
@@ -3427,14 +3261,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 16,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789091",
-    "schools_count": 20,
-    "schools_cbse": 20,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null,
-    "aqi_avg": 135.0,
-    "aqi_category": "Moderate"
+    "merged_at": "2026-07-07T00:00:21.962829"
   },
   {
     "pin_code": "201014",
@@ -3444,9 +3271,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 312,
     "zone_type": "Residential",
@@ -3476,14 +3301,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789092",
-    "schools_count": 58,
-    "schools_cbse": 58,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null,
-    "aqi_avg": 87.0,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962830"
   },
   {
     "pin_code": "201012",
@@ -3493,9 +3311,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 295,
     "zone_type": "Residential",
@@ -3525,14 +3341,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789094",
-    "schools_count": 52,
-    "schools_cbse": 52,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null,
-    "aqi_avg": 113.0,
-    "aqi_category": "Moderate"
+    "merged_at": "2026-07-07T00:00:21.962831"
   },
   {
     "pin_code": "201016",
@@ -3542,9 +3351,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 285,
     "zone_type": "Residential",
@@ -3574,14 +3381,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 4,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789095",
-    "schools_count": 42,
-    "schools_cbse": 42,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null,
-    "aqi_avg": 99.0,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962831"
   },
   {
     "pin_code": "201002",
@@ -3591,9 +3391,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 358,
     "zone_type": "Mixed",
@@ -3623,14 +3421,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 7,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789097",
-    "schools_count": 25,
-    "schools_cbse": 25,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null,
-    "aqi_avg": 99.0,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962832"
   },
   {
     "pin_code": "201010",
@@ -3640,9 +3431,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 342,
     "zone_type": "Residential",
@@ -3672,14 +3461,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789098",
-    "schools_count": 32,
-    "schools_cbse": 32,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null,
-    "aqi_avg": 152.0,
-    "aqi_category": "Moderate"
+    "merged_at": "2026-07-07T00:00:21.962833"
   },
   {
     "pin_code": "201206",
@@ -3689,9 +3471,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 422,
     "zone_type": "Mixed",
@@ -3721,14 +3501,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789099",
-    "schools_count": 14,
-    "schools_cbse": 14,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null,
-    "aqi_avg": 99.0,
-    "aqi_category": "Satisfactory"
+    "merged_at": "2026-07-07T00:00:21.962834"
   },
   {
     "pin_code": "245101",
@@ -3738,9 +3511,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 465,
     "zone_type": "Mixed",
@@ -3770,14 +3541,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 13,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789101",
-    "schools_count": 9,
-    "schools_cbse": 9,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null,
-    "aqi_avg": 175.0,
-    "aqi_category": "Moderate"
+    "merged_at": "2026-07-07T00:00:21.962834"
   },
   {
     "pin_code": "203001",
@@ -3787,9 +3551,7 @@
       "power",
       "water",
       "roads",
-      "sewerage",
-      "schools",
-      "waqi"
+      "sewerage"
     ],
     "total_cognizable_crimes": 498,
     "zone_type": "Mixed",
@@ -3819,13 +3581,6 @@
     "open_drains": true,
     "flooding_incidents_annual": 14,
     "data_completeness": 6,
-    "merged_at": "2026-04-10T09:42:54.789102",
-    "schools_count": 11,
-    "schools_cbse": 11,
-    "schools_icse": 0,
-    "schools_list": [],
-    "schools_avg_pass": null,
-    "aqi_avg": 132.0,
-    "aqi_category": "Moderate"
+    "merged_at": "2026-07-07T00:00:21.962835"
   }
 ]

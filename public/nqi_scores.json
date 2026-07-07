@@ -8,10 +8,25 @@
       "power": 94,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 89,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719218",
+    "scored_at": "2026-07-07T00:00:22.061967",
     "schools_count": 28,
     "schools_cbse": 28,
     "schools_icse": 0,
@@ -99,10 +114,25 @@
       "power": 78,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 86,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719179",
+    "scored_at": "2026-07-07T00:00:22.061914",
     "schools_count": 16,
     "schools_cbse": 16,
     "schools_icse": 0,
@@ -190,10 +220,25 @@
       "power": 76,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 86,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719212",
+    "scored_at": "2026-07-07T00:00:22.061958",
     "schools_count": 17,
     "schools_cbse": 17,
     "schools_icse": 0,
@@ -273,6 +318,109 @@
     "schools_avg_pass": null
   },
   {
+    "pin_code": "201304",
+    "scores": {
+      "crime": 100,
+      "infrastructure": 72,
+      "power": 57,
+      "schools": 96
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 83,
+    "grade": "A",
+    "scored_at": "2026-07-07T00:00:22.062211",
+    "schools_count": 12,
+    "schools_cbse": 12,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Gyanshree School",
+        "address": "Plot No. 3 & 4, \nSector 127, Gautam Budh Nagar",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Mayoor School",
+        "address": "Sector 126 Expressway Noida Up, Gautam Budh Nagar",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Maharishi Vidya Mandir",
+        "address": "Agra Road Aligarh Uttar Pradesh, Aligarh",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sri Krishan Sagar Public School",
+        "address": "Vill. Bhangel, Maharishi Nagar, Noida,, Gautam Budh Nagar",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sant Kishori Sharan Vidya Mandir",
+        "address": "Village-Jhatta Sec -158 N0Ida Up, Gautam Budh Nagar",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "S S Public School",
+        "address": "S S Public School\nSec-110 Bhangel Noida, Gautam Budh Nagar",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Jagran Public School - Noida",
+        "address": "D - 33 / B, Sector - 47,, Gautam Budh Nagar",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "S.S.S.Gurukulschool",
+        "address": "Vill Badoli Jhatta Sec-154 G B Nagar Pin 201304 Up, Gautam Budh Nagar",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Maharishi Vidya Mandir",
+        "address": "Maharishi Nagar, Noida Distt. Gautam Budh Nagar, Uttar Pradesh, Gautam Budh Nagar",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Noida Educational Academy",
+        "address": "Bhangel Sec -110 Noida Fase -2, Gautam Budh Nagar",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null
+  },
+  {
     "pin_code": "110001",
     "scores": {
       "crime": 90,
@@ -281,10 +429,25 @@
       "power": 94,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 82,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719171",
+    "scored_at": "2026-07-07T00:00:22.061904",
     "schools_count": 15,
     "schools_cbse": 15,
     "schools_icse": 0,
@@ -301,10 +464,25 @@
       "power": 78,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 82,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719274",
+    "scored_at": "2026-07-07T00:00:22.062021",
     "schools_count": 24,
     "schools_cbse": 24,
     "schools_icse": 0,
@@ -392,10 +570,25 @@
       "power": 52,
       "schools": 90
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 82,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719303",
+    "scored_at": "2026-07-07T00:00:22.062064",
     "schools_count": 9,
     "schools_cbse": 9,
     "schools_icse": 0,
@@ -468,6 +661,54 @@
     "schools_avg_pass": null
   },
   {
+    "pin_code": "123106",
+    "scores": {
+      "air": 85,
+      "schools": 75
+    },
+    "weights_base": {
+      "air": 0.2,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "air": 0.6667,
+      "schools": 0.3333
+    },
+    "dimensions_scored": 2,
+    "dimensions_total": 5,
+    "nqi_composite": 82,
+    "grade": "A",
+    "scored_at": "2026-07-07T00:00:22.062094",
+    "schools_count": 3,
+    "schools_cbse": 3,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "The Royal International Public School",
+        "address": "Village Alawalpur \nP.O. Nandrampur Bass, Rewari",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "R. D. S. Public School",
+        "address": "In Front Of Tehsil, Rewari Road (Dharuhera), Ambala",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Aviraj Wld School",
+        "address": "Village: Alamgirpur, Rajpura Road, Dharuhera, District : Rewari, Rewari",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null
+  },
+  {
     "pin_code": "110037",
     "scores": {
       "crime": 100,
@@ -476,10 +717,25 @@
       "power": 79,
       "schools": 96
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719185",
+    "scored_at": "2026-07-07T00:00:22.061923",
     "schools_count": 10,
     "schools_cbse": 10,
     "schools_icse": 0,
@@ -567,10 +823,25 @@
       "power": 92,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719193",
+    "scored_at": "2026-07-07T00:00:22.061932",
     "schools_count": 33,
     "schools_cbse": 33,
     "schools_icse": 0,
@@ -658,10 +929,25 @@
       "power": 78,
       "schools": 60
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719196",
+    "scored_at": "2026-07-07T00:00:22.061937",
     "schools_count": 2,
     "schools_cbse": 2,
     "schools_icse": 0,
@@ -693,10 +979,25 @@
       "power": 76,
       "schools": 90
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719224",
+    "scored_at": "2026-07-07T00:00:22.061975",
     "schools_count": 8,
     "schools_cbse": 8,
     "schools_icse": 0,
@@ -770,10 +1071,25 @@
       "power": 76,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719285",
+    "scored_at": "2026-07-07T00:00:22.062037",
     "schools_count": 38,
     "schools_cbse": 38,
     "schools_icse": 0,
@@ -861,10 +1177,25 @@
       "power": 52,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719312",
+    "scored_at": "2026-07-07T00:00:22.062082",
     "schools_count": 66,
     "schools_cbse": 66,
     "schools_icse": 0,
@@ -952,10 +1283,25 @@
       "power": 52,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719342",
+    "scored_at": "2026-07-07T00:00:22.062123",
     "schools_count": 22,
     "schools_cbse": 22,
     "schools_icse": 0,
@@ -964,89 +1310,218 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "110017",
+    "pin_code": "110077",
     "scores": {
-      "crime": 90,
-      "infrastructure": 45,
-      "air": 100,
-      "power": 78,
-      "schools": 100
+      "crime": 94,
+      "infrastructure": 60,
+      "air": 85,
+      "power": 77,
+      "schools": 75
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
     },
     "dimensions_scored": 5,
-    "nqi_composite": 80,
-    "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719369",
-    "schools_count": 31,
-    "schools_cbse": 31,
+    "dimensions_total": 5,
+    "nqi_composite": 79,
+    "grade": "B+",
+    "scored_at": "2026-07-07T00:00:22.061919",
+    "schools_count": 5,
+    "schools_cbse": 5,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [
       {
-        "name": "Govt Girls Sr Sec School",
-        "address": "M B Road New Delhi",
+        "name": "Govt. Co-Education Sr Sec. School",
+        "address": "Sect-22, Dwarka, New Delhi, West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Boys Sr Sec School",
-        "address": "M B Road Sect-I Pushp Vihar New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "The Pinnacle School, Senior, Junior And Tiny Tots",
-        "address": "D Block Panchsheel Enclave New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Vidya Niketan",
-        "address": "D-Block Saket New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Boys Sr Sec School",
-        "address": "Chirag Delhi Swami Nagar New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "New Green Field School",
-        "address": "Marg No-22 Saket New Delhi, South Delhi",
+        "name": "Queen'S Valley School",
+        "address": "Site-B, Sector-8,Dwarka, South West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
         "name": "Kendriya Vidyalaya",
-        "address": "Pushp Vihar M B Road New Delhi, South Delhi",
+        "address": "S.P.G. Sec-8, Dwarka, Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Birla Vidya Niketan",
-        "address": "Pushp Vihar Sector Iv, Distt South Delhi, New Delhi, South Delhi",
+        "name": "The Indian Heights School",
+        "address": "Sector - 23, Dwarka, New Delhi - 110077, South West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Sarvodaya Girls Sr. Sec.School",
-        "address": "Chirag Delhi Soami Nagar New Delhi",
+        "name": "Govt Co Educaton Sr.Secondary School",
+        "address": "Bamnoli Near Bijwasan New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null
+  },
+  {
+    "pin_code": "110068",
+    "scores": {
+      "crime": 100,
+      "infrastructure": 52,
+      "air": 85,
+      "power": 76,
+      "schools": 75
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "dimensions_scored": 5,
+    "dimensions_total": 5,
+    "nqi_composite": 79,
+    "grade": "B+",
+    "scored_at": "2026-07-07T00:00:22.061928",
+    "schools_count": 3,
+    "schools_cbse": 3,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Govt Co Edu Sec School",
+        "address": "Neb Sarai New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Andhra Education Society Dr. K. Ramesh Babu Memial School",
-        "address": "Sec-7, Pushp Vihar, New Delhi, South Delhi",
+        "name": "Govt. Co-Edu. Sec. Sch.",
+        "address": "Maidan Garhi, New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "St Mary'S Public School",
+        "address": "532 Forest Lane Near Ignou Neb Sarai, Distt South Delhi, New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null
+  },
+  {
+    "pin_code": "110049",
+    "scores": {
+      "crime": 100,
+      "infrastructure": 45,
+      "air": 85,
+      "power": 78,
+      "schools": 90
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "dimensions_scored": 5,
+    "dimensions_total": 5,
+    "nqi_composite": 79,
+    "grade": "B+",
+    "scored_at": "2026-07-07T00:00:22.062009",
+    "schools_count": 8,
+    "schools_cbse": 8,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Sarvodaya Co-Ed Vidyalaya",
+        "address": "Masjid Moth New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Boys Sr Sec School",
+        "address": "Andrews Ganj New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Fr. Agnel School",
+        "address": "Gautam Nagar New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sarvodaya Bal Vidyalaya",
+        "address": "Sadiq Nagar New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Kendriya Vidyalaya",
+        "address": "Masjid Moth Sector Iii Sadiq Nagar New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sarvodaya Co-Ed Vidyalaya",
+        "address": "Shah Pur Jat New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sarvodaya Kanya Vidyalaya",
+        "address": "Andrews Ganj New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "The Indian School",
+        "address": "Josip Broz Tito Marg New Delhi, South Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
@@ -1059,14 +1534,26 @@
     "scores": {
       "crime": 100,
       "infrastructure": 45,
-      "air": 85,
       "power": 78,
       "schools": 100
     },
-    "dimensions_scored": 5,
-    "nqi_composite": 80,
-    "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719381",
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 79,
+    "grade": "B+",
+    "scored_at": "2026-07-07T00:00:22.062173",
     "schools_count": 29,
     "schools_cbse": 29,
     "schools_icse": 0,
@@ -1146,286 +1633,32 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "201304",
+    "pin_code": "201012",
     "scores": {
-      "crime": 100,
+      "crime": 89,
       "infrastructure": 72,
-      "air": 70,
-      "power": 57,
-      "schools": 96
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 80,
-    "grade": "A",
-    "scored_at": "2026-04-10T11:32:10.719412",
-    "schools_count": 12,
-    "schools_cbse": 12,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "Gyanshree School",
-        "address": "Plot No. 3 & 4, \nSector 127, Gautam Budh Nagar",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Mayoor School",
-        "address": "Sector 126 Expressway Noida Up, Gautam Budh Nagar",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Maharishi Vidya Mandir",
-        "address": "Agra Road Aligarh Uttar Pradesh, Aligarh",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Sri Krishan Sagar Public School",
-        "address": "Vill. Bhangel, Maharishi Nagar, Noida,, Gautam Budh Nagar",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Sant Kishori Sharan Vidya Mandir",
-        "address": "Village-Jhatta Sec -158 N0Ida Up, Gautam Budh Nagar",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "S S Public School",
-        "address": "S S Public School\nSec-110 Bhangel Noida, Gautam Budh Nagar",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Jagran Public School - Noida",
-        "address": "D - 33 / B, Sector - 47,, Gautam Budh Nagar",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "S.S.S.Gurukulschool",
-        "address": "Vill Badoli Jhatta Sec-154 G B Nagar Pin 201304 Up, Gautam Budh Nagar",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Maharishi Vidya Mandir",
-        "address": "Maharishi Nagar, Noida Distt. Gautam Budh Nagar, Uttar Pradesh, Gautam Budh Nagar",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Noida Educational Academy",
-        "address": "Bhangel Sec -110 Noida Fase -2, Gautam Budh Nagar",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "110077",
-    "scores": {
-      "crime": 94,
-      "infrastructure": 60,
-      "air": 85,
-      "power": 77,
-      "schools": 75
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 79,
-    "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719182",
-    "schools_count": 5,
-    "schools_cbse": 5,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "Govt. Co-Education Sr Sec. School",
-        "address": "Sect-22, Dwarka, New Delhi, West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Queen'S Valley School",
-        "address": "Site-B, Sector-8,Dwarka, South West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Kendriya Vidyalaya",
-        "address": "S.P.G. Sec-8, Dwarka, Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "The Indian Heights School",
-        "address": "Sector - 23, Dwarka, New Delhi - 110077, South West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Co Educaton Sr.Secondary School",
-        "address": "Bamnoli Near Bijwasan New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "110068",
-    "scores": {
-      "crime": 100,
-      "infrastructure": 52,
-      "air": 85,
-      "power": 76,
-      "schools": 75
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 79,
-    "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719188",
-    "schools_count": 3,
-    "schools_cbse": 3,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "Govt Co Edu Sec School",
-        "address": "Neb Sarai New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt. Co-Edu. Sec. Sch.",
-        "address": "Maidan Garhi, New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "St Mary'S Public School",
-        "address": "532 Forest Lane Near Ignou Neb Sarai, Distt South Delhi, New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "110049",
-    "scores": {
-      "crime": 100,
-      "infrastructure": 45,
-      "air": 85,
-      "power": 78,
-      "schools": 90
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 79,
-    "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719265",
-    "schools_count": 8,
-    "schools_cbse": 8,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "Sarvodaya Co-Ed Vidyalaya",
-        "address": "Masjid Moth New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Boys Sr Sec School",
-        "address": "Andrews Ganj New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Fr. Agnel School",
-        "address": "Gautam Nagar New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Sarvodaya Bal Vidyalaya",
-        "address": "Sadiq Nagar New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Kendriya Vidyalaya",
-        "address": "Masjid Moth Sector Iii Sadiq Nagar New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Sarvodaya Co-Ed Vidyalaya",
-        "address": "Shah Pur Jat New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Sarvodaya Kanya Vidyalaya",
-        "address": "Andrews Ganj New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "The Indian School",
-        "address": "Josip Broz Tito Marg New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "201016",
-    "scores": {
-      "crime": 91,
-      "infrastructure": 66,
-      "air": 85,
-      "power": 54,
+      "power": 56,
       "schools": 100
     },
-    "dimensions_scored": 5,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719429",
-    "schools_count": 42,
-    "schools_cbse": 42,
+    "scored_at": "2026-07-07T00:00:22.062233",
+    "schools_count": 52,
+    "schools_cbse": 52,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
@@ -1440,10 +1673,25 @@
       "power": 77,
       "schools": 96
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719167",
+    "scored_at": "2026-07-07T00:00:22.061899",
     "schools_count": 11,
     "schools_cbse": 11,
     "schools_icse": 0,
@@ -1523,18 +1771,235 @@
     "schools_avg_pass": null
   },
   {
+    "pin_code": "110025",
+    "scores": {
+      "crime": 96,
+      "infrastructure": 55,
+      "air": 85,
+      "power": 58,
+      "schools": 90
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "dimensions_scored": 5,
+    "dimensions_total": 5,
+    "nqi_composite": 77,
+    "grade": "B+",
+    "scored_at": "2026-07-07T00:00:22.061962",
+    "schools_count": 9,
+    "schools_cbse": 9,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "D.A.V. Public School",
+        "address": "Plot No.3, Pocket-6, Jasola Vihar, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Khadijatul Kubra Girls Public School",
+        "address": "8/1,Joga Bai,New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sarvodaya Kanya Vidalaya",
+        "address": "No Nagar Okhla New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Dev Samaj Modern School No. 2",
+        "address": "Near Masihgarh Church, Okhla(Near Sukhdev Vihar) New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Chander Shekhar Azad Govt. B.S.S.School",
+        "address": "New Friends Colony New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Boys Sr Sec School",
+        "address": "Noor Nagar Okhla New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Boys Sr Sec School",
+        "address": "Joga Bai Batla House Jamia Nagar New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Good Samaritan School",
+        "address": "Near Sector 8,\nJasola, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Girls Sr Sec School",
+        "address": "Joga Bai Okhla New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null
+  },
+  {
+    "pin_code": "110022",
+    "scores": {
+      "crime": 91,
+      "infrastructure": 45,
+      "air": 85,
+      "power": 78,
+      "schools": 100
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "dimensions_scored": 5,
+    "dimensions_total": 5,
+    "nqi_composite": 77,
+    "grade": "B+",
+    "scored_at": "2026-07-07T00:00:22.061979",
+    "schools_count": 20,
+    "schools_cbse": 20,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Govt Boys Sr Sec School",
+        "address": "Sector-Vii R K Puram New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sarvodaya Vidyalaya No 3",
+        "address": "Sect Vii R K Puram New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Delhi Public School",
+        "address": "Sector Xii R K Puram New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "D T E A Sr Sec School",
+        "address": "Sect 4 R K Puram New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Sarvodaya Co-Ed Sr Sec Sch",
+        "address": "Sector Vi R K Puram New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Hope Hall Foundation School",
+        "address": "Sector Vii R K Puram, Distt South Delhi, New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Kendriya Vidyalaya",
+        "address": "Sector Ii R K Puram New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Boys Sr Sec School",
+        "address": "Sect-Ii R K Puram New Delhi, South West Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Boys Sr Sec School No-1",
+        "address": "Sector-Iii R K Puram New Delhi, South West Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Government Girls Senior Secondary School",
+        "address": "Sect-4, R K Puram, New Delhi-110022",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null
+  },
+  {
     "pin_code": "122002",
     "scores": {
       "crime": 85,
       "infrastructure": 72,
-      "air": 85,
       "power": 55,
       "schools": 96
     },
-    "dimensions_scored": 5,
-    "nqi_composite": 78,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719374",
+    "scored_at": "2026-07-07T00:00:22.062164",
     "schools_count": 10,
     "schools_cbse": 10,
     "schools_icse": 0,
@@ -1618,14 +2083,26 @@
     "scores": {
       "crime": 84,
       "infrastructure": 72,
-      "air": 85,
       "power": 55,
       "schools": 100
     },
-    "dimensions_scored": 5,
-    "nqi_composite": 78,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719424",
+    "scored_at": "2026-07-07T00:00:22.062228",
     "schools_count": 58,
     "schools_cbse": 58,
     "schools_icse": 0,
@@ -1634,173 +2111,133 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "110025",
+    "pin_code": "201016",
     "scores": {
-      "crime": 96,
-      "infrastructure": 55,
-      "air": 85,
-      "power": 58,
-      "schools": 90
+      "crime": 91,
+      "infrastructure": 66,
+      "power": 54,
+      "schools": 100
     },
-    "dimensions_scored": 5,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
     "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719215",
-    "schools_count": 9,
-    "schools_cbse": 9,
+    "scored_at": "2026-07-07T00:00:22.062236",
+    "schools_count": 42,
+    "schools_cbse": 42,
     "schools_icse": 0,
     "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "D.A.V. Public School",
-        "address": "Plot No.3, Pocket-6, Jasola Vihar, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Khadijatul Kubra Girls Public School",
-        "address": "8/1,Joga Bai,New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Sarvodaya Kanya Vidalaya",
-        "address": "No Nagar Okhla New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Dev Samaj Modern School No. 2",
-        "address": "Near Masihgarh Church, Okhla(Near Sukhdev Vihar) New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Chander Shekhar Azad Govt. B.S.S.School",
-        "address": "New Friends Colony New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Boys Sr Sec School",
-        "address": "Noor Nagar Okhla New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Boys Sr Sec School",
-        "address": "Joga Bai Batla House Jamia Nagar New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Good Samaritan School",
-        "address": "Near Sector 8,\nJasola, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Girls Sr Sec School",
-        "address": "Joga Bai Okhla New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
+    "schools_list": [],
     "schools_avg_pass": null
   },
   {
-    "pin_code": "110022",
+    "pin_code": "110017",
     "scores": {
-      "crime": 91,
+      "crime": 90,
       "infrastructure": 45,
-      "air": 85,
       "power": 78,
       "schools": 100
     },
-    "dimensions_scored": 5,
-    "nqi_composite": 77,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 75,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719227",
-    "schools_count": 20,
-    "schools_cbse": 20,
+    "scored_at": "2026-07-07T00:00:22.062160",
+    "schools_count": 31,
+    "schools_cbse": 31,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [
       {
+        "name": "Govt Girls Sr Sec School",
+        "address": "M B Road New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
         "name": "Govt Boys Sr Sec School",
-        "address": "Sector-Vii R K Puram New Delhi",
+        "address": "M B Road Sect-I Pushp Vihar New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Sarvodaya Vidyalaya No 3",
-        "address": "Sect Vii R K Puram New Delhi",
+        "name": "The Pinnacle School, Senior, Junior And Tiny Tots",
+        "address": "D Block Panchsheel Enclave New Delhi, South Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Delhi Public School",
-        "address": "Sector Xii R K Puram New Delhi",
+        "name": "Vidya Niketan",
+        "address": "D-Block Saket New Delhi, South Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "D T E A Sr Sec School",
-        "address": "Sect 4 R K Puram New Delhi",
+        "name": "Govt Boys Sr Sec School",
+        "address": "Chirag Delhi Swami Nagar New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Sarvodaya Co-Ed Sr Sec Sch",
-        "address": "Sector Vi R K Puram New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Hope Hall Foundation School",
-        "address": "Sector Vii R K Puram, Distt South Delhi, New Delhi, South Delhi",
+        "name": "New Green Field School",
+        "address": "Marg No-22 Saket New Delhi, South Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
         "name": "Kendriya Vidyalaya",
-        "address": "Sector Ii R K Puram New Delhi",
+        "address": "Pushp Vihar M B Road New Delhi, South Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Boys Sr Sec School",
-        "address": "Sect-Ii R K Puram New Delhi, South West Delhi",
+        "name": "Birla Vidya Niketan",
+        "address": "Pushp Vihar Sector Iv, Distt South Delhi, New Delhi, South Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Boys Sr Sec School No-1",
-        "address": "Sector-Iii R K Puram New Delhi, South West Delhi",
+        "name": "Govt Sarvodaya Girls Sr. Sec.School",
+        "address": "Chirag Delhi Soami Nagar New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Government Girls Senior Secondary School",
-        "address": "Sect-4, R K Puram, New Delhi-110022",
+        "name": "Andhra Education Society Dr. K. Ramesh Babu Memial School",
+        "address": "Sec-7, Pushp Vihar, New Delhi, South Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
@@ -1809,20 +2246,32 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "201012",
+    "pin_code": "201010",
     "scores": {
-      "crime": 89,
+      "crime": 77,
       "infrastructure": 72,
-      "air": 70,
-      "power": 56,
+      "power": 52,
       "schools": 100
     },
-    "dimensions_scored": 5,
-    "nqi_composite": 77,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 74,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719427",
-    "schools_count": 52,
-    "schools_cbse": 52,
+    "scored_at": "2026-07-07T00:00:22.062243",
+    "schools_count": 32,
+    "schools_cbse": 32,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
@@ -1837,10 +2286,25 @@
       "power": 58,
       "schools": 96
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719137",
+    "scored_at": "2026-07-07T00:00:22.061878",
     "schools_count": 14,
     "schools_cbse": 14,
     "schools_icse": 0,
@@ -1928,10 +2392,25 @@
       "power": 56,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719277",
+    "scored_at": "2026-07-07T00:00:22.062025",
     "schools_count": 25,
     "schools_cbse": 25,
     "schools_icse": 0,
@@ -2019,10 +2498,25 @@
       "power": 77,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719279",
+    "scored_at": "2026-07-07T00:00:22.062029",
     "schools_count": 16,
     "schools_cbse": 16,
     "schools_icse": 0,
@@ -2110,10 +2604,25 @@
       "power": 32,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719300",
+    "scored_at": "2026-07-07T00:00:22.062060",
     "schools_count": 25,
     "schools_cbse": 25,
     "schools_icse": 0,
@@ -2193,255 +2702,30 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "110058",
-    "scores": {
-      "crime": 83,
-      "infrastructure": 51,
-      "air": 85,
-      "power": 58,
-      "schools": 100
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 73,
-    "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719396",
-    "schools_count": 33,
-    "schools_cbse": 33,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "Rainbow English School",
-        "address": "C-3 Janakpuri New Delhi, West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Dr.S.R.S Mission School",
-        "address": "B-1 Janak Puri New Delhi, West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Boys Sec School No-2",
-        "address": "D Block Janakpuri New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Modern Era Convent",
-        "address": "B-1 Block Janakpuri New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Boys Sr Sec School No-1",
-        "address": "C-Block Janakpuri New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Sarvodaya Bal Vidyalaya",
-        "address": "D-Block Janakpuri New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Rich Harvest Public School",
-        "address": "A/1/253 Janakpuri, Distt West Delhi, New Delhi, West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Boys Sr Sec School",
-        "address": "A-Block Janakpuri New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "S S Mota Singh Sr Sec Model School",
-        "address": "Block A Janak Puri New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Andhra Edn Society Sr Sec School",
-        "address": "B3 Block Janakpuri New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "110063",
-    "scores": {
-      "crime": 86,
-      "infrastructure": 45,
-      "air": 85,
-      "power": 59,
-      "schools": 100
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 73,
-    "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719399",
-    "schools_count": 26,
-    "schools_cbse": 26,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "Sarvodaya Bal Vidyalaya No I",
-        "address": "Madipur New Delhi, West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Jesus Mary Joseph School",
-        "address": "G-17, Site-10, Paschim Vihar, Opp. Gh-2, Ankur Apartment, West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Doon Public School",
-        "address": "B-2 Paschim Vihar New Delhi, West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Shiv Modern School",
-        "address": "A-3, Paschim Vihar New Delhi, West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Lt. Col. Mehar Little Angels Sr Sec School",
-        "address": "B5-Block Paschim Vihar New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Indraprastha World School",
-        "address": "A-2 Block, Paschim Vihar, Distt West Delhi, New Delhi, West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Sarvodaya Co-Education Vidyalaya",
-        "address": "A-2 Block Paschim Vihar New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Divine Happy School",
-        "address": "A-2 Paschim Vihar, Distt West Delhi, New Delhi, West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Sant Nirankari  Public School Avtar Enclave",
-        "address": "Avtar Enclave Pachim Vihar New Delhi-110063, West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "St. Matthew'S Public School",
-        "address": "A-6, Paschim Vihar, New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "122003",
-    "scores": {
-      "crime": 96,
-      "infrastructure": 51,
-      "air": 85,
-      "power": 54,
-      "schools": 60
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 73,
-    "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719402",
-    "schools_count": 2,
-    "schools_cbse": 2,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "Presidium",
-        "address": "E Block Sector 57,Mayfield Garden, Haryana-122001, Gurgaon",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Suncity School",
-        "address": "Suncity Township, Sector 54, Gurgaon, Haryana, Gurgaon",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "131027",
-    "scores": {
-      "crime": 94,
-      "infrastructure": 55,
-      "air": 85,
-      "power": 30,
-      "schools": 90
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 72,
-    "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719357",
-    "schools_count": 7,
-    "schools_cbse": 7,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
-  },
-  {
     "pin_code": "201301",
     "scores": {
       "crime": 68,
       "infrastructure": 77,
-      "air": 70,
       "power": 56,
       "schools": 100
     },
-    "dimensions_scored": 5,
-    "nqi_composite": 72,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719377",
+    "scored_at": "2026-07-07T00:00:22.062168",
     "schools_count": 47,
     "schools_cbse": 47,
     "schools_icse": 0,
@@ -2521,6 +2805,41 @@
     "schools_avg_pass": null
   },
   {
+    "pin_code": "131027",
+    "scores": {
+      "crime": 94,
+      "infrastructure": 55,
+      "air": 85,
+      "power": 30,
+      "schools": 90
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "dimensions_scored": 5,
+    "dimensions_total": 5,
+    "nqi_composite": 72,
+    "grade": "B+",
+    "scored_at": "2026-07-07T00:00:22.062144",
+    "schools_count": 7,
+    "schools_cbse": 7,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [],
+    "schools_avg_pass": null
+  },
+  {
     "pin_code": "122101",
     "scores": {
       "crime": 82,
@@ -2529,10 +2848,25 @@
       "power": 33,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 71,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719336",
+    "scored_at": "2026-07-07T00:00:22.062115",
     "schools_count": 16,
     "schools_cbse": 16,
     "schools_icse": 0,
@@ -2549,10 +2883,25 @@
       "power": 54,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719282",
+    "scored_at": "2026-07-07T00:00:22.062033",
     "schools_count": 78,
     "schools_cbse": 78,
     "schools_icse": 0,
@@ -2640,10 +2989,25 @@
       "power": 34,
       "schools": 60
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719297",
+    "scored_at": "2026-07-07T00:00:22.062056",
     "schools_count": 1,
     "schools_cbse": 1,
     "schools_icse": 0,
@@ -2660,89 +3024,251 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "110024",
+    "pin_code": "110058",
     "scores": {
-      "crime": 75,
-      "infrastructure": 45,
-      "air": 85,
-      "power": 59,
+      "crime": 83,
+      "infrastructure": 51,
+      "power": 58,
       "schools": 100
     },
-    "dimensions_scored": 5,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-04-10T11:32:10.719366",
-    "schools_count": 16,
-    "schools_cbse": 16,
+    "scored_at": "2026-07-07T00:00:22.062192",
+    "schools_count": 33,
+    "schools_cbse": 33,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [
       {
-        "name": "South Delhi Public School",
-        "address": "D-Block Defence Colony New Delhi, South Delhi",
+        "name": "Rainbow English School",
+        "address": "C-3 Janakpuri New Delhi, West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "S S Khalsa Sr Sec School (Chakwal)",
-        "address": "Lajpat Nagar Iv New Delhi",
+        "name": "Dr.S.R.S Mission School",
+        "address": "B-1 Janak Puri New Delhi, West Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Boys Sec School No-2",
+        "address": "D Block Janakpuri New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Modern Era Convent",
+        "address": "B-1 Block Janakpuri New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Boys Sr Sec School No-1",
+        "address": "C-Block Janakpuri New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Sarvodaya Bal Vidyalaya",
+        "address": "D-Block Janakpuri New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Rich Harvest Public School",
+        "address": "A/1/253 Janakpuri, Distt West Delhi, New Delhi, West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
         "name": "Govt Boys Sr Sec School",
-        "address": "Varun Marg Defence Colony New Delhi",
+        "address": "A-Block Janakpuri New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Gegi Stoikov Rakovski Govt",
-        "address": "Sarvodaya Girls Sr Sec School C-Block Defence Colony New Delhi",
+        "name": "S S Mota Singh Sr Sec Model School",
+        "address": "Block A Janak Puri New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Sarvodaya Girls Sec School",
-        "address": "Varun Marg Defence Colony New Delhi",
+        "name": "Andhra Edn Society Sr Sec School",
+        "address": "B3 Block Janakpuri New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null
+  },
+  {
+    "pin_code": "110063",
+    "scores": {
+      "crime": 86,
+      "infrastructure": 45,
+      "power": 59,
+      "schools": 100
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 70,
+    "grade": "B+",
+    "scored_at": "2026-07-07T00:00:22.062196",
+    "schools_count": 26,
+    "schools_cbse": 26,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Sarvodaya Bal Vidyalaya No I",
+        "address": "Madipur New Delhi, West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Hemnani Public School",
-        "address": "Opp G Block Lajpat Nagar I, Distt South Delhi, New Delhi, South Delhi",
+        "name": "Jesus Mary Joseph School",
+        "address": "G-17, Site-10, Paschim Vihar, Opp. Gh-2, Ankur Apartment, West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Co-Ed Sr Sec School",
-        "address": "Lajpat Nagar-I New Delhi",
+        "name": "Doon Public School",
+        "address": "B-2 Paschim Vihar New Delhi, West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Sarvodaya Kanya Vidyalaya",
-        "address": "A Block (Sn) Defence Colony New Delhi",
+        "name": "Shiv Modern School",
+        "address": "A-3, Paschim Vihar New Delhi, West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Kendriya Vidyalaya",
-        "address": "Andrews Ganj New Delhi",
+        "name": "Lt. Col. Mehar Little Angels Sr Sec School",
+        "address": "B5-Block Paschim Vihar New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "B R Mehta Vidya Bhawan Sr Sec School",
-        "address": "Lajpat Bhawan Lajpat Nagar New Delhi",
+        "name": "Indraprastha World School",
+        "address": "A-2 Block, Paschim Vihar, Distt West Delhi, New Delhi, West Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sarvodaya Co-Education Vidyalaya",
+        "address": "A-2 Block Paschim Vihar New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Divine Happy School",
+        "address": "A-2 Paschim Vihar, Distt West Delhi, New Delhi, West Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sant Nirankari  Public School Avtar Enclave",
+        "address": "Avtar Enclave Pachim Vihar New Delhi-110063, West Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "St. Matthew'S Public School",
+        "address": "A-6, Paschim Vihar, New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null
+  },
+  {
+    "pin_code": "122003",
+    "scores": {
+      "crime": 96,
+      "infrastructure": 51,
+      "power": 54,
+      "schools": 60
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 70,
+    "grade": "B+",
+    "scored_at": "2026-07-07T00:00:22.062200",
+    "schools_count": 2,
+    "schools_cbse": 2,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Presidium",
+        "address": "E Block Sector 57,Mayfield Garden, Haryana-122001, Gurgaon",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Suncity School",
+        "address": "Suncity Township, Sector 54, Gurgaon, Haryana, Gurgaon",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
@@ -2759,10 +3285,25 @@
       "power": 30,
       "schools": 90
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 69,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719339",
+    "scored_at": "2026-07-07T00:00:22.062119",
     "schools_count": 9,
     "schools_cbse": 9,
     "schools_icse": 0,
@@ -2771,134 +3312,106 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "110018",
+    "pin_code": "110019",
     "scores": {
-      "crime": 74,
+      "crime": 82,
       "infrastructure": 45,
-      "air": 85,
-      "power": 56,
+      "power": 58,
       "schools": 100
     },
-    "dimensions_scored": 5,
-    "nqi_composite": 69,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 68,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719384",
-    "schools_count": 43,
-    "schools_cbse": 43,
+    "scored_at": "2026-07-07T00:00:22.062181",
+    "schools_count": 26,
+    "schools_cbse": 26,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [
       {
-        "name": "Rashtriya Virja Nand Andh Kanya Sr.",
-        "address": "Sec.School J-Block Vikas Puri New Delhi",
+        "name": "Govt Boys Sr Sec School No.2",
+        "address": "Tughlakabad Extn New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Oxford Sr Sec School",
-        "address": "E Block Vikaspuri, Distt West Delhi, New Delhi, West Delhi",
+        "name": "Shyama Prasad Mukherjee Govt",
+        "address": "Sarvodaya Girls Sr Sec  School Chittranjan Park New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Co-Ed Sr Sec School",
-        "address": "B Block Vikas Puri New Delhi",
+        "name": "Sarvodaya Bal Vidyalaya",
+        "address": "Tughlakabad Extn New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Boys Sr Sec School No 1",
-        "address": "J J Colony Khyala New Delhi, West Delhi",
+        "name": "New Green Field Public School",
+        "address": "Alaknanda, Distt South Delhi, New Delhi, South Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Sarvodaya Girls Sr Sec School",
-        "address": "G-Block Vikas Puri New Delhi",
+        "name": "Vir Savarkar Govt.Sarvodaya Girls Sr",
+        "address": "Sec School No 1 Kalkaji New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Sarvodaya Boys Sr Sec Sch No 2",
-        "address": "Tilak Nagar New Delhi",
+        "name": "Government Secondary School For Deaf",
+        "address": "B-Block, Pwd, Barracks, Kalkaji, New Delhi-110019",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Boys Sr. Sec School",
-        "address": "Kg 1/Ii Vikas Puri New Delhi",
+        "name": "Govt Boys Sec School",
+        "address": "D D A Flats Phase Ii Kalkaji New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Girls Sr Sec School",
-        "address": "Ashok Nagar New Delhi",
+        "name": "Govt. Girls Sec. School",
+        "address": "Tughlakabad, Ext. New Delhi 19, South Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "St Cecilia'S Public School",
-        "address": "F Block Vikas Puri, Distt West Delhi, New Delhi, West Delhi",
+        "name": "Govt Boys Sr Sec School No 3",
+        "address": "Tughlakabad Extn New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Pusa Public School",
-        "address": "M Block Vikas Puri, Distt West Delhi, New Delhi, West Delhi",
+        "name": "Govt Boys Sr Sec School",
+        "address": "G-Block Kalkaji New Delhi, South Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "201010",
-    "scores": {
-      "crime": 77,
-      "infrastructure": 72,
-      "air": 50,
-      "power": 52,
-      "schools": 100
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 69,
-    "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719434",
-    "schools_count": 32,
-    "schools_cbse": 32,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "201002",
-    "scores": {
-      "crime": 73,
-      "infrastructure": 53,
-      "air": 85,
-      "power": 36,
-      "schools": 100
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 68,
-    "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719432",
-    "schools_count": 25,
-    "schools_cbse": 25,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [],
     "schools_avg_pass": null
   },
   {
@@ -2910,10 +3423,25 @@
       "power": 35,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719209",
+    "scored_at": "2026-07-07T00:00:22.061954",
     "schools_count": 18,
     "schools_cbse": 18,
     "schools_icse": 0,
@@ -3001,10 +3529,25 @@
       "power": 56,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719221",
+    "scored_at": "2026-07-07T00:00:22.061971",
     "schools_count": 70,
     "schools_cbse": 70,
     "schools_icse": 0,
@@ -3092,10 +3635,25 @@
       "power": 60,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719258",
+    "scored_at": "2026-07-07T00:00:22.062000",
     "schools_count": 35,
     "schools_cbse": 35,
     "schools_icse": 0,
@@ -3183,10 +3741,25 @@
       "power": 55,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719291",
+    "scored_at": "2026-07-07T00:00:22.062046",
     "schools_count": 64,
     "schools_cbse": 64,
     "schools_icse": 0,
@@ -3274,10 +3847,25 @@
       "power": 30,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719324",
+    "scored_at": "2026-07-07T00:00:22.062099",
     "schools_count": 32,
     "schools_cbse": 32,
     "schools_icse": 0,
@@ -3365,10 +3953,25 @@
       "power": 56,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 66,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719203",
+    "scored_at": "2026-07-07T00:00:22.061946",
     "schools_count": 22,
     "schools_cbse": 22,
     "schools_icse": 0,
@@ -3448,6 +4051,109 @@
     "schools_avg_pass": null
   },
   {
+    "pin_code": "110024",
+    "scores": {
+      "crime": 75,
+      "infrastructure": 45,
+      "power": 59,
+      "schools": 100
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 66,
+    "grade": "B",
+    "scored_at": "2026-07-07T00:00:22.062157",
+    "schools_count": 16,
+    "schools_cbse": 16,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "South Delhi Public School",
+        "address": "D-Block Defence Colony New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "S S Khalsa Sr Sec School (Chakwal)",
+        "address": "Lajpat Nagar Iv New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Boys Sr Sec School",
+        "address": "Varun Marg Defence Colony New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Gegi Stoikov Rakovski Govt",
+        "address": "Sarvodaya Girls Sr Sec School C-Block Defence Colony New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Sarvodaya Girls Sec School",
+        "address": "Varun Marg Defence Colony New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Hemnani Public School",
+        "address": "Opp G Block Lajpat Nagar I, Distt South Delhi, New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Co-Ed Sr Sec School",
+        "address": "Lajpat Nagar-I New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sarvodaya Kanya Vidyalaya",
+        "address": "A Block (Sn) Defence Colony New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Kendriya Vidyalaya",
+        "address": "Andrews Ganj New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "B R Mehta Vidya Bhawan Sr Sec School",
+        "address": "Lajpat Bhawan Lajpat Nagar New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null
+  },
+  {
     "pin_code": "110036",
     "scores": {
       "crime": 65,
@@ -3456,10 +4162,25 @@
       "power": 57,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 65,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719261",
+    "scored_at": "2026-07-07T00:00:22.062004",
     "schools_count": 19,
     "schools_cbse": 19,
     "schools_icse": 0,
@@ -3539,48 +4260,6 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "123106",
-    "scores": {
-      "crime": 77,
-      "infrastructure": 52,
-      "air": 85,
-      "power": 29,
-      "schools": 75
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 65,
-    "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719321",
-    "schools_count": 3,
-    "schools_cbse": 3,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "The Royal International Public School",
-        "address": "Village Alawalpur \nP.O. Nandrampur Bass, Rewari",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "R. D. S. Public School",
-        "address": "In Front Of Tehsil, Rewari Road (Dharuhera), Ambala",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Aviraj Wld School",
-        "address": "Village: Alamgirpur, Rajpura Road, Dharuhera, District : Rewari, Rewari",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
-    "schools_avg_pass": null
-  },
-  {
     "pin_code": "123401",
     "scores": {
       "crime": 77,
@@ -3589,10 +4268,25 @@
       "power": 29,
       "schools": 90
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 65,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719351",
+    "scored_at": "2026-07-07T00:00:22.062136",
     "schools_count": 8,
     "schools_cbse": 8,
     "schools_icse": 0,
@@ -3601,180 +4295,101 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "110019",
+    "pin_code": "110018",
     "scores": {
-      "crime": 82,
+      "crime": 74,
       "infrastructure": 45,
-      "air": 50,
-      "power": 58,
+      "power": 56,
       "schools": 100
     },
-    "dimensions_scored": 5,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
     "nqi_composite": 65,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719387",
-    "schools_count": 26,
-    "schools_cbse": 26,
+    "scored_at": "2026-07-07T00:00:22.062177",
+    "schools_count": 43,
+    "schools_cbse": 43,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [
       {
-        "name": "Govt Boys Sr Sec School No.2",
-        "address": "Tughlakabad Extn New Delhi",
+        "name": "Rashtriya Virja Nand Andh Kanya Sr.",
+        "address": "Sec.School J-Block Vikas Puri New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Shyama Prasad Mukherjee Govt",
-        "address": "Sarvodaya Girls Sr Sec  School Chittranjan Park New Delhi",
+        "name": "Oxford Sr Sec School",
+        "address": "E Block Vikaspuri, Distt West Delhi, New Delhi, West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Sarvodaya Bal Vidyalaya",
-        "address": "Tughlakabad Extn New Delhi",
+        "name": "Govt Co-Ed Sr Sec School",
+        "address": "B Block Vikas Puri New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "New Green Field Public School",
-        "address": "Alaknanda, Distt South Delhi, New Delhi, South Delhi",
+        "name": "Govt Boys Sr Sec School No 1",
+        "address": "J J Colony Khyala New Delhi, West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Vir Savarkar Govt.Sarvodaya Girls Sr",
-        "address": "Sec School No 1 Kalkaji New Delhi",
+        "name": "Govt Sarvodaya Girls Sr Sec School",
+        "address": "G-Block Vikas Puri New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Government Secondary School For Deaf",
-        "address": "B-Block, Pwd, Barracks, Kalkaji, New Delhi-110019",
+        "name": "Govt Sarvodaya Boys Sr Sec Sch No 2",
+        "address": "Tilak Nagar New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Boys Sec School",
-        "address": "D D A Flats Phase Ii Kalkaji New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt. Girls Sec. School",
-        "address": "Tughlakabad, Ext. New Delhi 19, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Boys Sr Sec School No 3",
-        "address": "Tughlakabad Extn New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Boys Sr Sec School",
-        "address": "G-Block Kalkaji New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "110044",
-    "scores": {
-      "crime": 62,
-      "infrastructure": 55,
-      "air": 85,
-      "power": 38,
-      "schools": 100
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 65,
-    "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719390",
-    "schools_count": 33,
-    "schools_cbse": 33,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "Govt Girls Sr Sec School No 2",
-        "address": "Badarpur New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Girls Sr Sec School No 3",
-        "address": "Badarpur New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Stanford Convent School",
-        "address": "D-55,Kasana Complex, Tajpur Road,Badar Pur,New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "St Giri Public School",
-        "address": "Ps-I H-Block Sarita Vihar, Distt South Delhi, New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Sarvodaya Kanya Vidyalaya",
-        "address": "Tughlakabad Village New Delhi",
+        "name": "Govt Boys Sr. Sec School",
+        "address": "Kg 1/Ii Vikas Puri New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
         "name": "Govt Girls Sr Sec School",
-        "address": "Railway Colony Tuglakabad New Delhi",
+        "address": "Ashok Nagar New Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Govt Girls Sr Sec School No-4",
-        "address": "Molar Band, New Delhi",
+        "name": "St Cecilia'S Public School",
+        "address": "F Block Vikas Puri, Distt West Delhi, New Delhi, West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Sarvodaya Bal Vidyalaya",
-        "address": "Molarband P.O. Badarpur New Delhi, South Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Kendriya Vidyalaya",
-        "address": "N T P C Badarpur New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Boys Sr Sec School No 3",
-        "address": "Badar Pur New Delhi",
+        "name": "Pusa Public School",
+        "address": "M Block Vikas Puri, Distt West Delhi, New Delhi, West Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
@@ -3791,10 +4406,25 @@
       "power": 38,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719160",
+    "scored_at": "2026-07-07T00:00:22.061890",
     "schools_count": 48,
     "schools_cbse": 48,
     "schools_icse": 0,
@@ -3882,10 +4512,25 @@
       "power": 12,
       "schools": 90
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719309",
+    "scored_at": "2026-07-07T00:00:22.062076",
     "schools_count": 6,
     "schools_cbse": 6,
     "schools_icse": 0,
@@ -3894,213 +4539,35 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "201309",
+    "pin_code": "201002",
     "scores": {
-      "crime": 88,
-      "infrastructure": 35,
-      "air": 85,
+      "crime": 73,
+      "infrastructure": 53,
       "power": 36,
-      "schools": 60
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 64,
-    "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719415",
-    "schools_count": 1,
-    "schools_cbse": 1,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "Narayana Public School",
-        "address": "Rustampur P.O Rabupura, Tehsil Jewar .Gautam Budh Nagar, Gautam Budh Nagar",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "110005",
-    "scores": {
-      "crime": 51,
-      "infrastructure": 50,
-      "air": 85,
-      "power": 57,
       "schools": 100
     },
-    "dimensions_scored": 5,
-    "nqi_composite": 63,
-    "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719363",
-    "schools_count": 32,
-    "schools_cbse": 32,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "Sardar Amar Singh Sher-I-Punjab",
-        "address": "(Pindi Gheb) Khalsa Sr Sec School Karol Bagh New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "C L Bhalla Dayanand Model School",
-        "address": "Plot No 7 Jhandewalan, Distt Central Delhi, New Delhi, Central Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Springdales School",
-        "address": "Pusa Road New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Jagat Vidya S D Girls Sr Sec School",
-        "address": "D-2 Link Road Jhandewalan Extn. Karol Bagh New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Ramjas Pub School",
-        "address": "Anand Parbat New Delhi, Central Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Girls Sec School",
-        "address": "East Park Road Karol Bagh New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "C L Bhalla D A V Sr Sec School",
-        "address": "Jhandewalan New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Ramjas School",
-        "address": "Pusa Road New Delhi, West Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Girls Sec School",
-        "address": "Link Road Plot No 1 New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "D T E A Sr Sec School",
-        "address": "Pusa Road New Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "121002",
-    "scores": {
-      "crime": 46,
-      "infrastructure": 55,
-      "air": 100,
-      "power": 35,
-      "schools": 100
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
     },
-    "dimensions_scored": 5,
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
     "nqi_composite": 63,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719418",
-    "schools_count": 23,
-    "schools_cbse": 23,
+    "scored_at": "2026-07-07T00:00:22.062240",
+    "schools_count": 25,
+    "schools_cbse": 25,
     "schools_icse": 0,
     "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "Grand Columbus International School",
-        "address": "Sector-16A Faridabad Haryana, Faridabad",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Faridabad Model School",
-        "address": "Sector-31 Faridabad Haryana, Faridabad",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Vrinda International School",
-        "address": "Sgm Nagar, Faridabad-121001.\n(Harayana), Faridabad",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "St. Peter'S School",
-        "address": "Sect 16 A Faridabad Haryana, Faridabad",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "K.L.Mehta Dayanand High School",
-        "address": "Sector 17 Faridabad\n(Hr.), Faridabad",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Homerton Grammar School",
-        "address": "Sector - 21 A Barkhal Road Faridabad Haryana, Faridabad",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Modern School",
-        "address": "Sector 17 Faridabad Haryana, Faridabad",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Golaya Progressive Public School",
-        "address": "Rasulpur Road, Palwal Faridabad Haryana, Faridabad",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Modern Delhi Public School",
-        "address": "Sector 87, Tigaon Road, Faridabad, Faridabad",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Satyug Darshan Vidyalaya",
-        "address": "Vasundhara Bhupani Lalpur Road Faridabad Haryana, Faridabad",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
+    "schools_list": [],
     "schools_avg_pass": null
   },
   {
@@ -4112,10 +4579,25 @@
       "power": 38,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719175",
+    "scored_at": "2026-07-07T00:00:22.061910",
     "schools_count": 32,
     "schools_cbse": 32,
     "schools_icse": 0,
@@ -4203,10 +4685,25 @@
       "power": 34,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719288",
+    "scored_at": "2026-07-07T00:00:22.062042",
     "schools_count": 36,
     "schools_cbse": 36,
     "schools_icse": 0,
@@ -4294,10 +4791,25 @@
       "power": 30,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719327",
+    "scored_at": "2026-07-07T00:00:22.062103",
     "schools_count": 21,
     "schools_cbse": 21,
     "schools_icse": 0,
@@ -4385,10 +4897,25 @@
       "power": 26,
       "schools": 90
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719348",
+    "scored_at": "2026-07-07T00:00:22.062132",
     "schools_count": 9,
     "schools_cbse": 9,
     "schools_icse": 0,
@@ -4405,106 +4932,30 @@
       "power": 28,
       "schools": 96
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719360",
+    "scored_at": "2026-07-07T00:00:22.062148",
     "schools_count": 11,
     "schools_cbse": 11,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "110053",
-    "scores": {
-      "crime": 54,
-      "infrastructure": 52,
-      "air": 85,
-      "power": 37,
-      "schools": 100
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 62,
-    "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719393",
-    "schools_count": 50,
-    "schools_cbse": 50,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [
-      {
-        "name": "Rajkiya Pratibha Vikas Vidyalaya",
-        "address": "B Block Yamuna Vihar Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Girls Sr Sec School No 2",
-        "address": "B-Block Yamuna Vihar Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Sarvodaya Bal Vidyalaya No 2",
-        "address": "B-Block Yamuna Vihar Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Boys Sr Sec School No 1",
-        "address": "Ghonda Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt. Boys Sec. Sch.",
-        "address": "Marginal Bandh, New Seelampur, Delhi, East Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Navjeevan Adarsh Public School",
-        "address": "Gali No. 8 Gautam Puri, Distt North East Delhi, Delhi, North East Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Boys Sr. Sec School",
-        "address": "Vijay Park Maujpur Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Gandhi Co-Ed Sr Sec School",
-        "address": "Brahmpuri (Ghonda) Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "C.R.Dass Govt.Sarvodaya Girls",
-        "address": "Sr Sec School New  Seelampur Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      },
-      {
-        "name": "Govt Girls Sr Sec School No 1",
-        "address": "'B' Block  Yamuna Vihar Delhi",
-        "board": "CBSE",
-        "pass_pct": null,
-        "distance_km": null
-      }
-    ],
     "schools_avg_pass": null
   },
   {
@@ -4516,32 +4967,27 @@
       "power": 32,
       "schools": 90
     },
-    "dimensions_scored": 5,
-    "nqi_composite": 61,
-    "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719354",
-    "schools_count": 9,
-    "schools_cbse": 9,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
-  },
-  {
-    "pin_code": "201206",
-    "scores": {
-      "crime": 57,
-      "infrastructure": 47,
-      "air": 85,
-      "power": 34,
-      "schools": 96
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
     },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 61,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719437",
-    "schools_count": 14,
-    "schools_cbse": 14,
+    "scored_at": "2026-07-07T00:00:22.062140",
+    "schools_count": 9,
+    "schools_cbse": 9,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
@@ -4556,10 +5002,25 @@
       "power": 29,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719315",
+    "scored_at": "2026-07-07T00:00:22.062086",
     "schools_count": 31,
     "schools_cbse": 31,
     "schools_icse": 0,
@@ -4647,15 +5108,133 @@
       "power": 12,
       "schools": 90
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-04-10T11:32:10.719330",
+    "scored_at": "2026-07-07T00:00:22.062107",
     "schools_count": 6,
     "schools_cbse": 6,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
+    "schools_avg_pass": null
+  },
+  {
+    "pin_code": "110044",
+    "scores": {
+      "crime": 62,
+      "infrastructure": 55,
+      "power": 38,
+      "schools": 100
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 60,
+    "grade": "B",
+    "scored_at": "2026-07-07T00:00:22.062185",
+    "schools_count": 33,
+    "schools_cbse": 33,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Govt Girls Sr Sec School No 2",
+        "address": "Badarpur New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Girls Sr Sec School No 3",
+        "address": "Badarpur New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Stanford Convent School",
+        "address": "D-55,Kasana Complex, Tajpur Road,Badar Pur,New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "St Giri Public School",
+        "address": "Ps-I H-Block Sarita Vihar, Distt South Delhi, New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sarvodaya Kanya Vidyalaya",
+        "address": "Tughlakabad Village New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Girls Sr Sec School",
+        "address": "Railway Colony Tuglakabad New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Girls Sr Sec School No-4",
+        "address": "Molar Band, New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sarvodaya Bal Vidyalaya",
+        "address": "Molarband P.O. Badarpur New Delhi, South Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Kendriya Vidyalaya",
+        "address": "N T P C Badarpur New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Boys Sr Sec School No 3",
+        "address": "Badar Pur New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
     "schools_avg_pass": null
   },
   {
@@ -4667,10 +5246,25 @@
       "power": 57,
       "schools": 90
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 59,
     "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719294",
+    "scored_at": "2026-07-07T00:00:22.062051",
     "schools_count": 7,
     "schools_cbse": 7,
     "schools_icse": 0,
@@ -4737,10 +5331,25 @@
       "power": 32,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 59,
     "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719333",
+    "scored_at": "2026-07-07T00:00:22.062111",
     "schools_count": 55,
     "schools_cbse": 55,
     "schools_icse": 0,
@@ -4828,10 +5437,25 @@
       "power": 35,
       "schools": 75
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 58,
     "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719233",
+    "scored_at": "2026-07-07T00:00:22.061988",
     "schools_count": 4,
     "schools_cbse": 4,
     "schools_icse": 0,
@@ -4869,6 +5493,149 @@
     "schools_avg_pass": null
   },
   {
+    "pin_code": "110005",
+    "scores": {
+      "crime": 51,
+      "infrastructure": 50,
+      "power": 57,
+      "schools": 100
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 58,
+    "grade": "C+",
+    "scored_at": "2026-07-07T00:00:22.062153",
+    "schools_count": 32,
+    "schools_cbse": 32,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Sardar Amar Singh Sher-I-Punjab",
+        "address": "(Pindi Gheb) Khalsa Sr Sec School Karol Bagh New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "C L Bhalla Dayanand Model School",
+        "address": "Plot No 7 Jhandewalan, Distt Central Delhi, New Delhi, Central Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Springdales School",
+        "address": "Pusa Road New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Jagat Vidya S D Girls Sr Sec School",
+        "address": "D-2 Link Road Jhandewalan Extn. Karol Bagh New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Ramjas Pub School",
+        "address": "Anand Parbat New Delhi, Central Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Girls Sec School",
+        "address": "East Park Road Karol Bagh New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "C L Bhalla D A V Sr Sec School",
+        "address": "Jhandewalan New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Ramjas School",
+        "address": "Pusa Road New Delhi, West Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Girls Sec School",
+        "address": "Link Road Plot No 1 New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "D T E A Sr Sec School",
+        "address": "Pusa Road New Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null
+  },
+  {
+    "pin_code": "201309",
+    "scores": {
+      "crime": 88,
+      "infrastructure": 35,
+      "power": 36,
+      "schools": 60
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 58,
+    "grade": "C+",
+    "scored_at": "2026-07-07T00:00:22.062215",
+    "schools_count": 1,
+    "schools_cbse": 1,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Narayana Public School",
+        "address": "Rustampur P.O Rabupura, Tehsil Jewar .Gautam Budh Nagar, Gautam Budh Nagar",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null
+  },
+  {
     "pin_code": "110084",
     "scores": {
       "crime": 47,
@@ -4877,10 +5644,25 @@
       "power": 36,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719271",
+    "scored_at": "2026-07-07T00:00:22.062017",
     "schools_count": 19,
     "schools_cbse": 19,
     "schools_icse": 0,
@@ -4968,10 +5750,25 @@
       "power": 28,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719318",
+    "scored_at": "2026-07-07T00:00:22.062090",
     "schools_count": 61,
     "schools_cbse": 61,
     "schools_icse": 0,
@@ -5051,54 +5848,101 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "122107",
+    "pin_code": "110053",
     "scores": {
-      "crime": 51,
-      "infrastructure": 47,
-      "air": 85,
-      "power": 28,
-      "schools": 75
+      "crime": 54,
+      "infrastructure": 52,
+      "power": 37,
+      "schools": 100
     },
-    "dimensions_scored": 5,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719406",
-    "schools_count": 5,
-    "schools_cbse": 5,
+    "scored_at": "2026-07-07T00:00:22.062188",
+    "schools_count": 50,
+    "schools_cbse": 50,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [
       {
-        "name": "Manuu Model School",
-        "address": "Ward No1, Hamid Colony, Taru Road, Nuh Dist Mewat , Haryana",
+        "name": "Rajkiya Pratibha Vikas Vidyalaya",
+        "address": "B Block Yamuna Vihar Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Sardar Gurmukh Singh Memorial School",
-        "address": "Near Gurudwara Nuh Mewat Gurgaon,, Mewat",
+        "name": "Govt Girls Sr Sec School No 2",
+        "address": "B-Block Yamuna Vihar Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Jawahar Navodaya Vidyalaya",
-        "address": "Bai Villiage, Post & Teh. Nuh Distt. Mewat Haryana, Mewat",
+        "name": "Govt Sarvodaya Bal Vidyalaya No 2",
+        "address": "B-Block Yamuna Vihar Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Aditya Army Public School",
-        "address": "Village & Post: Ujina, District: Mewat (Nuh), Gurgaon, Haryana, Gurgaon",
+        "name": "Govt Boys Sr Sec School No 1",
+        "address": "Ghonda Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Al-Hasan School",
-        "address": "Vpo Akera, Mewat",
+        "name": "Govt. Boys Sec. Sch.",
+        "address": "Marginal Bandh, New Seelampur, Delhi, East Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Navjeevan Adarsh Public School",
+        "address": "Gali No. 8 Gautam Puri, Distt North East Delhi, Delhi, North East Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Boys Sr. Sec School",
+        "address": "Vijay Park Maujpur Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Gandhi Co-Ed Sr Sec School",
+        "address": "Brahmpuri (Ghonda) Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "C.R.Dass Govt.Sarvodaya Girls",
+        "address": "Sr Sec School New  Seelampur Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Govt Girls Sr Sec School No 1",
+        "address": "'B' Block  Yamuna Vihar Delhi",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
@@ -5115,10 +5959,25 @@
       "power": 36,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719206",
+    "scored_at": "2026-07-07T00:00:22.061950",
     "schools_count": 27,
     "schools_cbse": 27,
     "schools_icse": 0,
@@ -5206,10 +6065,25 @@
       "power": 33,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719306",
+    "scored_at": "2026-07-07T00:00:22.062070",
     "schools_count": 37,
     "schools_cbse": 37,
     "schools_icse": 0,
@@ -5297,12 +6171,59 @@
       "power": 12,
       "schools": 90
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719345",
+    "scored_at": "2026-07-07T00:00:22.062128",
     "schools_count": 6,
     "schools_cbse": 6,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [],
+    "schools_avg_pass": null
+  },
+  {
+    "pin_code": "201206",
+    "scores": {
+      "crime": 57,
+      "infrastructure": 47,
+      "power": 34,
+      "schools": 96
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 54,
+    "grade": "C+",
+    "scored_at": "2026-07-07T00:00:22.062247",
+    "schools_count": 14,
+    "schools_cbse": 14,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
@@ -5317,10 +6238,25 @@
       "power": 55,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719230",
+    "scored_at": "2026-07-07T00:00:22.061984",
     "schools_count": 71,
     "schools_cbse": 71,
     "schools_icse": 0,
@@ -5408,10 +6344,25 @@
       "power": 32,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719268",
+    "scored_at": "2026-07-07T00:00:22.062013",
     "schools_count": 26,
     "schools_cbse": 26,
     "schools_icse": 0,
@@ -5491,89 +6442,101 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "201001",
+    "pin_code": "121002",
     "scores": {
-      "crime": 28,
-      "infrastructure": 40,
-      "air": 85,
-      "power": 34,
+      "crime": 46,
+      "infrastructure": 55,
+      "power": 35,
       "schools": 100
     },
-    "dimensions_scored": 5,
-    "nqi_composite": 50,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719409",
-    "schools_count": 32,
-    "schools_cbse": 32,
+    "scored_at": "2026-07-07T00:00:22.062219",
+    "schools_count": 23,
+    "schools_cbse": 23,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [
       {
-        "name": "G.R. Convent Junior High School",
-        "address": "Nyaykhand-1, Indrapuram Ghaziabad, Ghaziabad",
+        "name": "Grand Columbus International School",
+        "address": "Sector-16A Faridabad Haryana, Faridabad",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Green Field Public School",
-        "address": "Sector 23 Sanjay Nagar Ghaziabad Uttar Pradesh, Ghaziabad",
+        "name": "Faridabad Model School",
+        "address": "Sector-31 Faridabad Haryana, Faridabad",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "L.K International School,",
-        "address": "Kazipura, Nh-24, Ghaziabad, Ghaziabad",
+        "name": "Vrinda International School",
+        "address": "Sgm Nagar, Faridabad-121001.\n(Harayana), Faridabad",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Police Modern School",
-        "address": "Reserve Police Lines Ghaziabad Uttar Pradesh, Ghaziabad",
+        "name": "St. Peter'S School",
+        "address": "Sect 16 A Faridabad Haryana, Faridabad",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Police Modern School",
-        "address": "47 Bn (Tf) Pac Govindpura Ghaziabad Up",
+        "name": "K.L.Mehta Dayanand High School",
+        "address": "Sector 17 Faridabad\n(Hr.), Faridabad",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Sanskar The Co Educational School",
-        "address": "B-14 B S Road Adj Rto Industrial Area Ghaziabad Uttar Pradesh",
+        "name": "Homerton Grammar School",
+        "address": "Sector - 21 A Barkhal Road Faridabad Haryana, Faridabad",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Shaheed Memorial Vidya Kendra Jr. High School",
-        "address": "Sihani Road,Ghaziabad,, Ghaziabad",
+        "name": "Modern School",
+        "address": "Sector 17 Faridabad Haryana, Faridabad",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Arya Bandhu Public School",
-        "address": "Village - Sadat Nagar, Ikla Post - Dasna, Distt. Ghaziabad, Ghaziabad",
+        "name": "Golaya Progressive Public School",
+        "address": "Rasulpur Road, Palwal Faridabad Haryana, Faridabad",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "Ishwar Chand Inter College",
-        "address": "Chaprola, Gautam Budh Nagar, Gautam Budh Nagar",
+        "name": "Modern Delhi Public School",
+        "address": "Sector 87, Tigaon Road, Faridabad, Faridabad",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
       },
       {
-        "name": "New Era School",
-        "address": "345, B S Road Pandav Nagar Near Rto Ghaziabad Uttar Pradesh",
+        "name": "Satyug Darshan Vidyalaya",
+        "address": "Vasundhara Bhupani Lalpur Road Faridabad Haryana, Faridabad",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
@@ -5582,38 +6545,30 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "201102",
-    "scores": {
-      "crime": 26,
-      "infrastructure": 53,
-      "air": 70,
-      "power": 33,
-      "schools": 100
-    },
-    "dimensions_scored": 5,
-    "nqi_composite": 50,
-    "grade": "C+",
-    "scored_at": "2026-04-10T11:32:10.719421",
-    "schools_count": 20,
-    "schools_cbse": 20,
-    "schools_icse": 0,
-    "schools_state": 0,
-    "schools_list": [],
-    "schools_avg_pass": null
-  },
-  {
     "pin_code": "245101",
     "scores": {
       "crime": 46,
       "infrastructure": 47,
-      "air": 50,
       "power": 32,
       "schools": 90
     },
-    "dimensions_scored": 5,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
     "nqi_composite": 49,
     "grade": "C",
-    "scored_at": "2026-04-10T11:32:10.719440",
+    "scored_at": "2026-07-07T00:00:22.062250",
     "schools_count": 9,
     "schools_cbse": 9,
     "schools_icse": 0,
@@ -5622,23 +6577,71 @@
     "schools_avg_pass": null
   },
   {
-    "pin_code": "203001",
+    "pin_code": "122107",
     "scores": {
-      "crime": 38,
-      "infrastructure": 40,
-      "air": 70,
-      "power": 29,
-      "schools": 96
+      "crime": 51,
+      "infrastructure": 47,
+      "power": 28,
+      "schools": 75
     },
-    "dimensions_scored": 5,
-    "nqi_composite": 49,
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 48,
     "grade": "C",
-    "scored_at": "2026-04-10T11:32:10.719443",
-    "schools_count": 11,
-    "schools_cbse": 11,
+    "scored_at": "2026-07-07T00:00:22.062203",
+    "schools_count": 5,
+    "schools_cbse": 5,
     "schools_icse": 0,
     "schools_state": 0,
-    "schools_list": [],
+    "schools_list": [
+      {
+        "name": "Manuu Model School",
+        "address": "Ward No1, Hamid Colony, Taru Road, Nuh Dist Mewat , Haryana",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sardar Gurmukh Singh Memorial School",
+        "address": "Near Gurudwara Nuh Mewat Gurgaon,, Mewat",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Jawahar Navodaya Vidyalaya",
+        "address": "Bai Villiage, Post & Teh. Nuh Distt. Mewat Haryana, Mewat",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Aditya Army Public School",
+        "address": "Village & Post: Ujina, District: Mewat (Nuh), Gurgaon, Haryana, Gurgaon",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Al-Hasan School",
+        "address": "Vpo Akera, Mewat",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
     "schools_avg_pass": null
   },
   {
@@ -5650,10 +6653,25 @@
       "power": 12,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 47,
     "grade": "C",
-    "scored_at": "2026-04-10T11:32:10.719236",
+    "scored_at": "2026-07-07T00:00:22.061994",
     "schools_count": 100,
     "schools_cbse": 100,
     "schools_icse": 0,
@@ -5741,10 +6759,25 @@
       "power": 34,
       "schools": 100
     },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "air": 0.2,
+      "power": 0.15,
+      "schools": 0.1
+    },
     "dimensions_scored": 5,
+    "dimensions_total": 5,
     "nqi_composite": 45,
     "grade": "C",
-    "scored_at": "2026-04-10T11:32:10.719200",
+    "scored_at": "2026-07-07T00:00:22.061941",
     "schools_count": 23,
     "schools_cbse": 23,
     "schools_icse": 0,
@@ -5816,6 +6849,173 @@
       {
         "name": "Guru Harkrishan Public School",
         "address": "Nanak Piao Rana Pratap Bagh, Distt East Delhi, Delhi, East Delhi",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null
+  },
+  {
+    "pin_code": "201102",
+    "scores": {
+      "crime": 26,
+      "infrastructure": 53,
+      "power": 33,
+      "schools": 100
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 45,
+    "grade": "C",
+    "scored_at": "2026-07-07T00:00:22.062223",
+    "schools_count": 20,
+    "schools_cbse": 20,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [],
+    "schools_avg_pass": null
+  },
+  {
+    "pin_code": "203001",
+    "scores": {
+      "crime": 38,
+      "infrastructure": 40,
+      "power": 29,
+      "schools": 96
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 44,
+    "grade": "C",
+    "scored_at": "2026-07-07T00:00:22.062254",
+    "schools_count": 11,
+    "schools_cbse": 11,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [],
+    "schools_avg_pass": null
+  },
+  {
+    "pin_code": "201001",
+    "scores": {
+      "crime": 28,
+      "infrastructure": 40,
+      "power": 34,
+      "schools": 100
+    },
+    "weights_base": {
+      "crime": 0.3,
+      "infrastructure": 0.25,
+      "power": 0.15,
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "crime": 0.375,
+      "infrastructure": 0.3125,
+      "power": 0.1875,
+      "schools": 0.125
+    },
+    "dimensions_scored": 4,
+    "dimensions_total": 5,
+    "nqi_composite": 42,
+    "grade": "C",
+    "scored_at": "2026-07-07T00:00:22.062207",
+    "schools_count": 32,
+    "schools_cbse": 32,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "G.R. Convent Junior High School",
+        "address": "Nyaykhand-1, Indrapuram Ghaziabad, Ghaziabad",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Green Field Public School",
+        "address": "Sector 23 Sanjay Nagar Ghaziabad Uttar Pradesh, Ghaziabad",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "L.K International School,",
+        "address": "Kazipura, Nh-24, Ghaziabad, Ghaziabad",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Police Modern School",
+        "address": "Reserve Police Lines Ghaziabad Uttar Pradesh, Ghaziabad",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Police Modern School",
+        "address": "47 Bn (Tf) Pac Govindpura Ghaziabad Up",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sanskar The Co Educational School",
+        "address": "B-14 B S Road Adj Rto Industrial Area Ghaziabad Uttar Pradesh",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Shaheed Memorial Vidya Kendra Jr. High School",
+        "address": "Sihani Road,Ghaziabad,, Ghaziabad",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Arya Bandhu Public School",
+        "address": "Village - Sadat Nagar, Ikla Post - Dasna, Distt. Ghaziabad, Ghaziabad",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Ishwar Chand Inter College",
+        "address": "Chaprola, Gautam Budh Nagar, Gautam Budh Nagar",
+        "board": "CBSE",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "New Era School",
+        "address": "345, B S Road Pandav Nagar Near Rto Ghaziabad Uttar Pradesh",
         "board": "CBSE",
         "pass_pct": null,
         "distance_km": null
