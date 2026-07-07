@@ -1609,12 +1609,10 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
 
               {/* About the builder */}
               <div style={{ margin:'16px 0 0', padding:'20px 18px', background:card, border:`1px solid ${border}`, borderRadius:12, display:'flex', alignItems:'center', gap:16, flexWrap:'wrap' }}>
-                <div style={{
+                <img src="/IMG_6285.jpeg" alt="Gurshaan Singh Baweja" style={{
                   width:52, height:52, borderRadius:'50%', flexShrink:0,
-                  background:`linear-gradient(135deg, ${ACCENT}, #7a1421)`,
-                  display:'flex', alignItems:'center', justifyContent:'center',
-                  color:'#fff', fontWeight:700, fontSize:16, letterSpacing:'0.5px',
-                }}>GSB</div>
+                  objectFit:'cover', border:`2px solid ${ACCENT}66`,
+                }} />
                 <div style={{ flex:1, minWidth:200 }}>
                   <p style={{ margin:'0 0 2px', fontSize:13, fontWeight:700, color:text }}>Built by Gurshaan Singh Baweja</p>
                   <p style={{ margin:0, fontSize:12, color:muted, lineHeight:1.6 }}>

@@ -2086,12 +2086,10 @@ export default function Landing() {
           background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)',
           borderRadius:20,
         }}>
-          <div style={{
+          <img src="/IMG_6285.jpeg" alt="Gurshaan Singh Baweja" style={{
             width:60, height:60, borderRadius:'50%', margin:'0 auto 16px',
-            background:'linear-gradient(135deg, #e23744, #7a1421)',
-            display:'flex', alignItems:'center', justifyContent:'center',
-            color:'#fff', fontWeight:700, fontSize:18, letterSpacing:'0.5px',
-          }}>GSB</div>
+            display:'block', objectFit:'cover', border:'2px solid rgba(226,55,68,0.4)',
+          }} />
           <p style={{ fontSize:17, fontWeight:700, color:'#f0ede8', margin:'0 0 4px' }}>Gurshaan Singh Baweja</p>
           <p style={{ fontSize:12, color:'rgba(255,255,255,0.35)', margin:'0 0 16px', textTransform:'uppercase', letterSpacing:'0.08em' }}>Built AsliVastu</p>
           <p style={{ fontSize:14, lineHeight:1.7, color:'rgba(255,255,255,0.6)', margin:'0 0 22px' }}>
