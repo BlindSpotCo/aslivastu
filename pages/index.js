@@ -2079,6 +2079,31 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* About the builder */}
+      <section style={{ padding:'0 6vw 60px', textAlign:'center' }}>
+        <div style={{
+          maxWidth:560, margin:'0 auto', padding:'40px 32px',
+          background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)',
+          borderRadius:20,
+        }}>
+          <div style={{
+            width:60, height:60, borderRadius:'50%', margin:'0 auto 16px',
+            background:'linear-gradient(135deg, #e23744, #7a1421)',
+            display:'flex', alignItems:'center', justifyContent:'center',
+            color:'#fff', fontWeight:700, fontSize:18, letterSpacing:'0.5px',
+          }}>GSB</div>
+          <p style={{ fontSize:17, fontWeight:700, color:'#f0ede8', margin:'0 0 4px' }}>Gurshaan Singh Baweja</p>
+          <p style={{ fontSize:12, color:'rgba(255,255,255,0.35)', margin:'0 0 16px', textTransform:'uppercase', letterSpacing:'0.08em' }}>Built AsliVastu</p>
+          <p style={{ fontSize:14, lineHeight:1.7, color:'rgba(255,255,255,0.6)', margin:'0 0 22px' }}>
+            Buying a home in Delhi NCR means digging through a dozen government portals just to figure out if an area is actually safe, breathable, and well-connected. I built AsliVastu to put all of that in one place — real data, one score, no guesswork.
+          </p>
+          <a href="https://www.linkedin.com/in/gurshaan-singh-baweja" target="_blank" rel="noopener noreferrer"
+            style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'10px 22px', background:'#0A66C2', color:'#fff', borderRadius:100, fontSize:14, fontWeight:600, textDecoration:'none' }}>
+            Connect on LinkedIn →
+          </a>
+        </div>
+      </section>
+
       <footer className="footer">
         <span className="footer-logo">ASLIVASTU</span>
         <span className="footer-note">Data from government sources · Not financial advice</span>

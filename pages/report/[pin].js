@@ -1606,6 +1606,26 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                   Scored {report && new Date(report.scored_at).toLocaleDateString('en-IN')} · {report && report.dimensions_scored} of 5 dimensions available
                 </p>
               </div>
+
+              {/* About the builder */}
+              <div style={{ margin:'16px 0 0', padding:'20px 18px', background:card, border:`1px solid ${border}`, borderRadius:12, display:'flex', alignItems:'center', gap:16, flexWrap:'wrap' }}>
+                <div style={{
+                  width:52, height:52, borderRadius:'50%', flexShrink:0,
+                  background:`linear-gradient(135deg, ${ACCENT}, #7a1421)`,
+                  display:'flex', alignItems:'center', justifyContent:'center',
+                  color:'#fff', fontWeight:700, fontSize:16, letterSpacing:'0.5px',
+                }}>GSB</div>
+                <div style={{ flex:1, minWidth:200 }}>
+                  <p style={{ margin:'0 0 2px', fontSize:13, fontWeight:700, color:text }}>Built by Gurshaan Singh Baweja</p>
+                  <p style={{ margin:0, fontSize:12, color:muted, lineHeight:1.6 }}>
+                    Tired of digging through a dozen government portals to check if a neighbourhood is actually safe, breathable and well-connected — so I built AsliVastu to put it all in one score.
+                  </p>
+                </div>
+                <a href="https://www.linkedin.com/in/gurshaan-singh-baweja" target="_blank" rel="noopener noreferrer"
+                  style={{ flexShrink:0, display:'inline-flex', alignItems:'center', gap:6, padding:'8px 16px', background:'#0A66C2', color:'#fff', borderRadius:100, fontSize:12, fontWeight:600, textDecoration:'none' }}>
+                  Connect on LinkedIn →
+                </a>
+              </div>
             </>
           )}
         </div>
