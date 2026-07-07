@@ -13,6 +13,64 @@ WEIGHTS = {
     "schools":        0.10,
 }
 
+# Human-readable rubric per dimension, published alongside scores so users
+# (and brokers, and residents) can see exactly how a composite is built and
+# re-derive it themselves rather than trusting a black-box number.
+METHODOLOGY = {
+    "crime": {
+        "weight": WEIGHTS["crime"],
+        "formula": "score = round((1 - (clamp(total_cognizable_crimes, 250, 650) - 250) / 400) * 100)",
+        "description": (
+            "Inverse-normalized against total cognizable crimes reported for the PIN's "
+            "police station catchment over the reporting period. 250 or fewer scores 100; "
+            "650 or more scores 0; linear in between. Note: the catchment area can be "
+            "larger than a single neighbourhood/colony, so this figure reflects the whole "
+            "station's jurisdiction, not necessarily any one street within it."
+        ),
+    },
+    "infrastructure": {
+        "weight": WEIGHTS["infrastructure"],
+        "formula": "score = clamp(infra_score_raw, 0, 100)",
+        "description": (
+            "Pre-computed composite of metro station proximity, highway proximity, and "
+            "smart-city project status for the PIN, passed through as-is."
+        ),
+    },
+    "air": {
+        "weight": WEIGHTS["air"],
+        "formula": "score = banded(aqi_avg) using CPCB category thresholds (<=50:100, <=100:85, <=150:70, <=200:50, <=300:30, <=400:15, else 5)",
+        "description": (
+            "Average AQI across CPCB monitoring stations and WAQI (used as a fallback for "
+            "PINs without a CPCB station), converted to points using CPCB's official AQI "
+            "category bands."
+        ),
+    },
+    "power": {
+        "weight": WEIGHTS["power"],
+        "formula": "score = round((outage_frequency / 5) * 60 + (1 - avg_outage_hours / 8) * 40)",
+        "description": (
+            "Weighted blend of outage frequency (60% of this dimension) and average outage "
+            "duration (40%), sourced from DISCOM annual reports — not live-metered data."
+        ),
+    },
+    "schools": {
+        "weight": WEIGHTS["schools"],
+        "formula": "score = min(100, density_points[0-60] + round((cbse_count + icse_count) / total_schools * 40))",
+        "description": (
+            "60 points for the number of schools found near the PIN (density), plus up to "
+            "40 points for the share of those schools that are CBSE/ICSE-recognized."
+        ),
+    },
+}
+
+COMPOSITE_FORMULA = (
+    "For each PIN, dimensions with no data are dropped entirely (not scored as 0). "
+    "The remaining dimensions' weights are re-normalized to sum to 1, then the composite "
+    "is their weighted average, rounded to the nearest whole number. This means two PINs "
+    "can show a similar composite while having very different data coverage — see "
+    "`dimensions_scored` / `dimensions_total` and `weights_applied` on each record."
+)
+
 GRADES = [(90,"A+"),(80,"A"),(70,"B+"),(60,"B"),(50,"C+"),(40,"C"),(0,"D")]
 
 def grade(score):
@@ -112,13 +170,21 @@ def compute_nqi(record):
     available = {k: v for k, v in dim_scores.items() if v is not None}
     if not available:
         composite = None
+        weights_applied = {}
     else:
         total_weight = sum(WEIGHTS[k] for k in available)
+        # Re-normalized weight actually used for THIS record, since missing
+        # dimensions are dropped rather than scored as 0 — exposing this lets
+        # users see when a composite leaned heavily on fewer dimensions than usual.
+        weights_applied = {k: round(WEIGHTS[k] / total_weight, 4) for k in available}
         composite = round(sum(available[k] * WEIGHTS[k] for k in available) / total_weight)
     return {
         "pin_code":           record["pin_code"],
         "scores":             {k: v for k, v in dim_scores.items() if v is not None},
+        "weights_base":       {k: WEIGHTS[k] for k in available},
+        "weights_applied":    weights_applied,
         "dimensions_scored":  len(available),
+        "dimensions_total":   len(WEIGHTS),
         "nqi_composite":      composite,
         "grade":              grade(composite) if composite is not None else None,
         "scored_at":          datetime.now().isoformat(),
@@ -131,11 +197,28 @@ def compute_nqi(record):
         "schools_avg_pass":   record.get("schools_avg_pass"),
     }
 
+def save_methodology():
+    """Publish the scoring rubric as its own file so it can be surfaced in the
+    UI (e.g. an 'How is this calculated?' panel) instead of staying implicit
+    in the code. This is the fix for: 'users can't see why crime is weighted
+    30% and schools only 10%, or how the composite is built.'"""
+    doc = {
+        "dimensions": METHODOLOGY,
+        "composite_formula": COMPOSITE_FORMULA,
+        "grade_thresholds": [{"min_score": t, "grade": g} for t, g in GRADES],
+        "published_at": datetime.now().isoformat(),
+    }
+    path = save_processed(doc, "methodology")
+    log.info(f"Methodology published → {path}")
+    return doc
+
 def run():
     master = load_processed("master_by_pin")
     if not master:
         log.error("master_by_pin_latest.json not found. Run run_pipeline.py first.")
         return []
+
+    save_methodology()
 
     log.info(f"Scoring {len(master)} pin codes...")
     master  = _merge_schools(master)
