@@ -97,6 +97,16 @@ function DimIcon({ name, size = 18, color = 'currentColor', strokeWidth = 1.6 })
       return <svg {...p}><path d="M12 3c4 5 7 8.7 7 12.2A7 7 0 1 1 5 15.2C5 11.7 8 8 12 3Z"/></svg>
     case 'roads':
       return <svg {...p}><path d="M7 3 3 21"/><path d="M17 3l4 18"/><path d="M12 5v3"/><path d="M12 11v3"/><path d="M12 17v3"/></svg>
+    case 'sun':
+      return <svg {...p}><circle cx="12" cy="12" r="4"/><path d="M12 2.5v3M12 18.5v3M3.8 3.8l2.1 2.1M18.1 18.1l2.1 2.1M2.5 12h3M18.5 12h3M3.8 20.2l2.1-2.1M18.1 5.9l2.1-2.1"/></svg>
+    case 'moon':
+      return <svg {...p}><path d="M20 14.2A8.3 8.3 0 1 1 9.8 4a6.8 6.8 0 0 0 10.2 10.2Z"/></svg>
+    case 'trophy':
+      return <svg {...p}><path d="M8 4h8v4a4 4 0 0 1-8 0V4Z"/><path d="M8 5H5a3 3 0 0 0 3 5"/><path d="M16 5h3a3 3 0 0 1-3 5"/><path d="M10 13v3h4v-3"/><path d="M8 20h8"/><path d="M12 16v4"/></svg>
+    case 'tie':
+      return <svg {...p}><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/></svg>
+    case 'compare':
+      return <svg {...p}><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="M16 21l4-4-4-4"/><path d="M20 17H4"/></svg>
     default:
       return null
   }
@@ -234,8 +244,8 @@ export default function Compare() {
         </Link>
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <Link href="/" style={{ fontSize: 13, color: muted, textDecoration: 'none' }}>← Back to search</Link>
-          <button onClick={() => setDark(!dark)} style={{ background: 'none', border: `1px solid ${border}`, borderRadius: 6, padding: '4px 10px', fontSize: 12, cursor: 'pointer', color: muted }}>
-            {dark ? '☀ Light' : '☾ Dark'}
+          <button onClick={() => setDark(!dark)} style={{ background: 'none', border: `1px solid ${border}`, borderRadius: 6, padding: '4px 10px', fontSize: 12, cursor: 'pointer', color: muted, display:'flex', alignItems:'center', gap:5 }}>
+            <DimIcon name={dark ? 'sun' : 'moon'} size={13} color={muted} /> {dark ? 'Light' : 'Dark'}
           </button>
         </div>
       </nav>
@@ -274,7 +284,7 @@ export default function Compare() {
             {/* Overall winner banner */}
             {ow && (
               <div style={{ background: ow === 'tie' ? subtle : (ow === 'A' ? '#22c55e15' : '#3b82f615'), border: `1px solid ${ow === 'tie' ? border : (ow === 'A' ? '#22c55e40' : '#3b82f640')}`, borderRadius: 14, padding: '16px 20px', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 12 }}>
-                <div style={{ fontSize: 24 }}>{ow === 'tie' ? '🤝' : '🏆'}</div>
+                <div><DimIcon name={ow === 'tie' ? 'tie' : 'trophy'} size={24} color={ow === 'tie' ? muted : '#22c55e'} /></div>
                 <div>
                   <p style={{ margin: 0, fontSize: 14, fontWeight: 700, color: text }}>
                     {ow === 'tie' ? 'Both areas are equally matched'
@@ -397,7 +407,7 @@ export default function Compare() {
         {/* Empty state */}
         {!reportA && !reportB && !loadingA && !loadingB && (
           <div style={{ textAlign: 'center', padding: '48px 0', color: muted }}>
-            <div style={{ fontSize: 40, marginBottom: 12 }}>⚖️</div>
+            <div style={{ display:'flex', justifyContent:'center', marginBottom: 12 }}><DimIcon name="compare" size={36} color={muted} /></div>
             <p style={{ fontSize: 15, fontWeight: 600, color: text, marginBottom: 6 }}>Pick two areas to compare</p>
             <p style={{ fontSize: 13 }}>Search for any two Delhi NCR neighbourhoods above</p>
             <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap', marginTop: 20 }}>

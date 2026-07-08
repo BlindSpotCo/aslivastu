@@ -77,6 +77,28 @@ function DimIcon({ name, size = 18, color = 'currentColor', strokeWidth = 1.6 })
       return <svg {...p}><path d="M12 3c4 5 7 8.7 7 12.2A7 7 0 1 1 5 15.2C5 11.7 8 8 12 3Z"/></svg>
     case 'roads':
       return <svg {...p}><path d="M7 3 3 21"/><path d="M17 3l4 18"/><path d="M12 5v3"/><path d="M12 11v3"/><path d="M12 17v3"/></svg>
+    case 'connectivity':
+      return <svg {...p}><circle cx="5" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 12l10-6M7 12l10 6"/></svg>
+    case 'sewerage':
+      return <svg {...p}><path d="M6 4v6a6 6 0 0 0 12 0V4"/><path d="M4 20h16"/></svg>
+    case 'metro':
+      return <svg {...p}><rect x="5" y="4" width="14" height="12" rx="3"/><path d="M5 12h14"/><circle cx="9" cy="20" r="1.3"/><circle cx="15" cy="20" r="1.3"/></svg>
+    case 'car':
+      return <svg {...p}><path d="M4 16l1.4-4.8A2 2 0 0 1 7.3 9.8h9.4a2 2 0 0 1 1.9 1.4L20 16"/><rect x="3" y="16" width="18" height="4" rx="1.5"/><circle cx="7.5" cy="20" r="1.3"/><circle cx="16.5" cy="20" r="1.3"/></svg>
+    case 'distance':
+      return <svg {...p}><rect x="3" y="8" width="18" height="8" rx="1.5"/><path d="M7 8v3M11 8v4M15 8v3M19 8v4"/></svg>
+    case 'fare':
+      return <svg {...p}><circle cx="12" cy="12" r="9"/><path d="M8 8h8M8 8l6 8M8 11.5h5"/></svg>
+    case 'pin':
+      return <svg {...p}><path d="M12 21s7-6.7 7-12a7 7 0 1 0-14 0c0 5.3 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+    case 'lock':
+      return <svg {...p}><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg>
+    case 'sun':
+      return <svg {...p}><circle cx="12" cy="12" r="4"/><path d="M12 2.5v3M12 18.5v3M3.8 3.8l2.1 2.1M18.1 18.1l2.1 2.1M2.5 12h3M18.5 12h3M3.8 20.2l2.1-2.1M18.1 5.9l2.1-2.1"/></svg>
+    case 'moon':
+      return <svg {...p}><path d="M20 14.2A8.3 8.3 0 1 1 9.8 4a6.8 6.8 0 0 0 10.2 10.2Z"/></svg>
+    case 'compare':
+      return <svg {...p}><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="M16 21l4-4-4-4"/><path d="M20 17H4"/></svg>
     default:
       return null
   }
@@ -607,13 +629,13 @@ function CommuteChecker({ fromPin, fromName, dark }) {
           {/* Commute cards */}
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(130px,1fr))', gap:8, marginBottom:12 }}>
             {[
-              { icon:'🚗', label:'Peak hours', val:fmt(result.peakMins), sub:'8–10am / 5–8pm', color:'#ef4444' },
-              { icon:'🚗', label:'Off-peak', val:fmt(result.offPeakMins), sub:'What brokers quote', color:'#22c55e' },
-              { icon:'📏', label:'Road distance', val:`${result.dist} km`, sub:'Approx via road', color:accent },
-              { icon:'🛺', label:'Auto fare', val:`₹${result.autoCost}`, sub:'One way estimate', color:'#f97316' },
+              { icon:'car',      label:'Peak hours', val:fmt(result.peakMins), sub:'8–10am / 5–8pm', color:'#ef4444' },
+              { icon:'car',      label:'Off-peak', val:fmt(result.offPeakMins), sub:'What brokers quote', color:'#22c55e' },
+              { icon:'distance', label:'Road distance', val:`${result.dist} km`, sub:'Approx via road', color:accent },
+              { icon:'fare',     label:'Auto fare', val:`₹${result.autoCost}`, sub:'One way estimate', color:'#f97316' },
             ].map(({ icon, label, val, sub, color }) => (
               <div key={label} style={{ background:dark?'#1a1a1a':'#fff', border:`1px solid ${border}`, borderRadius:10, padding:'12px 14px' }}>
-                <div style={{ fontSize:16, marginBottom:4 }}>{icon}</div>
+                <div style={{ marginBottom:4 }}><DimIcon name={icon} size={16} color={color} /></div>
                 <div style={{ fontSize:18, fontWeight:700, color, lineHeight:1 }}>{val}</div>
                 <div style={{ fontSize:11, color:muted, marginTop:3 }}>{label}</div>
                 <div style={{ fontSize:10, color:muted, opacity:0.6 }}>{sub}</div>
@@ -623,7 +645,7 @@ function CommuteChecker({ fromPin, fromName, dark }) {
 
           {/* Metro */}
           <div style={{ background:dark?'#1a1a1a':'#fff', border:`1px solid ${border}`, borderRadius:10, padding:'12px 14px', display:'flex', gap:12, alignItems:'center' }}>
-            <span style={{ fontSize:20 }}>🚇</span>
+            <DimIcon name="metro" size={20} color={accent} />
             <div>
               <div style={{ fontSize:13, fontWeight:600, color:text }}>
                 {result.metroAvailable ? 'Metro available at both ends' : !result.fromMetro ? `No metro near ${fromName}` : `No metro near ${toName}`}
@@ -958,9 +980,9 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
         </a>
         <div style={{ display:'flex', alignItems:'center', gap:12 }}>
           <span style={{ fontSize:12, color:muted }}>68 areas</span>
-          <a href="/compare" style={{ fontSize:13, fontWeight:600, color:'white', textDecoration:'none', padding:'8px 16px', background:ACCENT, borderRadius:8, display:'flex', alignItems:'center', gap:6 }}>⚖️ Compare areas</a>
-          <button onClick={() => setDark(!dark)} style={{ background:'none', border:`1px solid ${border}`, borderRadius:6, padding:'4px 10px', fontSize:12, cursor:'pointer', color:muted }}>
-            {dark ? '☀ Light' : '☾ Dark'}
+          <a href="/compare" style={{ fontSize:13, fontWeight:600, color:'white', textDecoration:'none', padding:'8px 16px', background:ACCENT, borderRadius:8, display:'flex', alignItems:'center', gap:6 }}><DimIcon name="compare" size={14} color="white" /> Compare areas</a>
+          <button onClick={() => setDark(!dark)} style={{ background:'none', border:`1px solid ${border}`, borderRadius:6, padding:'4px 10px', fontSize:12, cursor:'pointer', color:muted, display:'flex', alignItems:'center', gap:5 }}>
+            <DimIcon name={dark ? 'sun' : 'moon'} size={13} color={muted} /> {dark ? 'Light' : 'Dark'}
           </button>
         </div>
       </nav>
@@ -1048,7 +1070,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
 
           <div style={{ animation:'fadeIn 0.6s ease 0.55s both', marginBottom:48 }}>
             <a href="/compare" style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'10px 20px', background:'none', border:`1.5px solid ${ACCENT}`, borderRadius:10, fontSize:13, fontWeight:600, color:ACCENT, textDecoration:'none' }}>
-              ⚖️ Compare two areas side by side →
+              <DimIcon name="compare" size={15} color={ACCENT} /> Compare two areas side by side →
             </a>
           </div>
 
@@ -1164,7 +1186,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
 
           {noData && !report && (
             <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:32, textAlign:'center', marginBottom:12 }}>
-              <div style={{ width:56, height:56, background:ACCENT+'15', borderRadius:14, display:'flex', alignItems:'center', justifyContent:'center', fontSize:26, margin:'0 auto 16px' }}>📍</div>
+              <div style={{ width:56, height:56, background:ACCENT+'15', borderRadius:14, display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 16px' }}><DimIcon name="pin" size={26} color={ACCENT} /></div>
               <p style={{ margin:'0 0 4px', fontSize:12, color:muted, textTransform:'uppercase', letterSpacing:'0.06em' }}>{noData.area}</p>
               <h2 style={{ margin:'0 0 8px', fontSize:24, fontWeight:800, color:text }}>{noData.name}</h2>
               <p style={{ margin:'0 0 4px', fontSize:13, color:muted }}>Pin {noData.pin}</p>
@@ -1335,7 +1357,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                 {!unlocked ? (
                   <div style={{ marginTop:80, marginBottom:12 }}>
                     <div style={{ background:card, border:`2px dashed ${border}`, borderRadius:16, padding:40, textAlign:'center', maxWidth:600, margin:'0 auto' }}>
-                      <div style={{ width:44, height:44, background:subtle, borderRadius:12, display:'flex', alignItems:'center', justifyContent:'center', fontSize:20, margin:'0 auto 12px' }}>🔒</div>
+                      <div style={{ width:44, height:44, background:subtle, borderRadius:12, display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 12px' }}><DimIcon name="lock" size={20} color={muted} /></div>
                       <h3 style={{ margin:'0 0 6px', fontSize:18, fontWeight:700, color:text }}>Full neighbourhood report</h3>
                       <p style={{ margin:'0 0 20px', color:muted, fontSize:13 }}>Deep dive into safety, infrastructure, water, roads, sewerage and more</p>
                       <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8, marginBottom:24, textAlign:'left', maxWidth:360, margin:'0 auto 24px' }}>
@@ -1405,7 +1427,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
 
                     {/* Connectivity */}
                     <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 14px' }}>
-                      <span style={{ fontSize:16 }}>🗺</span>
+                      <DimIcon name="connectivity" size={16} color={ACCENT} />
                       <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Connectivity</span>
                       <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
                     </div>
@@ -1424,7 +1446,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
 
                     {/* Water */}
                     <div style={{ display:'flex', alignItems:'center', gap:12, margin:'24px 0 14px' }}>
-                      <span style={{ fontSize:16 }}>💧</span>
+                      <DimIcon name="water" size={16} color={ACCENT} />
                       <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Water supply</span>
                       <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
                     </div>
@@ -1443,7 +1465,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
 
                     {/* Roads */}
                     <div style={{ display:'flex', alignItems:'center', gap:12, margin:'24px 0 14px' }}>
-                      <span style={{ fontSize:16 }}>🛣</span>
+                      <DimIcon name="roads" size={16} color={ACCENT} />
                       <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Road quality</span>
                       <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
                     </div>
@@ -1462,7 +1484,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
 
                     {/* Sewerage */}
                     <div style={{ display:'flex', alignItems:'center', gap:12, margin:'24px 0 14px' }}>
-                      <span style={{ fontSize:16 }}>🚰</span>
+                      <DimIcon name="sewerage" size={16} color={ACCENT} />
                       <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Sewerage & drainage</span>
                       <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
                     </div>
