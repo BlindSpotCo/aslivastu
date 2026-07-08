@@ -633,13 +633,39 @@ const CSS = `
 `
 
 const DIMS = [
-  { icon:'🛡', name:'Safety',         desc:'Crime rate per station from Delhi Police Annual Report', weight:'30%', num:'01' },
-  { icon:'🏗', name:'Infrastructure', desc:'Metro access, highway proximity, Smart City coverage',   weight:'25%', num:'02' },
-  { icon:'🌬', name:'Air Quality',    desc:'Live AQI from CPCB monitoring stations. Updated daily.', weight:'20%', num:'03' },
-  { icon:'⚡', name:'Power',          desc:'Outage frequency and hours from BSES, Tata, DHBVN',      weight:'15%', num:'04' },
-  { icon:'🎓', name:'Schools',        desc:'CBSE school density near pin code. 2018 dataset.',       weight:'10%', num:'05' },
-  { icon:'💧', name:'Water & Roads',  desc:'DJB supply hours, TDS levels, MCD road condition',       weight:'+',   num:'06' },
+  { key:'crime',          name:'Safety',         desc:'Crime rate per station from Delhi Police Annual Report', weight:'30%', num:'01' },
+  { key:'infrastructure', name:'Infrastructure', desc:'Metro access, highway proximity, Smart City coverage',   weight:'25%', num:'02' },
+  { key:'air',            name:'Air Quality',    desc:'Live AQI from CPCB monitoring stations. Updated daily.', weight:'20%', num:'03' },
+  { key:'power',          name:'Power',          desc:'Outage frequency and hours from BSES, Tata, DHBVN',      weight:'15%', num:'04' },
+  { key:'schools',        name:'Schools',        desc:'CBSE school density near pin code. 2018 dataset.',       weight:'10%', num:'05' },
+  { key:'water',          name:'Water & Roads',  desc:'DJB supply hours, TDS levels, MCD road condition',       weight:'+',   num:'06' },
 ]
+
+// Minimal line-icon set replacing emoji, one per data dimension — flat
+// stroke icons at 1.6px weight so they match the rest of the site's
+// restrained aesthetic instead of looking like a different design language.
+function DimIcon({ name, size = 18, color = 'currentColor', strokeWidth = 1.6 }) {
+  const p = { width:size, height:size, viewBox:'0 0 24 24', fill:'none', stroke:color, strokeWidth, strokeLinecap:'round', strokeLinejoin:'round' }
+  switch (name) {
+    case 'crime':
+    case 'safety':
+      return <svg {...p}><path d="M12 2.5 19 5.5V11c0 5-3 8.5-7 10-4-1.5-7-5-7-10V5.5L12 2.5Z"/><path d="M9 12l2 2 4-4"/></svg>
+    case 'infrastructure':
+      return <svg {...p}><rect x="3" y="10" width="5" height="11"/><rect x="10" y="5" width="5" height="16"/><rect x="17" y="13" width="4" height="8"/></svg>
+    case 'air':
+      return <svg {...p}><path d="M3 8h10.5a2.5 2.5 0 1 0-2.1-3.9"/><path d="M3 12.5h13a2.8 2.8 0 1 1-2.4 4.3"/><path d="M3 17h7.5a2 2 0 1 1-1.7 3.1"/></svg>
+    case 'power':
+      return <svg {...p}><path d="M13 2 5 14h6l-1 8 8-12h-6l1-8Z"/></svg>
+    case 'schools':
+      return <svg {...p}><path d="M2 9 12 4l10 5-10 5L2 9Z"/><path d="M6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5"/><path d="M22 9v6"/></svg>
+    case 'water':
+      return <svg {...p}><path d="M12 3c4 5 7 8.7 7 12.2A7 7 0 1 1 5 15.2C5 11.7 8 8 12 3Z"/></svg>
+    case 'roads':
+      return <svg {...p}><path d="M7 3 3 21"/><path d="M17 3l4 18"/><path d="M12 5v3"/><path d="M12 11v3"/><path d="M12 17v3"/></svg>
+    default:
+      return null
+  }
+}
 
 const DEMO_BARS = [
   { label:'Safety',  val:85, color:'#22c55e' },
@@ -1854,12 +1880,12 @@ export default function Landing() {
             {/* Dimension pills */}
             <div style={{ display:'flex', flexWrap:'wrap', gap:10 }}>
               {[
-                { icon:'🛡', label:'Safety' },
-                { icon:'🌬', label:'Air Quality' },
-                { icon:'⚡', label:'Power' },
-                { icon:'🏗', label:'Infrastructure' },
-                { icon:'🎓', label:'Schools' },
-              ].map(({ icon, label }) => (
+                { key:'crime',          label:'Safety' },
+                { key:'air',            label:'Air Quality' },
+                { key:'power',          label:'Power' },
+                { key:'infrastructure', label:'Infrastructure' },
+                { key:'schools',        label:'Schools' },
+              ].map(({ key, label }) => (
                 <div key={label} style={{
                   display:'flex', alignItems:'center', gap:7,
                   padding:'7px 14px',
@@ -1867,7 +1893,7 @@ export default function Landing() {
                   borderRadius:100,
                   background:'rgba(255,255,255,0.03)',
                 }}>
-                  <span style={{ fontSize:13 }}>{icon}</span>
+                  <DimIcon name={key} size={13} color="rgba(255,255,255,0.8)" />
                   <span style={{ fontSize:12, color:'rgba(255,255,255,0.65)', fontWeight:500, letterSpacing:'0.02em' }}>{label}</span>
                 </div>
               ))}
@@ -1935,7 +1961,7 @@ export default function Landing() {
           {DIMS.map((d, i) => (
             <div key={i} className="dim-card">
               <p className="dim-num">{d.num}</p>
-              <span className="dim-icon">{d.icon}</span>
+              <span className="dim-icon"><DimIcon name={d.key} size={28} color="#e23744" /></span>
               <p className="dim-name">{d.name}</p>
               <p className="dim-desc">{d.desc}</p>
               <p className="dim-weight">{d.weight}</p>
