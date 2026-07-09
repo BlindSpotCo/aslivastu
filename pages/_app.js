@@ -49,12 +49,12 @@ function CustomCursor() {
     window.addEventListener('mouseup', onUp)
 
     function tick() {
-      trail.ring.x += (pos.x - trail.ring.x) * 0.18
-      trail.ring.y += (pos.y - trail.ring.y) * 0.18
-      trail.p1.x   += (trail.ring.x - trail.p1.x) * 0.22
-      trail.p1.y   += (trail.ring.y - trail.p1.y) * 0.22
-      trail.p2.x   += (trail.p1.x - trail.p2.x) * 0.22
-      trail.p2.y   += (trail.p1.y - trail.p2.y) * 0.22
+      trail.ring.x += (pos.x - trail.ring.x) * 0.4
+      trail.ring.y += (pos.y - trail.ring.y) * 0.4
+      trail.p1.x   += (trail.ring.x - trail.p1.x) * 0.45
+      trail.p1.y   += (trail.ring.y - trail.p1.y) * 0.45
+      trail.p2.x   += (trail.p1.x - trail.p2.x) * 0.45
+      trail.p2.y   += (trail.p1.y - trail.p2.y) * 0.45
       if (dotRef.current)  dotRef.current.style.transform  = `translate(${pos.x - 4}px, ${pos.y - 4}px)`
       if (ringRef.current) ringRef.current.style.transform = `translate(${trail.ring.x - 13}px, ${trail.ring.y - 13}px)`
       if (p1Ref.current)   p1Ref.current.style.transform   = `translate(${trail.p1.x - 4}px, ${trail.p1.y - 4}px)`
