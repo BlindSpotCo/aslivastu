@@ -918,6 +918,14 @@ export default function Landing() {
   const [transitioning, setTransitioning] = useState(false)
   const [transitionLabel, setTransitionLabel] = useState('')
 
+  const [fbArea, setFbArea] = useState('')
+  const [fbText, setFbText] = useState('')
+  const sendFeedback = () => {
+    const subject = encodeURIComponent(`AsliVastu feedback${fbArea ? ' — ' + fbArea : ''}`)
+    const body = encodeURIComponent(`${fbText}\n\nArea/pin: ${fbArea || '(not specified)'}`)
+    window.location.href = `mailto:xgurshaan@gmail.com?subject=${subject}&body=${body}`
+  }
+
   const go = (q) => {
     if (!q.trim()) return
     const pin = resolvePin(q)
@@ -2105,26 +2113,65 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* About the builder */}
-      <section style={{ padding:'0 6vw 60px', textAlign:'center' }}>
+      {/* About the builder + feedback */}
+      <section style={{ padding:'0 6vw 60px' }}>
         <div style={{
-          maxWidth:560, margin:'0 auto', padding:'40px 32px',
-          background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)',
-          borderRadius:20,
+          maxWidth:1000, margin:'0 auto', display:'flex', gap:20, flexWrap:'wrap',
+          alignItems:'stretch', justifyContent:'center',
         }}>
-          <img src="/IMG_6285.jpeg" alt="Gurshaan Singh Baweja" style={{
-            width:60, height:60, borderRadius:'50%', margin:'0 auto 16px',
-            display:'block', objectFit:'cover', border:'2px solid rgba(226,55,68,0.4)',
-          }} />
-          <p style={{ fontSize:17, fontWeight:700, color:'#f0ede8', margin:'0 0 4px' }}>Gurshaan Singh Baweja</p>
-          <p style={{ fontSize:12, color:'rgba(255,255,255,0.55)', margin:'0 0 16px', textTransform:'uppercase', letterSpacing:'0.08em' }}>Built AsliVastu</p>
-          <p style={{ fontSize:14, lineHeight:1.7, color:'rgba(255,255,255,0.68)', margin:'0 0 22px' }}>
-            Buying a home in Delhi NCR means digging through a dozen government portals just to figure out if an area is actually safe, breathable, and well-connected. I built AsliVastu to put all of that in one place — real data, one score, no guesswork.
-          </p>
-          <a href="https://www.linkedin.com/in/gurshaan-singh-baweja" target="_blank" rel="noopener noreferrer"
-            style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'10px 22px', background:'#0A66C2', color:'#fff', borderRadius:100, fontSize:14, fontWeight:600, textDecoration:'none' }}>
-            Connect on LinkedIn →
-          </a>
+          <div style={{
+            flex:'1 1 440px', maxWidth:480, padding:'40px 32px', textAlign:'center',
+            background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)',
+            borderRadius:20,
+          }}>
+            <img src="/IMG_6285.jpeg" alt="Gurshaan Singh Baweja" style={{
+              width:60, height:60, borderRadius:'50%', margin:'0 auto 16px',
+              display:'block', objectFit:'cover', border:'2px solid rgba(226,55,68,0.4)',
+            }} />
+            <p style={{ fontSize:17, fontWeight:700, color:'#f0ede8', margin:'0 0 4px' }}>Gurshaan Singh Baweja</p>
+            <p style={{ fontSize:12, color:'rgba(255,255,255,0.55)', margin:'0 0 16px', textTransform:'uppercase', letterSpacing:'0.08em' }}>Built AsliVastu</p>
+            <p style={{ fontSize:14, lineHeight:1.7, color:'rgba(255,255,255,0.68)', margin:'0 0 22px' }}>
+              Buying a home in Delhi NCR means digging through a dozen government portals just to figure out if an area is actually safe, breathable, and well-connected. I built AsliVastu to put all of that in one place — real data, one score, no guesswork.
+            </p>
+            <a href="https://www.linkedin.com/in/gurshaan-singh-baweja" target="_blank" rel="noopener noreferrer"
+              style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'10px 22px', background:'#0A66C2', color:'#fff', borderRadius:100, fontSize:14, fontWeight:600, textDecoration:'none' }}>
+              Connect on LinkedIn →
+            </a>
+          </div>
+
+          <div style={{
+            flex:'1 1 440px', maxWidth:480, padding:'40px 32px', textAlign:'left',
+            background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)',
+            borderRadius:20, display:'flex', flexDirection:'column',
+          }}>
+            <p style={{ fontSize:17, fontWeight:700, color:'#f0ede8', margin:'0 0 4px' }}>See something off?</p>
+            <p style={{ fontSize:12, color:'rgba(255,255,255,0.55)', margin:'0 0 16px', textTransform:'uppercase', letterSpacing:'0.08em' }}>Flag it directly</p>
+            <p style={{ fontSize:13, lineHeight:1.6, color:'rgba(255,255,255,0.68)', margin:'0 0 16px' }}>
+              Live in one of these areas and think a score is wrong, outdated, or missing context? Tell me directly — it goes straight to my inbox, not a black box.
+            </p>
+            <input
+              value={fbArea} onChange={e => setFbArea(e.target.value)}
+              placeholder="Area or pin code (optional)"
+              style={{ padding:'10px 12px', marginBottom:8, borderRadius:8, border:'1px solid rgba(255,255,255,0.12)', background:'rgba(255,255,255,0.04)', color:'#f0ede8', fontSize:13, fontFamily:'inherit' }}
+            />
+            <textarea
+              value={fbText} onChange={e => setFbText(e.target.value)}
+              placeholder="What's inaccurate or missing?"
+              rows={3}
+              style={{ padding:'10px 12px', marginBottom:14, borderRadius:8, border:'1px solid rgba(255,255,255,0.12)', background:'rgba(255,255,255,0.04)', color:'#f0ede8', fontSize:13, fontFamily:'inherit', resize:'vertical' }}
+            />
+            <button
+              onClick={sendFeedback}
+              disabled={!fbText.trim()}
+              style={{
+                marginTop:'auto', display:'inline-flex', alignItems:'center', justifyContent:'center', gap:8,
+                padding:'10px 22px', background: fbText.trim() ? '#e23744' : 'rgba(255,255,255,0.08)',
+                color: fbText.trim() ? '#fff' : 'rgba(255,255,255,0.4)', border:'none', borderRadius:100,
+                fontSize:14, fontWeight:600, cursor: fbText.trim() ? 'pointer' : 'default',
+              }}>
+              Send feedback →
+            </button>
+          </div>
         </div>
       </section>
 

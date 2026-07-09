@@ -872,6 +872,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
   const [showLanding, setShowLanding] = useState(!initialPin)
   const [weightPreset, setWeightPreset] = useState('Default')
   const [customWeights, setCustomWeights] = useState({ crime:30, infrastructure:25, air:20, power:15, schools:10 })
+  const [fbText, setFbText] = useState('')
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: dark)')
@@ -977,6 +978,13 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
   const isDefaultWeight = weightPreset === 'Default'
   const displayedNqi   = isDefaultWeight ? report?.nqi_composite : recomputedNqi
   const displayedGrade = isDefaultWeight ? report?.grade : gradeFor(recomputedNqi)
+
+  const sendFeedback = () => {
+    const areaLabel = meta ? `${meta.name} (${report.pin_code})` : (report ? report.pin_code : 'unknown pin')
+    const subject = encodeURIComponent(`AsliVastu feedback — ${areaLabel}`)
+    const body = encodeURIComponent(`${fbText}\n\nPin: ${report ? report.pin_code : '—'}\nArea: ${meta ? meta.name : '—'}\nNQI shown: ${report ? report.nqi_composite : '—'} (${report ? report.grade : '—'})`)
+    window.location.href = `mailto:xgurshaan@gmail.com?subject=${subject}&body=${body}`
+  }
 
   return (
     <div style={{ minHeight:'100vh', background:bg, color:text, fontFamily:'"Inter",-apple-system,sans-serif', transition:'background 0.2s' }}>
@@ -1735,6 +1743,34 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                   style={{ flexShrink:0, display:'inline-flex', alignItems:'center', gap:6, padding:'8px 16px', background:'#0A66C2', color:'#fff', borderRadius:100, fontSize:12, fontWeight:600, textDecoration:'none' }}>
                   Connect on LinkedIn →
                 </a>
+              </div>
+
+              {/* Correction / feedback channel for this specific pin — addresses
+                  residents having no way to flag inaccurate or outdated data. */}
+              <div style={{ margin:'12px 0 0', padding:'16px 18px', background:card, border:`1px solid ${border}`, borderRadius:12 }}>
+                <p style={{ margin:'0 0 2px', fontSize:13, fontWeight:700, color:text }}>
+                  Live in {meta ? meta.name : 'this area'}? Think this score is wrong?
+                </p>
+                <p style={{ margin:'0 0 10px', fontSize:12, color:muted, lineHeight:1.6 }}>
+                  Flag outdated or inaccurate data, or add local context — it goes straight to me, not a black box.
+                </p>
+                <textarea
+                  value={fbText} onChange={e => setFbText(e.target.value)}
+                  placeholder={`What's inaccurate or missing for pin ${report.pin_code}?`}
+                  rows={3}
+                  style={{ width:'100%', boxSizing:'border-box', padding:'10px 12px', marginBottom:10, borderRadius:8, border:`1px solid ${border}`, background:subtle, color:text, fontSize:13, fontFamily:'inherit', resize:'vertical' }}
+                />
+                <button
+                  onClick={sendFeedback}
+                  disabled={!fbText.trim()}
+                  style={{
+                    display:'inline-flex', alignItems:'center', gap:6, padding:'8px 16px',
+                    background: fbText.trim() ? ACCENT : subtle,
+                    color: fbText.trim() ? '#fff' : muted, border:'none', borderRadius:100,
+                    fontSize:12, fontWeight:600, cursor: fbText.trim() ? 'pointer' : 'default',
+                  }}>
+                  Send feedback on this pin →
+                </button>
               </div>
             </>
           )}
