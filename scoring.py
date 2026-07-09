@@ -25,7 +25,11 @@ METHODOLOGY = {
             "police station catchment over the reporting period. 250 or fewer scores 100; "
             "650 or more scores 0; linear in between. Note: the catchment area can be "
             "larger than a single neighbourhood/colony, so this figure reflects the whole "
-            "station's jurisdiction, not necessarily any one street within it."
+            "station's jurisdiction, not necessarily any one street within it. Each pin "
+            "also gets a crime_percentile and crime_tier (Very Low–Very High), ranking its "
+            "raw count against every other tracked pin, so the number has context without "
+            "needing population-per-catchment data (which we don't have yet — a true "
+            "per-capita rate is a planned future improvement, not what this is)."
         ),
     },
     "infrastructure": {
@@ -188,6 +192,9 @@ def compute_nqi(record):
         "nqi_composite":      composite,
         "grade":              grade(composite) if composite is not None else None,
         "scored_at":          datetime.now().isoformat(),
+        # raw crime count, carried through so add_crime_percentiles() can
+        # rank it against every other pin without a second data lookup
+        "total_cognizable_crimes": record.get("total_cognizable_crimes"),
         # school detail fields for frontend
         "schools_count":      record.get("schools_count", 0),
         "schools_cbse":       record.get("schools_cbse", 0),
@@ -196,6 +203,37 @@ def compute_nqi(record):
         "schools_list":       record.get("schools_list", []),
         "schools_avg_pass":   record.get("schools_avg_pass"),
     }
+
+CRIME_TIERS = [(80, "Very Low"), (60, "Low"), (40, "Moderate"), (20, "High"), (0, "Very High")]
+
+def crime_tier_for(percentile):
+    for threshold, label in CRIME_TIERS:
+        if percentile >= threshold:
+            return label
+    return "Very High"
+
+def add_crime_percentiles(results):
+    """Rank each pin's raw crime count against every other scored pin and
+    attach a percentile + tier label. This is the fix for: 'a raw crime
+    count means nothing without knowing how it compares elsewhere' — it
+    ships without needing population data, unlike a true per-capita rate
+    (crimes per 1,000 residents), which needs population-per-catchment
+    data we don't have yet. Ties are handled by only counting pins with a
+    STRICTLY higher count as 'less safe than this one' — a tied pin gets
+    no credit for the tie either way."""
+    counts = [r["total_cognizable_crimes"] for r in results if r.get("total_cognizable_crimes") is not None]
+    n = len(counts)
+    for r in results:
+        c = r.get("total_cognizable_crimes")
+        if c is None or n < 2:
+            r["crime_percentile"] = None
+            r["crime_tier"] = None
+            continue
+        safer_than = sum(1 for other in counts if other > c)
+        percentile = round(safer_than / (n - 1) * 100)
+        r["crime_percentile"] = percentile
+        r["crime_tier"] = crime_tier_for(percentile)
+    return results
 
 def save_methodology():
     """Publish the scoring rubric as its own file so it can be surfaced in the
@@ -223,6 +261,7 @@ def run():
     log.info(f"Scoring {len(master)} pin codes...")
     master  = _merge_schools(master)
     results = [compute_nqi(r) for r in master if r.get("pin_code")]
+    results = add_crime_percentiles(results)
     results.sort(key=lambda r: r["nqi_composite"] or 0, reverse=True)
     path = save_processed(results, "nqi_scores")
     log.info(f"Scores saved → {path}")
