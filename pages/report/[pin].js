@@ -56,6 +56,33 @@ const DIM_TAG = {
   schools:        { label:'Est. 2023',  color:'#f97316' },
 }
 
+// User-facing reweighting — lets a visitor see the score through a
+// different lens than the default methodology (scoring.py WEIGHTS).
+// "Custom" starts from the Default preset and the sliders let someone
+// drag freely; weights are normalized to 100% at compute time rather
+// than forcing sliders to interlock, so dragging one never fights you.
+const WEIGHT_PRESETS = {
+  Default:  { crime:30, infrastructure:25, air:20, power:15, schools:10 },
+  Family:   { crime:25, infrastructure:15, air:15, power:10, schools:35 },
+  Investor: { crime:15, infrastructure:35, air:10, power:25, schools:15 },
+  Safety:   { crime:50, infrastructure:20, air:15, power:10, schools:5  },
+}
+
+function normalizedWeights(weights, availableKeys) {
+  const total = availableKeys.reduce((s, k) => s + (weights[k] || 0), 0)
+  if (!total) return {}
+  const out = {}
+  availableKeys.forEach(k => { out[k] = (weights[k] || 0) / total })
+  return out
+}
+
+function weightedComposite(scores, weights, availableKeys) {
+  const norm = normalizedWeights(weights, availableKeys)
+  let sum = 0
+  availableKeys.forEach(k => { sum += scores[k] * (norm[k] || 0) })
+  return Math.round(sum)
+}
+
 // Minimal line-icon set replacing emoji, one per data dimension — flat
 // stroke icons at 1.6px weight so they sit quietly alongside the rest of
 // the UI instead of looking like a different design language.
@@ -834,6 +861,8 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
   const [loading, setLoading]     = useState(false)
   const [unlocked, setUnlocked]   = useState(false)
   const [showLanding, setShowLanding] = useState(!initialPin)
+  const [weightPreset, setWeightPreset] = useState('Default')
+  const [customWeights, setCustomWeights] = useState({ crime:30, infrastructure:25, air:20, power:15, schools:10 })
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: dark)')
@@ -930,6 +959,13 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
         .sort((a,b) => Math.abs(parseInt(a.pin_code)-parseInt(report.pin_code)) - Math.abs(parseInt(b.pin_code)-parseInt(report.pin_code)))
         .slice(0,4)
     : []
+
+  // User-adjustable reweighting — see WEIGHT_PRESETS above.
+  const availableDims  = report ? Object.keys(report.scores) : []
+  const activeWeights  = weightPreset === 'Custom' ? customWeights : WEIGHT_PRESETS[weightPreset]
+  const normWeights    = report ? normalizedWeights(activeWeights, availableDims) : {}
+  const recomputedNqi  = report ? weightedComposite(report.scores, activeWeights, availableDims) : null
+  const isDefaultWeight = weightPreset === 'Default'
 
   return (
     <div style={{ minHeight:'100vh', background:bg, color:text, fontFamily:'"Inter",-apple-system,sans-serif', transition:'background 0.2s' }}>
@@ -1305,22 +1341,70 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                     </div>
                   </div>
                 <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
-                  <p style={{ margin:'0 0 6px', fontSize:16, fontWeight:600, color:text, display:'flex', alignItems:'center', gap:8 }}>
-                    <span style={{ display:'inline-block', width:3, height:16, background:ACCENT, borderRadius:2 }}/>
-                    Score breakdown
-                  </p>
-                  <p style={{ margin:'0 0 20px', fontSize:12, color:muted, lineHeight:1.5 }}>
-                    The {report.nqi_composite ?? '—'} NQI is a weighted average of the dimensions below — the % next to each
-                    one is exactly how much it counts.
-                    {report.dimensions_scored != null && report.dimensions_total != null && report.dimensions_scored < report.dimensions_total && (
-                      <> Only {report.dimensions_scored} of {report.dimensions_total} had data for this pin, so the rest were rescaled to still add up to 100%.</>
-                    )}
-                  </p>
+                  <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:14 }}>
+                    <p style={{ margin:0, fontSize:16, fontWeight:600, color:text, display:'flex', alignItems:'center', gap:8 }}>
+                      <span style={{ display:'inline-block', width:3, height:16, background:ACCENT, borderRadius:2 }}/>
+                      Score breakdown
+                    </p>
+                    <div style={{ display:'flex', gap:6, flexWrap:'wrap' }}>
+                      {[...Object.keys(WEIGHT_PRESETS), 'Custom'].map(name => (
+                        <button key={name} onClick={() => setWeightPreset(name)} style={{
+                          fontSize:11, fontWeight:600, padding:'5px 11px', borderRadius:100, cursor:'pointer',
+                          border:`1px solid ${weightPreset===name ? ACCENT : border}`,
+                          background: weightPreset===name ? ACCENT+'1a' : 'transparent',
+                          color: weightPreset===name ? ACCENT : muted,
+                        }}>{name}</button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {isDefaultWeight ? (
+                    <p style={{ margin:'0 0 20px', fontSize:12, color:muted, lineHeight:1.5 }}>
+                      The {report.nqi_composite ?? '—'} NQI is a weighted average of the dimensions below — the % next to each
+                      one is exactly how much it counts.
+                      {report.dimensions_scored != null && report.dimensions_total != null && report.dimensions_scored < report.dimensions_total && (
+                        <> Only {report.dimensions_scored} of {report.dimensions_total} had data for this pin, so the rest were rescaled to still add up to 100%.</>
+                      )}
+                    </p>
+                  ) : (
+                    <div style={{ margin:'0 0 20px', padding:'14px', background:subtle, borderRadius:10 }}>
+                      <p style={{ margin:'0 0 8px', fontSize:12, color:muted, lineHeight:1.5 }}>
+                        {weightPreset === 'Custom'
+                          ? 'Drag to set your own priorities — the weights below adjust automatically to stay at 100%.'
+                          : `Same underlying data, recalculated using the "${weightPreset}" weighting.`}
+                      </p>
+                      <p style={{ margin:0 }}>
+                        <span style={{ fontSize:24, fontWeight:800, color:text }}>{recomputedNqi}</span>
+                        <span style={{ fontSize:12, color:muted, fontWeight:400 }}>/100 for you</span>
+                        <span style={{ fontSize:11, color:muted, fontWeight:400, marginLeft:10 }}>official score: {report.nqi_composite}</span>
+                      </p>
+                      {weightPreset === 'Custom' && (
+                        <div style={{ marginTop:14, display:'flex', flexDirection:'column', gap:12 }}>
+                          {availableDims.map(k => (
+                            <div key={k}>
+                              <div style={{ display:'flex', justifyContent:'space-between', fontSize:11, color:muted, marginBottom:4 }}>
+                                <span>{DIM_LABEL[k]}</span>
+                                <span style={{ color:text, fontWeight:600 }}>{Math.round((normWeights[k]||0)*100)}%</span>
+                              </div>
+                              <input
+                                type="range" min="0" max="100" step="1"
+                                value={customWeights[k] ?? 0}
+                                onChange={e => setCustomWeights({ ...customWeights, [k]: Number(e.target.value) })}
+                                style={{ width:'100%', accentColor:ACCENT }}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
                   {Object.entries(report.scores).map(([k,v]) => {
                     const c = v>=80?'#22c55e':v>=60?'#84cc16':v>=40?'#f97316':'#ef4444'
                     const baseW    = report.weights_base?.[k]
                     const appliedW = report.weights_applied?.[k]
                     const reweighted = baseW !== undefined && appliedW !== undefined && Math.abs(appliedW - baseW) > 0.001
+                    const shownWeight = isDefaultWeight ? appliedW : normWeights[k]
                     return (
                       <div key={k} style={{ marginBottom:20 }}>
                         <div style={{ display:'flex', justifyContent:'space-between', marginBottom:8, flexWrap:'wrap', gap:6 }}>
@@ -1328,14 +1412,14 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                             <DimIcon name={k} size={18} color={ACCENT} />
                             <span style={{ fontSize:16, fontWeight:600, color:text }}>{DIM_LABEL[k]}</span>
                             {DIM_TAG[k] && <TagBadge tag={DIM_TAG[k]} card={card} border={border} dark={dark} muted={muted} text={text} />}
-                            {appliedW !== undefined && (
+                            {shownWeight !== undefined && (
                               <span style={{ fontSize:11, fontWeight:600, color:muted, background:subtle, padding:'3px 9px', borderRadius:7, whiteSpace:'nowrap' }}>
-                                {reweighted && (
+                                {isDefaultWeight && reweighted && (
                                   <span style={{ textDecoration:'line-through', opacity:0.55, marginRight:4 }}>
                                     {Math.round(baseW * 100)}%
                                   </span>
                                 )}
-                                {Math.round(appliedW * 100)}% weight
+                                {Math.round(shownWeight * 100)}% weight
                               </span>
                             )}
                           </div>
