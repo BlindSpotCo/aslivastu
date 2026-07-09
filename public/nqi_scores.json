@@ -26,7 +26,8 @@
     "dimensions_total": 5,
     "nqi_composite": 89,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.061967",
+    "scored_at": "2026-07-09T11:59:07.530075",
+    "total_cognizable_crimes": 95,
     "schools_count": 28,
     "schools_cbse": 28,
     "schools_icse": 0,
@@ -103,7 +104,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 100,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "110070",
@@ -132,7 +135,8 @@
     "dimensions_total": 5,
     "nqi_composite": 86,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.061914",
+    "scored_at": "2026-07-09T11:59:07.530017",
+    "total_cognizable_crimes": 260,
     "schools_count": 16,
     "schools_cbse": 16,
     "schools_icse": 0,
@@ -209,7 +213,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 86,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "110021",
@@ -238,7 +244,8 @@
     "dimensions_total": 5,
     "nqi_composite": 86,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.061958",
+    "scored_at": "2026-07-09T11:59:07.530065",
+    "total_cognizable_crimes": 210,
     "schools_count": 17,
     "schools_cbse": 17,
     "schools_icse": 0,
@@ -315,7 +322,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 92,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "201304",
@@ -341,7 +350,8 @@
     "dimensions_total": 5,
     "nqi_composite": 83,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.062211",
+    "scored_at": "2026-07-09T11:59:07.530356",
+    "total_cognizable_crimes": 225,
     "schools_count": 12,
     "schools_cbse": 12,
     "schools_icse": 0,
@@ -418,7 +428,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 88,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "110001",
@@ -447,13 +459,16 @@
     "dimensions_total": 5,
     "nqi_composite": 82,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.061904",
+    "scored_at": "2026-07-09T11:59:07.530007",
+    "total_cognizable_crimes": 290,
     "schools_count": 15,
     "schools_cbse": 15,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 73,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "110003",
@@ -482,7 +497,8 @@
     "dimensions_total": 5,
     "nqi_composite": 82,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.062021",
+    "scored_at": "2026-07-09T11:59:07.530143",
+    "total_cognizable_crimes": 220,
     "schools_count": 24,
     "schools_cbse": 24,
     "schools_icse": 0,
@@ -559,7 +575,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 90,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "122413",
@@ -588,7 +606,8 @@
     "dimensions_total": 5,
     "nqi_composite": 82,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.062064",
+    "scored_at": "2026-07-09T11:59:07.530191",
+    "total_cognizable_crimes": 188,
     "schools_count": 9,
     "schools_cbse": 9,
     "schools_icse": 0,
@@ -658,7 +677,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 95,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "123106",
@@ -678,7 +699,8 @@
     "dimensions_total": 5,
     "nqi_composite": 82,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.062094",
+    "scored_at": "2026-07-09T11:59:07.530219",
+    "total_cognizable_crimes": null,
     "schools_count": 3,
     "schools_cbse": 3,
     "schools_icse": 0,
@@ -706,7 +728,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": null,
+    "crime_tier": null
   },
   {
     "pin_code": "110037",
@@ -735,7 +759,8 @@
     "dimensions_total": 5,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.061923",
+    "scored_at": "2026-07-09T11:59:07.530026",
+    "total_cognizable_crimes": 180,
     "schools_count": 10,
     "schools_cbse": 10,
     "schools_icse": 0,
@@ -812,7 +837,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 96,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "110002",
@@ -841,7 +868,8 @@
     "dimensions_total": 5,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.061932",
+    "scored_at": "2026-07-09T11:59:07.530036",
+    "total_cognizable_crimes": 280,
     "schools_count": 33,
     "schools_cbse": 33,
     "schools_icse": 0,
@@ -918,7 +946,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 79,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "110067",
@@ -947,7 +977,8 @@
     "dimensions_total": 5,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.061937",
+    "scored_at": "2026-07-09T11:59:07.530041",
+    "total_cognizable_crimes": 155,
     "schools_count": 2,
     "schools_cbse": 2,
     "schools_icse": 0,
@@ -968,7 +999,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 99,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "110012",
@@ -997,7 +1030,8 @@
     "dimensions_total": 5,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.061975",
+    "scored_at": "2026-07-09T11:59:07.530085",
+    "total_cognizable_crimes": 180,
     "schools_count": 8,
     "schools_cbse": 8,
     "schools_icse": 0,
@@ -1060,7 +1094,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 96,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "110007",
@@ -1089,7 +1125,8 @@
     "dimensions_total": 5,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.062037",
+    "scored_at": "2026-07-09T11:59:07.530162",
+    "total_cognizable_crimes": 195,
     "schools_count": 38,
     "schools_cbse": 38,
     "schools_icse": 0,
@@ -1166,7 +1203,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 94,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "122001",
@@ -1195,7 +1234,8 @@
     "dimensions_total": 5,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.062082",
+    "scored_at": "2026-07-09T11:59:07.530206",
+    "total_cognizable_crimes": 290,
     "schools_count": 66,
     "schools_cbse": 66,
     "schools_icse": 0,
@@ -1272,7 +1312,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 73,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "122103",
@@ -1301,13 +1343,16 @@
     "dimensions_total": 5,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-07T00:00:22.062123",
+    "scored_at": "2026-07-09T11:59:07.530253",
+    "total_cognizable_crimes": 268,
     "schools_count": 22,
     "schools_cbse": 22,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 82,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "110077",
@@ -1336,7 +1381,8 @@
     "dimensions_total": 5,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.061919",
+    "scored_at": "2026-07-09T11:59:07.530021",
+    "total_cognizable_crimes": 275,
     "schools_count": 5,
     "schools_cbse": 5,
     "schools_icse": 0,
@@ -1378,7 +1424,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 80,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "110068",
@@ -1407,7 +1455,8 @@
     "dimensions_total": 5,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.061928",
+    "scored_at": "2026-07-09T11:59:07.530031",
+    "total_cognizable_crimes": 198,
     "schools_count": 3,
     "schools_cbse": 3,
     "schools_icse": 0,
@@ -1435,7 +1484,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 93,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "110049",
@@ -1464,7 +1515,8 @@
     "dimensions_total": 5,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062009",
+    "scored_at": "2026-07-09T11:59:07.530121",
+    "total_cognizable_crimes": 225,
     "schools_count": 8,
     "schools_cbse": 8,
     "schools_icse": 0,
@@ -1527,7 +1579,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 88,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "110009",
@@ -1553,7 +1607,8 @@
     "dimensions_total": 5,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062173",
+    "scored_at": "2026-07-09T11:59:07.530310",
+    "total_cognizable_crimes": 240,
     "schools_count": 29,
     "schools_cbse": 29,
     "schools_icse": 0,
@@ -1630,7 +1685,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 87,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "201012",
@@ -1656,13 +1713,16 @@
     "dimensions_total": 5,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062233",
+    "scored_at": "2026-07-09T11:59:07.530378",
+    "total_cognizable_crimes": 295,
     "schools_count": 52,
     "schools_cbse": 52,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 70,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "110016",
@@ -1691,7 +1751,8 @@
     "dimensions_total": 5,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.061899",
+    "scored_at": "2026-07-09T11:59:07.530001",
+    "total_cognizable_crimes": 310,
     "schools_count": 11,
     "schools_cbse": 11,
     "schools_icse": 0,
@@ -1768,7 +1829,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 62,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "110025",
@@ -1797,7 +1860,8 @@
     "dimensions_total": 5,
     "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.061962",
+    "scored_at": "2026-07-09T11:59:07.530070",
+    "total_cognizable_crimes": 265,
     "schools_count": 9,
     "schools_cbse": 9,
     "schools_icse": 0,
@@ -1867,7 +1931,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 85,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "110022",
@@ -1896,7 +1962,8 @@
     "dimensions_total": 5,
     "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.061979",
+    "scored_at": "2026-07-09T11:59:07.530089",
+    "total_cognizable_crimes": 285,
     "schools_count": 20,
     "schools_cbse": 20,
     "schools_icse": 0,
@@ -1973,7 +2040,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 76,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "122002",
@@ -1999,7 +2068,8 @@
     "dimensions_total": 5,
     "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062164",
+    "scored_at": "2026-07-09T11:59:07.530300",
+    "total_cognizable_crimes": 310,
     "schools_count": 10,
     "schools_cbse": 10,
     "schools_icse": 0,
@@ -2076,7 +2146,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 62,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "201014",
@@ -2102,13 +2174,16 @@
     "dimensions_total": 5,
     "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062228",
+    "scored_at": "2026-07-09T11:59:07.530374",
+    "total_cognizable_crimes": 312,
     "schools_count": 58,
     "schools_cbse": 58,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 61,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "201016",
@@ -2134,13 +2209,16 @@
     "dimensions_total": 5,
     "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062236",
+    "scored_at": "2026-07-09T11:59:07.530383",
+    "total_cognizable_crimes": 285,
     "schools_count": 42,
     "schools_cbse": 42,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 76,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "110017",
@@ -2166,7 +2244,8 @@
     "dimensions_total": 5,
     "nqi_composite": 75,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062160",
+    "scored_at": "2026-07-09T11:59:07.530296",
+    "total_cognizable_crimes": 290,
     "schools_count": 31,
     "schools_cbse": 31,
     "schools_icse": 0,
@@ -2243,7 +2322,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 73,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "201010",
@@ -2269,13 +2350,16 @@
     "dimensions_total": 5,
     "nqi_composite": 74,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062243",
+    "scored_at": "2026-07-09T11:59:07.530392",
+    "total_cognizable_crimes": 342,
     "schools_count": 32,
     "schools_cbse": 32,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 51,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "110008",
@@ -2304,7 +2388,8 @@
     "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.061878",
+    "scored_at": "2026-07-09T11:59:07.529984",
+    "total_cognizable_crimes": 310,
     "schools_count": 14,
     "schools_cbse": 14,
     "schools_icse": 0,
@@ -2381,7 +2466,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 62,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "110042",
@@ -2410,7 +2497,8 @@
     "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062025",
+    "scored_at": "2026-07-09T11:59:07.530148",
+    "total_cognizable_crimes": 298,
     "schools_count": 25,
     "schools_cbse": 25,
     "schools_icse": 0,
@@ -2487,7 +2575,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 67,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "110026",
@@ -2516,7 +2606,8 @@
     "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062029",
+    "scored_at": "2026-07-09T11:59:07.530152",
+    "total_cognizable_crimes": 340,
     "schools_count": 16,
     "schools_cbse": 16,
     "schools_icse": 0,
@@ -2593,7 +2684,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 55,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "121102",
@@ -2622,7 +2715,8 @@
     "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062060",
+    "scored_at": "2026-07-09T11:59:07.530186",
+    "total_cognizable_crimes": 320,
     "schools_count": 25,
     "schools_cbse": 25,
     "schools_icse": 0,
@@ -2699,7 +2793,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 57,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "201301",
@@ -2725,7 +2821,8 @@
     "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062168",
+    "scored_at": "2026-07-09T11:59:07.530305",
+    "total_cognizable_crimes": 380,
     "schools_count": 47,
     "schools_cbse": 47,
     "schools_icse": 0,
@@ -2802,7 +2899,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 40,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "131027",
@@ -2831,13 +2930,16 @@
     "dimensions_total": 5,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062144",
+    "scored_at": "2026-07-09T11:59:07.530277",
+    "total_cognizable_crimes": 275,
     "schools_count": 7,
     "schools_cbse": 7,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 80,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "122101",
@@ -2866,13 +2968,16 @@
     "dimensions_total": 5,
     "nqi_composite": 71,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062115",
+    "scored_at": "2026-07-09T11:59:07.530244",
+    "total_cognizable_crimes": 322,
     "schools_count": 16,
     "schools_cbse": 16,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 56,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "110043",
@@ -2901,7 +3006,8 @@
     "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062033",
+    "scored_at": "2026-07-09T11:59:07.530157",
+    "total_cognizable_crimes": 368,
     "schools_count": 78,
     "schools_cbse": 78,
     "schools_icse": 0,
@@ -2978,7 +3084,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 43,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "122051",
@@ -3007,7 +3115,8 @@
     "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062056",
+    "scored_at": "2026-07-09T11:59:07.530181",
+    "total_cognizable_crimes": 295,
     "schools_count": 1,
     "schools_cbse": 1,
     "schools_icse": 0,
@@ -3021,7 +3130,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 70,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "110058",
@@ -3047,7 +3158,8 @@
     "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062192",
+    "scored_at": "2026-07-09T11:59:07.530332",
+    "total_cognizable_crimes": 318,
     "schools_count": 33,
     "schools_cbse": 33,
     "schools_icse": 0,
@@ -3124,7 +3236,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 60,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "110063",
@@ -3150,7 +3264,8 @@
     "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062196",
+    "scored_at": "2026-07-09T11:59:07.530337",
+    "total_cognizable_crimes": 305,
     "schools_count": 26,
     "schools_cbse": 26,
     "schools_icse": 0,
@@ -3227,7 +3342,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 65,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "122003",
@@ -3253,7 +3370,8 @@
     "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-07T00:00:22.062200",
+    "scored_at": "2026-07-09T11:59:07.530341",
+    "total_cognizable_crimes": 268,
     "schools_count": 2,
     "schools_cbse": 2,
     "schools_icse": 0,
@@ -3274,7 +3392,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 82,
+    "crime_tier": "Very Low"
   },
   {
     "pin_code": "122108",
@@ -3303,13 +3423,16 @@
     "dimensions_total": 5,
     "nqi_composite": 69,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062119",
+    "scored_at": "2026-07-09T11:59:07.530249",
+    "total_cognizable_crimes": 298,
     "schools_count": 9,
     "schools_cbse": 9,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 67,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "110019",
@@ -3335,7 +3458,8 @@
     "dimensions_total": 5,
     "nqi_composite": 68,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062181",
+    "scored_at": "2026-07-09T11:59:07.530319",
+    "total_cognizable_crimes": 320,
     "schools_count": 26,
     "schools_cbse": 26,
     "schools_icse": 0,
@@ -3412,7 +3536,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 57,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "110065",
@@ -3441,7 +3567,8 @@
     "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.061954",
+    "scored_at": "2026-07-09T11:59:07.530061",
+    "total_cognizable_crimes": 342,
     "schools_count": 18,
     "schools_cbse": 18,
     "schools_icse": 0,
@@ -3518,7 +3645,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 51,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "110092",
@@ -3547,7 +3676,8 @@
     "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.061971",
+    "scored_at": "2026-07-09T11:59:07.530080",
+    "total_cognizable_crimes": 358,
     "schools_count": 70,
     "schools_cbse": 70,
     "schools_icse": 0,
@@ -3624,7 +3754,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 45,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "110052",
@@ -3653,7 +3785,8 @@
     "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062000",
+    "scored_at": "2026-07-09T11:59:07.530111",
+    "total_cognizable_crimes": 389,
     "schools_count": 35,
     "schools_cbse": 35,
     "schools_icse": 0,
@@ -3730,7 +3863,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 36,
+    "crime_tier": "High"
   },
   {
     "pin_code": "110006",
@@ -3759,7 +3894,8 @@
     "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062046",
+    "scored_at": "2026-07-09T11:59:07.530172",
+    "total_cognizable_crimes": 380,
     "schools_count": 64,
     "schools_cbse": 64,
     "schools_icse": 0,
@@ -3836,7 +3972,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 40,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "124507",
@@ -3865,7 +4003,8 @@
     "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062099",
+    "scored_at": "2026-07-09T11:59:07.530224",
+    "total_cognizable_crimes": 398,
     "schools_count": 32,
     "schools_cbse": 32,
     "schools_icse": 0,
@@ -3942,7 +4081,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 33,
+    "crime_tier": "High"
   },
   {
     "pin_code": "110073",
@@ -3971,7 +4112,8 @@
     "dimensions_total": 5,
     "nqi_composite": 66,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.061946",
+    "scored_at": "2026-07-09T11:59:07.530051",
+    "total_cognizable_crimes": 428,
     "schools_count": 22,
     "schools_cbse": 22,
     "schools_icse": 0,
@@ -4048,7 +4190,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 24,
+    "crime_tier": "High"
   },
   {
     "pin_code": "110024",
@@ -4074,7 +4218,8 @@
     "dimensions_total": 5,
     "nqi_composite": 66,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062157",
+    "scored_at": "2026-07-09T11:59:07.530291",
+    "total_cognizable_crimes": 350,
     "schools_count": 16,
     "schools_cbse": 16,
     "schools_icse": 0,
@@ -4151,7 +4296,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 50,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "110036",
@@ -4180,7 +4327,8 @@
     "dimensions_total": 5,
     "nqi_composite": 65,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062004",
+    "scored_at": "2026-07-09T11:59:07.530116",
+    "total_cognizable_crimes": 390,
     "schools_count": 19,
     "schools_cbse": 19,
     "schools_icse": 0,
@@ -4257,7 +4405,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 35,
+    "crime_tier": "High"
   },
   {
     "pin_code": "123401",
@@ -4286,13 +4436,16 @@
     "dimensions_total": 5,
     "nqi_composite": 65,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062136",
+    "scored_at": "2026-07-09T11:59:07.530268",
+    "total_cognizable_crimes": 342,
     "schools_count": 8,
     "schools_cbse": 8,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 51,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "110018",
@@ -4318,7 +4471,8 @@
     "dimensions_total": 5,
     "nqi_composite": 65,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062177",
+    "scored_at": "2026-07-09T11:59:07.530314",
+    "total_cognizable_crimes": 355,
     "schools_count": 43,
     "schools_cbse": 43,
     "schools_icse": 0,
@@ -4395,7 +4549,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 48,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "110094",
@@ -4424,7 +4580,8 @@
     "dimensions_total": 5,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.061890",
+    "scored_at": "2026-07-09T11:59:07.529994",
+    "total_cognizable_crimes": 412,
     "schools_count": 48,
     "schools_cbse": 48,
     "schools_icse": 0,
@@ -4501,7 +4658,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 29,
+    "crime_tier": "High"
   },
   {
     "pin_code": "125050",
@@ -4530,13 +4689,16 @@
     "dimensions_total": 5,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062076",
+    "scored_at": "2026-07-09T11:59:07.530201",
+    "total_cognizable_crimes": 362,
     "schools_count": 6,
     "schools_cbse": 6,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 44,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "201002",
@@ -4562,13 +4724,16 @@
     "dimensions_total": 5,
     "nqi_composite": 63,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062240",
+    "scored_at": "2026-07-09T11:59:07.530387",
+    "total_cognizable_crimes": 358,
     "schools_count": 25,
     "schools_cbse": 25,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 45,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "110095",
@@ -4597,7 +4762,8 @@
     "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.061910",
+    "scored_at": "2026-07-09T11:59:07.530012",
+    "total_cognizable_crimes": 388,
     "schools_count": 32,
     "schools_cbse": 32,
     "schools_icse": 0,
@@ -4674,7 +4840,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 37,
+    "crime_tier": "High"
   },
   {
     "pin_code": "110032",
@@ -4703,7 +4871,8 @@
     "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062042",
+    "scored_at": "2026-07-09T11:59:07.530167",
+    "total_cognizable_crimes": 412,
     "schools_count": 36,
     "schools_cbse": 36,
     "schools_icse": 0,
@@ -4780,7 +4949,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 29,
+    "crime_tier": "High"
   },
   {
     "pin_code": "135001",
@@ -4809,7 +4980,8 @@
     "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062103",
+    "scored_at": "2026-07-09T11:59:07.530229",
+    "total_cognizable_crimes": 445,
     "schools_count": 21,
     "schools_cbse": 21,
     "schools_icse": 0,
@@ -4886,7 +5058,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 18,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "123001",
@@ -4915,13 +5089,16 @@
     "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062132",
+    "scored_at": "2026-07-09T11:59:07.530263",
+    "total_cognizable_crimes": 355,
     "schools_count": 9,
     "schools_cbse": 9,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 48,
+    "crime_tier": "Moderate"
   },
   {
     "pin_code": "122502",
@@ -4950,13 +5127,16 @@
     "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062148",
+    "scored_at": "2026-07-09T11:59:07.530282",
+    "total_cognizable_crimes": 385,
     "schools_count": 11,
     "schools_cbse": 11,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 39,
+    "crime_tier": "High"
   },
   {
     "pin_code": "131029",
@@ -4985,13 +5165,16 @@
     "dimensions_total": 5,
     "nqi_composite": 61,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062140",
+    "scored_at": "2026-07-09T11:59:07.530273",
+    "total_cognizable_crimes": 388,
     "schools_count": 9,
     "schools_cbse": 9,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 37,
+    "crime_tier": "High"
   },
   {
     "pin_code": "132103",
@@ -5020,7 +5203,8 @@
     "dimensions_total": 5,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062086",
+    "scored_at": "2026-07-09T11:59:07.530210",
+    "total_cognizable_crimes": 495,
     "schools_count": 31,
     "schools_cbse": 31,
     "schools_icse": 0,
@@ -5097,7 +5281,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 10,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "125055",
@@ -5126,13 +5312,16 @@
     "dimensions_total": 5,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062107",
+    "scored_at": "2026-07-09T11:59:07.530233",
+    "total_cognizable_crimes": 418,
     "schools_count": 6,
     "schools_cbse": 6,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 27,
+    "crime_tier": "High"
   },
   {
     "pin_code": "110044",
@@ -5158,7 +5347,8 @@
     "dimensions_total": 5,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-07-07T00:00:22.062185",
+    "scored_at": "2026-07-09T11:59:07.530324",
+    "total_cognizable_crimes": 402,
     "schools_count": 33,
     "schools_cbse": 33,
     "schools_icse": 0,
@@ -5235,7 +5425,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 32,
+    "crime_tier": "High"
   },
   {
     "pin_code": "110078",
@@ -5264,7 +5456,8 @@
     "dimensions_total": 5,
     "nqi_composite": 59,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.062051",
+    "scored_at": "2026-07-09T11:59:07.530176",
+    "total_cognizable_crimes": 520,
     "schools_count": 7,
     "schools_cbse": 7,
     "schools_icse": 0,
@@ -5320,7 +5513,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 5,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "131001",
@@ -5349,7 +5544,8 @@
     "dimensions_total": 5,
     "nqi_composite": 59,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.062111",
+    "scored_at": "2026-07-09T11:59:07.530239",
+    "total_cognizable_crimes": 468,
     "schools_count": 55,
     "schools_cbse": 55,
     "schools_icse": 0,
@@ -5426,7 +5622,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 13,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "110020",
@@ -5455,7 +5653,8 @@
     "dimensions_total": 5,
     "nqi_composite": 58,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.061988",
+    "scored_at": "2026-07-09T11:59:07.530099",
+    "total_cognizable_crimes": 425,
     "schools_count": 4,
     "schools_cbse": 4,
     "schools_icse": 0,
@@ -5490,7 +5689,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 25,
+    "crime_tier": "High"
   },
   {
     "pin_code": "110005",
@@ -5516,7 +5717,8 @@
     "dimensions_total": 5,
     "nqi_composite": 58,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.062153",
+    "scored_at": "2026-07-09T11:59:07.530287",
+    "total_cognizable_crimes": 445,
     "schools_count": 32,
     "schools_cbse": 32,
     "schools_icse": 0,
@@ -5593,7 +5795,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 18,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "201309",
@@ -5619,7 +5823,8 @@
     "dimensions_total": 5,
     "nqi_composite": 58,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.062215",
+    "scored_at": "2026-07-09T11:59:07.530360",
+    "total_cognizable_crimes": 298,
     "schools_count": 1,
     "schools_cbse": 1,
     "schools_icse": 0,
@@ -5633,7 +5838,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 67,
+    "crime_tier": "Low"
   },
   {
     "pin_code": "110084",
@@ -5662,7 +5869,8 @@
     "dimensions_total": 5,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.062017",
+    "scored_at": "2026-07-09T11:59:07.530138",
+    "total_cognizable_crimes": 462,
     "schools_count": 19,
     "schools_cbse": 19,
     "schools_icse": 0,
@@ -5739,7 +5947,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 17,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "124001",
@@ -5768,7 +5978,8 @@
     "dimensions_total": 5,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.062090",
+    "scored_at": "2026-07-09T11:59:07.530215",
+    "total_cognizable_crimes": 520,
     "schools_count": 61,
     "schools_cbse": 61,
     "schools_icse": 0,
@@ -5845,7 +6056,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 5,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "110053",
@@ -5871,7 +6084,8 @@
     "dimensions_total": 5,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.062188",
+    "scored_at": "2026-07-09T11:59:07.530328",
+    "total_cognizable_crimes": 435,
     "schools_count": 50,
     "schools_cbse": 50,
     "schools_icse": 0,
@@ -5948,7 +6162,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 23,
+    "crime_tier": "High"
   },
   {
     "pin_code": "110040",
@@ -5977,7 +6193,8 @@
     "dimensions_total": 5,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.061950",
+    "scored_at": "2026-07-09T11:59:07.530055",
+    "total_cognizable_crimes": 480,
     "schools_count": 27,
     "schools_cbse": 27,
     "schools_icse": 0,
@@ -6054,7 +6271,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 12,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "121001",
@@ -6083,7 +6302,8 @@
     "dimensions_total": 5,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.062070",
+    "scored_at": "2026-07-09T11:59:07.530196",
+    "total_cognizable_crimes": 512,
     "schools_count": 37,
     "schools_cbse": 37,
     "schools_icse": 0,
@@ -6160,7 +6380,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 7,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "122505",
@@ -6189,13 +6411,16 @@
     "dimensions_total": 5,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.062128",
+    "scored_at": "2026-07-09T11:59:07.530258",
+    "total_cognizable_crimes": 410,
     "schools_count": 6,
     "schools_cbse": 6,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 31,
+    "crime_tier": "High"
   },
   {
     "pin_code": "201206",
@@ -6221,13 +6446,16 @@
     "dimensions_total": 5,
     "nqi_composite": 54,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.062247",
+    "scored_at": "2026-07-09T11:59:07.530396",
+    "total_cognizable_crimes": 422,
     "schools_count": 14,
     "schools_cbse": 14,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 26,
+    "crime_tier": "High"
   },
   {
     "pin_code": "110085",
@@ -6256,7 +6484,8 @@
     "dimensions_total": 5,
     "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.061984",
+    "scored_at": "2026-07-09T11:59:07.530094",
+    "total_cognizable_crimes": 560,
     "schools_count": 71,
     "schools_cbse": 71,
     "schools_icse": 0,
@@ -6333,7 +6562,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 1,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "110039",
@@ -6362,7 +6593,8 @@
     "dimensions_total": 5,
     "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.062013",
+    "scored_at": "2026-07-09T11:59:07.530126",
+    "total_cognizable_crimes": 445,
     "schools_count": 26,
     "schools_cbse": 26,
     "schools_icse": 0,
@@ -6439,7 +6671,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 18,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "121002",
@@ -6465,7 +6699,8 @@
     "dimensions_total": 5,
     "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-07-07T00:00:22.062219",
+    "scored_at": "2026-07-09T11:59:07.530364",
+    "total_cognizable_crimes": 465,
     "schools_count": 23,
     "schools_cbse": 23,
     "schools_icse": 0,
@@ -6542,7 +6777,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 14,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "245101",
@@ -6568,13 +6805,16 @@
     "dimensions_total": 5,
     "nqi_composite": 49,
     "grade": "C",
-    "scored_at": "2026-07-07T00:00:22.062250",
+    "scored_at": "2026-07-09T11:59:07.530401",
+    "total_cognizable_crimes": 465,
     "schools_count": 9,
     "schools_cbse": 9,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 14,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "122107",
@@ -6600,7 +6840,8 @@
     "dimensions_total": 5,
     "nqi_composite": 48,
     "grade": "C",
-    "scored_at": "2026-07-07T00:00:22.062203",
+    "scored_at": "2026-07-09T11:59:07.530346",
+    "total_cognizable_crimes": 445,
     "schools_count": 5,
     "schools_cbse": 5,
     "schools_icse": 0,
@@ -6642,7 +6883,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 18,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "110041",
@@ -6671,7 +6914,8 @@
     "dimensions_total": 5,
     "nqi_composite": 47,
     "grade": "C",
-    "scored_at": "2026-07-07T00:00:22.061994",
+    "scored_at": "2026-07-09T11:59:07.530105",
+    "total_cognizable_crimes": 490,
     "schools_count": 100,
     "schools_cbse": 100,
     "schools_icse": 0,
@@ -6748,7 +6992,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 11,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "110033",
@@ -6777,7 +7023,8 @@
     "dimensions_total": 5,
     "nqi_composite": 45,
     "grade": "C",
-    "scored_at": "2026-07-07T00:00:22.061941",
+    "scored_at": "2026-07-09T11:59:07.530046",
+    "total_cognizable_crimes": 610,
     "schools_count": 23,
     "schools_cbse": 23,
     "schools_icse": 0,
@@ -6854,7 +7101,9 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 0,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "201102",
@@ -6880,13 +7129,16 @@
     "dimensions_total": 5,
     "nqi_composite": 45,
     "grade": "C",
-    "scored_at": "2026-07-07T00:00:22.062223",
+    "scored_at": "2026-07-09T11:59:07.530369",
+    "total_cognizable_crimes": 548,
     "schools_count": 20,
     "schools_cbse": 20,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 2,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "203001",
@@ -6912,13 +7164,16 @@
     "dimensions_total": 5,
     "nqi_composite": 44,
     "grade": "C",
-    "scored_at": "2026-07-07T00:00:22.062254",
+    "scored_at": "2026-07-09T11:59:07.530405",
+    "total_cognizable_crimes": 498,
     "schools_count": 11,
     "schools_cbse": 11,
     "schools_icse": 0,
     "schools_state": 0,
     "schools_list": [],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 8,
+    "crime_tier": "Very High"
   },
   {
     "pin_code": "201001",
@@ -6944,7 +7199,8 @@
     "dimensions_total": 5,
     "nqi_composite": 42,
     "grade": "C",
-    "scored_at": "2026-07-07T00:00:22.062207",
+    "scored_at": "2026-07-09T11:59:07.530351",
+    "total_cognizable_crimes": 538,
     "schools_count": 32,
     "schools_cbse": 32,
     "schools_icse": 0,
@@ -7021,6 +7277,8 @@
         "distance_km": null
       }
     ],
-    "schools_avg_pass": null
+    "schools_avg_pass": null,
+    "crime_percentile": 4,
+    "crime_tier": "Very High"
   }
 ]

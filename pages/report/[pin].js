@@ -874,6 +874,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
   const [customWeights, setCustomWeights] = useState({ crime:30, infrastructure:25, air:20, power:15, schools:10 })
   const [fbText, setFbText] = useState('')
   const [fbStatus, setFbStatus] = useState('idle')
+  const [fbError, setFbError] = useState('')
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: dark)')
@@ -997,10 +998,12 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
           page: 'report',
         }),
       })
-      if (!res.ok) throw new Error('request failed')
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error || 'Request failed')
       setFbStatus('sent')
       setFbText('')
-    } catch {
+    } catch (err) {
+      setFbError(err.message || 'Something went wrong')
       setFbStatus('error')
     }
   }
@@ -1467,6 +1470,11 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                           <div style={{ width:v+'%', height:'100%', background:c, borderRadius:99, transition:'width 0.8s ease' }}/>
                         </div>
                         <p style={{ fontSize:12, color:muted, margin:'6px 0 0', lineHeight:1.5 }}>{DIM_DESC[k]}</p>
+                        {k === 'crime' && report.crime_percentile != null && (
+                          <p style={{ fontSize:12, color:muted, margin:'4px 0 0', lineHeight:1.5 }}>
+                            {report.total_cognizable_crimes} total crimes reported — safer than <strong style={{color:text}}>{report.crime_percentile}%</strong> of tracked areas ({report.crime_tier} tier).
+                          </p>
+                        )}
                       </div>
                     )
                   })}
@@ -1525,7 +1533,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                   {/* Crime + Power */}
                   <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8, marginBottom:12 }}>
                     {[
-                      ['Crime',[['Total crimes',report.total_cognizable_crimes||'—'],['Safety score',(report.scores.crime||'—')+'/100'],['vs NCR avg',report.scores.crime?(report.scores.crime>59?'Better':'Worse'):'—'],['Source year','2022-23']]],
+                      ['Crime',[['Total crimes',report.total_cognizable_crimes||'—'],['Safety score',(report.scores.crime||'—')+'/100'],['Safer than',report.crime_percentile!=null?report.crime_percentile+'% of areas':'—'],['Crime tier',report.crime_tier||'—'],['Source year','2022-23']]],
                       ['Power',[['Discom',report.discom||'—'],['Reliability',report.reliability||'—'],['Avg cut hrs',(report.avg_outage_hours||'—')+' hrs/mo'],['Score',(report.scores.power||'—')+'/100']]],
                     ].map(([title,rows]) => (
                       <div key={title} style={{ background:card, border:`1px solid ${border}`, borderRadius:12, padding:16 }}>
@@ -1794,7 +1802,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                   <p style={{ margin:'8px 0 0', fontSize:12, color:'#22c55e' }}>Thanks — got it.</p>
                 )}
                 {fbStatus === 'error' && (
-                  <p style={{ margin:'8px 0 0', fontSize:12, color:'#ef4444' }}>Could not send that — try again in a bit.</p>
+                  <p style={{ margin:'8px 0 0', fontSize:12, color:'#ef4444' }}>{fbError || 'Could not send that — try again in a bit.'}</p>
                 )}
               </div>
             </>
