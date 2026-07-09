@@ -921,20 +921,24 @@ export default function Landing() {
   const [fbArea, setFbArea] = useState('')
   const [fbText, setFbText] = useState('')
   const [fbStatus, setFbStatus] = useState('idle')
+  const [fbError, setFbError] = useState('')
   const sendFeedback = async () => {
     if (!fbText.trim() || fbStatus === 'sending') return
     setFbStatus('sending')
+    setFbError('')
     try {
       const res = await fetch('/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: fbText, area: fbArea, page: 'landing' }),
       })
-      if (!res.ok) throw new Error('request failed')
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error || 'Request failed')
       setFbStatus('sent')
       setFbText('')
       setFbArea('')
-    } catch {
+    } catch (err) {
+      setFbError(err.message || 'Something went wrong')
       setFbStatus('error')
     }
   }
@@ -2188,7 +2192,7 @@ export default function Landing() {
               <p style={{ margin:'10px 0 0', fontSize:12, color:'#22c55e' }}>Thanks — got it.</p>
             )}
             {fbStatus === 'error' && (
-              <p style={{ margin:'10px 0 0', fontSize:12, color:'#ef4444' }}>Could not send that — try again in a bit.</p>
+              <p style={{ margin:'10px 0 0', fontSize:12, color:'#ef4444' }}>{fbError || 'Could not send that — try again in a bit.'}</p>
             )}
           </div>
         </div>

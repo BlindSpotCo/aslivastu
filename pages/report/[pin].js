@@ -1530,22 +1530,43 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                     </div>
                   )}
 
-                  {/* Crime + Power */}
-                  <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8, marginBottom:12 }}>
-                    {[
-                      ['Crime',[['Total crimes',report.total_cognizable_crimes||'—'],['Safety score',(report.scores.crime||'—')+'/100'],['Safer than',report.crime_percentile!=null?report.crime_percentile+'% of areas':'—'],['Crime tier',report.crime_tier||'—'],['Source year','2022-23']]],
-                      ['Power',[['Discom',report.discom||'—'],['Reliability',report.reliability||'—'],['Avg cut hrs',(report.avg_outage_hours||'—')+' hrs/mo'],['Score',(report.scores.power||'—')+'/100']]],
-                    ].map(([title,rows]) => (
-                      <div key={title} style={{ background:card, border:`1px solid ${border}`, borderRadius:12, padding:16 }}>
-                        <p style={{ margin:'0 0 12px', fontSize:12, fontWeight:600, color:muted, textTransform:'uppercase', letterSpacing:'0.06em' }}>{title}</p>
-                        {rows.map(([label,val]) => (
-                          <div key={label} style={{ display:'flex', justifyContent:'space-between', marginBottom:8 }}>
-                            <span style={{ fontSize:12, color:muted }}>{label}</span>
-                            <span style={{ fontSize:12, fontWeight:600, color:text }}>{val}</span>
-                          </div>
-                        ))}
-                      </div>
-                    ))}
+                  {/* Crime */}
+                  <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
+                    <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 14px' }}>
+                      <DimIcon name="crime" size={16} color={ACCENT} />
+                      <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Crime</span>
+                      <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
+                    </div>
+                    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8 }}>
+                      {[
+                        ['Total crimes', report.total_cognizable_crimes ?? '—', 'Total cognizable crimes reported annually for this pin\'s police station catchment — IPC offences serious enough that police can arrest without a warrant. The catchment can span a wider area than any one street or colony.\n\nSource: Delhi Police Annual Report 2022-23.'],
+                        ['Safety score', (report.scores.crime ?? '—') + '/100', 'Inverse-normalized against total cognizable crimes: 250 or fewer scores 100, 650 or more scores 0, linear in between.'],
+                        ['Safer than', report.crime_percentile != null ? report.crime_percentile + '% of areas' : '—', 'Percentile rank of this pin\'s raw crime count against all 86 other tracked areas. A tied count gets no credit either way.\n\nThis is a relative ranking, not a true per-capita rate — it doesn\'t yet account for how many people live in each catchment.'],
+                        ['Crime tier', report.crime_tier ?? '—', 'Very Low / Low / Moderate / High / Very High, based on percentile rank:\n\n• 80%+ = Very Low\n• 60-79% = Low\n• 40-59% = Moderate\n• 20-39% = High\n• Below 20% = Very High'],
+                        ['Source year', '2022-23', null],
+                      ].map(([label, val, tooltip]) => (
+                        <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Power */}
+                  <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
+                    <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 14px' }}>
+                      <DimIcon name="power" size={16} color={ACCENT} />
+                      <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Power supply</span>
+                      <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
+                    </div>
+                    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8 }}>
+                      {[
+                        ['Discom', report.discom ?? '—', 'The electricity distribution company serving this area — BSES Rajdhani, BSES Yamuna, Tata Power, or DHBVN in Haryana NCR.'],
+                        ['Reliability', report.reliability ?? '—', 'Qualitative reliability rating derived from outage frequency and consumer complaint data in DISCOM annual reports.'],
+                        ['Avg cut hrs', (report.avg_outage_hours ?? '—') + ' hrs/mo', 'Average monthly power outage duration in hours, based on DISCOM annual reports and consumer complaint data — not live-metered.'],
+                        ['Score', (report.scores.power ?? '—') + '/100', 'Weighted blend of outage frequency (60% of this dimension) and average outage duration (40%).'],
+                      ].map(([label, val, tooltip]) => (
+                        <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
+                      ))}
+                    </div>
                   </div>
 
                   {/* Infrastructure */}
