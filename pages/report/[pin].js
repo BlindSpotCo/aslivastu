@@ -83,6 +83,15 @@ function weightedComposite(scores, weights, availableKeys) {
   return Math.round(sum)
 }
 
+// Mirrors scoring.py's GRADES thresholds so a recomputed score gets a
+// consistent letter grade instead of just showing a bare number.
+const GRADE_THRESHOLDS = [[90,'A+'],[80,'A'],[70,'B+'],[60,'B'],[50,'C+'],[40,'C'],[0,'D']]
+function gradeFor(score) {
+  if (score == null) return null
+  for (const [min, label] of GRADE_THRESHOLDS) if (score >= min) return label
+  return 'D'
+}
+
 // Minimal line-icon set replacing emoji, one per data dimension — flat
 // stroke icons at 1.6px weight so they sit quietly alongside the rest of
 // the UI instead of looking like a different design language.
@@ -966,6 +975,8 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
   const normWeights    = report ? normalizedWeights(activeWeights, availableDims) : {}
   const recomputedNqi  = report ? weightedComposite(report.scores, activeWeights, availableDims) : null
   const isDefaultWeight = weightPreset === 'Default'
+  const displayedNqi   = isDefaultWeight ? report?.nqi_composite : recomputedNqi
+  const displayedGrade = isDefaultWeight ? report?.grade : gradeFor(recomputedNqi)
 
   return (
     <div style={{ minHeight:'100vh', background:bg, color:text, fontFamily:'"Inter",-apple-system,sans-serif', transition:'background 0.2s' }}>
@@ -1286,10 +1297,10 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                         <h2 style={{ margin:'4px 0 0', fontSize:34, fontWeight:800, letterSpacing:'-0.5px', color:text }}>{meta.name}</h2>
                         <p style={{ margin:'4px 0 0', fontSize:14, color:muted }}>Pin {report.pin_code} · {report.dimensions_scored} of 5 dimensions</p>
                       </div>
-                      <div style={{ textAlign:'center', background:GRADE_COLOR[report.grade]+'18', borderRadius:12, padding:'12px 16px', minWidth:80, boxShadow:`0 0 20px ${GRADE_COLOR[report.grade]}30` }}>
-                        <div style={{ fontSize:46, fontWeight:900, color:GRADE_COLOR[report.grade], lineHeight:1, letterSpacing:'-1px' }}>{report.nqi_composite}</div>
-                        <div style={{ fontSize:18, fontWeight:700, color:GRADE_COLOR[report.grade] }}>{report.grade}</div>
-                        <div style={{ fontSize:10, color:muted, marginTop:2 }}>NQI Score</div>
+                      <div style={{ textAlign:'center', background:GRADE_COLOR[displayedGrade]+'18', borderRadius:12, padding:'12px 16px', minWidth:80, boxShadow:`0 0 20px ${GRADE_COLOR[displayedGrade]}30` }}>
+                        <div style={{ fontSize:46, fontWeight:900, color:GRADE_COLOR[displayedGrade], lineHeight:1, letterSpacing:'-1px' }}>{displayedNqi}</div>
+                        <div style={{ fontSize:18, fontWeight:700, color:GRADE_COLOR[displayedGrade] }}>{displayedGrade}</div>
+                        <div style={{ fontSize:10, color:muted, marginTop:2 }}>{isDefaultWeight ? 'NQI Score' : `Your score · ${weightPreset}`}</div>
                       </div>
                     </div>
                     <div style={{ padding:'12px 14px', background:verdict.color+'15', borderLeft:`3px solid ${verdict.color}`, borderRadius:'0 8px 8px 0' }}>
