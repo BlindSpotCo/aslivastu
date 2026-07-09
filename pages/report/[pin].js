@@ -873,6 +873,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
   const [weightPreset, setWeightPreset] = useState('Default')
   const [customWeights, setCustomWeights] = useState({ crime:30, infrastructure:25, air:20, power:15, schools:10 })
   const [fbText, setFbText] = useState('')
+  const [fbStatus, setFbStatus] = useState('idle')
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: dark)')
@@ -979,11 +980,29 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
   const displayedNqi   = isDefaultWeight ? report?.nqi_composite : recomputedNqi
   const displayedGrade = isDefaultWeight ? report?.grade : gradeFor(recomputedNqi)
 
-  const sendFeedback = () => {
-    const areaLabel = meta ? `${meta.name} (${report.pin_code})` : (report ? report.pin_code : 'unknown pin')
-    const subject = encodeURIComponent(`AsliVastu feedback — ${areaLabel}`)
-    const body = encodeURIComponent(`${fbText}\n\nPin: ${report ? report.pin_code : '—'}\nArea: ${meta ? meta.name : '—'}\nNQI shown: ${report ? report.nqi_composite : '—'} (${report ? report.grade : '—'})`)
-    window.location.href = `mailto:xgurshaan@gmail.com?subject=${subject}&body=${body}`
+  const sendFeedback = async () => {
+    if (!fbText.trim() || fbStatus === 'sending') return
+    setFbStatus('sending')
+    const areaLabel = meta ? `${meta.name} (${report.pin_code})` : (report ? report.pin_code : null)
+    try {
+      const res = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: fbText,
+          area: areaLabel,
+          pin: report ? report.pin_code : null,
+          nqi: report ? report.nqi_composite : null,
+          grade: report ? report.grade : null,
+          page: 'report',
+        }),
+      })
+      if (!res.ok) throw new Error('request failed')
+      setFbStatus('sent')
+      setFbText('')
+    } catch {
+      setFbStatus('error')
+    }
   }
 
   return (
@@ -1762,15 +1781,21 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                 />
                 <button
                   onClick={sendFeedback}
-                  disabled={!fbText.trim()}
+                  disabled={!fbText.trim() || fbStatus === 'sending'}
                   style={{
                     display:'inline-flex', alignItems:'center', gap:6, padding:'8px 16px',
                     background: fbText.trim() ? ACCENT : subtle,
                     color: fbText.trim() ? '#fff' : muted, border:'none', borderRadius:100,
-                    fontSize:12, fontWeight:600, cursor: fbText.trim() ? 'pointer' : 'default',
+                    fontSize:12, fontWeight:600, cursor: fbText.trim() ? 'pointer' : 'default', opacity: fbStatus === 'sending' ? 0.7 : 1,
                   }}>
-                  Send feedback on this pin →
+                  {fbStatus === 'sending' ? 'Sending…' : 'Send feedback on this pin →'}
                 </button>
+                {fbStatus === 'sent' && (
+                  <p style={{ margin:'8px 0 0', fontSize:12, color:'#22c55e' }}>Thanks — got it.</p>
+                )}
+                {fbStatus === 'error' && (
+                  <p style={{ margin:'8px 0 0', fontSize:12, color:'#ef4444' }}>Could not send that — try again in a bit.</p>
+                )}
               </div>
             </>
           )}

@@ -920,10 +920,23 @@ export default function Landing() {
 
   const [fbArea, setFbArea] = useState('')
   const [fbText, setFbText] = useState('')
-  const sendFeedback = () => {
-    const subject = encodeURIComponent(`AsliVastu feedback${fbArea ? ' — ' + fbArea : ''}`)
-    const body = encodeURIComponent(`${fbText}\n\nArea/pin: ${fbArea || '(not specified)'}`)
-    window.location.href = `mailto:xgurshaan@gmail.com?subject=${subject}&body=${body}`
+  const [fbStatus, setFbStatus] = useState('idle')
+  const sendFeedback = async () => {
+    if (!fbText.trim() || fbStatus === 'sending') return
+    setFbStatus('sending')
+    try {
+      const res = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: fbText, area: fbArea, page: 'landing' }),
+      })
+      if (!res.ok) throw new Error('request failed')
+      setFbStatus('sent')
+      setFbText('')
+      setFbArea('')
+    } catch {
+      setFbStatus('error')
+    }
   }
 
   const go = (q) => {
@@ -2162,15 +2175,21 @@ export default function Landing() {
             />
             <button
               onClick={sendFeedback}
-              disabled={!fbText.trim()}
+              disabled={!fbText.trim() || fbStatus === 'sending'}
               style={{
                 marginTop:'auto', display:'inline-flex', alignItems:'center', justifyContent:'center', gap:8,
                 padding:'10px 22px', background: fbText.trim() ? '#e23744' : 'rgba(255,255,255,0.08)',
                 color: fbText.trim() ? '#fff' : 'rgba(255,255,255,0.4)', border:'none', borderRadius:100,
-                fontSize:14, fontWeight:600, cursor: fbText.trim() ? 'pointer' : 'default',
+                fontSize:14, fontWeight:600, cursor: fbText.trim() ? 'pointer' : 'default', opacity: fbStatus === 'sending' ? 0.7 : 1,
               }}>
-              Send feedback →
+              {fbStatus === 'sending' ? 'Sending…' : 'Send feedback →'}
             </button>
+            {fbStatus === 'sent' && (
+              <p style={{ margin:'10px 0 0', fontSize:12, color:'#22c55e' }}>Thanks — got it.</p>
+            )}
+            {fbStatus === 'error' && (
+              <p style={{ margin:'10px 0 0', fontSize:12, color:'#ef4444' }}>Could not send that — try again in a bit.</p>
+            )}
           </div>
         </div>
       </section>
