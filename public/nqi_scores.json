@@ -26,7 +26,7 @@
     "dimensions_total": 5,
     "nqi_composite": 89,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530075",
+    "scored_at": "2026-07-11T08:50:26.581811",
     "total_cognizable_crimes": 95,
     "schools_count": 28,
     "schools_cbse": 28,
@@ -106,7 +106,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 100,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110070",
@@ -135,7 +145,7 @@
     "dimensions_total": 5,
     "nqi_composite": 86,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530017",
+    "scored_at": "2026-07-11T08:50:26.581739",
     "total_cognizable_crimes": 260,
     "schools_count": 16,
     "schools_cbse": 16,
@@ -215,7 +225,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 86,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110021",
@@ -244,7 +264,7 @@
     "dimensions_total": 5,
     "nqi_composite": 86,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530065",
+    "scored_at": "2026-07-11T08:50:26.581796",
     "total_cognizable_crimes": 210,
     "schools_count": 17,
     "schools_cbse": 17,
@@ -324,7 +344,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 92,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 1,
+    "price_context": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Delhi MCD Category A residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 774000,
+      "category": "A",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "201304",
@@ -350,7 +380,7 @@
     "dimensions_total": 5,
     "nqi_composite": 83,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530356",
+    "scored_at": "2026-07-11T08:50:26.582091",
     "total_cognizable_crimes": 225,
     "schools_count": 12,
     "schools_cbse": 12,
@@ -430,7 +460,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 88,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Noida Sector 137 (Expressway, Cat B) — Gautam Budh Nagar (Noida) circle rates (igrsup.gov.in, revised Apr 2025)",
+      "circle_rate_sqm": 87400,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110001",
@@ -459,7 +499,7 @@
     "dimensions_total": 5,
     "nqi_composite": 82,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530007",
+    "scored_at": "2026-07-11T08:50:26.581729",
     "total_cognizable_crimes": 290,
     "schools_count": 15,
     "schools_cbse": 15,
@@ -468,7 +508,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 73,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 1,
+    "price_context": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Delhi MCD Category A residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 774000,
+      "category": "A",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110003",
@@ -497,7 +547,7 @@
     "dimensions_total": 5,
     "nqi_composite": 82,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530143",
+    "scored_at": "2026-07-11T08:50:26.581879",
     "total_cognizable_crimes": 220,
     "schools_count": 24,
     "schools_cbse": 24,
@@ -577,7 +627,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 90,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 1,
+    "price_context": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Delhi MCD Category B residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 245520,
+      "category": "B",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "122413",
@@ -606,7 +666,7 @@
     "dimensions_total": 5,
     "nqi_composite": 82,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530191",
+    "scored_at": "2026-07-11T08:50:26.581930",
     "total_cognizable_crimes": 188,
     "schools_count": 9,
     "schools_cbse": 9,
@@ -679,7 +739,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 95,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Panchgaon (Manesar fringe) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "123106",
@@ -699,7 +769,7 @@
     "dimensions_total": 5,
     "nqi_composite": 82,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530219",
+    "scored_at": "2026-07-11T08:50:26.581959",
     "total_cognizable_crimes": null,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -730,7 +800,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": null,
-    "crime_tier": null
+    "crime_tier": null,
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Dharuhera (Rewari dist, industrial) — Rewari district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110037",
@@ -759,7 +839,7 @@
     "dimensions_total": 5,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530026",
+    "scored_at": "2026-07-11T08:50:26.581749",
     "total_cognizable_crimes": 180,
     "schools_count": 10,
     "schools_cbse": 10,
@@ -839,7 +919,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 96,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110002",
@@ -868,7 +958,7 @@
     "dimensions_total": 5,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530036",
+    "scored_at": "2026-07-11T08:50:26.581758",
     "total_cognizable_crimes": 280,
     "schools_count": 33,
     "schools_cbse": 33,
@@ -948,7 +1038,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 79,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110067",
@@ -977,7 +1077,7 @@
     "dimensions_total": 5,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530041",
+    "scored_at": "2026-07-11T08:50:26.581770",
     "total_cognizable_crimes": 155,
     "schools_count": 2,
     "schools_cbse": 2,
@@ -1001,7 +1101,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 99,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110012",
@@ -1030,7 +1140,7 @@
     "dimensions_total": 5,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530085",
+    "scored_at": "2026-07-11T08:50:26.581822",
     "total_cognizable_crimes": 180,
     "schools_count": 8,
     "schools_cbse": 8,
@@ -1096,7 +1206,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 96,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110007",
@@ -1125,7 +1245,7 @@
     "dimensions_total": 5,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530162",
+    "scored_at": "2026-07-11T08:50:26.581898",
     "total_cognizable_crimes": 195,
     "schools_count": 38,
     "schools_cbse": 38,
@@ -1205,7 +1325,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 94,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "122001",
@@ -1234,7 +1364,7 @@
     "dimensions_total": 5,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530206",
+    "scored_at": "2026-07-11T08:50:26.581945",
     "total_cognizable_crimes": 290,
     "schools_count": 66,
     "schools_cbse": 66,
@@ -1314,7 +1444,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 73,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Gurugram (Civil Lines/old sectors) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "122103",
@@ -1343,7 +1483,7 @@
     "dimensions_total": 5,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-09T11:59:07.530253",
+    "scored_at": "2026-07-11T08:50:26.581992",
     "total_cognizable_crimes": 268,
     "schools_count": 22,
     "schools_cbse": 22,
@@ -1352,7 +1492,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 82,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Gurgaon South (Sohna Rd belt) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110077",
@@ -1381,7 +1531,7 @@
     "dimensions_total": 5,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530021",
+    "scored_at": "2026-07-11T08:50:26.581744",
     "total_cognizable_crimes": 275,
     "schools_count": 5,
     "schools_cbse": 5,
@@ -1426,7 +1576,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 80,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110068",
@@ -1455,7 +1615,7 @@
     "dimensions_total": 5,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530031",
+    "scored_at": "2026-07-11T08:50:26.581753",
     "total_cognizable_crimes": 198,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -1486,7 +1646,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 93,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category E residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 70080,
+      "category": "E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110049",
@@ -1515,7 +1685,7 @@
     "dimensions_total": 5,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530121",
+    "scored_at": "2026-07-11T08:50:26.581855",
     "total_cognizable_crimes": 225,
     "schools_count": 8,
     "schools_cbse": 8,
@@ -1581,7 +1751,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 88,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 1,
+    "price_context": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Delhi MCD Category B residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 245520,
+      "category": "B",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110009",
@@ -1607,7 +1787,7 @@
     "dimensions_total": 5,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530310",
+    "scored_at": "2026-07-11T08:50:26.582046",
     "total_cognizable_crimes": 240,
     "schools_count": 29,
     "schools_cbse": 29,
@@ -1687,7 +1867,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 87,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "201012",
@@ -1713,7 +1903,7 @@
     "dimensions_total": 5,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530378",
+    "scored_at": "2026-07-11T08:50:26.582112",
     "total_cognizable_crimes": 295,
     "schools_count": 52,
     "schools_cbse": 52,
@@ -1722,7 +1912,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 70,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Vasundhara — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110016",
@@ -1751,7 +1951,7 @@
     "dimensions_total": 5,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530001",
+    "scored_at": "2026-07-11T08:50:26.581723",
     "total_cognizable_crimes": 310,
     "schools_count": 11,
     "schools_cbse": 11,
@@ -1831,7 +2031,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 62,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 1,
+    "price_context": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Delhi MCD Category B residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 245520,
+      "category": "B",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110025",
@@ -1860,7 +2070,7 @@
     "dimensions_total": 5,
     "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530070",
+    "scored_at": "2026-07-11T08:50:26.581802",
     "total_cognizable_crimes": 265,
     "schools_count": 9,
     "schools_cbse": 9,
@@ -1933,7 +2143,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 85,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110022",
@@ -1962,7 +2182,7 @@
     "dimensions_total": 5,
     "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530089",
+    "scored_at": "2026-07-11T08:50:26.581826",
     "total_cognizable_crimes": 285,
     "schools_count": 20,
     "schools_cbse": 20,
@@ -2042,7 +2262,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 76,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "122002",
@@ -2068,7 +2298,7 @@
     "dimensions_total": 5,
     "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530300",
+    "scored_at": "2026-07-11T08:50:26.582038",
     "total_cognizable_crimes": 310,
     "schools_count": 10,
     "schools_cbse": 10,
@@ -2148,7 +2378,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 62,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 1,
+    "price_context": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Cyber City / DLF Phase area — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "201014",
@@ -2174,7 +2414,7 @@
     "dimensions_total": 5,
     "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530374",
+    "scored_at": "2026-07-11T08:50:26.582108",
     "total_cognizable_crimes": 312,
     "schools_count": 58,
     "schools_cbse": 58,
@@ -2183,7 +2423,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 61,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Indirapuram — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "201016",
@@ -2209,7 +2459,7 @@
     "dimensions_total": 5,
     "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530383",
+    "scored_at": "2026-07-11T08:50:26.582116",
     "total_cognizable_crimes": 285,
     "schools_count": 42,
     "schools_cbse": 42,
@@ -2218,7 +2468,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 76,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Crossing Republik (township) — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110017",
@@ -2244,7 +2504,7 @@
     "dimensions_total": 5,
     "nqi_composite": 75,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530296",
+    "scored_at": "2026-07-11T08:50:26.582034",
     "total_cognizable_crimes": 290,
     "schools_count": 31,
     "schools_cbse": 31,
@@ -2324,7 +2584,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 73,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "201010",
@@ -2350,7 +2620,7 @@
     "dimensions_total": 5,
     "nqi_composite": 74,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530392",
+    "scored_at": "2026-07-11T08:50:26.582124",
     "total_cognizable_crimes": 342,
     "schools_count": 32,
     "schools_cbse": 32,
@@ -2359,7 +2629,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 51,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Kaushambi (metro, prime) — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110008",
@@ -2388,7 +2668,7 @@
     "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.529984",
+    "scored_at": "2026-07-11T08:50:26.581704",
     "total_cognizable_crimes": 310,
     "schools_count": 14,
     "schools_cbse": 14,
@@ -2468,7 +2748,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 62,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110042",
@@ -2497,7 +2787,7 @@
     "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530148",
+    "scored_at": "2026-07-11T08:50:26.581884",
     "total_cognizable_crimes": 298,
     "schools_count": 25,
     "schools_cbse": 25,
@@ -2577,7 +2867,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 67,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category E residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 70080,
+      "category": "E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110026",
@@ -2606,7 +2906,7 @@
     "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530152",
+    "scored_at": "2026-07-11T08:50:26.581888",
     "total_cognizable_crimes": 340,
     "schools_count": 16,
     "schools_cbse": 16,
@@ -2686,7 +2986,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 55,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 1,
+    "price_context": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Delhi MCD Category B residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 245520,
+      "category": "B",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "121102",
@@ -2715,7 +3025,7 @@
     "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530186",
+    "scored_at": "2026-07-11T08:50:26.581921",
     "total_cognizable_crimes": 320,
     "schools_count": 25,
     "schools_cbse": 25,
@@ -2795,7 +3105,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 57,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Ballabgarh (Faridabad dist) — Faridabad district collector rates (faridabad.nic.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "201301",
@@ -2821,7 +3141,7 @@
     "dimensions_total": 5,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530305",
+    "scored_at": "2026-07-11T08:50:26.582042",
     "total_cognizable_crimes": 380,
     "schools_count": 47,
     "schools_cbse": 47,
@@ -2901,7 +3221,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 40,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Noida Sector 1 (Cat A) — Gautam Budh Nagar (Noida) circle rates (igrsup.gov.in, revised Apr 2025)",
+      "circle_rate_sqm": 125350,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "131027",
@@ -2930,7 +3260,7 @@
     "dimensions_total": 5,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530277",
+    "scored_at": "2026-07-11T08:50:26.582017",
     "total_cognizable_crimes": 275,
     "schools_count": 7,
     "schools_cbse": 7,
@@ -2939,7 +3269,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 80,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Murthal (Sonipat dist, highway) — Sonipat district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "122101",
@@ -2968,7 +3308,7 @@
     "dimensions_total": 5,
     "nqi_composite": 71,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530244",
+    "scored_at": "2026-07-11T08:50:26.581983",
     "total_cognizable_crimes": 322,
     "schools_count": 16,
     "schools_cbse": 16,
@@ -2977,7 +3317,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 56,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Sohna (developing) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110043",
@@ -3006,7 +3356,7 @@
     "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530157",
+    "scored_at": "2026-07-11T08:50:26.581894",
     "total_cognizable_crimes": 368,
     "schools_count": 78,
     "schools_cbse": 78,
@@ -3086,7 +3436,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 43,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "122051",
@@ -3115,7 +3475,7 @@
     "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530181",
+    "scored_at": "2026-07-11T08:50:26.581917",
     "total_cognizable_crimes": 295,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -3132,7 +3492,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 70,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Manesar (industrial) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110058",
@@ -3158,7 +3528,7 @@
     "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530332",
+    "scored_at": "2026-07-11T08:50:26.582071",
     "total_cognizable_crimes": 318,
     "schools_count": 33,
     "schools_cbse": 33,
@@ -3238,7 +3608,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 60,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110063",
@@ -3264,7 +3644,7 @@
     "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530337",
+    "scored_at": "2026-07-11T08:50:26.582075",
     "total_cognizable_crimes": 305,
     "schools_count": 26,
     "schools_cbse": 26,
@@ -3344,7 +3724,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 65,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "122003",
@@ -3370,7 +3760,7 @@
     "dimensions_total": 5,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-09T11:59:07.530341",
+    "scored_at": "2026-07-11T08:50:26.582079",
     "total_cognizable_crimes": 268,
     "schools_count": 2,
     "schools_cbse": 2,
@@ -3394,7 +3784,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 82,
-    "crime_tier": "Very Low"
+    "crime_tier": "Very Low",
+    "price_tier": 1,
+    "price_context": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Sector 55 (Golf Course Rd belt) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "122108",
@@ -3423,7 +3823,7 @@
     "dimensions_total": 5,
     "nqi_composite": 69,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530249",
+    "scored_at": "2026-07-11T08:50:26.581987",
     "total_cognizable_crimes": 298,
     "schools_count": 9,
     "schools_cbse": 9,
@@ -3432,7 +3832,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 67,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Taoru (Nuh dist) — Nuh district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110019",
@@ -3458,7 +3868,7 @@
     "dimensions_total": 5,
     "nqi_composite": 68,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530319",
+    "scored_at": "2026-07-11T08:50:26.582054",
     "total_cognizable_crimes": 320,
     "schools_count": 26,
     "schools_cbse": 26,
@@ -3538,7 +3948,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 57,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110065",
@@ -3567,7 +3987,7 @@
     "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530061",
+    "scored_at": "2026-07-11T08:50:26.581791",
     "total_cognizable_crimes": 342,
     "schools_count": 18,
     "schools_cbse": 18,
@@ -3647,7 +4067,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 51,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110092",
@@ -3676,7 +4106,7 @@
     "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530080",
+    "scored_at": "2026-07-11T08:50:26.581817",
     "total_cognizable_crimes": 358,
     "schools_count": 70,
     "schools_cbse": 70,
@@ -3756,7 +4186,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 45,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110052",
@@ -3785,7 +4225,7 @@
     "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530111",
+    "scored_at": "2026-07-11T08:50:26.581845",
     "total_cognizable_crimes": 389,
     "schools_count": 35,
     "schools_cbse": 35,
@@ -3865,7 +4305,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 36,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110006",
@@ -3894,7 +4344,7 @@
     "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530172",
+    "scored_at": "2026-07-11T08:50:26.581908",
     "total_cognizable_crimes": 380,
     "schools_count": 64,
     "schools_cbse": 64,
@@ -3974,7 +4424,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 40,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category E residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 70080,
+      "category": "E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "124507",
@@ -4003,7 +4463,7 @@
     "dimensions_total": 5,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530224",
+    "scored_at": "2026-07-11T08:50:26.581964",
     "total_cognizable_crimes": 398,
     "schools_count": 32,
     "schools_cbse": 32,
@@ -4083,7 +4543,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 33,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Bahadurgarh (Jhajjar dist, Delhi border) — Jhajjar district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110073",
@@ -4112,7 +4582,7 @@
     "dimensions_total": 5,
     "nqi_composite": 66,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530051",
+    "scored_at": "2026-07-11T08:50:26.581781",
     "total_cognizable_crimes": 428,
     "schools_count": 22,
     "schools_cbse": 22,
@@ -4192,7 +4662,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 24,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110024",
@@ -4218,7 +4698,7 @@
     "dimensions_total": 5,
     "nqi_composite": 66,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530291",
+    "scored_at": "2026-07-11T08:50:26.582030",
     "total_cognizable_crimes": 350,
     "schools_count": 16,
     "schools_cbse": 16,
@@ -4298,7 +4778,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 50,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110036",
@@ -4327,7 +4817,7 @@
     "dimensions_total": 5,
     "nqi_composite": 65,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530116",
+    "scored_at": "2026-07-11T08:50:26.581851",
     "total_cognizable_crimes": 390,
     "schools_count": 19,
     "schools_cbse": 19,
@@ -4407,7 +4897,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 35,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Delhi MCD Category H residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 23280,
+      "category": "H",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "123401",
@@ -4436,7 +4936,7 @@
     "dimensions_total": 5,
     "nqi_composite": 65,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530268",
+    "scored_at": "2026-07-11T08:50:26.582005",
     "total_cognizable_crimes": 342,
     "schools_count": 8,
     "schools_cbse": 8,
@@ -4445,7 +4945,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 51,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Rewari Town — Rewari district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110018",
@@ -4471,7 +4981,7 @@
     "dimensions_total": 5,
     "nqi_composite": 65,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530314",
+    "scored_at": "2026-07-11T08:50:26.582050",
     "total_cognizable_crimes": 355,
     "schools_count": 43,
     "schools_cbse": 43,
@@ -4551,7 +5061,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 48,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110094",
@@ -4580,7 +5100,7 @@
     "dimensions_total": 5,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.529994",
+    "scored_at": "2026-07-11T08:50:26.581715",
     "total_cognizable_crimes": 412,
     "schools_count": 48,
     "schools_cbse": 48,
@@ -4660,7 +5180,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 29,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "125050",
@@ -4689,7 +5219,7 @@
     "dimensions_total": 5,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530201",
+    "scored_at": "2026-07-11T08:50:26.581940",
     "total_cognizable_crimes": 362,
     "schools_count": 6,
     "schools_cbse": 6,
@@ -4698,7 +5228,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 44,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Fatehabad — Fatehabad district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "201002",
@@ -4724,7 +5264,7 @@
     "dimensions_total": 5,
     "nqi_composite": 63,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530387",
+    "scored_at": "2026-07-11T08:50:26.582120",
     "total_cognizable_crimes": 358,
     "schools_count": 25,
     "schools_cbse": 25,
@@ -4733,7 +5273,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 45,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Raj Nagar (RDC belt) — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110095",
@@ -4762,7 +5312,7 @@
     "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530012",
+    "scored_at": "2026-07-11T08:50:26.581734",
     "total_cognizable_crimes": 388,
     "schools_count": 32,
     "schools_cbse": 32,
@@ -4842,7 +5392,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 37,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110032",
@@ -4871,7 +5431,7 @@
     "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530167",
+    "scored_at": "2026-07-11T08:50:26.581903",
     "total_cognizable_crimes": 412,
     "schools_count": 36,
     "schools_cbse": 36,
@@ -4951,7 +5511,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 29,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "135001",
@@ -4980,7 +5550,7 @@
     "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530229",
+    "scored_at": "2026-07-11T08:50:26.581969",
     "total_cognizable_crimes": 445,
     "schools_count": 21,
     "schools_cbse": 21,
@@ -5060,7 +5630,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 18,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Yamuna Nagar (outer) — Yamuna Nagar district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "123001",
@@ -5089,7 +5669,7 @@
     "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530263",
+    "scored_at": "2026-07-11T08:50:26.582000",
     "total_cognizable_crimes": 355,
     "schools_count": 9,
     "schools_cbse": 9,
@@ -5098,7 +5678,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 48,
-    "crime_tier": "Moderate"
+    "crime_tier": "Moderate",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Jhajjar — Jhajjar district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "122502",
@@ -5127,7 +5717,7 @@
     "dimensions_total": 5,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530282",
+    "scored_at": "2026-07-11T08:50:26.582021",
     "total_cognizable_crimes": 385,
     "schools_count": 11,
     "schools_cbse": 11,
@@ -5136,7 +5726,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 39,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Rewari — Rewari district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "131029",
@@ -5165,7 +5765,7 @@
     "dimensions_total": 5,
     "nqi_composite": 61,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530273",
+    "scored_at": "2026-07-11T08:50:26.582012",
     "total_cognizable_crimes": 388,
     "schools_count": 9,
     "schools_cbse": 9,
@@ -5174,7 +5774,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 37,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Kundli (Sonipat dist, Delhi border industrial) — Sonipat district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "132103",
@@ -5203,7 +5813,7 @@
     "dimensions_total": 5,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530210",
+    "scored_at": "2026-07-11T08:50:26.581950",
     "total_cognizable_crimes": 495,
     "schools_count": 31,
     "schools_cbse": 31,
@@ -5283,7 +5893,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 10,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Panipat — Panipat district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "125055",
@@ -5312,7 +5932,7 @@
     "dimensions_total": 5,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530233",
+    "scored_at": "2026-07-11T08:50:26.581974",
     "total_cognizable_crimes": 418,
     "schools_count": 6,
     "schools_cbse": 6,
@@ -5321,7 +5941,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 27,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Sirsa — Sirsa district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110044",
@@ -5347,7 +5977,7 @@
     "dimensions_total": 5,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-07-09T11:59:07.530324",
+    "scored_at": "2026-07-11T08:50:26.582063",
     "total_cognizable_crimes": 402,
     "schools_count": 33,
     "schools_cbse": 33,
@@ -5427,7 +6057,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 32,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category E residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 70080,
+      "category": "E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110078",
@@ -5456,7 +6096,7 @@
     "dimensions_total": 5,
     "nqi_composite": 59,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530176",
+    "scored_at": "2026-07-11T08:50:26.581912",
     "total_cognizable_crimes": 520,
     "schools_count": 7,
     "schools_cbse": 7,
@@ -5515,7 +6155,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 5,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "131001",
@@ -5544,7 +6194,7 @@
     "dimensions_total": 5,
     "nqi_composite": 59,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530239",
+    "scored_at": "2026-07-11T08:50:26.581979",
     "total_cognizable_crimes": 468,
     "schools_count": 55,
     "schools_cbse": 55,
@@ -5624,7 +6274,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 13,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Sonipat — Sonipat district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110020",
@@ -5653,7 +6313,7 @@
     "dimensions_total": 5,
     "nqi_composite": 58,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530099",
+    "scored_at": "2026-07-11T08:50:26.581836",
     "total_cognizable_crimes": 425,
     "schools_count": 4,
     "schools_cbse": 4,
@@ -5691,7 +6351,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 25,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category F residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 56640,
+      "category": "F",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110005",
@@ -5717,7 +6387,7 @@
     "dimensions_total": 5,
     "nqi_composite": 58,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530287",
+    "scored_at": "2026-07-11T08:50:26.582025",
     "total_cognizable_crimes": 445,
     "schools_count": 32,
     "schools_cbse": 32,
@@ -5797,7 +6467,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 18,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "201309",
@@ -5823,7 +6503,7 @@
     "dimensions_total": 5,
     "nqi_composite": 58,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530360",
+    "scored_at": "2026-07-11T08:50:26.582096",
     "total_cognizable_crimes": 298,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -5840,7 +6520,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 67,
-    "crime_tier": "Low"
+    "crime_tier": "Low",
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Noida Sector 62 (IT hub, Cat A) — Gautam Budh Nagar (Noida) circle rates (igrsup.gov.in, revised Apr 2025)",
+      "circle_rate_sqm": 125350,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110084",
@@ -5869,7 +6559,7 @@
     "dimensions_total": 5,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530138",
+    "scored_at": "2026-07-11T08:50:26.581874",
     "total_cognizable_crimes": 462,
     "schools_count": 19,
     "schools_cbse": 19,
@@ -5949,7 +6639,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 17,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "124001",
@@ -5978,7 +6678,7 @@
     "dimensions_total": 5,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530215",
+    "scored_at": "2026-07-11T08:50:26.581955",
     "total_cognizable_crimes": 520,
     "schools_count": 61,
     "schools_cbse": 61,
@@ -6058,7 +6758,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 5,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Rohtak — Rohtak district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110053",
@@ -6084,7 +6794,7 @@
     "dimensions_total": 5,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530328",
+    "scored_at": "2026-07-11T08:50:26.582067",
     "total_cognizable_crimes": 435,
     "schools_count": 50,
     "schools_cbse": 50,
@@ -6164,7 +6874,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 23,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category F residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 56640,
+      "category": "F",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110040",
@@ -6193,7 +6913,7 @@
     "dimensions_total": 5,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530055",
+    "scored_at": "2026-07-11T08:50:26.581786",
     "total_cognizable_crimes": 480,
     "schools_count": 27,
     "schools_cbse": 27,
@@ -6273,7 +6993,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 12,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "121001",
@@ -6302,7 +7032,7 @@
     "dimensions_total": 5,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530196",
+    "scored_at": "2026-07-11T08:50:26.581935",
     "total_cognizable_crimes": 512,
     "schools_count": 37,
     "schools_cbse": 37,
@@ -6382,7 +7112,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 7,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Faridabad (general; Sec 14/15 higher) — Faridabad district collector rates (faridabad.nic.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "122505",
@@ -6411,7 +7151,7 @@
     "dimensions_total": 5,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530258",
+    "scored_at": "2026-07-11T08:50:26.581996",
     "total_cognizable_crimes": 410,
     "schools_count": 6,
     "schools_cbse": 6,
@@ -6420,7 +7160,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 31,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Mahendragarh — Mahendragarh district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "201206",
@@ -6446,7 +7196,7 @@
     "dimensions_total": 5,
     "nqi_composite": 54,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530396",
+    "scored_at": "2026-07-11T08:50:26.582128",
     "total_cognizable_crimes": 422,
     "schools_count": 14,
     "schools_cbse": 14,
@@ -6455,7 +7205,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 26,
-    "crime_tier": "High"
+    "crime_tier": "High",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Muradnagar — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110085",
@@ -6484,7 +7244,7 @@
     "dimensions_total": 5,
     "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530094",
+    "scored_at": "2026-07-11T08:50:26.581831",
     "total_cognizable_crimes": 560,
     "schools_count": 71,
     "schools_cbse": 71,
@@ -6564,7 +7324,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 1,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category E residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 70080,
+      "category": "E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110039",
@@ -6593,7 +7363,7 @@
     "dimensions_total": 5,
     "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530126",
+    "scored_at": "2026-07-11T08:50:26.581869",
     "total_cognizable_crimes": 445,
     "schools_count": 26,
     "schools_cbse": 26,
@@ -6673,7 +7443,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 18,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "121002",
@@ -6699,7 +7479,7 @@
     "dimensions_total": 5,
     "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-07-09T11:59:07.530364",
+    "scored_at": "2026-07-11T08:50:26.582100",
     "total_cognizable_crimes": 465,
     "schools_count": 23,
     "schools_cbse": 23,
@@ -6779,7 +7559,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 14,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Faridabad NIT — Faridabad district collector rates (faridabad.nic.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "245101",
@@ -6805,7 +7595,7 @@
     "dimensions_total": 5,
     "nqi_composite": 49,
     "grade": "C",
-    "scored_at": "2026-07-09T11:59:07.530401",
+    "scored_at": "2026-07-11T08:50:26.582132",
     "total_cognizable_crimes": 465,
     "schools_count": 9,
     "schools_cbse": 9,
@@ -6814,7 +7604,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 14,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Hapur — Hapur district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "122107",
@@ -6840,7 +7640,7 @@
     "dimensions_total": 5,
     "nqi_composite": 48,
     "grade": "C",
-    "scored_at": "2026-07-09T11:59:07.530346",
+    "scored_at": "2026-07-11T08:50:26.582083",
     "total_cognizable_crimes": 445,
     "schools_count": 5,
     "schools_cbse": 5,
@@ -6885,7 +7685,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 18,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Nuh (Mewat) — Nuh district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110041",
@@ -6914,7 +7724,7 @@
     "dimensions_total": 5,
     "nqi_composite": 47,
     "grade": "C",
-    "scored_at": "2026-07-09T11:59:07.530105",
+    "scored_at": "2026-07-11T08:50:26.581841",
     "total_cognizable_crimes": 490,
     "schools_count": 100,
     "schools_cbse": 100,
@@ -6994,7 +7804,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 11,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "110033",
@@ -7023,7 +7843,7 @@
     "dimensions_total": 5,
     "nqi_composite": 45,
     "grade": "C",
-    "scored_at": "2026-07-09T11:59:07.530046",
+    "scored_at": "2026-07-11T08:50:26.581776",
     "total_cognizable_crimes": 610,
     "schools_count": 23,
     "schools_cbse": 23,
@@ -7103,7 +7923,17 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 0,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "201102",
@@ -7129,7 +7959,7 @@
     "dimensions_total": 5,
     "nqi_composite": 45,
     "grade": "C",
-    "scored_at": "2026-07-09T11:59:07.530369",
+    "scored_at": "2026-07-11T08:50:26.582104",
     "total_cognizable_crimes": 548,
     "schools_count": 20,
     "schools_cbse": 20,
@@ -7138,7 +7968,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 2,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Loni — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "203001",
@@ -7164,7 +8004,7 @@
     "dimensions_total": 5,
     "nqi_composite": 44,
     "grade": "C",
-    "scored_at": "2026-07-09T11:59:07.530405",
+    "scored_at": "2026-07-11T08:50:26.582136",
     "total_cognizable_crimes": 498,
     "schools_count": 11,
     "schools_cbse": 11,
@@ -7173,7 +8013,17 @@
     "schools_list": [],
     "schools_avg_pass": null,
     "crime_percentile": 8,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Bulandshahr — Bulandshahr district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   },
   {
     "pin_code": "201001",
@@ -7199,7 +8049,7 @@
     "dimensions_total": 5,
     "nqi_composite": 42,
     "grade": "C",
-    "scored_at": "2026-07-09T11:59:07.530351",
+    "scored_at": "2026-07-11T08:50:26.582087",
     "total_cognizable_crimes": 538,
     "schools_count": 32,
     "schools_cbse": 32,
@@ -7279,6 +8129,16 @@
     ],
     "schools_avg_pass": null,
     "crime_percentile": 4,
-    "crime_tier": "Very High"
+    "crime_tier": "Very High",
+    "price_tier": 4,
+    "price_context": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Ghaziabad (general) — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP",
+      "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases)."
+    }
   }
 ]

@@ -135,6 +135,8 @@ function DimIcon({ name, size = 18, color = 'currentColor', strokeWidth = 1.6 })
       return <svg {...p}><path d="M20 14.2A8.3 8.3 0 1 1 9.8 4a6.8 6.8 0 0 0 10.2 10.2Z"/></svg>
     case 'compare':
       return <svg {...p}><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="M16 21l4-4-4-4"/><path d="M20 17H4"/></svg>
+    case 'price':
+      return <svg {...p}><path d="M20.6 13.4 12 22l-9-9V4h9l8.6 8.6a1.4 1.4 0 0 1 0 2Z"/><circle cx="7.4" cy="7.4" r="1.2"/></svg>
     default:
       return null
   }
@@ -1479,6 +1481,32 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                     )
                   })}
                 </div>
+
+                {/* Price context — government circle/collector rate band (Issue #7).
+                    Informational only, deliberately NOT part of the NQI, same stance
+                    as crime_percentile. Free to view. */}
+                {report.price_context && (
+                  <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginTop:16 }}>
+                    <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 14px' }}>
+                      <DimIcon name="price" size={16} color={ACCENT} />
+                      <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Price context</span>
+                      <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
+                    </div>
+                    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8 }}>
+                      {[
+                        ['Price band', report.price_context.label, 'Relative affordability band across all tracked NCR pins, anchored to official government circle/collector rates:\n\n• 1 Premium (priciest)\n• 2 Upper\n• 3 Mid\n• 4 Modest\n• 5 Value (cheapest)'],
+                        ['Tier', report.price_context.tier + ' of 5', 'Lower tier = more expensive area. Ranks this PIN\'s typical government valuation band relative to every other tracked NCR area.'],
+                        ['Circle rate', report.price_context.circle_rate_sqm ? '₹' + Number(report.price_context.circle_rate_sqm).toLocaleString('en-IN') + '/m²' : 'See basis', 'Government circle/collector rate — the LEGAL MINIMUM valuation for stamp duty, not market price. Shown as an exact ₹/m² only where an official per-sqm residential-land figure exists (Delhi MCD categories, Noida sector categories). Other districts publish rates per sq-yard or by licensed colony, which are not comparable per-sqm.'],
+                      ].map(([label, val, tooltip]) => (
+                        <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
+                      ))}
+                    </div>
+                    <p style={{ fontSize:12, color:muted, margin:'12px 0 0', lineHeight:1.5 }}>{report.price_context.basis}</p>
+                    <p style={{ fontSize:12, color:muted, margin:'8px 0 0', lineHeight:1.5 }}>
+                      <strong style={{ color:text }}>Government minimum valuation, not market price.</strong> Circle/collector rates are the legal floor for property registration — actual market rates are typically higher and vary within a single PIN. This band is context only and is <strong style={{ color:text }}>not</strong> part of the NQI score.
+                    </p>
+                  </div>
+                )}
 
               </div>{/* end right column */}
               </div>{/* end report-grid */}
