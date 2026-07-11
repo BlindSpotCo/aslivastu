@@ -235,6 +235,50 @@ def add_crime_percentiles(results):
         r["crime_tier"] = crime_tier_for(percentile)
     return results
 
+# Government circle/collector rate context. This is deliberately NOT folded into
+# the NQI weight — same design stance as crime_percentile: it's informational
+# context, not a scored dimension. It answers the broker/NRI-investor request
+# ("the score has no link to price") using official circle/collector rates (the
+# legal minimum property valuation for stamp duty), which — unlike per-catchment
+# population — genuinely exist at locality/sector resolution. It is NOT market
+# price and the UI must label it as such to avoid the false-precision trap we
+# avoided with per-capita crime.
+PRICE_TIER_FILE = Path("./data/raw/price_tier_by_pin.json")
+
+def add_price_context(results):
+    """Attach a per-PIN government-circle-rate price band (tier 1 Premium →
+    5 Value) from data/raw/price_tier_by_pin.json. Tiers are relative across
+    tracked NCR pins, anchored to official circle/collector rates; an exact
+    circle_rate_sqm is carried only where a comparable per-sqm residential-land
+    figure is notified (Delhi MCD categories, Noida sector categories)."""
+    try:
+        blob = json.loads(PRICE_TIER_FILE.read_text())
+    except (FileNotFoundError, ValueError):
+        log.warning("price_tier_by_pin.json missing/invalid — skipping price context")
+        for r in results:
+            r["price_tier"] = None
+            r["price_context"] = None
+        return results
+    pins = blob.get("pins", {})
+    disclaimer = blob.get("_meta", {}).get("disclaimer")
+    for r in results:
+        p = pins.get(r["pin_code"])
+        if not p:
+            r["price_tier"] = None
+            r["price_context"] = None
+            continue
+        r["price_tier"] = p["tier"]
+        r["price_context"] = {
+            "tier":           p["tier"],
+            "label":          p["label"],
+            "basis":          p["basis"],
+            "circle_rate_sqm": p.get("circle_rate_sqm"),
+            "category":       p.get("category"),
+            "source":         p["source"],
+            "disclaimer":     disclaimer,
+        }
+    return results
+
 def save_methodology():
     """Publish the scoring rubric as its own file so it can be surfaced in the
     UI (e.g. an 'How is this calculated?' panel) instead of staying implicit
@@ -262,6 +306,7 @@ def run():
     master  = _merge_schools(master)
     results = [compute_nqi(r) for r in master if r.get("pin_code")]
     results = add_crime_percentiles(results)
+    results = add_price_context(results)
     results.sort(key=lambda r: r["nqi_composite"] or 0, reverse=True)
     path = save_processed(results, "nqi_scores")
     log.info(f"Scores saved → {path}")
