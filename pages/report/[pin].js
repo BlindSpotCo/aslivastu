@@ -1482,32 +1482,6 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                   })}
                 </div>
 
-                {/* Price context — government circle/collector rate band (Issue #7).
-                    Informational only, deliberately NOT part of the NQI, same stance
-                    as crime_percentile. Free to view. */}
-                {report.price_context && (
-                  <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginTop:16 }}>
-                    <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 14px' }}>
-                      <DimIcon name="price" size={16} color={ACCENT} />
-                      <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Price context</span>
-                      <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
-                    </div>
-                    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8 }}>
-                      {[
-                        ['Price band', report.price_context.label, 'Relative affordability band across all tracked NCR pins, anchored to official government circle/collector rates:\n\n• 1 Premium (priciest)\n• 2 Upper\n• 3 Mid\n• 4 Modest\n• 5 Value (cheapest)'],
-                        ['Tier', report.price_context.tier + ' of 5', 'Lower tier = more expensive area. Ranks this PIN\'s typical government valuation band relative to every other tracked NCR area.'],
-                        ['Circle rate', report.price_context.circle_rate_sqm ? '₹' + Number(report.price_context.circle_rate_sqm).toLocaleString('en-IN') + '/m²' : 'See basis', 'Government circle/collector rate — the LEGAL MINIMUM valuation for stamp duty, not market price. Shown as an exact ₹/m² only where an official per-sqm residential-land figure exists (Delhi MCD categories, Noida sector categories). Other districts publish rates per sq-yard or by licensed colony, which are not comparable per-sqm.'],
-                      ].map(([label, val, tooltip]) => (
-                        <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
-                      ))}
-                    </div>
-                    <p style={{ fontSize:12, color:muted, margin:'12px 0 0', lineHeight:1.5 }}>{report.price_context.basis}</p>
-                    <p style={{ fontSize:12, color:muted, margin:'8px 0 0', lineHeight:1.5 }}>
-                      <strong style={{ color:text }}>Government minimum valuation, not market price.</strong> Circle/collector rates are the legal floor for property registration — actual market rates are typically higher and vary within a single PIN. This band is context only and is <strong style={{ color:text }}>not</strong> part of the NQI score.
-                    </p>
-                  </div>
-                )}
-
               </div>{/* end right column */}
               </div>{/* end report-grid */}
 
@@ -1557,6 +1531,73 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                       ))}
                     </div>
                   )}
+
+                  {/* Price context — plain-language govt circle-rate band (Issue #7).
+                      Informational only, deliberately NOT part of the NQI. */}
+                  {report.price_context && (() => {
+                    const pc = report.price_context
+                    const bands = [
+                      { t:1, label:'Premium' },
+                      { t:2, label:'Upper' },
+                      { t:3, label:'Mid' },
+                      { t:4, label:'Modest' },
+                      { t:5, label:'Value' },
+                    ]
+                    const plain = {
+                      1:'among the most expensive areas in the NCR',
+                      2:'pricier than most NCR areas',
+                      3:'around the middle of the NCR price range',
+                      4:'more affordable than most NCR areas',
+                      5:'among the most affordable areas in the NCR',
+                    }[pc.tier]
+                    return (
+                      <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
+                        <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 10px' }}>
+                          <DimIcon name="price" size={16} color={ACCENT} />
+                          <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Price context</span>
+                          <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
+                        </div>
+
+                        <p style={{ fontSize:13, color:muted, margin:'0 0 18px', lineHeight:1.6 }}>
+                          Roughly how expensive is it to buy here? This band is based on the <strong style={{ color:text }}>circle rate</strong> — the government&apos;s official minimum property price, used to work out stamp duty when a home is registered.
+                        </p>
+
+                        {/* Tier scale */}
+                        <div style={{ display:'flex', gap:5, marginBottom:8 }}>
+                          {bands.map(b => {
+                            const on = b.t === pc.tier
+                            return (
+                              <div key={b.t} style={{ flex:1, textAlign:'center' }}>
+                                <div style={{ height:9, borderRadius:99, background:on?ACCENT:subtle, boxShadow:on?`0 0 0 3px ${ACCENT}33`:'none' }}/>
+                                <div style={{ fontSize:11, fontWeight:on?800:500, color:on?text:muted, marginTop:7 }}>{b.label}</div>
+                              </div>
+                            )
+                          })}
+                        </div>
+                        <div style={{ display:'flex', justifyContent:'space-between', fontSize:10.5, color:muted, opacity:0.8, marginBottom:16 }}>
+                          <span>Most expensive</span><span>Most affordable</span>
+                        </div>
+
+                        <p style={{ fontSize:14, color:text, margin:'0 0 6px', lineHeight:1.55 }}>
+                          This area is in the <strong>{pc.label}</strong> band — {plain}.
+                        </p>
+                        <p style={{ fontSize:13, color:muted, margin:'0 0 16px', lineHeight:1.6 }}>
+                          {pc.circle_rate_sqm
+                            ? <>Its government minimum rate is <strong style={{ color:text }}>₹{Number(pc.circle_rate_sqm).toLocaleString('en-IN')} per square metre</strong> of residential land.</>
+                            : <>This state sets rates by the plot or square yard rather than per square metre, so there&apos;s no single per-m² number to show — the band comes from the local collector-rate schedule.</>}
+                        </p>
+
+                        <div style={{ background:subtle, borderRadius:10, padding:'12px 14px' }}>
+                          <p style={{ fontSize:12.5, color:muted, margin:0, lineHeight:1.6 }}>
+                            <strong style={{ color:text }}>Good to know:</strong> this is the government&apos;s minimum valuation for paperwork — <strong style={{ color:text }}>not the actual market price</strong>, which is usually higher and can vary street to street. It&apos;s shown for context and does <strong style={{ color:text }}>not</strong> affect the livability score.
+                          </p>
+                          <p style={{ fontSize:11, color:muted, margin:'8px 0 0', lineHeight:1.5, opacity:0.8 }}>
+                            Source: {pc.basis}
+                          </p>
+                        </div>
+                      </div>
+                    )
+                  })()}
 
                   {/* Crime */}
                   <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
