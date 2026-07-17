@@ -1,0 +1,731 @@
+{
+  "_meta": {
+    "field": "price_context",
+    "purpose": "Indicative relative price band per PIN, anchored to government circle/collector rates (the legal minimum valuation for property registration, used for stamp duty).",
+    "disclaimer": "This is the GOVERNMENT MINIMUM VALUATION (circle/collector rate), NOT the market price. Actual market rates are typically higher and vary widely. A single PIN can span cheaper and pricier pockets; the tier reflects the area's typical band, not any one street. Tiers are relative across tracked NCR pins, not an absolute cross-state rupee comparison (states compute circle rates on different bases).",
+    "tiers": {
+      "1": "Premium",
+      "2": "Upper",
+      "3": "Mid",
+      "4": "Modest",
+      "5": "Value"
+    },
+    "note_rate_sqm": "circle_rate_sqm is populated only where an official per-sqm residential-land figure exists on a comparable basis (Delhi MCD categories; Noida sector categories). Null elsewhere because those states publish rates per sq-yard / per-acre / by licensed-colony, which are not directly comparable per-sqm.",
+    "not_in_composite": true,
+    "sources": {
+      "delhi": "Govt of NCT of Delhi — MCD circle rates / DORIS (2014 notification, in force)",
+      "gurugram": "gurugram.gov.in collector rates 2024–25",
+      "faridabad": "faridabad.nic.in collector rates 2024–25",
+      "noida": "igrsup.gov.in — Gautam Budh Nagar circle rates (revised Apr 2025)",
+      "ghaziabad": "igrsup.gov.in — Ghaziabad circle rates",
+      "other_haryana": "jamabandi.nic.in district collector rates",
+      "other_up": "igrsup.gov.in district circle rates"
+    }
+  },
+  "pins": {
+    "110001": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Delhi MCD Category A residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 774000,
+      "category": "A",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110002": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110003": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Delhi MCD Category B residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 245520,
+      "category": "B",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110005": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110006": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category E residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 70080,
+      "category": "E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110007": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110008": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110009": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110010": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110012": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110016": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Delhi MCD Category B residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 245520,
+      "category": "B",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110017": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110018": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110019": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110020": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category F residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 56640,
+      "category": "F",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110021": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Delhi MCD Category A residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 774000,
+      "category": "A",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110022": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110024": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110025": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110026": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Delhi MCD Category B residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 245520,
+      "category": "B",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110032": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110033": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110034": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110036": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Delhi MCD Category H residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 23280,
+      "category": "H",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110037": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110039": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110040": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110041": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110042": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category E residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 70080,
+      "category": "E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110043": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110044": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category E residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 70080,
+      "category": "E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110049": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Delhi MCD Category B residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 245520,
+      "category": "B",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110052": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110053": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category F residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 56640,
+      "category": "F",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110058": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110063": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110065": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110067": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110068": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category E residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 70080,
+      "category": "E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110070": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110073": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110077": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110078": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110084": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110085": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category E residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 70080,
+      "category": "E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110091": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110092": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Delhi MCD Category C residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 159840,
+      "category": "C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110094": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Delhi MCD Category G residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 46200,
+      "category": "G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "110095": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Delhi MCD Category D residential-land circle rate (2014 notification)",
+      "circle_rate_sqm": 127680,
+      "category": "D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (DORIS)"
+    },
+    "122001": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Gurugram (Civil Lines/old sectors) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "122002": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Cyber City / DLF Phase area — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "122003": {
+      "tier": 1,
+      "label": "Premium",
+      "basis": "Sector 55 (Golf Course Rd belt) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "122051": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Manesar (industrial) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "122413": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Panchgaon (Manesar fringe) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "122101": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Sohna (developing) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "122103": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Gurgaon South (Sohna Rd belt) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "122107": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Nuh (Mewat) — Nuh district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "122108": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Taoru (Nuh dist) — Nuh district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "122502": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Rewari — Rewari district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "122505": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Mahendragarh — Mahendragarh district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "123106": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Dharuhera (Rewari dist, industrial) — Rewari district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "123401": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Rewari Town — Rewari district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "123001": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Jhajjar — Jhajjar district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "121001": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Faridabad (general; Sec 14/15 higher) — Faridabad district collector rates (faridabad.nic.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "121002": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Faridabad NIT — Faridabad district collector rates (faridabad.nic.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "121102": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Ballabgarh (Faridabad dist) — Faridabad district collector rates (faridabad.nic.in, 2024–25)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "124001": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Rohtak — Rohtak district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "124507": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Bahadurgarh (Jhajjar dist, Delhi border) — Jhajjar district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "125050": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Fatehabad — Fatehabad district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "125055": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Sirsa — Sirsa district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "131001": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Sonipat — Sonipat district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "131027": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Murthal (Sonipat dist, highway) — Sonipat district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "131029": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Kundli (Sonipat dist, Delhi border industrial) — Sonipat district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "132103": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Panipat — Panipat district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "135001": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Yamuna Nagar (outer) — Yamuna Nagar district collector rates (jamabandi.nic.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of Haryana"
+    },
+    "201301": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Noida Sector 1 (Cat A) — Gautam Budh Nagar (Noida) circle rates (igrsup.gov.in, revised Apr 2025)",
+      "circle_rate_sqm": 125350,
+      "category": null,
+      "source": "Govt of UP"
+    },
+    "201304": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Noida Sector 137 (Expressway, Cat B) — Gautam Budh Nagar (Noida) circle rates (igrsup.gov.in, revised Apr 2025)",
+      "circle_rate_sqm": 87400,
+      "category": null,
+      "source": "Govt of UP"
+    },
+    "201309": {
+      "tier": 2,
+      "label": "Upper",
+      "basis": "Noida Sector 62 (IT hub, Cat A) — Gautam Budh Nagar (Noida) circle rates (igrsup.gov.in, revised Apr 2025)",
+      "circle_rate_sqm": 125350,
+      "category": null,
+      "source": "Govt of UP"
+    },
+    "201001": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Ghaziabad (general) — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP"
+    },
+    "201002": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Raj Nagar (RDC belt) — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP"
+    },
+    "201010": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Kaushambi (metro, prime) — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP"
+    },
+    "201012": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Vasundhara — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP"
+    },
+    "201014": {
+      "tier": 3,
+      "label": "Mid",
+      "basis": "Indirapuram — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP"
+    },
+    "201016": {
+      "tier": 4,
+      "label": "Modest",
+      "basis": "Crossing Republik (township) — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP"
+    },
+    "201102": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Loni — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP"
+    },
+    "201206": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Muradnagar — Ghaziabad district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP"
+    },
+    "245101": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Hapur — Hapur district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP"
+    },
+    "203001": {
+      "tier": 5,
+      "label": "Value",
+      "basis": "Bulandshahr — Bulandshahr district circle rates (igrsup.gov.in)",
+      "circle_rate_sqm": null,
+      "category": null,
+      "source": "Govt of UP"
+    }
+  }
+}
