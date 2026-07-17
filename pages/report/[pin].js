@@ -1532,69 +1532,73 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                     </div>
                   )}
 
-                  {/* Price context — plain-language govt circle-rate band (Issue #7).
+                  {/* Price context — buyer-facing ₹/sq ft govt circle-rate band (Issue #7).
                       Informational only, deliberately NOT part of the NQI. */}
-                  {report.price_context && (() => {
+                  {report.price_context && report.price_context.rate_sqft && (() => {
                     const pc = report.price_context
-                    const bands = [
-                      { t:1, label:'Premium' },
-                      { t:2, label:'Upper' },
-                      { t:3, label:'Mid' },
-                      { t:4, label:'Modest' },
-                      { t:5, label:'Value' },
-                    ]
-                    const plain = {
-                      1:'among the most expensive areas in the NCR',
-                      2:'pricier than most NCR areas',
-                      3:'around the middle of the NCR price range',
-                      4:'more affordable than most NCR areas',
-                      5:'among the most affordable areas in the NCR',
-                    }[pc.tier]
+                    const bands = ['Premium','Upper','Mid','Modest','Value']
+                    const inr = n => '₹' + Number(n).toLocaleString('en-IN')
+                    const [lo, hi] = pc.rate_sqft
+                    const typeLabel = pc.rate_type === 'land'
+                      ? 'government land / plot rate'
+                      : pc.rate_type === 'apartment/land'
+                        ? 'government rate (flats or plots)'
+                        : 'government apartment rate'
+                    // market estimate: circle rate is a floor; NCR market ~20-70% higher.
+                    const mLo = Math.round(lo * 1.2 / 100) * 100
+                    const mHi = Math.round(hi * 1.6 / 100) * 100
+                    const fmtTot = v => v >= 10000000
+                      ? '₹' + (v / 10000000).toFixed(v / 10000000 >= 10 ? 0 : 1) + ' cr'
+                      : '₹' + Math.round(v / 100000) + ' lakh'
+                    const totLo = fmtTot(mLo * 1000), totHi = fmtTot(mHi * 1000)
                     return (
                       <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
-                        <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 10px' }}>
+                        <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 16px' }}>
                           <DimIcon name="price" size={16} color={ACCENT} />
                           <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Price context</span>
                           <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
                         </div>
 
-                        <p style={{ fontSize:13, color:muted, margin:'0 0 18px', lineHeight:1.6 }}>
-                          Roughly how expensive is it to buy here? This band is based on the <strong style={{ color:text }}>circle rate</strong> — the government&apos;s official minimum property price, used to work out stamp duty when a home is registered.
+                        {/* Headline number */}
+                        <div style={{ display:'flex', flexWrap:'wrap', alignItems:'baseline', gap:'6px 10px', marginBottom:4 }}>
+                          <span style={{ fontSize:26, fontWeight:800, color:text, letterSpacing:'-0.5px' }}>{inr(lo)}–{inr(hi)}</span>
+                          <span style={{ fontSize:14, color:muted, fontWeight:500 }}>/ sq ft</span>
+                          <span style={{ fontSize:11, fontWeight:700, color:ACCENT, background:`${ACCENT}1a`, padding:'3px 8px', borderRadius:6 }}>{pc.label} band</span>
+                        </div>
+                        <p style={{ fontSize:12.5, color:muted, margin:'0 0 16px', lineHeight:1.5 }}>
+                          {pc.rate_exact ? 'Official' : 'Indicative'} {typeLabel} — the <strong style={{ color:text }}>circle rate</strong> (Haryana calls it the <strong style={{ color:text }}>collector rate</strong> — same thing), i.e. the government&apos;s minimum value used to calculate stamp duty &amp; registration.
+                          {pc.land_sqft ? <> Plot / land here is officially <strong style={{ color:text }}>{inr(pc.land_sqft)}/sq ft</strong>.</> : null}
                         </p>
 
                         {/* Tier scale */}
                         <div style={{ display:'flex', gap:5, marginBottom:8 }}>
-                          {bands.map(b => {
-                            const on = b.t === pc.tier
+                          {bands.map((label, idx) => {
+                            const on = (idx + 1) === pc.tier
                             return (
-                              <div key={b.t} style={{ flex:1, textAlign:'center' }}>
+                              <div key={label} style={{ flex:1, textAlign:'center' }}>
                                 <div style={{ height:9, borderRadius:99, background:on?ACCENT:subtle, boxShadow:on?`0 0 0 3px ${ACCENT}33`:'none' }}/>
-                                <div style={{ fontSize:11, fontWeight:on?800:500, color:on?text:muted, marginTop:7 }}>{b.label}</div>
+                                <div style={{ fontSize:11, fontWeight:on?800:500, color:on?text:muted, marginTop:7 }}>{label}</div>
                               </div>
                             )
                           })}
                         </div>
                         <div style={{ display:'flex', justifyContent:'space-between', fontSize:10.5, color:muted, opacity:0.8, marginBottom:16 }}>
-                          <span>Most expensive</span><span>Most affordable</span>
+                          <span>Most expensive in NCR</span><span>Most affordable</span>
                         </div>
 
-                        <p style={{ fontSize:14, color:text, margin:'0 0 6px', lineHeight:1.55 }}>
-                          This area is in the <strong>{pc.label}</strong> band — {plain}.
-                        </p>
-                        <p style={{ fontSize:13, color:muted, margin:'0 0 16px', lineHeight:1.6 }}>
-                          {pc.circle_rate_sqm
-                            ? <>Its government minimum rate is <strong style={{ color:text }}>₹{Number(pc.circle_rate_sqm).toLocaleString('en-IN')} per square metre</strong> of residential land.</>
-                            : <>This state sets rates by the plot or square yard rather than per square metre, so there&apos;s no single per-m² number to show — the band comes from the local collector-rate schedule.</>}
-                        </p>
-
-                        <div style={{ background:subtle, borderRadius:10, padding:'12px 14px' }}>
+                        {/* What you'll actually pay */}
+                        <div style={{ background:subtle, borderRadius:10, padding:'12px 14px', marginBottom:10 }}>
+                          <p style={{ fontSize:13, color:text, margin:'0 0 4px', lineHeight:1.5, fontWeight:600 }}>
+                            What you&apos;ll actually pay is higher
+                          </p>
                           <p style={{ fontSize:12.5, color:muted, margin:0, lineHeight:1.6 }}>
-                            <strong style={{ color:text }}>Good to know:</strong> this is the government&apos;s minimum valuation for paperwork — <strong style={{ color:text }}>not the actual market price</strong>, which is usually higher and can vary street to street. It&apos;s shown for context and does <strong style={{ color:text }}>not</strong> affect the livability score.
-                          </p>
-                          <p style={{ fontSize:11, color:muted, margin:'8px 0 0', lineHeight:1.5, opacity:0.8 }}>
-                            Source: {pc.basis}
+                            Market prices in the NCR usually run <strong style={{ color:text }}>20–70% above</strong> the circle rate, so expect roughly <strong style={{ color:text }}>{inr(mLo)}–{inr(mHi)}/sq ft</strong> in practice. A ~1,000 sq ft flat here would be around <strong style={{ color:text }}>{totLo}–{totHi}</strong>. Home loans are usually capped near the circle-rate value, so the gap above it typically comes from your own funds.
                           </p>
                         </div>
+
+                        <p style={{ fontSize:11.5, color:muted, margin:0, lineHeight:1.55, opacity:0.85 }}>
+                          Indicative government valuation, not a market quote — a single PIN spans cheaper and pricier pockets, and this does not affect the livability score. Source: {pc.basis}.
+                        </p>
                       </div>
                     )
                   })()}
