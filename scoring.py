@@ -247,10 +247,12 @@ PRICE_TIER_FILE = Path("./data/raw/price_tier_by_pin.json")
 
 def add_price_context(results):
     """Attach a per-PIN government-circle-rate price band (tier 1 Premium →
-    5 Value) from data/raw/price_tier_by_pin.json. Tiers are relative across
-    tracked NCR pins, anchored to official circle/collector rates; an exact
-    circle_rate_sqm is carried only where a comparable per-sqm residential-land
-    figure is notified (Delhi MCD categories, Noida sector categories)."""
+    5 Value) from data/raw/price_tier_by_pin.json. Every pin carries a buyer-
+    facing Rs/sq ft band (rate_sqft, apartment/built-up basis) and, where an
+    official per-sqm figure is notified, an exact land Rs/sq ft (land_sqft).
+    Plain-language notes (circle==collector rate, unit, market gap) are carried
+    from _meta so the UI can explain rather than assume. Deliberately NOT part
+    of the NQI composite — informational context only, like crime_percentile."""
     try:
         blob = json.loads(PRICE_TIER_FILE.read_text())
     except (FileNotFoundError, ValueError):
@@ -260,7 +262,7 @@ def add_price_context(results):
             r["price_context"] = None
         return results
     pins = blob.get("pins", {})
-    disclaimer = blob.get("_meta", {}).get("disclaimer")
+    meta = blob.get("_meta", {})
     for r in results:
         p = pins.get(r["pin_code"])
         if not p:
@@ -269,13 +271,18 @@ def add_price_context(results):
             continue
         r["price_tier"] = p["tier"]
         r["price_context"] = {
-            "tier":           p["tier"],
-            "label":          p["label"],
-            "basis":          p["basis"],
-            "circle_rate_sqm": p.get("circle_rate_sqm"),
-            "category":       p.get("category"),
-            "source":         p["source"],
-            "disclaimer":     disclaimer,
+            "tier":            p["tier"],
+            "label":           p["label"],
+            "rate_sqft":       p.get("rate_sqft"),      # [low, high] Rs/sq ft, apartment/built-up basis
+            "rate_type":       p.get("rate_type"),      # "apartment" | "land" | "apartment/land"
+            "rate_exact":      p.get("rate_exact", False),
+            "land_sqft":       p.get("land_sqft"),      # exact govt land rate Rs/sq ft, or null
+            "land_exact":      p.get("land_exact", False),
+            "basis":           p["basis"],
+            "source":          p["source"],
+            "circle_rate_note": meta.get("circle_rate_note"),
+            "market_gap_note":  meta.get("market_gap_note"),
+            "disclaimer":       meta.get("disclaimer"),
         }
     return results
 
