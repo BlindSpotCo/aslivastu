@@ -237,6 +237,74 @@ const PIN_META = {
   "201206":{ name:"Muradnagar",        area:"UP NCR" },
   "245101":{ name:"Hapur",             area:"UP NCR" },
   "203001":{ name:"Bulandshahr",       area:"UP NCR" },
+  // ── Bengaluru (city 2) ──
+  "560001":{ name:"MG Road", area:"Central Bengaluru", city:"Bangalore" },
+  "560025":{ name:"Richmond Town", area:"Central Bengaluru", city:"Bangalore" },
+  "560051":{ name:"Vasanth Nagar", area:"Central Bengaluru", city:"Bangalore" },
+  "560052":{ name:"Cantonment", area:"Central Bengaluru", city:"Bangalore" },
+  "560042":{ name:"Shivajinagar", area:"Central Bengaluru", city:"Bangalore" },
+  "560002":{ name:"Chickpet", area:"Central Bengaluru", city:"Bangalore" },
+  "560023":{ name:"Majestic", area:"Central Bengaluru", city:"Bangalore" },
+  "560003":{ name:"Malleshwaram", area:"North Bengaluru", city:"Bangalore" },
+  "560010":{ name:"Rajajinagar", area:"North Bengaluru", city:"Bangalore" },
+  "560020":{ name:"Seshadripuram", area:"North Bengaluru", city:"Bangalore" },
+  "560021":{ name:"Sriramapuram", area:"North Bengaluru", city:"Bangalore" },
+  "560022":{ name:"Yeshwanthpur", area:"North Bengaluru", city:"Bangalore" },
+  "560024":{ name:"Ganganagar", area:"North Bengaluru", city:"Bangalore" },
+  "560032":{ name:"RT Nagar", area:"North Bengaluru", city:"Bangalore" },
+  "560045":{ name:"Nagavara", area:"North Bengaluru", city:"Bangalore" },
+  "560092":{ name:"Vidyaranyapura", area:"North Bengaluru", city:"Bangalore" },
+  "560094":{ name:"Sanjaynagar", area:"North Bengaluru", city:"Bangalore" },
+  "560097":{ name:"Byatarayanapura", area:"North Bengaluru", city:"Bangalore" },
+  "560063":{ name:"Yelahanka", area:"North Bengaluru", city:"Bangalore" },
+  "560064":{ name:"Yelahanka New Town", area:"North Bengaluru", city:"Bangalore" },
+  "560065":{ name:"Jakkur", area:"North Bengaluru", city:"Bangalore" },
+  "560008":{ name:"Indiranagar", area:"East Bengaluru", city:"Bangalore" },
+  "560038":{ name:"Indiranagar East", area:"East Bengaluru", city:"Bangalore" },
+  "560046":{ name:"Ulsoor", area:"East Bengaluru", city:"Bangalore" },
+  "560005":{ name:"Cox Town", area:"East Bengaluru", city:"Bangalore" },
+  "560017":{ name:"HAL / Old Airport", area:"East Bengaluru", city:"Bangalore" },
+  "560075":{ name:"New Thippasandra", area:"East Bengaluru", city:"Bangalore" },
+  "560093":{ name:"CV Raman Nagar", area:"East Bengaluru", city:"Bangalore" },
+  "560016":{ name:"KR Puram", area:"East Bengaluru", city:"Bangalore" },
+  "560036":{ name:"Ramamurthy Nagar", area:"East Bengaluru", city:"Bangalore" },
+  "560037":{ name:"Marathahalli", area:"East Bengaluru", city:"Bangalore" },
+  "560048":{ name:"Mahadevapura", area:"East Bengaluru", city:"Bangalore" },
+  "560066":{ name:"Whitefield", area:"East Bengaluru", city:"Bangalore" },
+  "560067":{ name:"Whitefield Hope Farm", area:"East Bengaluru", city:"Bangalore" },
+  "560103":{ name:"Bellandur", area:"East Bengaluru", city:"Bangalore" },
+  "560035":{ name:"Sarjapur Road", area:"East Bengaluru", city:"Bangalore" },
+  "560087":{ name:"Varthur", area:"East Bengaluru", city:"Bangalore" },
+  "560034":{ name:"Koramangala", area:"South East Bengaluru", city:"Bangalore" },
+  "560095":{ name:"Koramangala 8th Blk", area:"South East Bengaluru", city:"Bangalore" },
+  "560102":{ name:"HSR Layout", area:"South East Bengaluru", city:"Bangalore" },
+  "560029":{ name:"Adugodi", area:"South East Bengaluru", city:"Bangalore" },
+  "560027":{ name:"Shanti Nagar", area:"South East Bengaluru", city:"Bangalore" },
+  "560030":{ name:"Wilson Garden", area:"South East Bengaluru", city:"Bangalore" },
+  "560068":{ name:"Bommanahalli", area:"South East Bengaluru", city:"Bangalore" },
+  "560004":{ name:"Basavanagudi", area:"South Bengaluru", city:"Bangalore" },
+  "560011":{ name:"Jayanagar", area:"South Bengaluru", city:"Bangalore" },
+  "560041":{ name:"Jayanagar 4th Block", area:"South Bengaluru", city:"Bangalore" },
+  "560019":{ name:"Hanumanthanagar", area:"South Bengaluru", city:"Bangalore" },
+  "560028":{ name:"Tyagarajanagar", area:"South Bengaluru", city:"Bangalore" },
+  "560050":{ name:"Banashankari", area:"South Bengaluru", city:"Bangalore" },
+  "560070":{ name:"BSK 2nd Stage", area:"South Bengaluru", city:"Bangalore" },
+  "560085":{ name:"BSK 3rd Stage", area:"South Bengaluru", city:"Bangalore" },
+  "560078":{ name:"JP Nagar", area:"South Bengaluru", city:"Bangalore" },
+  "560076":{ name:"BTM Layout", area:"South Bengaluru", city:"Bangalore" },
+  "560061":{ name:"Uttarahalli", area:"South Bengaluru", city:"Bangalore" },
+  "560062":{ name:"Konanakunte", area:"South Bengaluru", city:"Bangalore" },
+  "560083":{ name:"Bannerghatta Road", area:"South Bengaluru", city:"Bangalore" },
+  "560082":{ name:"Bannerghatta", area:"South Bengaluru", city:"Bangalore" },
+  "560040":{ name:"Vijayanagar", area:"West Bengaluru", city:"Bangalore" },
+  "560079":{ name:"Basaveshwaranagar", area:"West Bengaluru", city:"Bangalore" },
+  "560072":{ name:"Nagarbhavi", area:"West Bengaluru", city:"Bangalore" },
+  "560018":{ name:"Chamrajpet", area:"West Bengaluru", city:"Bangalore" },
+  "560091":{ name:"Sunkadakatte", area:"West Bengaluru", city:"Bangalore" },
+  "560056":{ name:"Jnana Bharathi", area:"West Bengaluru", city:"Bangalore" },
+  "560100":{ name:"Electronic City", area:"South Bengaluru", city:"Bangalore" },
+  "560099":{ name:"Hosur Road", area:"South Bengaluru", city:"Bangalore" },
+  "560105":{ name:"Anekal", area:"South Bengaluru", city:"Bangalore" },
 }
 
 // Build reverse lookup: name/area keywords → pin code
@@ -968,7 +1036,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
         if (meta) {
           setNoData({ pin: resolvedPin, ...meta })
         } else {
-          setError('This area is outside our current Delhi NCR coverage.')
+          setError('This area is outside our current Delhi NCR / Bangalore coverage.')
         }
         setLoading(false)
         return
@@ -1074,7 +1142,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
           </div>
         </a>
         <div style={{ display:'flex', alignItems:'center', gap:12 }}>
-          <span style={{ fontSize:12, color:muted }}>68 areas</span>
+          <span style={{ fontSize:12, color:muted }}>153 areas · 2 cities</span>
           <a href="/compare" style={{ fontSize:13, fontWeight:600, color:'white', textDecoration:'none', padding:'8px 16px', background:ACCENT, borderRadius:8, display:'flex', alignItems:'center', gap:6 }}><DimIcon name="compare" size={14} color="white" /> Compare areas</a>
           <button onClick={() => setDark(!dark)} style={{ background:'none', border:`1px solid ${border}`, borderRadius:6, padding:'4px 10px', fontSize:12, cursor:'pointer', color:muted, display:'flex', alignItems:'center', gap:5 }}>
             <DimIcon name={dark ? 'sun' : 'moon'} size={13} color={muted} /> {dark ? 'Light' : 'Dark'}
@@ -1097,7 +1165,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
 
           <div style={{ animation:'fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) 0.05s both', marginBottom:12 }}>
             <span style={{ fontSize:12, fontWeight:600, color:ACCENT, letterSpacing:'0.08em', textTransform:'uppercase' }}>
-              Delhi NCR · 67 Neighbourhoods Scored
+              Delhi NCR & Bangalore · 153 Neighbourhoods Scored
             </span>
           </div>
 
@@ -1111,7 +1179,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
           </p>
 
           <p style={{ animation:'fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) 0.28s both', fontSize:15, color:muted, margin:'0 0 32px', lineHeight:1.7, maxWidth:540 }}>
-            AsliVastu gives you a data-backed score for any Delhi NCR area — covering safety, air quality, water supply, road condition, power reliability, and more. Type your area name or pin code and see the full picture.
+            AsliVastu gives you a data-backed score for any Delhi NCR or Bangalore area — covering safety, air quality, water supply, road condition, power reliability, and more. Type your area name or pin code and see the full picture.
           </p>
 
           {/* Search */}
@@ -1213,7 +1281,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
           {/* Trust bar */}
           <div style={{ animation:'fadeIn 0.6s ease 0.8s both', padding:'16px 20px', background:card, border:`1px solid ${border}`, borderRadius:12, display:'flex', flexWrap:'wrap', gap:20, alignItems:'center', justifyContent:'center', marginBottom:16 }}>
             {[
-              { val:'67', label:'areas covered' },
+              { val:'153', label:'areas covered' },
               { val:'8', label:'data dimensions' },
               { val:'Live', label:'AQI data' },
               { val:'₹199', label:'full report' },
@@ -1324,7 +1392,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
               </div>
 
               <p style={{ fontSize:12, color:muted }}>
-                Currently covering <strong style={{color:text}}>67 areas</strong> across Delhi, Gurugram, Noida and Faridabad.
+                Currently covering <strong style={{color:text}}>153 areas</strong> across Delhi NCR (Delhi, Gurugram, Noida, Faridabad) and Bangalore.
               </p>
             </div>
           )}
