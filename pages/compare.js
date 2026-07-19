@@ -72,7 +72,7 @@ const PIN_META = {
   "201309":{ name:"Noida Sec 62",      area:"UP NCR" },
 }
 
-const DIM_LABEL = { crime:'Safety', infrastructure:'Infrastructure', air:'Air Quality', power:'Power', schools:'Schools' }
+const DIM_LABEL = { crime:'Safety', infrastructure:'Infrastructure', air:'Air Quality', power:'Power', schools:'Schools', water:'Water Supply', roads:'Roads', sewerage:'Drainage & Sewerage' }
 const GRADE_COLOR = { 'A+':'#22c55e','A':'#22c55e','B+':'#84cc16','B':'#eab308','C+':'#f97316','C':'#ef4444','D':'#dc2626' }
 const ACCENT = '#e23744'
 
@@ -97,6 +97,8 @@ function DimIcon({ name, size = 18, color = 'currentColor', strokeWidth = 1.6 })
       return <svg {...p}><path d="M12 3c4 5 7 8.7 7 12.2A7 7 0 1 1 5 15.2C5 11.7 8 8 12 3Z"/></svg>
     case 'roads':
       return <svg {...p}><path d="M7 3 3 21"/><path d="M17 3l4 18"/><path d="M12 5v3"/><path d="M12 11v3"/><path d="M12 17v3"/></svg>
+    case 'sewerage':
+      return <svg {...p}><path d="M6 4v6a6 6 0 0 0 12 0V4"/><path d="M4 20h16"/></svg>
     case 'sun':
       return <svg {...p}><circle cx="12" cy="12" r="4"/><path d="M12 2.5v3M12 18.5v3M3.8 3.8l2.1 2.1M18.1 18.1l2.1 2.1M2.5 12h3M18.5 12h3M3.8 20.2l2.1-2.1M18.1 5.9l2.1-2.1"/></svg>
     case 'moon':
@@ -205,7 +207,7 @@ export default function Compare() {
   function pickA(s) { setQA(s.name); setSuggA([]); setShowA(false); fetchFor(s.pin, 'A') }
   function pickB(s) { setQB(s.name); setSuggB([]); setShowB(false); fetchFor(s.pin, 'B') }
 
-  const dims = ['crime', 'infrastructure', 'air', 'power', 'schools']
+  const dims = ['crime', 'infrastructure', 'air', 'power', 'schools', 'water', 'roads', 'sewerage']
   const allDims = reportA && reportB
     ? dims.filter(d => reportA.scores?.[d] !== undefined || reportB.scores?.[d] !== undefined)
     : []
@@ -369,6 +371,31 @@ export default function Compare() {
                   </div>
                 )
               })}
+
+              {/* Monsoon waterlogging — surfaced explicitly (Issue #8). Field is
+                  inverted: 5 = safest, 1 = high flood risk. */}
+              {(reportA.waterlogging_risk != null || reportB.waterlogging_risk != null) && (() => {
+                const lvl = wl => wl == null ? '—' : wl >= 5 ? 'Very low' : wl >= 4 ? 'Low' : wl >= 3 ? 'Moderate' : wl >= 2 ? 'High' : 'Very high'
+                const col = wl => wl == null ? muted : wl >= 4 ? '#22c55e' : wl >= 3 ? '#eab308' : '#ef4444'
+                const a = reportA.waterlogging_risk, b = reportB.waterlogging_risk
+                const w = (a == null || b == null) ? null : (a > b ? 'A' : b > a ? 'B' : 'tie')
+                return (
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', padding: '14px 20px', borderTop: `1px solid ${border}`, alignItems: 'center' }}>
+                    <div>
+                      <span style={{ fontSize: 15, fontWeight: 800, color: col(a) }}>{lvl(a)} risk</span>
+                      {w === 'A' && <span style={{ marginLeft: 6, fontSize: 10, background: '#22c55e20', color: '#22c55e', padding: '1px 6px', borderRadius: 4, fontWeight: 700 }}>SAFER</span>}
+                    </div>
+                    <div style={{ textAlign: 'center', minWidth: 80 }}>
+                      <div><DimIcon name="water" size={16} color={ACCENT} /></div>
+                      <div style={{ fontSize: 11, color: muted, marginTop: 2 }}>Waterlogging</div>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      {w === 'B' && <span style={{ marginRight: 6, fontSize: 10, background: '#22c55e20', color: '#22c55e', padding: '1px 6px', borderRadius: 4, fontWeight: 700 }}>SAFER</span>}
+                      <span style={{ fontSize: 15, fontWeight: 800, color: col(b) }}>{lvl(b)} risk</span>
+                    </div>
+                  </div>
+                )
+              })()}
             </div>
 
             {/* Summary text */}

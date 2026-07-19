@@ -1,0 +1,76 @@
+{
+  "dimensions": {
+    "crime": {
+      "weight": 0.25,
+      "formula": "score = round((1 - (clamp(total_cognizable_crimes, 250, 650) - 250) / 400) * 100)",
+      "description": "Inverse-normalized against total cognizable crimes reported for the PIN's police station catchment over the reporting period. 250 or fewer scores 100; 650 or more scores 0; linear in between. Note: the catchment area can be larger than a single neighbourhood/colony, so this figure reflects the whole station's jurisdiction, not necessarily any one street within it. Each pin also gets a crime_percentile and crime_tier (Very Low–Very High), ranking its raw count against every other tracked pin, so the number has context without needing population-per-catchment data (which we don't have yet — a true per-capita rate is a planned future improvement, not what this is)."
+    },
+    "infrastructure": {
+      "weight": 0.2,
+      "formula": "score = clamp(infra_score_raw, 0, 100)",
+      "description": "Pre-computed composite of metro station proximity, highway proximity, and smart-city project status for the PIN, passed through as-is."
+    },
+    "air": {
+      "weight": 0.15,
+      "formula": "score = banded(aqi_avg) using CPCB category thresholds (<=50:100, <=100:85, <=150:70, <=200:50, <=300:30, <=400:15, else 5)",
+      "description": "Average AQI across CPCB monitoring stations and WAQI (used as a fallback for PINs without a CPCB station), converted to points using CPCB's official AQI category bands."
+    },
+    "power": {
+      "weight": 0.1,
+      "formula": "score = round((outage_frequency / 5) * 60 + (1 - avg_outage_hours / 8) * 40)",
+      "description": "Weighted blend of outage frequency (60% of this dimension) and average outage duration (40%), sourced from DISCOM annual reports — not live-metered data."
+    },
+    "schools": {
+      "weight": 0.1,
+      "formula": "score = min(100, density_points[0-60] + round((cbse_count + icse_count) / total_schools * 40))",
+      "description": "60 points for the number of schools found near the PIN (density), plus up to 40 points for the share of those schools that are CBSE/ICSE-recognized."
+    },
+    "water": {
+      "weight": 0.08,
+      "formula": "score = round(min(supply_hours/22, 1)*40 + (water_quality/5)*35 + (water_coverage/100)*25)",
+      "description": "Piped-water reliability: up to 40 points for daily supply hours (22h+ = full), 35 for a water-quality rating (TDS/potability, 1–5), and 25 for network coverage. Sourced from Delhi Jal Board / local utility data — not live-metered."
+    },
+    "roads": {
+      "weight": 0.07,
+      "formula": "score = round((road_quality/5)*60 + max(0, 1 - min(pothole_density/20, 1))*40)",
+      "description": "Road condition: up to 60 points for a surface-quality rating (1–5) and 40 for low pothole density (potholes per km). Based on municipal/PWD road-condition surveys."
+    },
+    "sewerage": {
+      "weight": 0.05,
+      "formula": "score = round((sewerage_coverage/100)*40 + (waterlogging_risk/5)*35 + treatment_points)",
+      "description": "Drainage & sewerage: up to 40 points for sewer-network coverage, 35 for low waterlogging risk (1–5, higher = safer), and 25 for treatment adequacy (Adequate/Partial/Inadequate). Waterlogging risk is also surfaced separately as a visible flag and filter, since monsoon flooding is a make-or-break factor buyers asked not to have buried inside a composite."
+    }
+  },
+  "composite_formula": "For each PIN, dimensions with no data are dropped entirely (not scored as 0). The remaining dimensions' weights are re-normalized to sum to 1, then the composite is their weighted average, rounded to the nearest whole number. This means two PINs can show a similar composite while having very different data coverage — see `dimensions_scored` / `dimensions_total` and `weights_applied` on each record.",
+  "grade_thresholds": [
+    {
+      "min_score": 90,
+      "grade": "A+"
+    },
+    {
+      "min_score": 80,
+      "grade": "A"
+    },
+    {
+      "min_score": 70,
+      "grade": "B+"
+    },
+    {
+      "min_score": 60,
+      "grade": "B"
+    },
+    {
+      "min_score": 50,
+      "grade": "C+"
+    },
+    {
+      "min_score": 40,
+      "grade": "C"
+    },
+    {
+      "min_score": 0,
+      "grade": "D"
+    }
+  ],
+  "published_at": "2026-07-19T16:32:05.554166"
+}

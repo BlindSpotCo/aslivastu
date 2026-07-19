@@ -38,14 +38,17 @@ body { margin: 0; padding: 0; }
 }
 `
 
-const DIM_LABEL = { crime:'Safety', infrastructure:'Infrastructure', air:'Air Quality', power:'Power', schools:'Schools' }
-const DIM_ICON  = { crime:'🛡', infrastructure:'🏗', air:'🌬', power:'⚡', schools:'🎓' }
+const DIM_LABEL = { crime:'Safety', infrastructure:'Infrastructure', air:'Air Quality', power:'Power', schools:'Schools', water:'Water Supply', roads:'Roads', sewerage:'Drainage & Sewerage' }
+const DIM_ICON  = { crime:'🛡', infrastructure:'🏗', air:'🌬', power:'⚡', schools:'🎓', water:'💧', roads:'🛣', sewerage:'🚰' }
 const DIM_DESC  = {
   crime:          'Delhi Police Annual Report 2022-23 · Estimated, last verified 2023',
   infrastructure: 'DDA Master Plan 2021 · DMRC Phase 4 · Estimated, last verified 2024',
   air:            'CPCB live AQI via data.gov.in · Updated daily · Live data',
   power:          'BSES / Tata Power / DHBVN annual reports · Estimated, last verified 2023',
   schools:        'CBSE affiliation database · Estimated, last verified 2023',
+  water:          'Delhi Jal Board / local utility supply & quality data · Estimated, last verified 2023',
+  roads:          'Municipal / PWD road-condition surveys · Estimated, last verified 2023',
+  sewerage:       'Drainage coverage & monsoon waterlogging records · Estimated, last verified 2023',
 }
 
 const DIM_TAG = {
@@ -54,6 +57,9 @@ const DIM_TAG = {
   air:            { label:'Live',        color:'#22c55e' },
   power:          { label:'Est. 2023',  color:'#f97316' },
   schools:        { label:'Est. 2023',  color:'#f97316' },
+  water:          { label:'Est. 2023',  color:'#f97316' },
+  roads:          { label:'Est. 2023',  color:'#f97316' },
+  sewerage:       { label:'Est. 2023',  color:'#f97316' },
 }
 
 // User-facing reweighting — lets a visitor see the score through a
@@ -61,11 +67,12 @@ const DIM_TAG = {
 // "Custom" starts from the Default preset and the sliders let someone
 // drag freely; weights are normalized to 100% at compute time rather
 // than forcing sliders to interlock, so dragging one never fights you.
+// Default MUST mirror scoring.py WEIGHTS (8 dimensions, Issue #8).
 const WEIGHT_PRESETS = {
-  Default:  { crime:30, infrastructure:25, air:20, power:15, schools:10 },
-  Family:   { crime:25, infrastructure:15, air:15, power:10, schools:35 },
-  Investor: { crime:15, infrastructure:35, air:10, power:25, schools:15 },
-  Safety:   { crime:50, infrastructure:20, air:15, power:10, schools:5  },
+  Default:  { crime:25, infrastructure:20, air:15, power:10, schools:10, water:8,  roads:7,  sewerage:5  },
+  Family:   { crime:20, infrastructure:12, air:12, power:8,  schools:30, water:8,  roads:5,  sewerage:5  },
+  Investor: { crime:12, infrastructure:28, air:8,  power:18, schools:10, water:6,  roads:12, sewerage:6  },
+  Safety:   { crime:40, infrastructure:15, air:12, power:8,  schools:5,  water:8,  roads:5,  sewerage:7  },
 }
 
 function normalizedWeights(weights, availableKeys) {
@@ -290,6 +297,14 @@ function getHighlights(record, scores) {
   else if (scores.air !== undefined && scores.air < 50) bad.push("Poor air quality — AQI frequently in Poor range")
   if (scores.power >= 70) good.push("Reliable power supply — low outage frequency")
   else if (scores.power !== undefined && scores.power < 40) bad.push("Frequent power cuts — high outage hours reported")
+  // waterlogging_risk is inverted: 5 = safest, 1 = high flood risk
+  if (record.waterlogging_risk != null && record.waterlogging_risk <= 2)
+    bad.push(`High monsoon waterlogging risk${record.flooding_incidents_annual ? ` — ~${record.flooding_incidents_annual} flooding incidents/year` : ''}`)
+  else if (record.waterlogging_risk >= 5) good.push("Low waterlogging risk — drains well through the monsoon")
+  if (scores.water >= 80) good.push("Strong piped-water supply and coverage")
+  else if (scores.water !== undefined && scores.water < 40) bad.push("Weak water supply — short hours or low coverage")
+  if (scores.roads !== undefined && scores.roads < 40) bad.push("Poor road condition — frequent potholes")
+  if (scores.sewerage !== undefined && scores.sewerage < 40) bad.push("Weak drainage & sewerage network")
   return { good, bad }
 }
 
@@ -873,7 +888,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
   const [unlocked, setUnlocked]   = useState(false)
   const [showLanding, setShowLanding] = useState(!initialPin)
   const [weightPreset, setWeightPreset] = useState('Default')
-  const [customWeights, setCustomWeights] = useState({ crime:30, infrastructure:25, air:20, power:15, schools:10 })
+  const [customWeights, setCustomWeights] = useState({ ...WEIGHT_PRESETS.Default })
   const [fbText, setFbText] = useState('')
   const [fbStatus, setFbStatus] = useState('idle')
   const [fbError, setFbError] = useState('')
@@ -1339,6 +1354,25 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                       <span style={{ fontWeight:700, color:verdict.color, fontSize:16 }}>{verdict.label}</span>
                       <p style={{ margin:'6px 0 0', fontSize:15, color:text, lineHeight:1.6 }}>{verdict.reason}</p>
                     </div>
+
+                    {/* Waterlogging risk badge (Issue #8) — waterlogging_risk is inverted: 5 = safest, 1 = high flood risk */}
+                    {report.waterlogging_risk != null && (() => {
+                      const wl = report.waterlogging_risk
+                      const level = wl >= 5 ? 'Very low' : wl >= 4 ? 'Low' : wl >= 3 ? 'Moderate' : wl >= 2 ? 'High' : 'Very high'
+                      const col = wl >= 4 ? '#22c55e' : wl >= 3 ? '#eab308' : '#ef4444'
+                      const msg = wl <= 2
+                        ? `Prone to monsoon flooding${report.flooding_incidents_annual ? ` — around ${report.flooding_incidents_annual} incidents a year` : ''}. Check drainage on-site before buying.`
+                        : wl >= 4 ? 'Drains well — low chance of monsoon waterlogging.'
+                        : 'Some monsoon waterlogging possible in low-lying spots.'
+                      return (
+                        <div style={{ marginTop:10, padding:'10px 14px', background:col+'15', borderLeft:`3px solid ${col}`, borderRadius:'0 8px 8px 0', display:'flex', alignItems:'flex-start', gap:10 }}>
+                          <span style={{ marginTop:1 }}><DimIcon name="water" size={16} color={col} /></span>
+                          <span style={{ fontSize:13.5, color:text, lineHeight:1.55 }}>
+                            <strong style={{ color:col }}>{level} waterlogging risk.</strong> {msg}
+                          </span>
+                        </div>
+                      )
+                    })()}
                   </div>
 
                   {/* Radar — Dimension overview */}
@@ -1678,10 +1712,10 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                       {[
                         ['Daily supply', (report.supply_hours??'—')+' hrs', 'Average number of hours per day that piped water supply is available. Delhi target is 24 hrs. Most areas receive 6–20 hrs depending on zone.'],
                         ['Quality', report.tds_level ? report.tds_level+' TDS' : '—', 'TDS stands for Total Dissolved Solids — the amount of minerals, salts and metals dissolved in water.\n\n• Low TDS (below 300 mg/L): Ideal drinking water\n• Medium TDS (300–600 mg/L): Acceptable, may taste slightly hard\n• High TDS (600–900 mg/L): Hard water, can cause scaling and health concerns\n• Very High TDS (above 900 mg/L): Not recommended for drinking without filtration\n\nDelhi groundwater often has high TDS due to industrial run-off.'],
-                        ['Coverage', (report.coverage_pct??'—')+'%', 'Percentage of households in this area with a piped water connection from the municipal supply. Areas below 80% rely heavily on tankers or groundwater.'],
+                        ['Coverage', ((report.water_coverage ?? report.coverage_pct)??'—')+'%', 'Percentage of households in this area with a piped water connection from the municipal supply. Areas below 80% rely heavily on tankers or groundwater.'],
                         ['Authority', report.source||'—', null],
                         ['Complaints', report.complaints_per_1000 ? report.complaints_per_1000+'/1000' : '—', 'Number of water supply complaints filed per 1,000 households annually with DJB (Delhi Jal Board) or local municipal body. Lower is better.'],
-                        ['Quality score', (report.quality_score??'—')+'/5', 'Composite water quality score (1–5) based on TDS levels, complaint density, and supply hours. 5 = excellent (NDMC zones), 1 = poor (peripheral areas with groundwater dependence).'],
+                        ['Quality score', ((report.water_quality ?? report.quality_score)??'—')+'/5', 'Composite water quality score (1–5) based on TDS levels, complaint density, and supply hours. 5 = excellent (NDMC zones), 1 = poor (peripheral areas with groundwater dependence).'],
                       ].map(([label, val, tooltip]) => (
                         <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
                       ))}
@@ -1700,7 +1734,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                         ['Connectivity', report.connectivity||'—', 'Road network connectivity rating for the area — how well it connects to major arterial roads, highways and neighbouring areas.\n\n• High: Multiple entry/exit points, arterial road access\n• Medium: Limited connections, some bottlenecks\n• Low: Single access road or poor internal network'],
                         ['Authority', report.authority||'—', 'The government body responsible for road maintenance in this area. NDMC and PWD roads are generally better maintained than MCD roads due to higher budgets.'],
                         ['Last resurfaced', report.last_resurfaced??'—', 'Year when the main roads in this area were last resurfaced or significantly repaired. Roads are typically due for resurfacing every 5–7 years.'],
-                        ['Quality score', (report.quality_score??'—')+'/5', 'Road quality score (1–5) based on pothole density, last resurfacing year, and official condition ratings from MCD and PWD surveys.'],
+                        ['Quality score', ((report.road_quality ?? report.quality_score)??'—')+'/5', 'Road quality score (1–5) based on pothole density, last resurfacing year, and official condition ratings from MCD and PWD surveys.'],
                       ].map(([label, val, tooltip]) => (
                         <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
                       ))}
@@ -1714,7 +1748,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                     </div>
                     <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8 }}>
                       {[
-                        ['Sewer coverage', (report.coverage_pct??'—')+'%', 'Percentage of households connected to the underground sewerage network. Areas below 70% rely on septic tanks or open drains which can contaminate groundwater.'],
+                        ['Sewer coverage', ((report.sewerage_coverage ?? report.coverage_pct)??'—')+'%', 'Percentage of households connected to the underground sewerage network. Areas below 70% rely on septic tanks or open drains which can contaminate groundwater.'],
                         ['Treatment', report.treatment||'—', 'Whether sewage from this area reaches a Sewage Treatment Plant (STP) before discharge:\n\n• Adequate: Full STP treatment\n• Partial: Some sewage treated, some bypasses\n• Inadequate: Sewage largely untreated, discharged directly\n\nUntreated sewage is a major cause of groundwater contamination in Delhi.'],
                         ['Waterlogging risk', report.waterlogging_risk ? (6-report.waterlogging_risk)+'/5 risk' : '—', 'Risk of waterlogging during heavy monsoon rains (1 = highest risk, 5 = lowest). Based on drainage network capacity, historical flooding records, and area elevation. Low-lying areas near drains are most at risk.'],
                         ['Open drains', report.open_drains===true?'Yes':report.open_drains===false?'No':'—', 'Whether the area has open (uncovered) drains. Open drains are a health hazard — they breed mosquitoes, emit foul odour, and overflow during monsoons causing waterlogging.'],
