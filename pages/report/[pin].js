@@ -1354,25 +1354,6 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                       <span style={{ fontWeight:700, color:verdict.color, fontSize:16 }}>{verdict.label}</span>
                       <p style={{ margin:'6px 0 0', fontSize:15, color:text, lineHeight:1.6 }}>{verdict.reason}</p>
                     </div>
-
-                    {/* Waterlogging risk badge (Issue #8) — waterlogging_risk is inverted: 5 = safest, 1 = high flood risk */}
-                    {report.waterlogging_risk != null && (() => {
-                      const wl = report.waterlogging_risk
-                      const level = wl >= 5 ? 'Very low' : wl >= 4 ? 'Low' : wl >= 3 ? 'Moderate' : wl >= 2 ? 'High' : 'Very high'
-                      const col = wl >= 4 ? '#22c55e' : wl >= 3 ? '#eab308' : '#ef4444'
-                      const msg = wl <= 2
-                        ? `Prone to monsoon flooding${report.flooding_incidents_annual ? ` — around ${report.flooding_incidents_annual} incidents a year` : ''}. Check drainage on-site before buying.`
-                        : wl >= 4 ? 'Drains well — low chance of monsoon waterlogging.'
-                        : 'Some monsoon waterlogging possible in low-lying spots.'
-                      return (
-                        <div style={{ marginTop:10, padding:'10px 14px', background:col+'15', borderLeft:`3px solid ${col}`, borderRadius:'0 8px 8px 0', display:'flex', alignItems:'flex-start', gap:10 }}>
-                          <span style={{ marginTop:1 }}><DimIcon name="water" size={16} color={col} /></span>
-                          <span style={{ fontSize:13.5, color:text, lineHeight:1.55 }}>
-                            <strong style={{ color:col }}>{level} waterlogging risk.</strong> {msg}
-                          </span>
-                        </div>
-                      )
-                    })()}
                   </div>
 
                   {/* Radar — Dimension overview */}
@@ -1720,6 +1701,23 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                         <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
                       ))}
                     </div>
+
+                    {/* Waterlogging summary (Issue #8) — field inverted: 5 = safest, 1 = high flood risk */}
+                    {report.waterlogging_risk != null && (() => {
+                      const wl = report.waterlogging_risk
+                      const level = wl >= 5 ? 'Very low' : wl >= 4 ? 'Low' : wl >= 3 ? 'Moderate' : wl >= 2 ? 'High' : 'Very high'
+                      const col = wl >= 4 ? '#22c55e' : wl >= 3 ? '#eab308' : '#ef4444'
+                      const msg = wl <= 2
+                        ? `prone to monsoon flooding${report.flooding_incidents_annual ? ` — around ${report.flooding_incidents_annual} incidents a year` : ''}. Check drainage on-site before buying.`
+                        : wl >= 4 ? 'drains well, with a low chance of monsoon waterlogging.'
+                        : 'some monsoon waterlogging possible in low-lying spots.'
+                      return (
+                        <p style={{ fontSize:13, color:muted, margin:'-8px 0 20px', lineHeight:1.6, display:'flex', gap:8, alignItems:'flex-start' }}>
+                          <span style={{ marginTop:2 }}><DimIcon name="water" size={14} color={col} /></span>
+                          <span><strong style={{ color:col }}>{level} waterlogging risk</strong> — {msg}</span>
+                        </p>
+                      )
+                    })()}
 
                     {/* Roads */}
                     <div style={{ display:'flex', alignItems:'center', gap:12, margin:'24px 0 14px' }}>
