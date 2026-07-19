@@ -13,7 +13,10 @@
       "5": "Value"
     },
     "disclaimer": "Government minimum valuation, not market price. Figures are indicative Rs/sq ft bands unless marked exact, and a single PIN can span cheaper and pricier pockets. Not part of the NQI score.",
-    "not_in_composite": true
+    "not_in_composite": true,
+    "sources": {
+      "bangalore": "Karnataka guidance value — Kaveri portal, Dept. of Stamps & Registration"
+    }
   },
   "pins": {
     "110001": {
@@ -1247,6 +1250,944 @@
       "land_exact": false,
       "basis": "Bulandshahr — Bulandshahr district circle rates (igrsup.gov.in)",
       "source": "Govt of UP"
+    },
+    "560001": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        18000,
+        28000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "MG Road — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560025": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        16000,
+        24000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Richmond Town — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560051": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        15000,
+        22000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Vasanth Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560052": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        13000,
+        19000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Cantonment — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560042": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        11000,
+        16000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Shivajinagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560002": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        12000,
+        18000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Chickpet — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560023": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        11000,
+        16000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Majestic — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560003": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        14000,
+        22000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Malleshwaram — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560010": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        12000,
+        18000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Rajajinagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560020": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        12000,
+        17000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Seshadripuram — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560021": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        9000,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sriramapuram — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560022": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        9000,
+        14000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Yeshwanthpur — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560024": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        8500,
+        12500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Ganganagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560032": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        9000,
+        13500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "RT Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560045": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        9000,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Nagavara — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560092": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        7000,
+        10000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Vidyaranyapura — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560094": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        10000,
+        15000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sanjaynagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560097": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        7000,
+        10500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Byatarayanapura — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560063": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Yelahanka — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560064": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        6500,
+        9500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Yelahanka New Town — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560065": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        7000,
+        11000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Jakkur — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560008": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        18000,
+        28000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Indiranagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560038": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        17000,
+        26000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Indiranagar East — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560046": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        14000,
+        20000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Ulsoor — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560005": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        12000,
+        17000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Cox Town — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560017": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        12000,
+        17000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "HAL / Old Airport — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560075": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        11000,
+        15000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "New Thippasandra — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560093": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        9000,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "CV Raman Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560016": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        6500,
+        10000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "KR Puram — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560036": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        6500,
+        9500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Ramamurthy Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560037": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        8000,
+        12000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Marathahalli — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560048": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        8500,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Mahadevapura — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560066": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        9000,
+        14000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Whitefield — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560067": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        7500,
+        11500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Whitefield Hope Farm — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560103": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        9000,
+        14000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Bellandur — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560035": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        8000,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sarjapur Road — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560087": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        6000,
+        9500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Varthur — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560034": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        15000,
+        25000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Koramangala — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560095": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        15000,
+        24000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Koramangala 8th Blk — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560102": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        12000,
+        18000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "HSR Layout — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560029": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        11000,
+        16000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Adugodi — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560027": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        10000,
+        15000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Shanti Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560030": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        10000,
+        14000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Wilson Garden — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560068": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        7500,
+        11000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Bommanahalli — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560004": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        13000,
+        20000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Basavanagudi — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560011": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        18000,
+        28000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Jayanagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560041": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        17000,
+        26000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Jayanagar 4th Block — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560019": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        9000,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Hanumanthanagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560028": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        9500,
+        13500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Tyagarajanagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560050": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        8000,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Banashankari — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560070": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        9000,
+        14000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "BSK 2nd Stage — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560085": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        8000,
+        12000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "BSK 3rd Stage — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560078": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        9000,
+        14000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "JP Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560076": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        9000,
+        14000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "BTM Layout — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560061": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        6500,
+        9500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Uttarahalli — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560062": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        6500,
+        10000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Konanakunte — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560083": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        7500,
+        11500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Bannerghatta Road — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560082": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        5500,
+        8500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Bannerghatta — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560040": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        10000,
+        15000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Vijayanagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560079": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        10000,
+        14500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Basaveshwaranagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560072": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        8500,
+        12500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Nagarbhavi — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560018": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        9000,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Chamrajpet — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560091": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sunkadakatte — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560056": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Jnana Bharathi — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560100": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        6000,
+        9500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Electronic City — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560099": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        5500,
+        8500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Hosur Road — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560105": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        4500,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Anekal — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
     }
   }
 }

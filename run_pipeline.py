@@ -87,10 +87,36 @@ def merge():
                     master[pin][k] = v                # original (back-compat)
                 if src not in master[pin]["sources"]: master[pin]["sources"].append(src)
 
+    # ── Bengaluru (city 2) — inject the seed dataset ────────────────────────
+    # Air quality for Bengaluru pins may already be present here if the CPCB
+    # scraper fetched a station for that pin (STATION_PIN_MAP); in that case the
+    # live value wins and the seed estimate is skipped.
+    try:
+        from scrapers.bengaluru_data import master_records as _blr_records
+        for r in _blr_records():
+            pin = r["pin_code"]
+            master[pin]["pin_code"] = pin
+            for k, v in r.items():
+                if k.startswith("_"):
+                    continue
+                if k == "sources":
+                    for s in v:
+                        if s not in master[pin]["sources"]:
+                            master[pin]["sources"].append(s)
+                    continue
+                if k in ("aqi_avg", "aqi_category") and master[pin].get(k) is not None:
+                    continue  # keep live AQI already merged from the CPCB scraper
+                master[pin][k] = v
+        log.info("Bengaluru seed merged.")
+    except Exception as e:
+        log.error(f"Bengaluru seed merge failed: {e}")
+
     final = [v for v in master.values() if v.get("pin_code")]
     for r in final:
         r["data_completeness"] = len(set(r.get("sources",[])))
         r["merged_at"] = datetime.now().isoformat()
+        # tag city (Bengaluru pins are 560xxx; everything else is the Delhi NCR set)
+        r["city"] = r.get("city") or ("Bangalore" if str(r["pin_code"]).startswith("560") else "Delhi NCR")
 
     path = save_processed(final,"master_by_pin")
     log.info(f"Master saved → {path}")

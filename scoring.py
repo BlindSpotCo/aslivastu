@@ -218,6 +218,7 @@ def compute_nqi(record):
         composite = round(sum(available[k] * WEIGHTS[k] for k in available) / total_weight)
     return {
         "pin_code":           record["pin_code"],
+        "city":               record.get("city", "Delhi NCR"),
         "scores":             {k: v for k, v in dim_scores.items() if v is not None},
         "weights_base":       {k: WEIGHTS[k] for k in available},
         "weights_applied":    weights_applied,
