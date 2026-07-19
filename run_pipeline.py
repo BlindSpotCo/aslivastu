@@ -63,12 +63,28 @@ def merge():
         master[pin]["total_cognizable_crimes"] = total
         if "delhi_crime" not in master[pin]["sources"]: master[pin]["sources"].append("delhi_crime")
 
+    # Namespace fields that collide across sources. water/roads both emit
+    # "quality_score" and water/sewerage both emit "coverage_pct"; a blind
+    # update() lets the later source clobber the earlier one, so the sub-scorers
+    # (and the report cards) were reading the wrong dimension's value. Rename to
+    # dimension-specific keys so each scorer reads its own data. Originals are
+    # kept too for backward compatibility with any consumer still using them.
+    RENAME = {
+        "water":    {"quality_score": "water_quality",  "coverage_pct": "water_coverage"},
+        "roads":    {"quality_score": "road_quality"},
+        "sewerage": {"coverage_pct":  "sewerage_coverage"},
+    }
     for src in ["infrastructure","power","water","roads","sewerage"]:
+        renames = RENAME.get(src, {})
         for r in load_processed(src):
             pin = r.get("pin_code")
             if pin:
                 master[pin]["pin_code"] = pin
-                master[pin].update({k:v for k,v in r.items() if k not in ("pin_code","scraped_at")})
+                for k, v in r.items():
+                    if k in ("pin_code", "scraped_at"): continue
+                    if k in renames:
+                        master[pin][renames[k]] = v   # namespaced copy
+                    master[pin][k] = v                # original (back-compat)
                 if src not in master[pin]["sources"]: master[pin]["sources"].append(src)
 
     final = [v for v in master.values() if v.get("pin_code")]

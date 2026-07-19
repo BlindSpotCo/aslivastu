@@ -6,12 +6,15 @@ from utils.helpers import get_logger, load_processed, save_processed
 log = get_logger("scoring")
 
 WEIGHTS = {
-    "crime":          0.30,
-    "infrastructure": 0.25,
-    "air":            0.20,
-    "power":          0.15,
+    "crime":          0.25,
+    "infrastructure": 0.20,
+    "air":            0.15,
+    "power":          0.10,
     "schools":        0.10,
-}
+    "water":          0.08,
+    "roads":          0.07,
+    "sewerage":       0.05,
+}  # sums to 1.00 — water/roads/sewerage folded in (Issue #8)
 
 # Human-readable rubric per dimension, published alongside scores so users
 # (and brokers, and residents) can see exactly how a composite is built and
@@ -63,6 +66,34 @@ METHODOLOGY = {
         "description": (
             "60 points for the number of schools found near the PIN (density), plus up to "
             "40 points for the share of those schools that are CBSE/ICSE-recognized."
+        ),
+    },
+    "water": {
+        "weight": WEIGHTS["water"],
+        "formula": "score = round(min(supply_hours/22, 1)*40 + (water_quality/5)*35 + (water_coverage/100)*25)",
+        "description": (
+            "Piped-water reliability: up to 40 points for daily supply hours (22h+ = full), "
+            "35 for a water-quality rating (TDS/potability, 1–5), and 25 for network coverage. "
+            "Sourced from Delhi Jal Board / local utility data — not live-metered."
+        ),
+    },
+    "roads": {
+        "weight": WEIGHTS["roads"],
+        "formula": "score = round((road_quality/5)*60 + max(0, 1 - min(pothole_density/20, 1))*40)",
+        "description": (
+            "Road condition: up to 60 points for a surface-quality rating (1–5) and 40 for low "
+            "pothole density (potholes per km). Based on municipal/PWD road-condition surveys."
+        ),
+    },
+    "sewerage": {
+        "weight": WEIGHTS["sewerage"],
+        "formula": "score = round((sewerage_coverage/100)*40 + (waterlogging_risk/5)*35 + treatment_points)",
+        "description": (
+            "Drainage & sewerage: up to 40 points for sewer-network coverage, 35 for low "
+            "waterlogging risk (1–5, higher = safer), and 25 for treatment adequacy "
+            "(Adequate/Partial/Inadequate). Waterlogging risk is also surfaced separately as a "
+            "visible flag and filter, since monsoon flooding is a make-or-break factor buyers "
+            "asked not to have buried inside a composite."
         ),
     },
 }
@@ -170,6 +201,9 @@ def compute_nqi(record):
         "air":            score_air(record),
         "power":          score_power(record),
         "schools":        score_schools(record),
+        "water":          score_water(record),
+        "roads":          score_roads(record),
+        "sewerage":       score_sewerage(record),
     }
     available = {k: v for k, v in dim_scores.items() if v is not None}
     if not available:
@@ -339,15 +373,13 @@ def run():
     print()
     return results
 
-if __name__ == "__main__":
-    run()
-
-# ── sub-dimension scorers (used by report page, not in NQI composite) ──────
+# ── sub-dimension scorers (now folded into the NQI composite — Issue #8) ──────
 
 def score_water(record):
+    # read namespaced fields (fall back to legacy keys for safety)
     hours = record.get("supply_hours")
-    quality = record.get("quality_score")
-    coverage = record.get("coverage_pct")
+    quality = record.get("water_quality", record.get("quality_score"))
+    coverage = record.get("water_coverage", record.get("coverage_pct"))
     if hours is None: return None
     hour_score    = min((hours / 22) * 40, 40)
     quality_score = ((quality or 3) / 5) * 35
@@ -355,7 +387,7 @@ def score_water(record):
     return round(hour_score + quality_score + cover_score)
 
 def score_roads(record):
-    quality = record.get("quality_score")
+    quality = record.get("road_quality", record.get("quality_score"))
     potholes = record.get("pothole_density")
     if quality is None: return None
     q_score = (quality / 5) * 60
@@ -363,11 +395,15 @@ def score_roads(record):
     return round(q_score + p_score)
 
 def score_sewerage(record):
-    coverage = record.get("coverage_pct")
-    wl_risk  = record.get("waterlogging_risk")
+    coverage = record.get("sewerage_coverage", record.get("coverage_pct"))
+    wl_risk  = record.get("waterlogging_risk")  # inverted: 5 = safest, 1 = high flood risk
     treatment = record.get("treatment","Partial")
     if coverage is None: return None
     cov_score  = ((coverage or 70) / 100) * 40
     risk_score = ((wl_risk or 3) / 5) * 35
     treat_score = {"Adequate":25,"Partial":15,"Inadequate":5}.get(treatment, 15)
     return round(cov_score + risk_score + treat_score)
+
+
+if __name__ == "__main__":
+    run()
