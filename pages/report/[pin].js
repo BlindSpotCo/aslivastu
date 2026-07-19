@@ -1379,26 +1379,6 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                 {/* ── RIGHT COLUMN ── */}
                 <div>
 
-                  {/* Neighbourhood Report heading */}
-                  <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:20, paddingBottom:14, borderBottom:`1px solid ${border}` }}>
-                    <span style={{ display:'inline-block', width:3, height:20, background:ACCENT, borderRadius:2 }}/>
-                    <h2 style={{ margin:0, fontSize:20, fontWeight:700, color:text, letterSpacing:'-0.3px' }}>Neighbourhood Report</h2>
-                    <div style={{ marginLeft:'auto', display:'flex', alignItems:'center', gap:8 }}>
-                      <span style={{ fontSize:12, color:muted }}>{meta?.name} · {report?.pin_code}</span>
-                      <PDFDownloadButton
-                        areaName={meta?.name}
-                        pin={report?.pin_code}
-                      />
-                      <WhatsAppShareButton
-                        areaName={meta?.name}
-                        pin={report?.pin_code}
-                        score={report?.nqi_composite}
-                        grade={report?.grade}
-                        verdict={verdict?.label}
-                        scores={report?.scores || {}}
-                      />
-                    </div>
-                  </div>
                 <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
                   <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:14 }}>
                     <p style={{ margin:0, fontSize:16, fontWeight:600, color:text, display:'flex', alignItems:'center', gap:8 }}>
@@ -1526,6 +1506,28 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                   </div>
                 ) : (
                   <>
+                  {/* Neighbourhood Report heading — moved here (above Highlights) so the
+                      score breakdown can align with the NQI card at the top. */}
+                  <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:12, paddingBottom:14, borderBottom:`1px solid ${border}` }}>
+                    <span style={{ display:'inline-block', width:3, height:20, background:ACCENT, borderRadius:2 }}/>
+                    <h2 style={{ margin:0, fontSize:20, fontWeight:700, color:text, letterSpacing:'-0.3px' }}>Neighbourhood Report</h2>
+                    <div style={{ marginLeft:'auto', display:'flex', alignItems:'center', gap:8 }}>
+                      <span style={{ fontSize:12, color:muted }}>{meta?.name} · {report?.pin_code}</span>
+                      <PDFDownloadButton
+                        areaName={meta?.name}
+                        pin={report?.pin_code}
+                      />
+                      <WhatsAppShareButton
+                        areaName={meta?.name}
+                        pin={report?.pin_code}
+                        score={report?.nqi_composite}
+                        grade={report?.grade}
+                        verdict={verdict?.label}
+                        scores={report?.scores || {}}
+                      />
+                    </div>
+                  </div>
+
                   {/* Highlights */}
                   {(good.length > 0 || bad.length > 0) && (
                     <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
