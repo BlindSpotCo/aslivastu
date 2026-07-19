@@ -23,12 +23,12 @@ body { margin: 0; padding: 0; }
 .report-grid { display: block; }
 .report-left { width: 100%; }
 @media (min-width: 960px) {
-  .report-wrap { max-width: 100% !important; padding: 0 40px !important; }
+  .report-wrap { max-width: 1400px !important; margin: 0 auto !important; padding: 0 40px !important; }
   .landing-wrap { max-width: 900px !important; }
   .report-grid {
     display: grid;
-    grid-template-columns: 360px 1fr;
-    gap: 28px;
+    grid-template-columns: 380px 1fr;
+    gap: 24px;
     align-items: start;
   }
   .report-left { width: auto; }
@@ -981,7 +981,8 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
   const meta    = report ? (PIN_META[report.pin_code] || { name: report.pin_code, area: 'Delhi NCR' }) : null
   const verdict = report ? getVerdict(report.scores, report.nqi_composite) : null
   const { good, bad } = report ? getHighlights(report, report.scores) : { good:[], bad:[] }
-  const radarData = report ? Object.entries(report.scores).map(([k,v]) => ({ subject: DIM_LABEL[k]||k, score: v })) : []
+  const RADAR_SHORT = { crime:'Safety', infrastructure:'Infra', air:'Air', power:'Power', schools:'Schools', water:'Water', roads:'Roads', sewerage:'Drainage' }
+  const radarData = report ? Object.entries(report.scores).map(([k,v]) => ({ subject: RADAR_SHORT[k] || DIM_LABEL[k] || k, score: v })) : []
   const nearby = report
     ? allScores
         .filter(r => r.pin_code !== report.pin_code && r.nqi_composite)
@@ -1342,7 +1343,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                       <div>
                         <p style={{ margin:0, fontSize:13, color:muted, textTransform:'uppercase', letterSpacing:'0.06em' }}>{meta.area}</p>
                         <h2 style={{ margin:'4px 0 0', fontSize:34, fontWeight:800, letterSpacing:'-0.5px', color:text }}>{meta.name}</h2>
-                        <p style={{ margin:'4px 0 0', fontSize:14, color:muted }}>Pin {report.pin_code} · {report.dimensions_scored} of 5 dimensions</p>
+                        <p style={{ margin:'4px 0 0', fontSize:14, color:muted }}>Pin {report.pin_code} · {report.dimensions_scored} of {report.dimensions_total} dimensions</p>
                       </div>
                       <div style={{ textAlign:'center', background:GRADE_COLOR[displayedGrade]+'18', borderRadius:12, padding:'12px 16px', minWidth:80, boxShadow:`0 0 20px ${GRADE_COLOR[displayedGrade]}30` }}>
                         <div style={{ fontSize:46, fontWeight:900, color:GRADE_COLOR[displayedGrade], lineHeight:1, letterSpacing:'-1px' }}>{displayedNqi}</div>
@@ -1358,15 +1359,15 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
 
                   {/* Radar — Dimension overview */}
                   {radarData.length > 1 && (
-                    <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:'20px 16px', marginBottom:12, marginTop:49 }}>
+                    <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:'20px 16px', marginBottom:12 }}>
                       <p style={{ margin:'0 0 12px', fontSize:14, fontWeight:600, color:text, display:'flex', alignItems:'center', gap:8 }}>
                         <span style={{ display:'inline-block', width:3, height:14, background:ACCENT, borderRadius:2 }}/>
                         Dimension overview
                       </p>
-                      <ResponsiveContainer width="100%" height={220}>
-                        <RadarChart data={radarData}>
+                      <ResponsiveContainer width="100%" height={300}>
+                        <RadarChart data={radarData} outerRadius="72%">
                           <PolarGrid stroke={border} />
-                          <PolarAngleAxis dataKey="subject" tick={{ fontSize:12, fill:muted }} />
+                          <PolarAngleAxis dataKey="subject" tick={{ fontSize:11, fill:muted }} />
                           <Radar dataKey="score" stroke={ACCENT} fill={ACCENT} fillOpacity={0.15} strokeWidth={2} />
                           <Tooltip contentStyle={{ background:card, border:`1px solid ${border}`, borderRadius:8, fontSize:12 }} />
                         </RadarChart>
@@ -1876,7 +1877,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                   AsliVastu scores are data aggregations for informational and research purposes only. They do not constitute real estate, legal, or financial advice. Most data is estimated from government reports last verified in 2023–24 and may not reflect current conditions. Only Air Quality scores are updated in real time. Do not rely solely on these scores for property purchase decisions. AsliVastu and its creators accept no liability for losses arising from use of this information.
                 </p>
                 <p style={{ margin:'8px 0 0', fontSize:11, color:muted }}>
-                  Scored {report && new Date(report.scored_at).toLocaleDateString('en-IN')} · {report && report.dimensions_scored} of 5 dimensions available
+                  Scored {report && new Date(report.scored_at).toLocaleDateString('en-IN')} · {report && report.dimensions_scored} of {report && report.dimensions_total} dimensions available
                 </p>
               </div>
 
