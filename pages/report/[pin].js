@@ -318,15 +318,18 @@ Object.entries(PIN_META).forEach(([pin, {name, area}]) => {
   if (!NAME_TO_PIN[akey]) NAME_TO_PIN[akey] = pin
 })
 
-function searchPin(query) {
+function cityOfPin(pin) { return String(pin).startsWith('560') ? 'Bangalore' : 'Delhi NCR' }
+
+function searchPin(query, city) {
   const q = query.trim().toLowerCase()
   if (!q) return []
+  const cityOk = pin => !city || cityOfPin(pin) === city
   // exact pin code
-  if (/^\d{6}$/.test(q)) return [{pin: q, name: PIN_META[q]?.name || q, area: PIN_META[q]?.area || ''}]
-  // fuzzy match on name + area
+  if (/^\d{6}$/.test(q)) return cityOk(q) ? [{pin: q, name: PIN_META[q]?.name || q, area: PIN_META[q]?.area || ''}] : []
+  // fuzzy match on name + area, scoped to the selected city
   return Object.entries(PIN_META)
     .filter(([pin, {name, area}]) =>
-      name.toLowerCase().includes(q) || area.toLowerCase().includes(q) || pin.includes(q)
+      cityOk(pin) && (name.toLowerCase().includes(q) || area.toLowerCase().includes(q) || pin.includes(q))
     )
     .map(([pin, {name, area}]) => ({pin, name, area}))
     .slice(0, 6)
@@ -947,6 +950,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
   const [pin, setPin]             = useState(initialPin || '')
   const [suggestions, setSuggestions] = useState([])
   const [showSugg, setShowSugg]   = useState(false)
+  const [searchCity, setSearchCity] = useState(initialPin ? cityOfPin(initialPin) : 'Delhi NCR')
   const [report, setReport]       = useState(initialReport || null)
   const [noData, setNoData]       = useState(null) // { pin, name, area } when area known but no data
   const [allScores, setAllScores] = useState(initialAllScores || [])
@@ -997,7 +1001,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
     setQuery(val)
     setError('')
     if (val.trim().length < 2) { setSuggestions([]); setShowSugg(false); return }
-    const results = searchPin(val)
+    const results = searchPin(val, searchCity)
     setSuggestions(results)
     setShowSugg(results.length > 0)
   }
@@ -1181,6 +1185,15 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
             AsliVastu gives you a data-backed score for any Delhi NCR or Bangalore area — covering safety, air quality, water supply, road condition, power reliability, and more. Type your area name or pin code and see the full picture.
           </p>
 
+          {/* City switcher */}
+          <div style={{ animation:'fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) 0.3s both', display:'inline-flex', gap:4, padding:4, background:subtle, borderRadius:10, marginBottom:10 }}>
+            {['Delhi NCR','Bangalore'].map(c => (
+              <button key={c} onClick={() => { setSearchCity(c); if (query.trim().length>=2) { const r = searchPin(query, c); setSuggestions(r); setShowSugg(r.length>0) } }}
+                style={{ fontSize:13, fontWeight:600, padding:'6px 14px', borderRadius:7, cursor:'pointer', border:'none',
+                  background: searchCity===c ? ACCENT : 'transparent', color: searchCity===c ? 'white' : muted }}>{c}</button>
+            ))}
+          </div>
+
           {/* Search */}
           <div style={{ animation:'fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) 0.35s both', position:'relative', marginBottom:14, maxWidth:500, zIndex:50 }}>
             <div style={{ display:'flex', gap:10 }}>
@@ -1191,7 +1204,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                   onKeyDown={e => { if(e.key==='Enter') fetchReport(); if(e.key==='Escape') setShowSugg(false) }}
                   onFocus={() => suggestions.length > 0 && setShowSugg(true)}
                   onBlur={() => setTimeout(() => setShowSugg(false), 150)}
-                  placeholder="Area name or pin code — e.g. Hauz Khas, Rohini"
+                  placeholder={searchCity==='Bangalore' ? 'Area or pin code — e.g. Koramangala, Whitefield' : 'Area or pin code — e.g. Hauz Khas, Rohini'}
                   style={{ width:'100%', padding:'14px 16px', background:card, border:`1.5px solid ${border}`, borderRadius:10, fontSize:15, color:text, outline:'none', boxSizing:'border-box' }}
                 />
                 {showSugg && suggestions.length > 0 && (

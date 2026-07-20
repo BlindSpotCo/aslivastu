@@ -914,6 +914,7 @@ export default function Landing() {
   const [ctaQ, setCtaQ]             = useState('')
   const [ctaSuggestions, setCtaSuggestions] = useState([])
   const [ctaFocused, setCtaFocused] = useState(false)
+  const [ctaCity, setCtaCity]       = useState('Delhi NCR')
 
   const [transitioning, setTransitioning] = useState(false)
   const [transitionLabel, setTransitionLabel] = useState('')
@@ -2046,9 +2047,23 @@ export default function Landing() {
           <p className="cta-pre">Free · No signup · Instant</p>
           <h2 className="cta-title">Your area.<br/><em>By the numbers.</em></h2>
           <div style={{ position:'relative', width:'100%', maxWidth:480, margin:'0 auto' }}>
+            <div style={{ display:'inline-flex', gap:4, padding:4, background:'rgba(255,255,255,0.06)', borderRadius:10, marginBottom:12 }}>
+              {['Delhi NCR','Bangalore'].map(c => (
+                <button key={c} onClick={() => {
+                  setCtaCity(c)
+                  if (ctaQ.trim().length > 0) {
+                    const s = ctaQ.toLowerCase()
+                    setCtaSuggestions(Object.entries(PIN_META_LANDING)
+                      .filter(([pin, name]) => (c==='Bangalore') === pin.startsWith('560') && (name.toLowerCase().includes(s) || pin.includes(s))).slice(0,6))
+                  }
+                }}
+                  style={{ fontSize:13, fontWeight:600, padding:'6px 14px', borderRadius:7, cursor:'pointer', border:'none',
+                    background: ctaCity===c ? '#e23744' : 'transparent', color: ctaCity===c ? 'white' : 'rgba(255,255,255,0.6)' }}>{c}</button>
+              ))}
+            </div>
             <div className="cta-search" style={{ position:'relative' }}>
               <input
-                placeholder="Type area name or pin code…"
+                placeholder={ctaCity==='Bangalore' ? 'Area or pin code — e.g. Koramangala' : 'Type area name or pin code…'}
                 value={ctaQ}
                 onChange={e => {
                   const v = e.target.value
@@ -2056,7 +2071,7 @@ export default function Landing() {
                   if (v.trim().length > 0) {
                     const s = v.toLowerCase()
                     const results = Object.entries(PIN_META_LANDING)
-                      .filter(([pin, name]) => name.toLowerCase().includes(s) || pin.includes(s))
+                      .filter(([pin, name]) => (ctaCity==='Bangalore') === pin.startsWith('560') && (name.toLowerCase().includes(s) || pin.includes(s)))
                       .slice(0, 6)
                     setCtaSuggestions(results)
                   } else {
