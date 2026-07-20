@@ -66,6 +66,22 @@ STATION_PIN_MAP = {
     "Murthal":"131027",
     "Mahendragarh":"122505",
     "Gurgaon South":"122103",
+    # ── Bengaluru (Karnataka) CPCB / KSPCB stations → nearest tracked pin ──
+    "BTM Layout":"560076",
+    "Hebbal":"560024",
+    "Silk Board":"560068",
+    "Peenya":"560022",
+    "Hombegowda Nagar":"560027",
+    "Jayanagar 5th Block":"560041",
+    "Jayanagar 5th":"560041",
+    "City Railway Station":"560023",
+    "Kadabesanahalli":"560103",
+    "Kadubeesanahalli":"560103",
+    "Saneguruvanahalli":"560021",
+    "Saneguravahalli":"560021",
+    "Bapuji Nagar":"560018",
+    "Nimhans":"560029",
+    "SG Halli":"560021",
 }
 
 # Fringe pins with no direct CPCB station — borrow from nearest monitored pin
@@ -86,6 +102,25 @@ FALLBACK_AQI_PINS = {
     "131029": "131001",  # Kundli → Sonipat
     "131027": "131001",  # Murthal → Sonipat
     "122502": "122001",  # Rewari → Gurugram
+    # ── Bengaluru pins → nearest monitored Bengaluru station pin ──
+    "560034": "560076", "560095": "560076", "560100": "560076",
+    "560102": "560068",
+    "560066": "560103", "560048": "560103", "560037": "560103", "560035": "560103",
+    "560087": "560103", "560016": "560103", "560036": "560103", "560067": "560103",
+    "560093": "560103",
+    "560008": "560029", "560038": "560029", "560017": "560029", "560005": "560029",
+    "560046": "560029", "560075": "560029",
+    "560003": "560021", "560010": "560021", "560079": "560021", "560040": "560021",
+    "560020": "560021",
+    "560004": "560041", "560011": "560041", "560050": "560041", "560070": "560041",
+    "560078": "560041", "560085": "560041", "560028": "560041", "560019": "560041",
+    "560061": "560041", "560062": "560041", "560083": "560041",
+    "560001": "560029", "560025": "560029", "560051": "560029", "560052": "560029",
+    "560042": "560029", "560002": "560023",
+    "560032": "560024", "560045": "560024", "560092": "560024", "560094": "560024",
+    "560097": "560024", "560063": "560024", "560064": "560024", "560065": "560024",
+    "560072": "560022", "560091": "560022", "560056": "560022", "560099": "560076",
+    "560105": "560076", "560030": "560027",
 }
 
 def resolve_pin(station):
@@ -124,7 +159,7 @@ def run():
     scraped_at = datetime.now().isoformat()
 
     all_raw = []
-    for state in ["Delhi", "Haryana", "Uttar Pradesh"]:
+    for state in ["Delhi", "Haryana", "Uttar Pradesh", "Karnataka"]:
         log.info(f"Fetching {state}...")
         recs = fetch_state(state, key)
         log.info(f"  {len(recs)} stations")
