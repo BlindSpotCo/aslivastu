@@ -2115,7 +2115,10 @@ export default function Landing() {
           {/* Sample area pills */}
           <div style={{ display:'flex', flexWrap:'wrap', gap:8, justifyContent:'center', marginTop:16 }}>
             <span style={{ fontSize:11, color:'rgba(255,255,255,0.5)', letterSpacing:'0.08em', textTransform:'uppercase', alignSelf:'center', marginRight:4 }}>Try</span>
-            {[['Hauz Khas','110016'],['Vasant Kunj','110070'],['Gurugram','122001'],['Indirapuram','201014'],['Rohini','110085'],['Noida Sec 62','201309']].map(([name, pin]) => (
+            {(ctaCity==='Bangalore'
+              ? [['Koramangala','560034'],['Indiranagar','560038'],['Whitefield','560066'],['HSR Layout','560102'],['Jayanagar','560011'],['Electronic City','560100']]
+              : [['Hauz Khas','110016'],['Vasant Kunj','110070'],['Gurugram','122001'],['Indirapuram','201014'],['Rohini','110085'],['Noida Sec 62','201309']]
+             ).map(([name, pin]) => (
               <button key={pin} onClick={() => go(name)}
                 style={{
                   padding:'6px 14px', background:'none',

@@ -51,6 +51,19 @@ const DIM_DESC  = {
   sewerage:       'Drainage coverage & monsoon waterlogging records · Estimated, last verified 2023',
 }
 
+// Bengaluru source labels — shown instead of the Delhi ones for 560xxx pins.
+const DIM_DESC_BLR = {
+  crime:          'Bengaluru City Police / NCRB · Estimated, last verified 2023',
+  infrastructure: 'BBMP plans · BMRCL Namma Metro · Estimated, last verified 2024',
+  air:            'CPCB / KSPCB live AQI via data.gov.in · Updated daily · Live data',
+  power:          'BESCOM annual reports · Estimated, last verified 2023',
+  schools:        'CBSE affiliation database · Estimated, last verified 2023',
+  water:          'BWSSB (Cauvery) supply & quality data · Estimated, last verified 2023',
+  roads:          'BBMP road-condition surveys · Estimated, last verified 2023',
+  sewerage:       'BWSSB drainage & monsoon waterlogging records · Estimated, last verified 2023',
+}
+function dimDesc(k, city) { return city === 'Bangalore' ? (DIM_DESC_BLR[k] || DIM_DESC[k]) : DIM_DESC[k] }
+
 const DIM_TAG = {
   crime:          { label:'Est. 2023',  color:'#f97316' },
   infrastructure: { label:'Est. 2024',  color:'#f97316' },
@@ -1235,7 +1248,10 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
           {error && <p style={{ color:'#ef4444', fontSize:13, margin:'0 0 12px' }}>{error}</p>}
 
           <div style={{ animation:'fadeIn 0.6s ease 0.5s both', display:'flex', flexWrap:'wrap', gap:8, marginBottom:20 }}>
-            {[['110016','Hauz Khas'],['110070','Vasant Kunj'],['122001','Gurugram'],['110033','Jahangirpuri'],['110085','Rohini'],['201301','Noida']].map(([p,name]) => (
+            {(searchCity==='Bangalore'
+              ? [['560034','Koramangala'],['560038','Indiranagar'],['560066','Whitefield'],['560102','HSR Layout'],['560011','Jayanagar'],['560100','Electronic City']]
+              : [['110016','Hauz Khas'],['110070','Vasant Kunj'],['122001','Gurugram'],['110033','Jahangirpuri'],['110085','Rohini'],['201301','Noida']]
+             ).map(([p,name]) => (
               <button key={p} onClick={() => { setQuery(name); setPin(p); fetchReportByPin(p) }}
                 style={{ padding:'6px 14px', background:'none', border:`1px solid ${border}`, borderRadius:20, fontSize:12, cursor:'pointer', color:muted }}>
                 {name}
@@ -1254,9 +1270,9 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
             <p style={{ fontSize:12, fontWeight:600, color:muted, textTransform:'uppercase', letterSpacing:'0.08em', marginBottom:14 }}>What we score</p>
             <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(140px,1fr))', gap:10 }}>
               {[
-                { key:'crime',          label:'Safety',         desc:'Crime rate per area from Delhi Police data' },
+                { key:'crime',          label:'Safety',         desc:'Crime rate per area from city police data' },
                 { key:'air',            label:'Air Quality',     desc:'Live AQI from CPCB monitoring stations' },
-                { key:'power',          label:'Power Supply',    desc:'Outage hours from BSES, Tata Power, DHBVN' },
+                { key:'power',          label:'Power Supply',    desc:'Outage hours from the local DISCOM (BESCOM / BSES / Tata Power)' },
                 { key:'water',          label:'Water Supply',    desc:'Daily supply hours and TDS quality rating' },
                 { key:'roads',          label:'Road Condition',  desc:'Pothole density and last resurfacing year' },
                 { key:'infrastructure', label:'Infrastructure',  desc:'Metro access, highway proximity, zone type' },
@@ -1547,7 +1563,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                         <div style={{ background:subtle, borderRadius:99, height:8, overflow:'hidden' }}>
                           <div style={{ width:v+'%', height:'100%', background:c, borderRadius:99, transition:'width 0.8s ease' }}/>
                         </div>
-                        <p style={{ fontSize:12, color:muted, margin:'6px 0 0', lineHeight:1.5 }}>{DIM_DESC[k]}</p>
+                        <p style={{ fontSize:12, color:muted, margin:'6px 0 0', lineHeight:1.5 }}>{dimDesc(k, report.city)}</p>
                         {k === 'crime' && report.crime_percentile != null && (
                           <p style={{ fontSize:12, color:muted, margin:'4px 0 0', lineHeight:1.5 }}>
                             {report.total_cognizable_crimes} total crimes reported — safer than <strong style={{color:text}}>{report.crime_percentile}%</strong> of tracked areas ({report.crime_tier} tier).
@@ -1710,7 +1726,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                     </div>
                     <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8 }}>
                       {[
-                        ['Total crimes', report.total_cognizable_crimes ?? '—', 'Total cognizable crimes reported annually for this pin\'s police station catchment — IPC offences serious enough that police can arrest without a warrant. The catchment can span a wider area than any one street or colony.\n\nSource: Delhi Police Annual Report 2022-23.'],
+                        ['Total crimes', report.total_cognizable_crimes ?? '—', 'Total cognizable crimes reported annually for this pin\'s police station catchment — IPC offences serious enough that police can arrest without a warrant. The catchment can span a wider area than any one street or colony.\n\nSource: ' + (report.city === 'Bangalore' ? 'Bengaluru City Police / NCRB.' : 'Delhi Police Annual Report 2022-23.')],
                         ['Safety score', (report.scores.crime ?? '—') + '/100', 'Inverse-normalized against total cognizable crimes: 250 or fewer scores 100, 650 or more scores 0, linear in between.'],
                         ['Safer than', report.crime_percentile != null ? report.crime_percentile + '% of areas' : '—', 'Percentile rank of this pin\'s raw crime count against all 86 other tracked areas. A tied count gets no credit either way.\n\nThis is a relative ranking, not a true per-capita rate — it doesn\'t yet account for how many people live in each catchment.'],
                         ['Crime tier', report.crime_tier ?? '—', 'Very Low / Low / Moderate / High / Very High, based on percentile rank:\n\n• 80%+ = Very Low\n• 60-79% = Low\n• 40-59% = Moderate\n• 20-39% = High\n• Below 20% = Very High'],
@@ -1730,7 +1746,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                     </div>
                     <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8 }}>
                       {[
-                        ['Discom', report.discom ?? '—', 'The electricity distribution company serving this area — BSES Rajdhani, BSES Yamuna, Tata Power, or DHBVN in Haryana NCR.'],
+                        ['Discom', report.discom ?? '—', 'The electricity distribution company serving this area — BESCOM in Bengaluru; BSES Rajdhani, BSES Yamuna, Tata Power, or DHBVN in Delhi NCR.'],
                         ['Reliability', report.reliability ?? '—', 'Qualitative reliability rating derived from outage frequency and consumer complaint data in DISCOM annual reports.'],
                         ['Avg cut hrs', (report.avg_outage_hours ?? '—') + ' hrs/mo', 'Average monthly power outage duration in hours, based on DISCOM annual reports and consumer complaint data — not live-metered.'],
                         ['Score', (report.scores.power ?? '—') + '/100', 'Weighted blend of outage frequency (60% of this dimension) and average outage duration (40%).'],
@@ -1909,36 +1925,17 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                       Methodology & data sources
                     </p>
                     <div style={{ fontSize:12, color:muted, lineHeight:1.9 }}>
-                      <p style={{ margin:'0 0 6px' }}>
-                        <strong style={{color:text}}>Safety 30%</strong>
-                        <span style={{ marginLeft:8, fontSize:10, background:'#f97316'+'20', color:'#f97316', padding:'1px 6px', borderRadius:4, fontWeight:600 }}>ESTIMATED</span>
-                        <br/>Delhi Police Annual Report 2022-23. Cognizable IPC crimes per station, normalized 250–650 range. Last verified 2023.
-                      </p>
-                      <p style={{ margin:'0 0 6px' }}>
-                        <strong style={{color:text}}>Infrastructure 25%</strong>
-                        <span style={{ marginLeft:8, fontSize:10, background:'#f97316'+'20', color:'#f97316', padding:'1px 6px', borderRadius:4, fontWeight:600 }}>ESTIMATED</span>
-                        <br/>DDA Master Plan 2021, DMRC Phase 4 station data, NHAI highway proximity, Smart Cities Mission. Last verified 2024.
-                      </p>
-                      <p style={{ margin:'0 0 6px' }}>
-                        <strong style={{color:text}}>Air Quality 20%</strong>
-                        <span style={{ marginLeft:8, fontSize:10, background:'#22c55e'+'25', color:'#22c55e', padding:'1px 6px', borderRadius:4, fontWeight:600 }}>LIVE</span>
-                        <br/>CPCB real-time AQI via data.gov.in. PM2.5 and PM10 daily averages. Refreshed daily from government sensors.
-                      </p>
-                      <p style={{ margin:'0 0 6px' }}>
-                        <strong style={{color:text}}>Power 15%</strong>
-                        <span style={{ marginLeft:8, fontSize:10, background:'#f97316'+'20', color:'#f97316', padding:'1px 6px', borderRadius:4, fontWeight:600 }}>ESTIMATED</span>
-                        <br/>BSES Rajdhani, BSES Yamuna, Tata Power and DHBVN annual reports. Outage frequency and monthly cut hours. Last verified 2023.
-                      </p>
-                      <p style={{ margin:'0 0 6px' }}>
-                        <strong style={{color:text}}>Water, Roads, Sewerage</strong>
-                        <span style={{ marginLeft:8, fontSize:10, background:'#f97316'+'20', color:'#f97316', padding:'1px 6px', borderRadius:4, fontWeight:600 }}>ESTIMATED</span>
-                        <br/>DJB annual reports, MCD road surveys, PWD data. Shown in full report only. Last verified 2023–24.
-                      </p>
-                      <p style={{ margin:0 }}>
-                        <strong style={{color:text}}>Schools 10%</strong>
-                        <span style={{ marginLeft:8, fontSize:10, background:'#f97316'+'20', color:'#f97316', padding:'1px 6px', borderRadius:4, fontWeight:600 }}>ESTIMATED</span>
-                        <br/>CBSE affiliation database. School density and pass percentage where available. Last verified 2023.
-                      </p>
+                      {['crime','infrastructure','air','power','schools','water','roads','sewerage'].map(k => {
+                        const w = WEIGHT_PRESETS.Default[k] || 0
+                        const live = k === 'air'
+                        return (
+                          <p key={k} style={{ margin:'0 0 6px' }}>
+                            <strong style={{color:text}}>{DIM_LABEL[k]} {w}%</strong>
+                            <span style={{ marginLeft:8, fontSize:10, background:(live?'#22c55e25':'#f9731620'), color:(live?'#22c55e':'#f97316'), padding:'1px 6px', borderRadius:4, fontWeight:600 }}>{live?'LIVE':'ESTIMATED'}</span>
+                            <br/>{dimDesc(k, report.city)}
+                          </p>
+                        )
+                      })}
                     </div>
 
                     {/* Legal disclaimer box */}
