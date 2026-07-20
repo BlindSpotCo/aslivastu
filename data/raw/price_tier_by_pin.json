@@ -1290,7 +1290,7 @@
       "rate_exact": false,
       "land_sqft": null,
       "land_exact": false,
-      "basis": "Vasanth Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "basis": "HKP Road — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
       "source": "Govt of Karnataka"
     },
     "560052": {
@@ -1304,7 +1304,7 @@
       "rate_exact": false,
       "land_sqft": null,
       "land_exact": false,
-      "basis": "Cantonment — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "basis": "Vasanth Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
       "source": "Govt of Karnataka"
     },
     "560042": {
@@ -1430,7 +1430,7 @@
       "rate_exact": false,
       "land_sqft": null,
       "land_exact": false,
-      "basis": "Ganganagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "basis": "Hebbal — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
       "source": "Govt of Karnataka"
     },
     "560032": {
@@ -1556,7 +1556,7 @@
       "rate_exact": false,
       "land_sqft": null,
       "land_exact": false,
-      "basis": "Indiranagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "basis": "Ulsoor — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
       "source": "Govt of Karnataka"
     },
     "560038": {
@@ -1584,7 +1584,7 @@
       "rate_exact": false,
       "land_sqft": null,
       "land_exact": false,
-      "basis": "Ulsoor — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "basis": "Benson Town — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
       "source": "Govt of Karnataka"
     },
     "560005": {
@@ -1654,7 +1654,7 @@
       "rate_exact": false,
       "land_sqft": null,
       "land_exact": false,
-      "basis": "KR Puram — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "basis": "Ramamurthy Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
       "source": "Govt of Karnataka"
     },
     "560036": {
@@ -1668,7 +1668,7 @@
       "rate_exact": false,
       "land_sqft": null,
       "land_exact": false,
-      "basis": "Ramamurthy Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "basis": "KR Puram — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
       "source": "Govt of Karnataka"
     },
     "560037": {
@@ -2047,20 +2047,6 @@
       "land_sqft": null,
       "land_exact": false,
       "basis": "Bannerghatta Road — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
-      "source": "Govt of Karnataka"
-    },
-    "560082": {
-      "tier": 4,
-      "label": "Modest",
-      "rate_sqft": [
-        5500,
-        8500
-      ],
-      "rate_type": "apartment",
-      "rate_exact": false,
-      "land_sqft": null,
-      "land_exact": false,
-      "basis": "Bannerghatta — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
       "source": "Govt of Karnataka"
     },
     "560040": {

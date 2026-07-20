@@ -45,8 +45,8 @@ AREAS = [
     # ── Central / CBD ──
     ("560001", "MG Road",            "Central", 5, 18000, 28000, dict(ztype="Commercial", crime=470, metro=2, aqi=96, whrs=8, wcov=96)),
     ("560025", "Richmond Town",      "Central", 5, 16000, 24000, dict(aqi=92)),
-    ("560051", "Vasanth Nagar",      "Central", 5, 15000, 22000, {}),
-    ("560052", "Cantonment",         "Central", 4, 13000, 19000, dict(metro=1)),
+    ("560051", "HKP Road",           "Central", 5, 15000, 22000, {}),
+    ("560052", "Vasanth Nagar",      "Central", 4, 13000, 19000, dict(metro=1)),
     ("560042", "Shivajinagar",       "Central", 3, 11000, 16000, dict(ztype="Commercial", crime=520, metro=1, aqi=104, sopen=True)),
     ("560002", "Chickpet",           "Central", 3, 12000, 18000, dict(ztype="Commercial", crime=540, whrs=6, pot=8, aqi=108)),
     ("560023", "Majestic",           "Central", 3, 11000, 16000, dict(ztype="Commercial", crime=560, metro=2, aqi=112, sopen=True)),
@@ -57,7 +57,7 @@ AREAS = [
     ("560020", "Seshadripuram",      "North", 4, 12000, 17000, dict(metro=1)),
     ("560021", "Sriramapuram",       "North", 3, 9000, 13000, {}),
     ("560022", "Yeshwanthpur",       "North", 4, 9000, 14000, dict(metro=2, ztype="Mixed")),
-    ("560024", "Ganganagar",         "North", 3, 8500, 12500, {}),
+    ("560024", "Hebbal",             "North", 3, 8500, 12500, {}),
     ("560032", "RT Nagar",           "North", 3, 9000, 13500, dict(crime=430)),
     ("560045", "Nagavara",           "North", 4, 9000, 13000, dict(ztype="Mixed", infra=72, flood=6)),  # Manyata tech park
     ("560092", "Vidyaranyapura",     "North", 3, 7000, 10000, {}),
@@ -68,15 +68,15 @@ AREAS = [
     ("560065", "Jakkur",             "North", 3, 7000, 11000, {}),
 
     # ── East ──
-    ("560008", "Indiranagar",        "East", 5, 18000, 28000, dict(metro=2, aqi=90)),
+    ("560008", "Ulsoor",             "East", 5, 18000, 28000, dict(metro=2, aqi=90)),
     ("560038", "Indiranagar East",   "East", 5, 17000, 26000, dict(metro=2)),
-    ("560046", "Ulsoor",             "East", 4, 14000, 20000, dict(metro=1)),
+    ("560046", "Benson Town",        "East", 4, 14000, 20000, dict(metro=1)),
     ("560005", "Cox Town",           "East", 4, 12000, 17000, {}),
     ("560017", "HAL / Old Airport",  "East", 4, 12000, 17000, dict(ztype="Mixed")),
     ("560075", "New Thippasandra",   "East", 4, 11000, 15000, {}),
     ("560093", "CV Raman Nagar",     "East", 3, 9000, 13000, dict(infra=58)),
-    ("560016", "KR Puram",           "East", 2, 6500, 10000, dict(flood=14, wl=1, sopen=True, pot=12, rcond="Poor", aqi=106)),
-    ("560036", "Ramamurthy Nagar",   "East", 2, 6500, 9500, dict(flood=9, wl=2)),
+    ("560016", "Ramamurthy Nagar",   "East", 2, 6500, 10000, dict(flood=14, wl=1, sopen=True, pot=12, rcond="Poor", aqi=106)),
+    ("560036", "KR Puram",           "East", 2, 6500, 9500, dict(flood=9, wl=2)),
     ("560037", "Marathahalli",       "East", 4, 8000, 12000, dict(ztype="Mixed", infra=64, pot=9, rcond="Poor", conn="Medium", flood=7, wl=2, aqi=100)),
     ("560048", "Mahadevapura",       "East", 4, 8500, 13000, dict(ztype="Mixed", infra=70, flood=8, wl=2, pot=8)),
     ("560066", "Whitefield",         "East", 4, 9000, 14000, dict(ztype="Mixed", infra=72, metro=1, whrs=4, wcov=55, tds="High", flood=7, wl=2, pot=8, aqi=94)),
@@ -108,7 +108,6 @@ AREAS = [
     ("560061", "Uttarahalli",        "South", 2, 6500, 9500, {}),
     ("560062", "Konanakunte",        "South", 3, 6500, 10000, dict(metro=1)),
     ("560083", "Bannerghatta Road",  "South", 3, 7500, 11500, dict(ztype="Mixed", pot=8, flood=6)),
-    ("560082", "Bannerghatta",       "South", 2, 5500, 8500, {}),
 
     # ── West ──
     ("560040", "Vijayanagar",        "West", 4, 10000, 15000, dict(metro=2)),
