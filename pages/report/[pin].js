@@ -1665,6 +1665,9 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                       ? '₹' + (v / 10000000).toFixed(v / 10000000 >= 10 ? 0 : 1) + ' cr'
                       : '₹' + Math.round(v / 100000) + ' lakh'
                     const totLo = fmtTot(mLo * 1000), totHi = fmtTot(mHi * 1000)
+                    const blr = report.city === 'Bangalore'
+                    const rateWord = blr ? 'guidance value' : 'circle rate'
+                    const regionShort = blr ? 'Bengaluru' : 'NCR'
                     return (
                       <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
                         <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 16px' }}>
@@ -1680,7 +1683,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                           <span style={{ fontSize:11, fontWeight:700, color:ACCENT, background:`${ACCENT}1a`, padding:'3px 8px', borderRadius:6 }}>{pc.label} band</span>
                         </div>
                         <p style={{ fontSize:12.5, color:muted, margin:'0 0 16px', lineHeight:1.5 }}>
-                          {pc.rate_exact ? 'Official' : 'Indicative'} {typeLabel} — the <strong style={{ color:text }}>circle rate</strong> (Haryana calls it the <strong style={{ color:text }}>collector rate</strong> — same thing), i.e. the government&apos;s minimum value used to calculate stamp duty &amp; registration.
+                          {pc.rate_exact ? 'Official' : 'Indicative'} {typeLabel} — the <strong style={{ color:text }}>{rateWord}</strong> ({blr ? <>Karnataka&apos;s term for the government minimum rate</> : <>Haryana calls it the <strong style={{ color:text }}>collector rate</strong></>} — same thing), i.e. the government&apos;s minimum value used to calculate stamp duty &amp; registration.
                           {pc.land_sqft ? <> Plot / land here is officially <strong style={{ color:text }}>{inr(pc.land_sqft)}/sq ft</strong>.</> : null}
                         </p>
 
@@ -1697,7 +1700,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                           })}
                         </div>
                         <div style={{ display:'flex', justifyContent:'space-between', fontSize:10.5, color:muted, opacity:0.8, marginBottom:16 }}>
-                          <span>Most expensive in NCR</span><span>Most affordable</span>
+                          <span>Most expensive in {regionShort}</span><span>Most affordable</span>
                         </div>
 
                         {/* What you'll actually pay */}
@@ -1706,7 +1709,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                             What you&apos;ll actually pay is higher
                           </p>
                           <p style={{ fontSize:12.5, color:muted, margin:0, lineHeight:1.6 }}>
-                            Market prices in the NCR usually run <strong style={{ color:text }}>20–70% above</strong> the circle rate, so expect roughly <strong style={{ color:text }}>{inr(mLo)}–{inr(mHi)}/sq ft</strong> in practice. A ~1,000 sq ft flat here would be around <strong style={{ color:text }}>{totLo}–{totHi}</strong>. Home loans are usually capped near the circle-rate value, so the gap above it typically comes from your own funds.
+                            Market prices in {blr ? 'Bengaluru' : 'the NCR'} usually run <strong style={{ color:text }}>20–70% above</strong> the {rateWord}, so expect roughly <strong style={{ color:text }}>{inr(mLo)}–{inr(mHi)}/sq ft</strong> in practice. A ~1,000 sq ft flat here would be around <strong style={{ color:text }}>{totLo}–{totHi}</strong>. Home loans are usually capped near the {rateWord} value, so the gap above it typically comes from your own funds.
                           </p>
                         </div>
 
