@@ -361,7 +361,7 @@ function getVerdict(scores, composite) {
   if (composite >= 60) return { label:"Consider",      color:"#eab308", reason:"Decent overall but has some weak spots. Review each dimension carefully before deciding." }
   if (scores.crime !== undefined && scores.crime < 30)
                         return { label:"High risk",     color:"#ef4444", reason:"Safety score is significantly below NCR average. Crime rates are high for this area." }
-  if (composite >= 45) return { label:"Below average", color:"#f97316", reason:"Scores below the NCR average of 68. Compare with nearby areas before committing." }
+  if (composite >= 45) return { label:"Below average", color:"#f97316", reason:"Scores below the tracked-area average. Compare with nearby areas before committing." }
   return               { label:"Avoid",                color:"#ef4444", reason:"Multiple dimensions score poorly. Strongly recommend comparing alternatives." }
 }
 
@@ -1566,7 +1566,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                         <p style={{ fontSize:12, color:muted, margin:'6px 0 0', lineHeight:1.5 }}>{dimDesc(k, report.city)}</p>
                         {k === 'crime' && report.crime_percentile != null && (
                           <p style={{ fontSize:12, color:muted, margin:'4px 0 0', lineHeight:1.5 }}>
-                            {report.total_cognizable_crimes} total crimes reported — safer than <strong style={{color:text}}>{report.crime_percentile}%</strong> of tracked areas ({report.crime_tier} tier).
+                            {report.total_cognizable_crimes} total crimes reported — safer than <strong style={{color:text}}>{report.crime_percentile}%</strong> of tracked areas in {report.city} ({report.crime_tier} tier).
                           </p>
                         )}
                       </div>
@@ -1728,7 +1728,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                       {[
                         ['Total crimes', report.total_cognizable_crimes ?? '—', 'Total cognizable crimes reported annually for this pin\'s police station catchment — IPC offences serious enough that police can arrest without a warrant. The catchment can span a wider area than any one street or colony.\n\nSource: ' + (report.city === 'Bangalore' ? 'Bengaluru City Police / NCRB.' : 'Delhi Police Annual Report 2022-23.')],
                         ['Safety score', (report.scores.crime ?? '—') + '/100', 'Inverse-normalized against total cognizable crimes: 250 or fewer scores 100, 650 or more scores 0, linear in between.'],
-                        ['Safer than', report.crime_percentile != null ? report.crime_percentile + '% of areas' : '—', 'Percentile rank of this pin\'s raw crime count against all 86 other tracked areas. A tied count gets no credit either way.\n\nThis is a relative ranking, not a true per-capita rate — it doesn\'t yet account for how many people live in each catchment.'],
+                        ['Safer than', report.crime_percentile != null ? report.crime_percentile + '% of areas' : '—', 'Percentile rank of this pin\'s raw crime count against every other tracked area in the same city (Delhi crime and Bengaluru crime are ranked separately, since they come from different police datasets). A tied count gets no credit either way.\n\nThis is a relative ranking, not a true per-capita rate — it doesn\'t yet account for how many people live in each catchment.'],
                         ['Crime tier', report.crime_tier ?? '—', 'Very Low / Low / Moderate / High / Very High, based on percentile rank:\n\n• 80%+ = Very Low\n• 60-79% = Low\n• 40-59% = Moderate\n• 20-39% = High\n• Below 20% = Very High'],
                         ['Source year', '2022-23', null],
                       ].map(([label, val, tooltip]) => (
@@ -1794,7 +1794,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                         ['Quality', report.tds_level ? report.tds_level+' TDS' : '—', 'TDS stands for Total Dissolved Solids — the amount of minerals, salts and metals dissolved in water.\n\n• Low TDS (below 300 mg/L): Ideal drinking water\n• Medium TDS (300–600 mg/L): Acceptable, may taste slightly hard\n• High TDS (600–900 mg/L): Hard water, can cause scaling and health concerns\n• Very High TDS (above 900 mg/L): Not recommended for drinking without filtration\n\nDelhi groundwater often has high TDS due to industrial run-off.'],
                         ['Coverage', ((report.water_coverage ?? report.coverage_pct)??'—')+'%', 'Percentage of households in this area with a piped water connection from the municipal supply. Areas below 80% rely heavily on tankers or groundwater.'],
                         ['Authority', report.source||'—', null],
-                        ['Complaints', report.complaints_per_1000 ? report.complaints_per_1000+'/1000' : '—', 'Number of water supply complaints filed per 1,000 households annually with DJB (Delhi Jal Board) or local municipal body. Lower is better.'],
+                        ['Complaints', report.complaints_per_1000 ? report.complaints_per_1000+'/1000' : '—', 'Number of water supply complaints filed per 1,000 households annually with the local water utility (DJB in Delhi, BWSSB in Bengaluru). Lower is better.'],
                         ['Quality score', ((report.water_quality ?? report.quality_score)??'—')+'/5', 'Composite water quality score (1–5) based on TDS levels, complaint density, and supply hours. 5 = excellent (NDMC zones), 1 = poor (peripheral areas with groundwater dependence).'],
                       ].map(([label, val, tooltip]) => (
                         <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
@@ -1810,9 +1810,9 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                     <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8, marginBottom:20 }}>
                       {[
                         ['Condition', report.road_condition||'—', 'Overall road surface condition rating:\n\n• Excellent: Smooth, no potholes, recently resurfaced\n• Good: Minor wear, few potholes\n• Average: Visible deterioration, moderate potholes\n• Poor: Significant damage, frequent potholes\n• Very Poor: Severely damaged, hazardous conditions'],
-                        ['Potholes/km', report.pothole_density??'—', 'Estimated number of potholes per kilometre of road. Based on MCD road survey data and citizen complaint density.\n\n• Below 2/km: Good condition\n• 2–5/km: Average\n• Above 5/km: Poor\n• Above 10/km: Very poor, dangerous for vehicles'],
+                        ['Potholes/km', report.pothole_density??'—', 'Estimated number of potholes per kilometre of road. Based on municipal road-survey data (MCD in Delhi, BBMP in Bengaluru) and citizen complaint density.\n\n• Below 2/km: Good condition\n• 2–5/km: Average\n• Above 5/km: Poor\n• Above 10/km: Very poor, dangerous for vehicles'],
                         ['Connectivity', report.connectivity||'—', 'Road network connectivity rating for the area — how well it connects to major arterial roads, highways and neighbouring areas.\n\n• High: Multiple entry/exit points, arterial road access\n• Medium: Limited connections, some bottlenecks\n• Low: Single access road or poor internal network'],
-                        ['Authority', report.authority||'—', 'The government body responsible for road maintenance in this area. NDMC and PWD roads are generally better maintained than MCD roads due to higher budgets.'],
+                        ['Authority', report.authority||'—', 'The government body responsible for road maintenance in this area (e.g. NDMC / PWD / MCD in Delhi, BBMP in Bengaluru). Arterial and civic-agency roads are generally better maintained than dense inner-city municipal roads.'],
                         ['Last resurfaced', report.last_resurfaced??'—', 'Year when the main roads in this area were last resurfaced or significantly repaired. Roads are typically due for resurfacing every 5–7 years.'],
                         ['Quality score', ((report.road_quality ?? report.quality_score)??'—')+'/5', 'Road quality score (1–5) based on pothole density, last resurfacing year, and official condition ratings from MCD and PWD surveys.'],
                       ].map(([label, val, tooltip]) => (
@@ -1832,7 +1832,7 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                         ['Treatment', report.treatment||'—', 'Whether sewage from this area reaches a Sewage Treatment Plant (STP) before discharge:\n\n• Adequate: Full STP treatment\n• Partial: Some sewage treated, some bypasses\n• Inadequate: Sewage largely untreated, discharged directly\n\nUntreated sewage is a major cause of groundwater contamination in Delhi.'],
                         ['Waterlogging risk', report.waterlogging_risk ? (6-report.waterlogging_risk)+'/5 risk' : '—', 'Risk of waterlogging during heavy monsoon rains (1 = highest risk, 5 = lowest). Based on drainage network capacity, historical flooding records, and area elevation. Low-lying areas near drains are most at risk.'],
                         ['Open drains', report.open_drains===true?'Yes':report.open_drains===false?'No':'—', 'Whether the area has open (uncovered) drains. Open drains are a health hazard — they breed mosquitoes, emit foul odour, and overflow during monsoons causing waterlogging.'],
-                        ['Flood incidents', report.flooding_incidents_annual!=null ? report.flooding_incidents_annual+'/year' : '—', 'Average number of significant waterlogging or flooding incidents recorded per year in this area. Based on DDMA (Delhi Disaster Management Authority) and civic complaint data.'],
+                        ['Flood incidents', report.flooding_incidents_annual!=null ? report.flooding_incidents_annual+'/year' : '—', 'Average number of significant waterlogging or flooding incidents recorded per year in this area. Based on state disaster-management authority and civic complaint data.'],
                         ['Overall risk', report.waterlogging_risk>=4?'Low':report.waterlogging_risk>=3?'Medium':'High', 'Overall drainage and flooding risk classification for the area during monsoon season (June–September).'],
                       ].map(([label, val, tooltip]) => (
                         <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />

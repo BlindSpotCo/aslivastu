@@ -36,7 +36,7 @@
     "dimensions_total": 8,
     "nqi_composite": 91,
     "grade": "A+",
-    "scored_at": "2026-07-20T23:20:46.136887",
+    "scored_at": "2026-07-21T13:34:41.566109",
     "total_cognizable_crimes": 95,
     "schools_count": 28,
     "schools_cbse": 28,
@@ -173,7 +173,7 @@
     "dimensions_total": 8,
     "nqi_composite": 87,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.127576",
+    "scored_at": "2026-07-21T13:34:41.566033",
     "total_cognizable_crimes": 260,
     "schools_count": 16,
     "schools_cbse": 16,
@@ -252,7 +252,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 92,
+    "crime_percentile": 86,
     "crime_tier": "Very Low",
     "price_tier": 2,
     "price_context": {
@@ -310,7 +310,7 @@
     "dimensions_total": 8,
     "nqi_composite": 87,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.136754",
+    "scored_at": "2026-07-21T13:34:41.566096",
     "total_cognizable_crimes": 210,
     "schools_count": 17,
     "schools_cbse": 17,
@@ -389,7 +389,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 95,
+    "crime_percentile": 92,
     "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
@@ -447,7 +447,7 @@
     "dimensions_total": 8,
     "nqi_composite": 86,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.122830",
+    "scored_at": "2026-07-21T13:34:41.566019",
     "total_cognizable_crimes": 290,
     "schools_count": 15,
     "schools_cbse": 15,
@@ -455,8 +455,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 85,
-    "crime_tier": "Very Low",
+    "crime_percentile": 73,
+    "crime_tier": "Low",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -513,7 +513,7 @@
     "dimensions_total": 8,
     "nqi_composite": 85,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.127946",
+    "scored_at": "2026-07-21T13:34:41.566059",
     "total_cognizable_crimes": 280,
     "schools_count": 33,
     "schools_cbse": 33,
@@ -592,8 +592,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 88,
-    "crime_tier": "Very Low",
+    "crime_percentile": 79,
+    "crime_tier": "Low",
     "price_tier": 2,
     "price_context": {
       "tier": 2,
@@ -650,7 +650,7 @@
     "dimensions_total": 8,
     "nqi_composite": 84,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.127814",
+    "scored_at": "2026-07-21T13:34:41.566046",
     "total_cognizable_crimes": 180,
     "schools_count": 10,
     "schools_cbse": 10,
@@ -729,7 +729,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 98,
+    "crime_percentile": 96,
     "crime_tier": "Very Low",
     "price_tier": 2,
     "price_context": {
@@ -787,7 +787,7 @@
     "dimensions_total": 8,
     "nqi_composite": 84,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.140039",
+    "scored_at": "2026-07-21T13:34:41.566191",
     "total_cognizable_crimes": 220,
     "schools_count": 24,
     "schools_cbse": 24,
@@ -866,7 +866,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 95,
+    "crime_percentile": 90,
     "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
@@ -921,7 +921,7 @@
     "dimensions_total": 8,
     "nqi_composite": 84,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.153983",
+    "scored_at": "2026-07-21T13:34:41.566464",
     "total_cognizable_crimes": 225,
     "schools_count": 12,
     "schools_cbse": 12,
@@ -1000,7 +1000,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 93,
+    "crime_percentile": 88,
     "crime_tier": "Very Low",
     "price_tier": 3,
     "price_context": {
@@ -1058,7 +1058,7 @@
     "dimensions_total": 8,
     "nqi_composite": 82,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.137011",
+    "scored_at": "2026-07-21T13:34:41.566121",
     "total_cognizable_crimes": 180,
     "schools_count": 8,
     "schools_cbse": 8,
@@ -1123,7 +1123,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 98,
+    "crime_percentile": 96,
     "crime_tier": "Very Low",
     "price_tier": 2,
     "price_context": {
@@ -1181,7 +1181,7 @@
     "dimensions_total": 8,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.135890",
+    "scored_at": "2026-07-21T13:34:41.566065",
     "total_cognizable_crimes": 155,
     "schools_count": 2,
     "schools_cbse": 2,
@@ -1262,7 +1262,7 @@
     "dimensions_total": 8,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.137519",
+    "scored_at": "2026-07-21T13:34:41.566171",
     "total_cognizable_crimes": 225,
     "schools_count": 8,
     "schools_cbse": 8,
@@ -1327,7 +1327,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 93,
+    "crime_percentile": 88,
     "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
@@ -1367,7 +1367,7 @@
     "dimensions_total": 8,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.147179",
+    "scored_at": "2026-07-21T13:34:41.566292",
     "total_cognizable_crimes": null,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -1452,7 +1452,7 @@
     "dimensions_total": 8,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.162244",
+    "scored_at": "2026-07-21T13:34:41.566544",
     "total_cognizable_crimes": 320,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -1460,8 +1460,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 85,
+    "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -1515,7 +1515,7 @@
     "dimensions_total": 8,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.167438",
+    "scored_at": "2026-07-21T13:34:41.566575",
     "total_cognizable_crimes": 320,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -1523,8 +1523,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 85,
+    "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -1578,7 +1578,7 @@
     "dimensions_total": 8,
     "nqi_composite": 81,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.184050",
+    "scored_at": "2026-07-21T13:34:41.566798",
     "total_cognizable_crimes": 320,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -1586,8 +1586,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 85,
+    "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -1644,7 +1644,7 @@
     "dimensions_total": 8,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.122296",
+    "scored_at": "2026-07-21T13:34:41.566010",
     "total_cognizable_crimes": 310,
     "schools_count": 11,
     "schools_cbse": 11,
@@ -1723,7 +1723,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 79,
+    "crime_percentile": 62,
     "crime_tier": "Low",
     "price_tier": 1,
     "price_context": {
@@ -1781,7 +1781,7 @@
     "dimensions_total": 8,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.127740",
+    "scored_at": "2026-07-21T13:34:41.566040",
     "total_cognizable_crimes": 275,
     "schools_count": 5,
     "schools_cbse": 5,
@@ -1825,7 +1825,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 89,
+    "crime_percentile": 80,
     "crime_tier": "Very Low",
     "price_tier": 3,
     "price_context": {
@@ -1883,7 +1883,7 @@
     "dimensions_total": 8,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.127880",
+    "scored_at": "2026-07-21T13:34:41.566052",
     "total_cognizable_crimes": 198,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -1913,7 +1913,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 96,
+    "crime_percentile": 93,
     "crime_tier": "Very Low",
     "price_tier": 3,
     "price_context": {
@@ -1971,7 +1971,7 @@
     "dimensions_total": 8,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.137071",
+    "scored_at": "2026-07-21T13:34:41.566127",
     "total_cognizable_crimes": 285,
     "schools_count": 20,
     "schools_cbse": 20,
@@ -2050,8 +2050,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 87,
-    "crime_tier": "Very Low",
+    "crime_percentile": 76,
+    "crime_tier": "Low",
     "price_tier": 2,
     "price_context": {
       "tier": 2,
@@ -2105,7 +2105,7 @@
     "dimensions_total": 8,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.149321",
+    "scored_at": "2026-07-21T13:34:41.566406",
     "total_cognizable_crimes": 240,
     "schools_count": 29,
     "schools_cbse": 29,
@@ -2184,7 +2184,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 93,
+    "crime_percentile": 87,
     "crime_tier": "Very Low",
     "price_tier": 2,
     "price_context": {
@@ -2242,7 +2242,7 @@
     "dimensions_total": 8,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.181613",
+    "scored_at": "2026-07-21T13:34:41.566657",
     "total_cognizable_crimes": 320,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -2272,8 +2272,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 85,
+    "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -2327,7 +2327,7 @@
     "dimensions_total": 8,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.183328",
+    "scored_at": "2026-07-21T13:34:41.566753",
     "total_cognizable_crimes": 320,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -2335,8 +2335,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 85,
+    "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -2393,7 +2393,7 @@
     "dimensions_total": 8,
     "nqi_composite": 80,
     "grade": "A",
-    "scored_at": "2026-07-20T23:20:46.183786",
+    "scored_at": "2026-07-21T13:34:41.566787",
     "total_cognizable_crimes": 320,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -2423,8 +2423,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 85,
+    "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -2481,7 +2481,7 @@
     "dimensions_total": 8,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.142106",
+    "scored_at": "2026-07-21T13:34:41.566275",
     "total_cognizable_crimes": 290,
     "schools_count": 66,
     "schools_cbse": 66,
@@ -2560,8 +2560,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 85,
-    "crime_tier": "Very Low",
+    "crime_percentile": 73,
+    "crime_tier": "Low",
     "price_tier": 2,
     "price_context": {
       "tier": 2,
@@ -2615,7 +2615,7 @@
     "dimensions_total": 8,
     "nqi_composite": 79,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.156961",
+    "scored_at": "2026-07-21T13:34:41.566492",
     "total_cognizable_crimes": 295,
     "schools_count": 52,
     "schools_cbse": 52,
@@ -2623,8 +2623,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 83,
-    "crime_tier": "Very Low",
+    "crime_percentile": 70,
+    "crime_tier": "Low",
     "price_tier": 3,
     "price_context": {
       "tier": 3,
@@ -2681,7 +2681,7 @@
     "dimensions_total": 8,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.141341",
+    "scored_at": "2026-07-21T13:34:41.566216",
     "total_cognizable_crimes": 195,
     "schools_count": 38,
     "schools_cbse": 38,
@@ -2760,7 +2760,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 97,
+    "crime_percentile": 94,
     "crime_tier": "Very Low",
     "price_tier": 2,
     "price_context": {
@@ -2818,7 +2818,7 @@
     "dimensions_total": 8,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.141920",
+    "scored_at": "2026-07-21T13:34:41.566257",
     "total_cognizable_crimes": 188,
     "schools_count": 9,
     "schools_cbse": 9,
@@ -2890,7 +2890,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 97,
+    "crime_percentile": 95,
     "crime_tier": "Very Low",
     "price_tier": 5,
     "price_context": {
@@ -2945,7 +2945,7 @@
     "dimensions_total": 8,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.149140",
+    "scored_at": "2026-07-21T13:34:41.566389",
     "total_cognizable_crimes": 290,
     "schools_count": 31,
     "schools_cbse": 31,
@@ -3024,8 +3024,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 85,
-    "crime_tier": "Very Low",
+    "crime_percentile": 73,
+    "crime_tier": "Low",
     "price_tier": 2,
     "price_context": {
       "tier": 2,
@@ -3079,7 +3079,7 @@
     "dimensions_total": 8,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.149199",
+    "scored_at": "2026-07-21T13:34:41.566394",
     "total_cognizable_crimes": 310,
     "schools_count": 10,
     "schools_cbse": 10,
@@ -3158,7 +3158,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 79,
+    "crime_percentile": 62,
     "crime_tier": "Low",
     "price_tier": 1,
     "price_context": {
@@ -3213,7 +3213,7 @@
     "dimensions_total": 8,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.156900",
+    "scored_at": "2026-07-21T13:34:41.566487",
     "total_cognizable_crimes": 312,
     "schools_count": 58,
     "schools_cbse": 58,
@@ -3221,7 +3221,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 78,
+    "crime_percentile": 61,
     "crime_tier": "Low",
     "price_tier": 3,
     "price_context": {
@@ -3279,7 +3279,7 @@
     "dimensions_total": 8,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.162176",
+    "scored_at": "2026-07-21T13:34:41.566538",
     "total_cognizable_crimes": 320,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -3295,8 +3295,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 85,
+    "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -3353,7 +3353,7 @@
     "dimensions_total": 8,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.181676",
+    "scored_at": "2026-07-21T13:34:41.566663",
     "total_cognizable_crimes": 320,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -3369,8 +3369,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 85,
+    "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -3427,7 +3427,7 @@
     "dimensions_total": 8,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.183188",
+    "scored_at": "2026-07-21T13:34:41.566747",
     "total_cognizable_crimes": 320,
     "schools_count": 2,
     "schools_cbse": 2,
@@ -3450,8 +3450,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 85,
+    "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -3508,7 +3508,7 @@
     "dimensions_total": 8,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.183410",
+    "scored_at": "2026-07-21T13:34:41.566758",
     "total_cognizable_crimes": 320,
     "schools_count": 5,
     "schools_cbse": 5,
@@ -3552,8 +3552,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 85,
+    "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -3610,7 +3610,7 @@
     "dimensions_total": 8,
     "nqi_composite": 78,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.183847",
+    "scored_at": "2026-07-21T13:34:41.566793",
     "total_cognizable_crimes": 320,
     "schools_count": 2,
     "schools_cbse": 2,
@@ -3633,8 +3633,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 85,
+    "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -3691,7 +3691,7 @@
     "dimensions_total": 8,
     "nqi_composite": 77,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.148022",
+    "scored_at": "2026-07-21T13:34:41.566335",
     "total_cognizable_crimes": 268,
     "schools_count": 22,
     "schools_cbse": 22,
@@ -3699,7 +3699,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 90,
+    "crime_percentile": 82,
     "crime_tier": "Very Low",
     "price_tier": 3,
     "price_context": {
@@ -3757,7 +3757,7 @@
     "dimensions_total": 8,
     "nqi_composite": 76,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.136823",
+    "scored_at": "2026-07-21T13:34:41.566103",
     "total_cognizable_crimes": 265,
     "schools_count": 9,
     "schools_cbse": 9,
@@ -3829,7 +3829,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 91,
+    "crime_percentile": 85,
     "crime_tier": "Very Low",
     "price_tier": 2,
     "price_context": {
@@ -3887,7 +3887,7 @@
     "dimensions_total": 8,
     "nqi_composite": 76,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.140814",
+    "scored_at": "2026-07-21T13:34:41.566204",
     "total_cognizable_crimes": 340,
     "schools_count": 16,
     "schools_cbse": 16,
@@ -3966,8 +3966,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 67,
-    "crime_tier": "Low",
+    "crime_percentile": 55,
+    "crime_tier": "Moderate",
     "price_tier": 1,
     "price_context": {
       "tier": 1,
@@ -4021,7 +4021,7 @@
     "dimensions_total": 8,
     "nqi_composite": 76,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.149259",
+    "scored_at": "2026-07-21T13:34:41.566400",
     "total_cognizable_crimes": 380,
     "schools_count": 47,
     "schools_cbse": 47,
@@ -4100,7 +4100,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 45,
+    "crime_percentile": 40,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -4155,7 +4155,7 @@
     "dimensions_total": 8,
     "nqi_composite": 76,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.157293",
+    "scored_at": "2026-07-21T13:34:41.566498",
     "total_cognizable_crimes": 285,
     "schools_count": 42,
     "schools_cbse": 42,
@@ -4163,8 +4163,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 87,
-    "crime_tier": "Very Low",
+    "crime_percentile": 76,
+    "crime_tier": "Low",
     "price_tier": 4,
     "price_context": {
       "tier": 4,
@@ -4218,7 +4218,7 @@
     "dimensions_total": 8,
     "nqi_composite": 75,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.157444",
+    "scored_at": "2026-07-21T13:34:41.566509",
     "total_cognizable_crimes": 342,
     "schools_count": 32,
     "schools_cbse": 32,
@@ -4226,8 +4226,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 65,
-    "crime_tier": "Low",
+    "crime_percentile": 51,
+    "crime_tier": "Moderate",
     "price_tier": 3,
     "price_context": {
       "tier": 3,
@@ -4284,7 +4284,7 @@
     "dimensions_total": 8,
     "nqi_composite": 74,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.202738",
+    "scored_at": "2026-07-21T13:34:41.566831",
     "total_cognizable_crimes": 360,
     "schools_count": 11,
     "schools_cbse": 11,
@@ -4363,7 +4363,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -4421,7 +4421,7 @@
     "dimensions_total": 8,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.175449",
+    "scored_at": "2026-07-21T13:34:41.566582",
     "total_cognizable_crimes": 360,
     "schools_count": 7,
     "schools_cbse": 7,
@@ -4479,7 +4479,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -4537,7 +4537,7 @@
     "dimensions_total": 8,
     "nqi_composite": 73,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.182623",
+    "scored_at": "2026-07-21T13:34:41.566719",
     "total_cognizable_crimes": 360,
     "schools_count": 6,
     "schools_cbse": 6,
@@ -4588,7 +4588,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -4646,7 +4646,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.122080",
+    "scored_at": "2026-07-21T13:34:41.565981",
     "total_cognizable_crimes": 310,
     "schools_count": 14,
     "schools_cbse": 14,
@@ -4725,7 +4725,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 79,
+    "crime_percentile": 62,
     "crime_tier": "Low",
     "price_tier": 3,
     "price_context": {
@@ -4783,7 +4783,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.140693",
+    "scored_at": "2026-07-21T13:34:41.566197",
     "total_cognizable_crimes": 298,
     "schools_count": 25,
     "schools_cbse": 25,
@@ -4862,8 +4862,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 81,
-    "crime_tier": "Very Low",
+    "crime_percentile": 67,
+    "crime_tier": "Low",
     "price_tier": 3,
     "price_context": {
       "tier": 3,
@@ -4920,7 +4920,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.177228",
+    "scored_at": "2026-07-21T13:34:41.566598",
     "total_cognizable_crimes": 360,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -4950,7 +4950,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -5008,7 +5008,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.181065",
+    "scored_at": "2026-07-21T13:34:41.566628",
     "total_cognizable_crimes": 360,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -5038,7 +5038,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -5093,7 +5093,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.181748",
+    "scored_at": "2026-07-21T13:34:41.566669",
     "total_cognizable_crimes": 360,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -5101,7 +5101,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -5156,7 +5156,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.181807",
+    "scored_at": "2026-07-21T13:34:41.566674",
     "total_cognizable_crimes": 360,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -5164,7 +5164,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -5222,7 +5222,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.181870",
+    "scored_at": "2026-07-21T13:34:41.566679",
     "total_cognizable_crimes": 360,
     "schools_count": 4,
     "schools_cbse": 4,
@@ -5259,7 +5259,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -5317,7 +5317,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.182196",
+    "scored_at": "2026-07-21T13:34:41.566685",
     "total_cognizable_crimes": 360,
     "schools_count": 4,
     "schools_cbse": 4,
@@ -5354,7 +5354,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -5412,7 +5412,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.182499",
+    "scored_at": "2026-07-21T13:34:41.566707",
     "total_cognizable_crimes": 360,
     "schools_count": 7,
     "schools_cbse": 7,
@@ -5470,7 +5470,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -5525,7 +5525,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.183521",
+    "scored_at": "2026-07-21T13:34:41.566765",
     "total_cognizable_crimes": 360,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -5533,7 +5533,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -5591,7 +5591,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.202473",
+    "scored_at": "2026-07-21T13:34:41.566814",
     "total_cognizable_crimes": 360,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -5621,7 +5621,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -5679,7 +5679,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.202606",
+    "scored_at": "2026-07-21T13:34:41.566820",
     "total_cognizable_crimes": 360,
     "schools_count": 4,
     "schools_cbse": 4,
@@ -5716,7 +5716,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -5774,7 +5774,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.202799",
+    "scored_at": "2026-07-21T13:34:41.566837",
     "total_cognizable_crimes": 360,
     "schools_count": 5,
     "schools_cbse": 5,
@@ -5818,7 +5818,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -5876,7 +5876,7 @@
     "dimensions_total": 8,
     "nqi_composite": 72,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.203199",
+    "scored_at": "2026-07-21T13:34:41.566865",
     "total_cognizable_crimes": 360,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -5906,7 +5906,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -5961,7 +5961,7 @@
     "dimensions_total": 8,
     "nqi_composite": 71,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.151623",
+    "scored_at": "2026-07-21T13:34:41.566434",
     "total_cognizable_crimes": 318,
     "schools_count": 33,
     "schools_cbse": 33,
@@ -6040,7 +6040,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 77,
+    "crime_percentile": 60,
     "crime_tier": "Low",
     "price_tier": 3,
     "price_context": {
@@ -6095,7 +6095,7 @@
     "dimensions_total": 8,
     "nqi_composite": 71,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.152693",
+    "scored_at": "2026-07-21T13:34:41.566440",
     "total_cognizable_crimes": 305,
     "schools_count": 26,
     "schools_cbse": 26,
@@ -6174,8 +6174,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 81,
-    "crime_tier": "Very Low",
+    "crime_percentile": 65,
+    "crime_tier": "Low",
     "price_tier": 3,
     "price_context": {
       "tier": 3,
@@ -6232,7 +6232,7 @@
     "dimensions_total": 8,
     "nqi_composite": 71,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.180692",
+    "scored_at": "2026-07-21T13:34:41.566616",
     "total_cognizable_crimes": 360,
     "schools_count": 2,
     "schools_cbse": 2,
@@ -6255,7 +6255,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -6313,7 +6313,7 @@
     "dimensions_total": 8,
     "nqi_composite": 71,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.182562",
+    "scored_at": "2026-07-21T13:34:41.566713",
     "total_cognizable_crimes": 360,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -6343,7 +6343,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -6401,7 +6401,7 @@
     "dimensions_total": 8,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.141765",
+    "scored_at": "2026-07-21T13:34:41.566244",
     "total_cognizable_crimes": 295,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -6417,8 +6417,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 83,
-    "crime_tier": "Very Low",
+    "crime_percentile": 70,
+    "crime_tier": "Low",
     "price_tier": 4,
     "price_context": {
       "tier": 4,
@@ -6475,7 +6475,7 @@
     "dimensions_total": 8,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.141853",
+    "scored_at": "2026-07-21T13:34:41.566251",
     "total_cognizable_crimes": 320,
     "schools_count": 25,
     "schools_cbse": 25,
@@ -6554,8 +6554,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 57,
+    "crime_tier": "Moderate",
     "price_tier": 5,
     "price_context": {
       "tier": 5,
@@ -6609,7 +6609,7 @@
     "dimensions_total": 8,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.149492",
+    "scored_at": "2026-07-21T13:34:41.566418",
     "total_cognizable_crimes": 320,
     "schools_count": 26,
     "schools_cbse": 26,
@@ -6688,8 +6688,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 69,
-    "crime_tier": "Low",
+    "crime_percentile": 57,
+    "crime_tier": "Moderate",
     "price_tier": 3,
     "price_context": {
       "tier": 3,
@@ -6746,7 +6746,7 @@
     "dimensions_total": 8,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.162095",
+    "scored_at": "2026-07-21T13:34:41.566532",
     "total_cognizable_crimes": 470,
     "schools_count": 2,
     "schools_cbse": 2,
@@ -6769,7 +6769,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 10,
+    "crime_percentile": 6,
     "crime_tier": "Very High",
     "price_tier": 1,
     "price_context": {
@@ -6827,7 +6827,7 @@
     "dimensions_total": 8,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.162376",
+    "scored_at": "2026-07-21T13:34:41.566550",
     "total_cognizable_crimes": 360,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -6843,7 +6843,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -6901,7 +6901,7 @@
     "dimensions_total": 8,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.175560",
+    "scored_at": "2026-07-21T13:34:41.566587",
     "total_cognizable_crimes": 360,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -6917,7 +6917,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -6975,7 +6975,7 @@
     "dimensions_total": 8,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.183063",
+    "scored_at": "2026-07-21T13:34:41.566736",
     "total_cognizable_crimes": 360,
     "schools_count": 6,
     "schools_cbse": 6,
@@ -7026,7 +7026,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -7084,7 +7084,7 @@
     "dimensions_total": 8,
     "nqi_composite": 70,
     "grade": "B+",
-    "scored_at": "2026-07-20T23:20:46.203133",
+    "scored_at": "2026-07-21T13:34:41.566859",
     "total_cognizable_crimes": 360,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -7100,7 +7100,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -7158,7 +7158,7 @@
     "dimensions_total": 8,
     "nqi_composite": 69,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.148890",
+    "scored_at": "2026-07-21T13:34:41.566364",
     "total_cognizable_crimes": 275,
     "schools_count": 7,
     "schools_cbse": 7,
@@ -7166,7 +7166,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 89,
+    "crime_percentile": 80,
     "crime_tier": "Very Low",
     "price_tier": 5,
     "price_context": {
@@ -7221,7 +7221,7 @@
     "dimensions_total": 8,
     "nqi_composite": 69,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.152780",
+    "scored_at": "2026-07-21T13:34:41.566446",
     "total_cognizable_crimes": 268,
     "schools_count": 2,
     "schools_cbse": 2,
@@ -7244,7 +7244,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 90,
+    "crime_percentile": 82,
     "crime_tier": "Very Low",
     "price_tier": 1,
     "price_context": {
@@ -7302,7 +7302,7 @@
     "dimensions_total": 8,
     "nqi_composite": 68,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.137364",
+    "scored_at": "2026-07-21T13:34:41.566155",
     "total_cognizable_crimes": 389,
     "schools_count": 35,
     "schools_cbse": 35,
@@ -7381,8 +7381,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 42,
-    "crime_tier": "Moderate",
+    "crime_percentile": 36,
+    "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
       "tier": 3,
@@ -7436,7 +7436,7 @@
     "dimensions_total": 8,
     "nqi_composite": 68,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.149080",
+    "scored_at": "2026-07-21T13:34:41.566383",
     "total_cognizable_crimes": 350,
     "schools_count": 16,
     "schools_cbse": 16,
@@ -7515,8 +7515,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 65,
-    "crime_tier": "Low",
+    "crime_percentile": 50,
+    "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
       "tier": 2,
@@ -7573,7 +7573,7 @@
     "dimensions_total": 8,
     "nqi_composite": 68,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.182963",
+    "scored_at": "2026-07-21T13:34:41.566730",
     "total_cognizable_crimes": 360,
     "schools_count": 2,
     "schools_cbse": 2,
@@ -7596,7 +7596,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 51,
     "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
@@ -7654,7 +7654,7 @@
     "dimensions_total": 8,
     "nqi_composite": 67,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.147555",
+    "scored_at": "2026-07-21T13:34:41.566323",
     "total_cognizable_crimes": 322,
     "schools_count": 16,
     "schools_cbse": 16,
@@ -7662,8 +7662,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 68,
-    "crime_tier": "Low",
+    "crime_percentile": 56,
+    "crime_tier": "Moderate",
     "price_tier": 4,
     "price_context": {
       "tier": 4,
@@ -7720,7 +7720,7 @@
     "dimensions_total": 8,
     "nqi_composite": 66,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.136950",
+    "scored_at": "2026-07-21T13:34:41.566115",
     "total_cognizable_crimes": 358,
     "schools_count": 70,
     "schools_cbse": 70,
@@ -7799,8 +7799,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 62,
-    "crime_tier": "Low",
+    "crime_percentile": 45,
+    "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
       "tier": 2,
@@ -7857,7 +7857,7 @@
     "dimensions_total": 8,
     "nqi_composite": 66,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.141213",
+    "scored_at": "2026-07-21T13:34:41.566210",
     "total_cognizable_crimes": 368,
     "schools_count": 78,
     "schools_cbse": 78,
@@ -7936,7 +7936,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 46,
+    "crime_percentile": 43,
     "crime_tier": "Moderate",
     "price_tier": 4,
     "price_context": {
@@ -7994,7 +7994,7 @@
     "dimensions_total": 8,
     "nqi_composite": 66,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.147257",
+    "scored_at": "2026-07-21T13:34:41.566299",
     "total_cognizable_crimes": 398,
     "schools_count": 32,
     "schools_cbse": 32,
@@ -8073,8 +8073,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 41,
-    "crime_tier": "Moderate",
+    "crime_percentile": 33,
+    "crime_tier": "High",
     "price_tier": 4,
     "price_context": {
       "tier": 4,
@@ -8131,7 +8131,7 @@
     "dimensions_total": 8,
     "nqi_composite": 66,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.181462",
+    "scored_at": "2026-07-21T13:34:41.566645",
     "total_cognizable_crimes": 410,
     "schools_count": 10,
     "schools_cbse": 10,
@@ -8210,7 +8210,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -8268,7 +8268,7 @@
     "dimensions_total": 8,
     "nqi_composite": 66,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.202921",
+    "scored_at": "2026-07-21T13:34:41.566848",
     "total_cognizable_crimes": 410,
     "schools_count": 13,
     "schools_cbse": 13,
@@ -8347,7 +8347,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -8402,7 +8402,7 @@
     "dimensions_total": 8,
     "nqi_composite": 65,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.149387",
+    "scored_at": "2026-07-21T13:34:41.566411",
     "total_cognizable_crimes": 355,
     "schools_count": 43,
     "schools_cbse": 43,
@@ -8481,8 +8481,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 63,
-    "crime_tier": "Low",
+    "crime_percentile": 48,
+    "crime_tier": "Moderate",
     "price_tier": 3,
     "price_context": {
       "tier": 3,
@@ -8539,7 +8539,7 @@
     "dimensions_total": 8,
     "nqi_composite": 65,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.181130",
+    "scored_at": "2026-07-21T13:34:41.566634",
     "total_cognizable_crimes": 410,
     "schools_count": 7,
     "schools_cbse": 7,
@@ -8597,7 +8597,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -8655,7 +8655,7 @@
     "dimensions_total": 8,
     "nqi_composite": 65,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.202982",
+    "scored_at": "2026-07-21T13:34:41.566854",
     "total_cognizable_crimes": 410,
     "schools_count": 10,
     "schools_cbse": 10,
@@ -8734,7 +8734,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -8792,7 +8792,7 @@
     "dimensions_total": 8,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.136661",
+    "scored_at": "2026-07-21T13:34:41.566090",
     "total_cognizable_crimes": 342,
     "schools_count": 18,
     "schools_cbse": 18,
@@ -8871,8 +8871,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 65,
-    "crime_tier": "Low",
+    "crime_percentile": 51,
+    "crime_tier": "Moderate",
     "price_tier": 2,
     "price_context": {
       "tier": 2,
@@ -8929,7 +8929,7 @@
     "dimensions_total": 8,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.141496",
+    "scored_at": "2026-07-21T13:34:41.566229",
     "total_cognizable_crimes": 380,
     "schools_count": 64,
     "schools_cbse": 64,
@@ -9008,7 +9008,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 45,
+    "crime_percentile": 40,
     "crime_tier": "Moderate",
     "price_tier": 3,
     "price_context": {
@@ -9066,7 +9066,7 @@
     "dimensions_total": 8,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.177312",
+    "scored_at": "2026-07-21T13:34:41.566604",
     "total_cognizable_crimes": 410,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -9096,7 +9096,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -9154,7 +9154,7 @@
     "dimensions_total": 8,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.182262",
+    "scored_at": "2026-07-21T13:34:41.566691",
     "total_cognizable_crimes": 410,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -9184,7 +9184,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -9242,7 +9242,7 @@
     "dimensions_total": 8,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.182684",
+    "scored_at": "2026-07-21T13:34:41.566724",
     "total_cognizable_crimes": 410,
     "schools_count": 6,
     "schools_cbse": 6,
@@ -9293,7 +9293,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -9351,7 +9351,7 @@
     "dimensions_total": 8,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.183723",
+    "scored_at": "2026-07-21T13:34:41.566782",
     "total_cognizable_crimes": 410,
     "schools_count": 7,
     "schools_cbse": 7,
@@ -9409,7 +9409,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -9467,7 +9467,7 @@
     "dimensions_total": 8,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.202674",
+    "scored_at": "2026-07-21T13:34:41.566825",
     "total_cognizable_crimes": 410,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -9497,7 +9497,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -9555,7 +9555,7 @@
     "dimensions_total": 8,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.203260",
+    "scored_at": "2026-07-21T13:34:41.566870",
     "total_cognizable_crimes": 410,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -9585,7 +9585,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -9643,7 +9643,7 @@
     "dimensions_total": 8,
     "nqi_composite": 64,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.203801",
+    "scored_at": "2026-07-21T13:34:41.566894",
     "total_cognizable_crimes": 410,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -9673,7 +9673,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -9731,7 +9731,7 @@
     "dimensions_total": 8,
     "nqi_composite": 63,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.147713",
+    "scored_at": "2026-07-21T13:34:41.566329",
     "total_cognizable_crimes": 298,
     "schools_count": 9,
     "schools_cbse": 9,
@@ -9739,8 +9739,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 81,
-    "crime_tier": "Very Low",
+    "crime_percentile": 67,
+    "crime_tier": "Low",
     "price_tier": 5,
     "price_context": {
       "tier": 5,
@@ -9794,7 +9794,7 @@
     "dimensions_total": 8,
     "nqi_composite": 63,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.157384",
+    "scored_at": "2026-07-21T13:34:41.566503",
     "total_cognizable_crimes": 358,
     "schools_count": 25,
     "schools_cbse": 25,
@@ -9802,8 +9802,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 62,
-    "crime_tier": "Low",
+    "crime_percentile": 45,
+    "crime_tier": "Moderate",
     "price_tier": 3,
     "price_context": {
       "tier": 3,
@@ -9860,7 +9860,7 @@
     "dimensions_total": 8,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.136174",
+    "scored_at": "2026-07-21T13:34:41.566078",
     "total_cognizable_crimes": 428,
     "schools_count": 22,
     "schools_cbse": 22,
@@ -9939,7 +9939,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 23,
+    "crime_percentile": 24,
     "crime_tier": "High",
     "price_tier": 4,
     "price_context": {
@@ -9997,7 +9997,7 @@
     "dimensions_total": 8,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.148606",
+    "scored_at": "2026-07-21T13:34:41.566353",
     "total_cognizable_crimes": 342,
     "schools_count": 8,
     "schools_cbse": 8,
@@ -10005,8 +10005,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 65,
-    "crime_tier": "Low",
+    "crime_percentile": 51,
+    "crime_tier": "Moderate",
     "price_tier": 5,
     "price_context": {
       "tier": 5,
@@ -10060,7 +10060,7 @@
     "dimensions_total": 8,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.177094",
+    "scored_at": "2026-07-21T13:34:41.566593",
     "total_cognizable_crimes": 410,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -10068,7 +10068,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -10126,7 +10126,7 @@
     "dimensions_total": 8,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.177382",
+    "scored_at": "2026-07-21T13:34:41.566610",
     "total_cognizable_crimes": 430,
     "schools_count": 5,
     "schools_cbse": 5,
@@ -10170,7 +10170,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 22,
+    "crime_percentile": 20,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -10228,7 +10228,7 @@
     "dimensions_total": 8,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.180983",
+    "scored_at": "2026-07-21T13:34:41.566622",
     "total_cognizable_crimes": 410,
     "schools_count": 2,
     "schools_cbse": 2,
@@ -10251,7 +10251,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -10306,7 +10306,7 @@
     "dimensions_total": 8,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.181548",
+    "scored_at": "2026-07-21T13:34:41.566652",
     "total_cognizable_crimes": 410,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -10314,7 +10314,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -10369,7 +10369,7 @@
     "dimensions_total": 8,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.183586",
+    "scored_at": "2026-07-21T13:34:41.566770",
     "total_cognizable_crimes": 410,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -10377,7 +10377,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -10435,7 +10435,7 @@
     "dimensions_total": 8,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.183652",
+    "scored_at": "2026-07-21T13:34:41.566776",
     "total_cognizable_crimes": 410,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -10451,7 +10451,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -10506,7 +10506,7 @@
     "dimensions_total": 8,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.202239",
+    "scored_at": "2026-07-21T13:34:41.566804",
     "total_cognizable_crimes": 410,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -10514,7 +10514,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -10569,7 +10569,7 @@
     "dimensions_total": 8,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.202391",
+    "scored_at": "2026-07-21T13:34:41.566809",
     "total_cognizable_crimes": 410,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -10577,7 +10577,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -10635,7 +10635,7 @@
     "dimensions_total": 8,
     "nqi_composite": 62,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.203469",
+    "scored_at": "2026-07-21T13:34:41.566877",
     "total_cognizable_crimes": 410,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -10651,7 +10651,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 22,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -10709,7 +10709,7 @@
     "dimensions_total": 8,
     "nqi_composite": 61,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.137443",
+    "scored_at": "2026-07-21T13:34:41.566163",
     "total_cognizable_crimes": 390,
     "schools_count": 19,
     "schools_cbse": 19,
@@ -10788,8 +10788,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 41,
-    "crime_tier": "Moderate",
+    "crime_percentile": 35,
+    "crime_tier": "High",
     "price_tier": 5,
     "price_context": {
       "tier": 5,
@@ -10846,7 +10846,7 @@
     "dimensions_total": 8,
     "nqi_composite": 61,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.141559",
+    "scored_at": "2026-07-21T13:34:41.566237",
     "total_cognizable_crimes": 520,
     "schools_count": 7,
     "schools_cbse": 7,
@@ -10904,7 +10904,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 4,
+    "crime_percentile": 5,
     "crime_tier": "Very High",
     "price_tier": 3,
     "price_context": {
@@ -10959,7 +10959,7 @@
     "dimensions_total": 8,
     "nqi_composite": 61,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.149020",
+    "scored_at": "2026-07-21T13:34:41.566377",
     "total_cognizable_crimes": 445,
     "schools_count": 32,
     "schools_cbse": 32,
@@ -11038,7 +11038,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 19,
+    "crime_percentile": 18,
     "crime_tier": "Very High",
     "price_tier": 3,
     "price_context": {
@@ -11093,7 +11093,7 @@
     "dimensions_total": 8,
     "nqi_composite": 61,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.156664",
+    "scored_at": "2026-07-21T13:34:41.566469",
     "total_cognizable_crimes": 298,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -11109,8 +11109,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 81,
-    "crime_tier": "Very Low",
+    "crime_percentile": 67,
+    "crime_tier": "Low",
     "price_tier": 2,
     "price_context": {
       "tier": 2,
@@ -11167,7 +11167,7 @@
     "dimensions_total": 8,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.122949",
+    "scored_at": "2026-07-21T13:34:41.566026",
     "total_cognizable_crimes": 388,
     "schools_count": 32,
     "schools_cbse": 32,
@@ -11246,8 +11246,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 43,
-    "crime_tier": "Moderate",
+    "crime_percentile": 37,
+    "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
       "tier": 3,
@@ -11304,7 +11304,7 @@
     "dimensions_total": 8,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.142046",
+    "scored_at": "2026-07-21T13:34:41.566269",
     "total_cognizable_crimes": 362,
     "schools_count": 6,
     "schools_cbse": 6,
@@ -11312,7 +11312,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 47,
+    "crime_percentile": 44,
     "crime_tier": "Moderate",
     "price_tier": 5,
     "price_context": {
@@ -11370,7 +11370,7 @@
     "dimensions_total": 8,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.143269",
+    "scored_at": "2026-07-21T13:34:41.566281",
     "total_cognizable_crimes": 495,
     "schools_count": 31,
     "schools_cbse": 31,
@@ -11449,7 +11449,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 8,
+    "crime_percentile": 10,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -11507,7 +11507,7 @@
     "dimensions_total": 8,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.147321",
+    "scored_at": "2026-07-21T13:34:41.566304",
     "total_cognizable_crimes": 445,
     "schools_count": 21,
     "schools_cbse": 21,
@@ -11586,7 +11586,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 19,
+    "crime_percentile": 18,
     "crime_tier": "Very High",
     "price_tier": 5,
     "price_context": {
@@ -11644,7 +11644,7 @@
     "dimensions_total": 8,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.148823",
+    "scored_at": "2026-07-21T13:34:41.566359",
     "total_cognizable_crimes": 388,
     "schools_count": 9,
     "schools_cbse": 9,
@@ -11652,8 +11652,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 43,
-    "crime_tier": "Moderate",
+    "crime_percentile": 37,
+    "crime_tier": "High",
     "price_tier": 4,
     "price_context": {
       "tier": 4,
@@ -11710,7 +11710,7 @@
     "dimensions_total": 8,
     "nqi_composite": 60,
     "grade": "B",
-    "scored_at": "2026-07-20T23:20:46.148955",
+    "scored_at": "2026-07-21T13:34:41.566370",
     "total_cognizable_crimes": 385,
     "schools_count": 11,
     "schools_cbse": 11,
@@ -11718,8 +11718,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 44,
-    "crime_tier": "Moderate",
+    "crime_percentile": 39,
+    "crime_tier": "High",
     "price_tier": 5,
     "price_context": {
       "tier": 5,
@@ -11776,7 +11776,7 @@
     "dimensions_total": 8,
     "nqi_composite": 59,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.122211",
+    "scored_at": "2026-07-21T13:34:41.565998",
     "total_cognizable_crimes": 412,
     "schools_count": 48,
     "schools_cbse": 48,
@@ -11855,7 +11855,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 25,
+    "crime_percentile": 29,
     "crime_tier": "High",
     "price_tier": 4,
     "price_context": {
@@ -11913,7 +11913,7 @@
     "dimensions_total": 8,
     "nqi_composite": 59,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.141431",
+    "scored_at": "2026-07-21T13:34:41.566222",
     "total_cognizable_crimes": 412,
     "schools_count": 36,
     "schools_cbse": 36,
@@ -11992,7 +11992,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 25,
+    "crime_percentile": 29,
     "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
@@ -12050,7 +12050,7 @@
     "dimensions_total": 8,
     "nqi_composite": 59,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.147470",
+    "scored_at": "2026-07-21T13:34:41.566317",
     "total_cognizable_crimes": 468,
     "schools_count": 55,
     "schools_cbse": 55,
@@ -12129,7 +12129,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 11,
+    "crime_percentile": 13,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -12187,7 +12187,7 @@
     "dimensions_total": 8,
     "nqi_composite": 58,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.148488",
+    "scored_at": "2026-07-21T13:34:41.566347",
     "total_cognizable_crimes": 355,
     "schools_count": 9,
     "schools_cbse": 9,
@@ -12195,8 +12195,8 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 63,
-    "crime_tier": "Low",
+    "crime_percentile": 48,
+    "crime_tier": "Moderate",
     "price_tier": 5,
     "price_context": {
       "tier": 5,
@@ -12250,7 +12250,7 @@
     "dimensions_total": 8,
     "nqi_composite": 58,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.149773",
+    "scored_at": "2026-07-21T13:34:41.566423",
     "total_cognizable_crimes": 402,
     "schools_count": 33,
     "schools_cbse": 33,
@@ -12329,8 +12329,8 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 40,
-    "crime_tier": "Moderate",
+    "crime_percentile": 32,
+    "crime_tier": "High",
     "price_tier": 3,
     "price_context": {
       "tier": 3,
@@ -12387,7 +12387,7 @@
     "dimensions_total": 8,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.137238",
+    "scored_at": "2026-07-21T13:34:41.566141",
     "total_cognizable_crimes": 425,
     "schools_count": 4,
     "schools_cbse": 4,
@@ -12424,7 +12424,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 23,
+    "crime_percentile": 25,
     "crime_tier": "High",
     "price_tier": 4,
     "price_context": {
@@ -12482,7 +12482,7 @@
     "dimensions_total": 8,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.141983",
+    "scored_at": "2026-07-21T13:34:41.566263",
     "total_cognizable_crimes": 512,
     "schools_count": 37,
     "schools_cbse": 37,
@@ -12561,7 +12561,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 6,
+    "crime_percentile": 7,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -12619,7 +12619,7 @@
     "dimensions_total": 8,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.147109",
+    "scored_at": "2026-07-21T13:34:41.566287",
     "total_cognizable_crimes": 520,
     "schools_count": 61,
     "schools_cbse": 61,
@@ -12698,7 +12698,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 4,
+    "crime_percentile": 5,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -12756,7 +12756,7 @@
     "dimensions_total": 8,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.147403",
+    "scored_at": "2026-07-21T13:34:41.566312",
     "total_cognizable_crimes": 418,
     "schools_count": 6,
     "schools_cbse": 6,
@@ -12764,7 +12764,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 25,
+    "crime_percentile": 27,
     "crime_tier": "High",
     "price_tier": 5,
     "price_context": {
@@ -12822,7 +12822,7 @@
     "dimensions_total": 8,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.182386",
+    "scored_at": "2026-07-21T13:34:41.566702",
     "total_cognizable_crimes": 460,
     "schools_count": 7,
     "schools_cbse": 7,
@@ -12880,7 +12880,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 13,
+    "crime_percentile": 8,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -12938,7 +12938,7 @@
     "dimensions_total": 8,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.203563",
+    "scored_at": "2026-07-21T13:34:41.566883",
     "total_cognizable_crimes": 460,
     "schools_count": 13,
     "schools_cbse": 13,
@@ -13017,7 +13017,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 13,
+    "crime_percentile": 8,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -13075,7 +13075,7 @@
     "dimensions_total": 8,
     "nqi_composite": 56,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.203664",
+    "scored_at": "2026-07-21T13:34:41.566888",
     "total_cognizable_crimes": 460,
     "schools_count": 8,
     "schools_cbse": 8,
@@ -13140,7 +13140,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 13,
+    "crime_percentile": 8,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -13198,7 +13198,7 @@
     "dimensions_total": 8,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.137171",
+    "scored_at": "2026-07-21T13:34:41.566135",
     "total_cognizable_crimes": 560,
     "schools_count": 71,
     "schools_cbse": 71,
@@ -13335,7 +13335,7 @@
     "dimensions_total": 8,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.137643",
+    "scored_at": "2026-07-21T13:34:41.566183",
     "total_cognizable_crimes": 462,
     "schools_count": 19,
     "schools_cbse": 19,
@@ -13414,7 +13414,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 13,
+    "crime_percentile": 17,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -13469,7 +13469,7 @@
     "dimensions_total": 8,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.151200",
+    "scored_at": "2026-07-21T13:34:41.566429",
     "total_cognizable_crimes": 435,
     "schools_count": 50,
     "schools_cbse": 50,
@@ -13548,7 +13548,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 21,
+    "crime_percentile": 23,
     "crime_tier": "High",
     "price_tier": 4,
     "price_context": {
@@ -13606,7 +13606,7 @@
     "dimensions_total": 8,
     "nqi_composite": 55,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.183127",
+    "scored_at": "2026-07-21T13:34:41.566741",
     "total_cognizable_crimes": 460,
     "schools_count": 6,
     "schools_cbse": 6,
@@ -13657,7 +13657,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 13,
+    "crime_percentile": 8,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -13712,7 +13712,7 @@
     "dimensions_total": 8,
     "nqi_composite": 54,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.156756",
+    "scored_at": "2026-07-21T13:34:41.566475",
     "total_cognizable_crimes": 465,
     "schools_count": 23,
     "schools_cbse": 23,
@@ -13791,7 +13791,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 11,
+    "crime_percentile": 14,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -13846,7 +13846,7 @@
     "dimensions_total": 8,
     "nqi_composite": 54,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.157504",
+    "scored_at": "2026-07-21T13:34:41.566514",
     "total_cognizable_crimes": 422,
     "schools_count": 14,
     "schools_cbse": 14,
@@ -13854,7 +13854,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 24,
+    "crime_percentile": 26,
     "crime_tier": "High",
     "price_tier": 5,
     "price_context": {
@@ -13912,7 +13912,7 @@
     "dimensions_total": 8,
     "nqi_composite": 54,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.181395",
+    "scored_at": "2026-07-21T13:34:41.566640",
     "total_cognizable_crimes": 460,
     "schools_count": 3,
     "schools_cbse": 3,
@@ -13942,7 +13942,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 13,
+    "crime_percentile": 8,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -14000,7 +14000,7 @@
     "dimensions_total": 8,
     "nqi_composite": 54,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.202861",
+    "scored_at": "2026-07-21T13:34:41.566842",
     "total_cognizable_crimes": 460,
     "schools_count": 5,
     "schools_cbse": 5,
@@ -14044,7 +14044,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 13,
+    "crime_percentile": 8,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -14102,7 +14102,7 @@
     "dimensions_total": 8,
     "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.136240",
+    "scored_at": "2026-07-21T13:34:41.566084",
     "total_cognizable_crimes": 480,
     "schools_count": 27,
     "schools_cbse": 27,
@@ -14181,7 +14181,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 9,
+    "crime_percentile": 12,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -14239,7 +14239,7 @@
     "dimensions_total": 8,
     "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.166959",
+    "scored_at": "2026-07-21T13:34:41.566556",
     "total_cognizable_crimes": 520,
     "schools_count": 2,
     "schools_cbse": 2,
@@ -14262,7 +14262,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 4,
+    "crime_percentile": 3,
     "crime_tier": "Very High",
     "price_tier": 3,
     "price_context": {
@@ -14320,7 +14320,7 @@
     "dimensions_total": 8,
     "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.182324",
+    "scored_at": "2026-07-21T13:34:41.566696",
     "total_cognizable_crimes": 460,
     "schools_count": 8,
     "schools_cbse": 8,
@@ -14385,7 +14385,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 13,
+    "crime_percentile": 8,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -14443,7 +14443,7 @@
     "dimensions_total": 8,
     "nqi_composite": 53,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.203892",
+    "scored_at": "2026-07-21T13:34:41.566900",
     "total_cognizable_crimes": 460,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -14459,7 +14459,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 13,
+    "crime_percentile": 8,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -14514,7 +14514,7 @@
     "dimensions_total": 8,
     "nqi_composite": 51,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.167082",
+    "scored_at": "2026-07-21T13:34:41.566562",
     "total_cognizable_crimes": 540,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -14522,7 +14522,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 3,
+    "crime_percentile": 2,
     "crime_tier": "Very High",
     "price_tier": 3,
     "price_context": {
@@ -14580,7 +14580,7 @@
     "dimensions_total": 8,
     "nqi_composite": 50,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.148394",
+    "scored_at": "2026-07-21T13:34:41.566341",
     "total_cognizable_crimes": 410,
     "schools_count": 6,
     "schools_cbse": 6,
@@ -14588,7 +14588,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 27,
+    "crime_percentile": 31,
     "crime_tier": "High",
     "price_tier": 5,
     "price_context": {
@@ -14646,7 +14646,7 @@
     "dimensions_total": 8,
     "nqi_composite": 50,
     "grade": "C+",
-    "scored_at": "2026-07-20T23:20:46.167158",
+    "scored_at": "2026-07-21T13:34:41.566568",
     "total_cognizable_crimes": 560,
     "schools_count": 1,
     "schools_cbse": 1,
@@ -14662,7 +14662,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 1,
+    "crime_percentile": 0,
     "crime_tier": "Very High",
     "price_tier": 3,
     "price_context": {
@@ -14717,7 +14717,7 @@
     "dimensions_total": 8,
     "nqi_composite": 49,
     "grade": "C",
-    "scored_at": "2026-07-20T23:20:46.157561",
+    "scored_at": "2026-07-21T13:34:41.566520",
     "total_cognizable_crimes": 465,
     "schools_count": 9,
     "schools_cbse": 9,
@@ -14725,7 +14725,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 11,
+    "crime_percentile": 14,
     "crime_tier": "Very High",
     "price_tier": 5,
     "price_context": {
@@ -14783,7 +14783,7 @@
     "dimensions_total": 8,
     "nqi_composite": 48,
     "grade": "C",
-    "scored_at": "2026-07-20T23:20:46.137583",
+    "scored_at": "2026-07-21T13:34:41.566177",
     "total_cognizable_crimes": 445,
     "schools_count": 26,
     "schools_cbse": 26,
@@ -14862,7 +14862,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 19,
+    "crime_percentile": 18,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -14917,7 +14917,7 @@
     "dimensions_total": 8,
     "nqi_composite": 47,
     "grade": "C",
-    "scored_at": "2026-07-20T23:20:46.153899",
+    "scored_at": "2026-07-21T13:34:41.566457",
     "total_cognizable_crimes": 538,
     "schools_count": 32,
     "schools_cbse": 32,
@@ -14996,7 +14996,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 3,
+    "crime_percentile": 4,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -15051,7 +15051,7 @@
     "dimensions_total": 8,
     "nqi_composite": 46,
     "grade": "C",
-    "scored_at": "2026-07-20T23:20:46.153536",
+    "scored_at": "2026-07-21T13:34:41.566451",
     "total_cognizable_crimes": 445,
     "schools_count": 5,
     "schools_cbse": 5,
@@ -15095,7 +15095,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 19,
+    "crime_percentile": 18,
     "crime_tier": "Very High",
     "price_tier": 5,
     "price_context": {
@@ -15150,7 +15150,7 @@
     "dimensions_total": 8,
     "nqi_composite": 46,
     "grade": "C",
-    "scored_at": "2026-07-20T23:20:46.156835",
+    "scored_at": "2026-07-21T13:34:41.566481",
     "total_cognizable_crimes": 548,
     "schools_count": 20,
     "schools_cbse": 20,
@@ -15213,7 +15213,7 @@
     "dimensions_total": 8,
     "nqi_composite": 44,
     "grade": "C",
-    "scored_at": "2026-07-20T23:20:46.161238",
+    "scored_at": "2026-07-21T13:34:41.566526",
     "total_cognizable_crimes": 498,
     "schools_count": 11,
     "schools_cbse": 11,
@@ -15221,7 +15221,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 7,
+    "crime_percentile": 8,
     "crime_tier": "Very High",
     "price_tier": 5,
     "price_context": {
@@ -15279,7 +15279,7 @@
     "dimensions_total": 8,
     "nqi_composite": 43,
     "grade": "C",
-    "scored_at": "2026-07-20T23:20:46.137302",
+    "scored_at": "2026-07-21T13:34:41.566149",
     "total_cognizable_crimes": 490,
     "schools_count": 100,
     "schools_cbse": 100,
@@ -15358,7 +15358,7 @@
       }
     ],
     "schools_avg_pass": null,
-    "crime_percentile": 9,
+    "crime_percentile": 11,
     "crime_tier": "Very High",
     "price_tier": 4,
     "price_context": {
@@ -15416,7 +15416,7 @@
     "dimensions_total": 8,
     "nqi_composite": 42,
     "grade": "C",
-    "scored_at": "2026-07-20T23:20:46.136098",
+    "scored_at": "2026-07-21T13:34:41.566072",
     "total_cognizable_crimes": 610,
     "schools_count": 23,
     "schools_cbse": 23,
@@ -15550,7 +15550,7 @@
     "dimensions_total": 8,
     "nqi_composite": 41,
     "grade": "C",
-    "scored_at": "2026-07-20T23:20:46.203957",
+    "scored_at": "2026-07-21T13:34:41.566905",
     "total_cognizable_crimes": 500,
     "schools_count": 0,
     "schools_cbse": 0,
@@ -15558,7 +15558,7 @@
     "schools_state": 0,
     "schools_list": [],
     "schools_avg_pass": null,
-    "crime_percentile": 7,
+    "crime_percentile": 5,
     "crime_tier": "Very High",
     "price_tier": 5,
     "price_context": {

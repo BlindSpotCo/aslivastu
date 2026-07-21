@@ -44,7 +44,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 6,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.570105",
+    "merged_at": "2026-07-21T13:34:41.478233",
     "city": "Delhi NCR"
   },
   {
@@ -92,7 +92,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 16,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.570142",
+    "merged_at": "2026-07-21T13:34:41.478241",
     "city": "Delhi NCR"
   },
   {
@@ -140,7 +140,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.570155",
+    "merged_at": "2026-07-21T13:34:41.478245",
     "city": "Delhi NCR"
   },
   {
@@ -188,7 +188,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 0,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.570971",
+    "merged_at": "2026-07-21T13:34:41.478247",
     "city": "Delhi NCR"
   },
   {
@@ -236,7 +236,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.570992",
+    "merged_at": "2026-07-21T13:34:41.478249",
     "city": "Delhi NCR"
   },
   {
@@ -284,7 +284,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571001",
+    "merged_at": "2026-07-21T13:34:41.478252",
     "city": "Delhi NCR"
   },
   {
@@ -332,7 +332,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571009",
+    "merged_at": "2026-07-21T13:34:41.478253",
     "city": "Delhi NCR"
   },
   {
@@ -380,7 +380,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 0,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571017",
+    "merged_at": "2026-07-21T13:34:41.478255",
     "city": "Delhi NCR"
   },
   {
@@ -428,7 +428,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 2,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571024",
+    "merged_at": "2026-07-21T13:34:41.478257",
     "city": "Delhi NCR"
   },
   {
@@ -476,7 +476,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 0,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571031",
+    "merged_at": "2026-07-21T13:34:41.478259",
     "city": "Delhi NCR"
   },
   {
@@ -524,7 +524,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571038",
+    "merged_at": "2026-07-21T13:34:41.478261",
     "city": "Delhi NCR"
   },
   {
@@ -572,7 +572,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 22,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571045",
+    "merged_at": "2026-07-21T13:34:41.478263",
     "city": "Delhi NCR"
   },
   {
@@ -620,7 +620,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571052",
+    "merged_at": "2026-07-21T13:34:41.478264",
     "city": "Delhi NCR"
   },
   {
@@ -668,7 +668,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 16,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571059",
+    "merged_at": "2026-07-21T13:34:41.478266",
     "city": "Delhi NCR"
   },
   {
@@ -716,7 +716,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 12,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571066",
+    "merged_at": "2026-07-21T13:34:41.478268",
     "city": "Delhi NCR"
   },
   {
@@ -764,7 +764,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571073",
+    "merged_at": "2026-07-21T13:34:41.478270",
     "city": "Delhi NCR"
   },
   {
@@ -812,7 +812,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 4,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571080",
+    "merged_at": "2026-07-21T13:34:41.478271",
     "city": "Delhi NCR"
   },
   {
@@ -860,7 +860,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 0,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571087",
+    "merged_at": "2026-07-21T13:34:41.478273",
     "city": "Delhi NCR"
   },
   {
@@ -908,7 +908,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 7,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571094",
+    "merged_at": "2026-07-21T13:34:41.478275",
     "city": "Delhi NCR"
   },
   {
@@ -956,7 +956,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571101",
+    "merged_at": "2026-07-21T13:34:41.478277",
     "city": "Delhi NCR"
   },
   {
@@ -1004,7 +1004,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571108",
+    "merged_at": "2026-07-21T13:34:41.478278",
     "city": "Delhi NCR"
   },
   {
@@ -1052,7 +1052,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 6,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571115",
+    "merged_at": "2026-07-21T13:34:41.478280",
     "city": "Delhi NCR"
   },
   {
@@ -1100,7 +1100,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 15,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571122",
+    "merged_at": "2026-07-21T13:34:41.478282",
     "city": "Delhi NCR"
   },
   {
@@ -1148,7 +1148,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 24,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571129",
+    "merged_at": "2026-07-21T13:34:41.478284",
     "city": "Delhi NCR"
   },
   {
@@ -1196,7 +1196,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 4,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571135",
+    "merged_at": "2026-07-21T13:34:41.478285",
     "city": "Delhi NCR"
   },
   {
@@ -1244,7 +1244,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 14,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571142",
+    "merged_at": "2026-07-21T13:34:41.478287",
     "city": "Delhi NCR"
   },
   {
@@ -1292,7 +1292,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571149",
+    "merged_at": "2026-07-21T13:34:41.478289",
     "city": "Delhi NCR"
   },
   {
@@ -1340,7 +1340,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 20,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571156",
+    "merged_at": "2026-07-21T13:34:41.478291",
     "city": "Delhi NCR"
   },
   {
@@ -1388,7 +1388,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 14,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571163",
+    "merged_at": "2026-07-21T13:34:41.478292",
     "city": "Delhi NCR"
   },
   {
@@ -1436,7 +1436,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571170",
+    "merged_at": "2026-07-21T13:34:41.478294",
     "city": "Delhi NCR"
   },
   {
@@ -1484,7 +1484,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 5,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571232",
+    "merged_at": "2026-07-21T13:34:41.478296",
     "city": "Delhi NCR"
   },
   {
@@ -1532,7 +1532,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 2,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571241",
+    "merged_at": "2026-07-21T13:34:41.478298",
     "city": "Delhi NCR"
   },
   {
@@ -1580,7 +1580,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571248",
+    "merged_at": "2026-07-21T13:34:41.478299",
     "city": "Delhi NCR"
   },
   {
@@ -1628,7 +1628,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 4,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571255",
+    "merged_at": "2026-07-21T13:34:41.478301",
     "city": "Delhi NCR"
   },
   {
@@ -1676,7 +1676,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 18,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571262",
+    "merged_at": "2026-07-21T13:34:41.478303",
     "city": "Delhi NCR"
   },
   {
@@ -1724,7 +1724,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 12,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571268",
+    "merged_at": "2026-07-21T13:34:41.478305",
     "city": "Delhi NCR"
   },
   {
@@ -1772,7 +1772,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571275",
+    "merged_at": "2026-07-21T13:34:41.478306",
     "city": "Delhi NCR"
   },
   {
@@ -1820,7 +1820,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 3,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571281",
+    "merged_at": "2026-07-21T13:34:41.478308",
     "city": "Delhi NCR"
   },
   {
@@ -1868,7 +1868,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 9,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571288",
+    "merged_at": "2026-07-21T13:34:41.478310",
     "city": "Delhi NCR"
   },
   {
@@ -1916,7 +1916,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 5,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571295",
+    "merged_at": "2026-07-21T13:34:41.478312",
     "city": "Delhi NCR"
   },
   {
@@ -1964,7 +1964,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 8,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571302",
+    "merged_at": "2026-07-21T13:34:41.478313",
     "city": "Delhi NCR"
   },
   {
@@ -2012,7 +2012,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 14,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571308",
+    "merged_at": "2026-07-21T13:34:41.478315",
     "city": "Delhi NCR"
   },
   {
@@ -2060,7 +2060,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 5,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571315",
+    "merged_at": "2026-07-21T13:34:41.478317",
     "city": "Delhi NCR"
   },
   {
@@ -2108,7 +2108,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 8,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571322",
+    "merged_at": "2026-07-21T13:34:41.478319",
     "city": "Delhi NCR"
   },
   {
@@ -2156,7 +2156,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 9,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571329",
+    "merged_at": "2026-07-21T13:34:41.478320",
     "city": "Delhi NCR"
   },
   {
@@ -2167,7 +2167,7 @@
     "aqi_avg": 52.3,
     "aqi_category": "Satisfactory",
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571337",
+    "merged_at": "2026-07-21T13:34:41.478322",
     "city": "Delhi NCR"
   },
   {
@@ -2215,7 +2215,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571344",
+    "merged_at": "2026-07-21T13:34:41.478324",
     "city": "Delhi NCR"
   },
   {
@@ -2263,7 +2263,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571351",
+    "merged_at": "2026-07-21T13:34:41.478326",
     "city": "Delhi NCR"
   },
   {
@@ -2311,7 +2311,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 15,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571358",
+    "merged_at": "2026-07-21T13:34:41.478328",
     "city": "Delhi NCR"
   },
   {
@@ -2359,7 +2359,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 9,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571365",
+    "merged_at": "2026-07-21T13:34:41.478330",
     "city": "Delhi NCR"
   },
   {
@@ -2407,7 +2407,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571372",
+    "merged_at": "2026-07-21T13:34:41.478331",
     "city": "Delhi NCR"
   },
   {
@@ -2455,7 +2455,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 16,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571379",
+    "merged_at": "2026-07-21T13:34:41.478333",
     "city": "Delhi NCR"
   },
   {
@@ -2503,7 +2503,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 5,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571386",
+    "merged_at": "2026-07-21T13:34:41.478335",
     "city": "Delhi NCR"
   },
   {
@@ -2551,7 +2551,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 18,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571393",
+    "merged_at": "2026-07-21T13:34:41.478337",
     "city": "Delhi NCR"
   },
   {
@@ -2599,7 +2599,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 12,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571400",
+    "merged_at": "2026-07-21T13:34:41.478338",
     "city": "Delhi NCR"
   },
   {
@@ -2647,7 +2647,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 13,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571407",
+    "merged_at": "2026-07-21T13:34:41.478340",
     "city": "Delhi NCR"
   },
   {
@@ -2695,7 +2695,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 8,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571414",
+    "merged_at": "2026-07-21T13:34:41.478342",
     "city": "Delhi NCR"
   },
   {
@@ -2743,7 +2743,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571421",
+    "merged_at": "2026-07-21T13:34:41.478344",
     "city": "Delhi NCR"
   },
   {
@@ -2791,7 +2791,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 12,
     "data_completeness": 7,
-    "merged_at": "2026-07-20T23:20:39.571428",
+    "merged_at": "2026-07-21T13:34:41.478346",
     "city": "Delhi NCR"
   },
   {
@@ -2836,7 +2836,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 5,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571435",
+    "merged_at": "2026-07-21T13:34:41.478347",
     "city": "Delhi NCR"
   },
   {
@@ -2881,7 +2881,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 4,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571443",
+    "merged_at": "2026-07-21T13:34:41.478349",
     "city": "Delhi NCR"
   },
   {
@@ -2926,7 +2926,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571450",
+    "merged_at": "2026-07-21T13:34:41.478351",
     "city": "Delhi NCR"
   },
   {
@@ -2971,7 +2971,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571457",
+    "merged_at": "2026-07-21T13:34:41.478353",
     "city": "Delhi NCR"
   },
   {
@@ -3016,7 +3016,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 2,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571464",
+    "merged_at": "2026-07-21T13:34:41.478355",
     "city": "Delhi NCR"
   },
   {
@@ -3061,7 +3061,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571471",
+    "merged_at": "2026-07-21T13:34:41.478357",
     "city": "Delhi NCR"
   },
   {
@@ -3106,7 +3106,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 7,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571478",
+    "merged_at": "2026-07-21T13:34:41.478359",
     "city": "Delhi NCR"
   },
   {
@@ -3151,7 +3151,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571485",
+    "merged_at": "2026-07-21T13:34:41.478360",
     "city": "Delhi NCR"
   },
   {
@@ -3196,7 +3196,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571491",
+    "merged_at": "2026-07-21T13:34:41.478362",
     "city": "Delhi NCR"
   },
   {
@@ -3241,7 +3241,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571670",
+    "merged_at": "2026-07-21T13:34:41.478364",
     "city": "Delhi NCR"
   },
   {
@@ -3286,7 +3286,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571679",
+    "merged_at": "2026-07-21T13:34:41.478366",
     "city": "Delhi NCR"
   },
   {
@@ -3331,7 +3331,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571686",
+    "merged_at": "2026-07-21T13:34:41.478367",
     "city": "Delhi NCR"
   },
   {
@@ -3376,7 +3376,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 4,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571693",
+    "merged_at": "2026-07-21T13:34:41.478369",
     "city": "Delhi NCR"
   },
   {
@@ -3421,7 +3421,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 18,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571700",
+    "merged_at": "2026-07-21T13:34:41.478371",
     "city": "Delhi NCR"
   },
   {
@@ -3466,7 +3466,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 7,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571706",
+    "merged_at": "2026-07-21T13:34:41.478373",
     "city": "Delhi NCR"
   },
   {
@@ -3511,7 +3511,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 2,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571713",
+    "merged_at": "2026-07-21T13:34:41.478374",
     "city": "Delhi NCR"
   },
   {
@@ -3556,7 +3556,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 4,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571721",
+    "merged_at": "2026-07-21T13:34:41.478376",
     "city": "Delhi NCR"
   },
   {
@@ -3601,7 +3601,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571728",
+    "merged_at": "2026-07-21T13:34:41.478378",
     "city": "Delhi NCR"
   },
   {
@@ -3646,7 +3646,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 16,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571736",
+    "merged_at": "2026-07-21T13:34:41.478380",
     "city": "Delhi NCR"
   },
   {
@@ -3691,7 +3691,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571743",
+    "merged_at": "2026-07-21T13:34:41.478381",
     "city": "Delhi NCR"
   },
   {
@@ -3736,7 +3736,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571750",
+    "merged_at": "2026-07-21T13:34:41.478383",
     "city": "Delhi NCR"
   },
   {
@@ -3781,7 +3781,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 4,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571757",
+    "merged_at": "2026-07-21T13:34:41.478385",
     "city": "Delhi NCR"
   },
   {
@@ -3826,7 +3826,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 7,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571763",
+    "merged_at": "2026-07-21T13:34:41.478386",
     "city": "Delhi NCR"
   },
   {
@@ -3871,7 +3871,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571778",
+    "merged_at": "2026-07-21T13:34:41.478388",
     "city": "Delhi NCR"
   },
   {
@@ -3916,7 +3916,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 10,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571785",
+    "merged_at": "2026-07-21T13:34:41.478390",
     "city": "Delhi NCR"
   },
   {
@@ -3961,7 +3961,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 13,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571792",
+    "merged_at": "2026-07-21T13:34:41.478391",
     "city": "Delhi NCR"
   },
   {
@@ -4006,7 +4006,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 14,
     "data_completeness": 6,
-    "merged_at": "2026-07-20T23:20:39.571799",
+    "merged_at": "2026-07-21T13:34:41.478393",
     "city": "Delhi NCR"
   },
   {
@@ -4049,7 +4049,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571806"
+    "merged_at": "2026-07-21T13:34:41.478395"
   },
   {
     "pin_code": "560025",
@@ -4091,7 +4091,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571814"
+    "merged_at": "2026-07-21T13:34:41.478397"
   },
   {
     "pin_code": "560051",
@@ -4133,7 +4133,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571820"
+    "merged_at": "2026-07-21T13:34:41.478398"
   },
   {
     "pin_code": "560052",
@@ -4175,7 +4175,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571827"
+    "merged_at": "2026-07-21T13:34:41.478400"
   },
   {
     "pin_code": "560042",
@@ -4217,7 +4217,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571833"
+    "merged_at": "2026-07-21T13:34:41.478402"
   },
   {
     "pin_code": "560002",
@@ -4259,7 +4259,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571840"
+    "merged_at": "2026-07-21T13:34:41.478403"
   },
   {
     "pin_code": "560023",
@@ -4301,7 +4301,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571846"
+    "merged_at": "2026-07-21T13:34:41.478405"
   },
   {
     "pin_code": "560003",
@@ -4343,7 +4343,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571852"
+    "merged_at": "2026-07-21T13:34:41.478406"
   },
   {
     "pin_code": "560010",
@@ -4385,7 +4385,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571858"
+    "merged_at": "2026-07-21T13:34:41.478408"
   },
   {
     "pin_code": "560020",
@@ -4427,7 +4427,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571864"
+    "merged_at": "2026-07-21T13:34:41.478409"
   },
   {
     "pin_code": "560021",
@@ -4469,7 +4469,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571870"
+    "merged_at": "2026-07-21T13:34:41.478411"
   },
   {
     "pin_code": "560022",
@@ -4511,7 +4511,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571876"
+    "merged_at": "2026-07-21T13:34:41.478412"
   },
   {
     "pin_code": "560024",
@@ -4553,7 +4553,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571882"
+    "merged_at": "2026-07-21T13:34:41.478414"
   },
   {
     "pin_code": "560032",
@@ -4595,7 +4595,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571888"
+    "merged_at": "2026-07-21T13:34:41.478415"
   },
   {
     "pin_code": "560045",
@@ -4637,7 +4637,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 6,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571893"
+    "merged_at": "2026-07-21T13:34:41.478417"
   },
   {
     "pin_code": "560092",
@@ -4679,7 +4679,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571900"
+    "merged_at": "2026-07-21T13:34:41.478419"
   },
   {
     "pin_code": "560094",
@@ -4721,7 +4721,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571905"
+    "merged_at": "2026-07-21T13:34:41.478420"
   },
   {
     "pin_code": "560097",
@@ -4763,7 +4763,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571911"
+    "merged_at": "2026-07-21T13:34:41.478422"
   },
   {
     "pin_code": "560063",
@@ -4805,7 +4805,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 8,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571917"
+    "merged_at": "2026-07-21T13:34:41.478423"
   },
   {
     "pin_code": "560064",
@@ -4847,7 +4847,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571924"
+    "merged_at": "2026-07-21T13:34:41.478425"
   },
   {
     "pin_code": "560065",
@@ -4889,7 +4889,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571930"
+    "merged_at": "2026-07-21T13:34:41.478426"
   },
   {
     "pin_code": "560008",
@@ -4931,7 +4931,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571936"
+    "merged_at": "2026-07-21T13:34:41.478428"
   },
   {
     "pin_code": "560038",
@@ -4973,7 +4973,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571942"
+    "merged_at": "2026-07-21T13:34:41.478429"
   },
   {
     "pin_code": "560046",
@@ -5015,7 +5015,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571948"
+    "merged_at": "2026-07-21T13:34:41.478431"
   },
   {
     "pin_code": "560005",
@@ -5057,7 +5057,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571954"
+    "merged_at": "2026-07-21T13:34:41.478432"
   },
   {
     "pin_code": "560017",
@@ -5099,7 +5099,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571959"
+    "merged_at": "2026-07-21T13:34:41.478434"
   },
   {
     "pin_code": "560075",
@@ -5141,7 +5141,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571966"
+    "merged_at": "2026-07-21T13:34:41.478435"
   },
   {
     "pin_code": "560093",
@@ -5183,7 +5183,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571972"
+    "merged_at": "2026-07-21T13:34:41.478437"
   },
   {
     "pin_code": "560016",
@@ -5225,7 +5225,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 14,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571978"
+    "merged_at": "2026-07-21T13:34:41.478438"
   },
   {
     "pin_code": "560036",
@@ -5267,7 +5267,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 9,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571984"
+    "merged_at": "2026-07-21T13:34:41.478440"
   },
   {
     "pin_code": "560037",
@@ -5309,7 +5309,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 7,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571990"
+    "merged_at": "2026-07-21T13:34:41.478441"
   },
   {
     "pin_code": "560048",
@@ -5351,7 +5351,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 8,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.571996"
+    "merged_at": "2026-07-21T13:34:41.478443"
   },
   {
     "pin_code": "560066",
@@ -5393,7 +5393,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 7,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.572002"
+    "merged_at": "2026-07-21T13:34:41.478444"
   },
   {
     "pin_code": "560067",
@@ -5435,7 +5435,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 8,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.572008"
+    "merged_at": "2026-07-21T13:34:41.478446"
   },
   {
     "pin_code": "560103",
@@ -5477,7 +5477,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 16,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.572015"
+    "merged_at": "2026-07-21T13:34:41.478448"
   },
   {
     "pin_code": "560035",
@@ -5519,7 +5519,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 8,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.572020"
+    "merged_at": "2026-07-21T13:34:41.478449"
   },
   {
     "pin_code": "560087",
@@ -5561,7 +5561,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 15,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.572026"
+    "merged_at": "2026-07-21T13:34:41.478451"
   },
   {
     "pin_code": "560034",
@@ -5603,7 +5603,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 11,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.572032"
+    "merged_at": "2026-07-21T13:34:41.478452"
   },
   {
     "pin_code": "560095",
@@ -5645,7 +5645,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 10,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.572038"
+    "merged_at": "2026-07-21T13:34:41.478454"
   },
   {
     "pin_code": "560102",
@@ -5687,7 +5687,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 10,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.572044"
+    "merged_at": "2026-07-21T13:34:41.478455"
   },
   {
     "pin_code": "560029",
@@ -5729,7 +5729,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.572050"
+    "merged_at": "2026-07-21T13:34:41.478457"
   },
   {
     "pin_code": "560027",
@@ -5771,7 +5771,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.572056"
+    "merged_at": "2026-07-21T13:34:41.478458"
   },
   {
     "pin_code": "560030",
@@ -5813,7 +5813,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.572062"
+    "merged_at": "2026-07-21T13:34:41.478460"
   },
   {
     "pin_code": "560068",
@@ -5855,7 +5855,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 8,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575661"
+    "merged_at": "2026-07-21T13:34:41.478461"
   },
   {
     "pin_code": "560004",
@@ -5897,7 +5897,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575678"
+    "merged_at": "2026-07-21T13:34:41.478463"
   },
   {
     "pin_code": "560011",
@@ -5939,7 +5939,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575685"
+    "merged_at": "2026-07-21T13:34:41.478464"
   },
   {
     "pin_code": "560041",
@@ -5981,7 +5981,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 1,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575691"
+    "merged_at": "2026-07-21T13:34:41.478466"
   },
   {
     "pin_code": "560019",
@@ -6023,7 +6023,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575698"
+    "merged_at": "2026-07-21T13:34:41.478468"
   },
   {
     "pin_code": "560028",
@@ -6065,7 +6065,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575703"
+    "merged_at": "2026-07-21T13:34:41.478469"
   },
   {
     "pin_code": "560050",
@@ -6107,7 +6107,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575709"
+    "merged_at": "2026-07-21T13:34:41.478471"
   },
   {
     "pin_code": "560070",
@@ -6149,7 +6149,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575715"
+    "merged_at": "2026-07-21T13:34:41.478472"
   },
   {
     "pin_code": "560085",
@@ -6191,7 +6191,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575721"
+    "merged_at": "2026-07-21T13:34:41.478474"
   },
   {
     "pin_code": "560078",
@@ -6233,7 +6233,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575727"
+    "merged_at": "2026-07-21T13:34:41.478475"
   },
   {
     "pin_code": "560076",
@@ -6275,7 +6275,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 7,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575733"
+    "merged_at": "2026-07-21T13:34:41.478477"
   },
   {
     "pin_code": "560061",
@@ -6317,7 +6317,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 8,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575739"
+    "merged_at": "2026-07-21T13:34:41.478478"
   },
   {
     "pin_code": "560062",
@@ -6359,7 +6359,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575745"
+    "merged_at": "2026-07-21T13:34:41.478480"
   },
   {
     "pin_code": "560083",
@@ -6401,7 +6401,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 6,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575751"
+    "merged_at": "2026-07-21T13:34:41.478482"
   },
   {
     "pin_code": "560040",
@@ -6443,7 +6443,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575757"
+    "merged_at": "2026-07-21T13:34:41.478483"
   },
   {
     "pin_code": "560079",
@@ -6485,7 +6485,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 3,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575763"
+    "merged_at": "2026-07-21T13:34:41.478484"
   },
   {
     "pin_code": "560072",
@@ -6527,7 +6527,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575769"
+    "merged_at": "2026-07-21T13:34:41.478486"
   },
   {
     "pin_code": "560018",
@@ -6569,7 +6569,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 5,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575775"
+    "merged_at": "2026-07-21T13:34:41.478488"
   },
   {
     "pin_code": "560091",
@@ -6611,7 +6611,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 8,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575781"
+    "merged_at": "2026-07-21T13:34:41.478489"
   },
   {
     "pin_code": "560056",
@@ -6653,7 +6653,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 8,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575787"
+    "merged_at": "2026-07-21T13:34:41.478491"
   },
   {
     "pin_code": "560100",
@@ -6695,7 +6695,7 @@
     "open_drains": false,
     "flooding_incidents_annual": 6,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575793"
+    "merged_at": "2026-07-21T13:34:41.478492"
   },
   {
     "pin_code": "560099",
@@ -6737,7 +6737,7 @@
     "open_drains": true,
     "flooding_incidents_annual": 6,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575799"
+    "merged_at": "2026-07-21T13:34:41.478494"
   },
   {
     "pin_code": "560105",
@@ -6779,6 +6779,6 @@
     "open_drains": true,
     "flooding_incidents_annual": 12,
     "data_completeness": 1,
-    "merged_at": "2026-07-20T23:20:39.575805"
+    "merged_at": "2026-07-21T13:34:41.478495"
   }
 ]
