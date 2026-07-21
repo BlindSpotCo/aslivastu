@@ -194,6 +194,33 @@ def master_records():
     return out
 
 
+# Guidance values (Kaveri) are the govt MINIMUM for registration — well below
+# market. Karnataka's residential apartment guidance value runs ~₹5,000–10,000/sqft
+# generally, up to ~₹10–14k for the very top localities. These are recalibrated
+# down from an earlier market-leaning estimate. Verified anchors (2024): Indiranagar
+# ~₹8k, Koramangala ₹10–14k, Whitefield ~₹6.5k, Electronic City ~₹6k.
+GV_BY_TIER = {5: (8500, 13000), 4: (6000, 9000), 3: (5000, 7000), 2: (4000, 6000), 1: (3500, 5000)}
+GV_OVERRIDE = {
+    "560034": (10000, 14000), "560095": (9500, 13500),          # Koramangala
+    "560011": (9000, 13000), "560041": (9000, 13000),           # Jayanagar
+    "560038": (8000, 12000), "560008": (7500, 11000),           # Indiranagar / Ulsoor
+    "560003": (8500, 12000), "560004": (8000, 11500),           # Malleshwaram, Basavanagudi
+    "560001": (9000, 13000), "560025": (8500, 12000), "560052": (8000, 11500),  # MG Rd, Richmond, Vasanth Nagar
+    "560066": (5500, 7500), "560067": (4800, 6500),             # Whitefield
+    "560100": (5000, 6500), "560099": (4200, 5800),             # Electronic City / Hosur Rd
+    "560102": (7000, 9500),                                     # HSR Layout
+    "560103": (5500, 7500), "560035": (5500, 7500),             # Bellandur, Sarjapur
+    "560037": (5500, 7800), "560048": (5500, 7800),             # Marathahalli, Mahadevapura
+    "560036": (4200, 6000), "560016": (4000, 5800), "560087": (4000, 5800),  # KR Puram, Ramamurthy Nagar, Varthur
+    "560076": (6500, 9000), "560078": (6000, 8500), "560050": (6000, 8500),  # BTM, JP Nagar, Banashankari
+    "560024": (6000, 8500), "560064": (5000, 7000), "560063": (4500, 6500),  # Hebbal, Yelahanka
+    "560105": (3500, 4800),                                     # Anekal
+}
+
+def gv_for(pin, tier):
+    return GV_OVERRIDE.get(pin, GV_BY_TIER[tier])
+
+
 def price_entries():
     """Guidance-value price-context entries keyed by PIN (Kaveri, Karnataka)."""
     LABELS = {1: "Premium", 2: "Upper", 3: "Mid", 4: "Modest", 5: "Value"}
@@ -201,9 +228,10 @@ def price_entries():
     for pin, name, zone, tier, gvlo, gvhi, ov in AREAS:
         # tier→price band: premium areas = Premium band
         pt = {5: 1, 4: 2, 3: 3, 2: 4, 1: 5}[tier]
+        lo, hi = gv_for(pin, tier)
         out[pin] = {
             "tier": pt, "label": LABELS[pt],
-            "rate_sqft": [gvlo, gvhi], "rate_type": "apartment", "rate_exact": False,
+            "rate_sqft": [lo, hi], "rate_type": "apartment", "rate_exact": False,
             "land_sqft": None, "land_exact": False,
             "basis": f"{name} — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
             "source": "Govt of Karnataka",
