@@ -248,18 +248,21 @@ def crime_tier_for(percentile):
     return "Very High"
 
 def add_crime_percentiles(results):
-    """Rank each pin's raw crime count against every other scored pin and
-    attach a percentile + tier label. This is the fix for: 'a raw crime
-    count means nothing without knowing how it compares elsewhere' — it
-    ships without needing population data, unlike a true per-capita rate
-    (crimes per 1,000 residents), which needs population-per-catchment
-    data we don't have yet. Ties are handled by only counting pins with a
-    STRICTLY higher count as 'less safe than this one' — a tied pin gets
-    no credit for the tie either way."""
-    counts = [r["total_cognizable_crimes"] for r in results if r.get("total_cognizable_crimes") is not None]
-    n = len(counts)
+    """Rank each pin's raw crime count against every other scored pin IN THE
+    SAME CITY, and attach a percentile + tier label. City-scoped because crime
+    counts come from different police datasets per city (Delhi Police vs
+    Bengaluru City Police) on different scales — ranking a Bengaluru area
+    against Delhi counts would be apples-to-oranges. Ties are handled by only
+    counting pins with a STRICTLY higher count as 'less safe than this one'."""
+    from collections import defaultdict
+    counts_by_city = defaultdict(list)
+    for r in results:
+        if r.get("total_cognizable_crimes") is not None:
+            counts_by_city[r.get("city", "Delhi NCR")].append(r["total_cognizable_crimes"])
     for r in results:
         c = r.get("total_cognizable_crimes")
+        counts = counts_by_city.get(r.get("city", "Delhi NCR"), [])
+        n = len(counts)
         if c is None or n < 2:
             r["crime_percentile"] = None
             r["crime_tier"] = None
