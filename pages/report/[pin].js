@@ -64,6 +64,16 @@ const DIM_DESC_BLR = {
 }
 function dimDesc(k, city) { return city === 'Bangalore' ? (DIM_DESC_BLR[k] || DIM_DESC[k]) : DIM_DESC[k] }
 
+// Plain-language meaning of each CPCB AQI category (issue #12 — jargon for non-locals).
+const AQI_PLAIN = {
+  'Good':         'Air is clean — safe for everyone, including children and the elderly.',
+  'Satisfactory': 'Air is acceptable — fine for most people; very sensitive individuals may feel minor irritation.',
+  'Moderate':     'Okay for healthy people, but those with asthma or heart/lung conditions should limit long outdoor exertion.',
+  'Poor':         'Unhealthy — prolonged outdoor activity can cause breathing discomfort for most people.',
+  'Very Poor':    'Unhealthy for everyone — avoid outdoor exertion; sensitive groups should stay indoors.',
+  'Severe':       'Hazardous — a serious health risk; everyone should avoid outdoor activity.',
+}
+
 const DIM_TAG = {
   crime:          { label:'Est. 2023',  color:'#f97316' },
   infrastructure: { label:'Est. 2024',  color:'#f97316' },
@@ -976,11 +986,28 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
   const [fbText, setFbText] = useState('')
   const [fbStatus, setFbStatus] = useState('idle')
   const [fbError, setFbError] = useState('')
+  const [shortlist, setShortlist] = useState([]) // saved PINs (issue #5)
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: dark)')
     setDark(mq.matches)
   }, [])
+
+  // Load saved shortlist from localStorage on mount.
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('aslivastu_shortlist') || '[]')
+      if (Array.isArray(saved)) setShortlist(saved.filter(p => PIN_META[p]))
+    } catch { /* ignore */ }
+  }, [])
+
+  function toggleSaved(p) {
+    setShortlist(prev => {
+      const next = prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p]
+      try { localStorage.setItem('aslivastu_shortlist', JSON.stringify(next)) } catch { /* ignore */ }
+      return next
+    })
+  }
 
   // Auto-load from URL params (fallback for /report?pin= links) — skipped when SSR props are present
   useEffect(() => {
@@ -1440,6 +1467,13 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                         <p style={{ margin:0, fontSize:13, color:muted, textTransform:'uppercase', letterSpacing:'0.06em' }}>{meta.area}</p>
                         <h2 style={{ margin:'4px 0 0', fontSize:34, fontWeight:800, letterSpacing:'-0.5px', color:text }}>{meta.name}</h2>
                         <p style={{ margin:'4px 0 0', fontSize:14, color:muted }}>Pin {report.pin_code} · {report.dimensions_scored} of {report.dimensions_total} dimensions</p>
+                        {(() => { const saved = shortlist.includes(report.pin_code); return (
+                          <button onClick={() => toggleSaved(report.pin_code)}
+                            style={{ marginTop:10, display:'inline-flex', alignItems:'center', gap:6, fontSize:12.5, fontWeight:600, padding:'6px 12px', borderRadius:8, cursor:'pointer',
+                              border:`1px solid ${saved ? ACCENT : border}`, background: saved ? `${ACCENT}1a` : 'transparent', color: saved ? ACCENT : muted }}>
+                            <span style={{ fontSize:14 }}>{saved ? '★' : '☆'}</span>{saved ? 'Saved to shortlist' : 'Save to shortlist'}
+                          </button>
+                        )})()}
                       </div>
                       <div style={{ textAlign:'center', background:GRADE_COLOR[displayedGrade]+'18', borderRadius:12, padding:'12px 16px', minWidth:80, boxShadow:`0 0 20px ${GRADE_COLOR[displayedGrade]}30` }}>
                         <div style={{ fontSize:46, fontWeight:900, color:GRADE_COLOR[displayedGrade], lineHeight:1, letterSpacing:'-1px' }}>{displayedNqi}</div>
@@ -1452,6 +1486,29 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                       <p style={{ margin:'6px 0 0', fontSize:15, color:text, lineHeight:1.6 }}>{verdict.reason}</p>
                     </div>
                   </div>
+
+                  {/* Shortlist (issue #5) — saved areas, persisted in localStorage */}
+                  {shortlist.length > 0 && (
+                    <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:16, marginBottom:12 }}>
+                      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:10 }}>
+                        <p style={{ margin:0, fontSize:13, fontWeight:600, color:text, display:'flex', alignItems:'center', gap:8 }}>
+                          <span style={{ display:'inline-block', width:3, height:14, background:ACCENT, borderRadius:2 }}/>
+                          Your shortlist ({shortlist.length})
+                        </p>
+                        {shortlist.length >= 2 && (
+                          <a href={`/compare?a=${shortlist[0]}&b=${shortlist[1]}`} style={{ fontSize:11.5, fontWeight:600, color:ACCENT, textDecoration:'none' }}>Compare top 2 →</a>
+                        )}
+                      </div>
+                      <div style={{ display:'flex', flexWrap:'wrap', gap:8 }}>
+                        {shortlist.map(p => (
+                          <div key={p} style={{ display:'inline-flex', alignItems:'center', gap:4, padding:'5px 6px 5px 12px', background:subtle, borderRadius:20, fontSize:12 }}>
+                            <a href={`/report/${p}`} style={{ color:text, textDecoration:'none', fontWeight:500 }}>{PIN_META[p]?.name || p}</a>
+                            <button onClick={() => toggleSaved(p)} aria-label={`Remove ${PIN_META[p]?.name || p}`} style={{ border:'none', background:'none', color:muted, cursor:'pointer', fontSize:15, lineHeight:1, padding:'0 3px' }}>×</button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Radar — Dimension overview */}
                   {radarData.length > 1 && (
@@ -1534,6 +1591,14 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                     </div>
                   )}
 
+                  {/* Data freshness (issue #1) */}
+                  <div style={{ display:'flex', alignItems:'center', gap:8, flexWrap:'wrap', margin:'0 0 16px', padding:'8px 12px', background:subtle, borderRadius:8, fontSize:11.5, color:muted, lineHeight:1.5 }}>
+                    <span style={{ display:'inline-flex', alignItems:'center', gap:5 }}><span style={{ width:6, height:6, borderRadius:'50%', background:'#22c55e', display:'inline-block' }}/><strong style={{ color:text }}>Air</strong> is live — refreshed daily.</span>
+                    <span style={{ opacity:0.5 }}>·</span>
+                    <span style={{ display:'inline-flex', alignItems:'center', gap:5 }}><span style={{ width:6, height:6, borderRadius:'50%', background:'#f97316', display:'inline-block' }}/>All other dimensions are estimated from government reports, <strong style={{ color:text }}>last verified 2023–24</strong>.</span>
+                    {report.scored_at && <span style={{ opacity:0.8 }}>Scored {new Date(report.scored_at).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' })}.</span>}
+                  </div>
+
                   {Object.entries(report.scores).map(([k,v]) => {
                     const c = v>=80?'#22c55e':v>=60?'#84cc16':v>=40?'#f97316':'#ef4444'
                     const baseW    = report.weights_base?.[k]
@@ -1567,6 +1632,11 @@ export default function Home({ initialPin, initialReport, initialAllScores, ogMe
                         {k === 'crime' && report.crime_percentile != null && (
                           <p style={{ fontSize:12, color:muted, margin:'4px 0 0', lineHeight:1.5 }}>
                             {report.total_cognizable_crimes} total crimes reported — safer than <strong style={{color:text}}>{report.crime_percentile}%</strong> of tracked areas in {report.city} ({report.crime_tier} tier).
+                          </p>
+                        )}
+                        {k === 'air' && report.aqi_category && (
+                          <p style={{ fontSize:12, color:muted, margin:'4px 0 0', lineHeight:1.5 }}>
+                            {report.aqi_avg != null && <>AQI ~{Math.round(report.aqi_avg)} · </>}<strong style={{color:text}}>{report.aqi_category}</strong> — {AQI_PLAIN[report.aqi_category] || 'air quality band from CPCB thresholds.'}
                           </p>
                         )}
                       </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const PIN_META = {
@@ -213,6 +213,14 @@ export default function Compare() {
 
   function pickA(s) { setQA(s.name); setSuggA([]); setShowA(false); fetchFor(s.pin, 'A') }
   function pickB(s) { setQB(s.name); setSuggB([]); setShowB(false); fetchFor(s.pin, 'B') }
+
+  // Pre-fill from ?a=&b= (e.g. from the shortlist "Compare top 2" link).
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const a = params.get('a'), b = params.get('b')
+    if (a && /^\d{6}$/.test(a)) { setQA(PIN_META[a]?.name || a); fetchFor(a, 'A') }
+    if (b && /^\d{6}$/.test(b)) { setQB(PIN_META[b]?.name || b); fetchFor(b, 'B') }
+  }, [])
 
   const dims = ['crime', 'infrastructure', 'air', 'power', 'schools', 'water', 'roads', 'sewerage']
   const allDims = reportA && reportB
