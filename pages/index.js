@@ -6,7 +6,8 @@ const CSS = `
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --accent: #e23744;
+    --accent: #a75a65;
+    --accent-fill: #7a1f2b;
     --bg: #080808;
     --text: #f0ede8;
     --muted: #9a9a9a;
@@ -23,10 +24,10 @@ const CSS = `
     overflow-x: hidden;
   }
 
-  ::selection { background: var(--accent); color: white; }
+  ::selection { background: var(--accent-fill); color: white; }
   ::-webkit-scrollbar { width: 2px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: var(--accent); }
+  ::-webkit-scrollbar-thumb { background: var(--accent-fill); }
 
   /* ── Progress bar ── */
   .progress {
@@ -62,7 +63,7 @@ const CSS = `
     backdrop-filter: blur(10px);
     background: rgba(255,255,255,0.03);
   }
-  .nav-cta:hover { background: var(--accent); border-color: var(--accent); }
+  .nav-cta:hover { background: var(--accent-fill); border-color: var(--accent-fill); }
 
   /* ── HERO ── */
   .hero {
@@ -122,7 +123,7 @@ const CSS = `
   }
   .hero-search input::placeholder { color: #444; }
   .hero-search button {
-    background: var(--accent); border: none;
+    background: var(--accent-fill); border: none;
     padding: 15px 24px; color: white;
     font-size: 13px; font-weight: 500; cursor: pointer;
     font-family: 'DM Sans', sans-serif;
@@ -155,7 +156,7 @@ const CSS = `
     box-shadow:
       0 0 0 1px rgba(255,255,255,0.08),
       0 32px 80px rgba(0,0,0,0.8),
-      0 0 60px rgba(226,55,68,0.15),
+      0 0 60px rgba(167,90,101,0.15),
       inset 0 1px 0 rgba(255,255,255,0.1);
     overflow: hidden;
     transform-style: preserve-3d;
@@ -169,7 +170,7 @@ const CSS = `
       115deg,
       transparent 0%,
       rgba(255,255,255,0.03) 30%,
-      rgba(226,55,68,0.08) 40%,
+      rgba(167,90,101,0.08) 40%,
       rgba(255,200,100,0.06) 50%,
       rgba(100,200,255,0.06) 60%,
       rgba(255,255,255,0.03) 70%,
@@ -300,7 +301,7 @@ const CSS = `
     position: absolute;
     width: 500px; height: 500px;
     border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(226,55,68,0.12) 0%, transparent 65%);
+    background: radial-gradient(ellipse, rgba(167,90,101,0.12) 0%, transparent 65%);
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -431,7 +432,7 @@ const CSS = `
   }
   .dim-card::before {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 0 0, rgba(226,55,68,0.07) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 0 0, rgba(167,90,101,0.07) 0%, transparent 70%);
     opacity: 0; transition: opacity 0.4s;
   }
   .dim-card:hover::before { opacity: 1; }
@@ -477,7 +478,7 @@ const CSS = `
   .demo-body strong { color: var(--text); font-weight: 500; }
   .demo-btn {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 28px; background: var(--accent); color: white;
+    padding: 14px 28px; background: var(--accent-fill); color: white;
     border-radius: 100px; text-decoration: none;
     font-size: 14px; font-weight: 500; transition: opacity 0.2s;
   }
@@ -526,7 +527,7 @@ const CSS = `
   }
   .cta-glow {
     position: absolute; width: 700px; height: 700px; border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(226,55,68,0.1) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(167,90,101,0.1) 0%, transparent 70%);
     top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
     animation: glowPulse 5s ease-in-out infinite;
   }
@@ -555,7 +556,7 @@ const CSS = `
   }
   .cta-search input::placeholder { color: #333; }
   .cta-search button {
-    background: var(--accent); border: none; padding: 17px 28px;
+    background: var(--accent-fill); border: none; padding: 17px 28px;
     color: white; font-size: 14px; font-weight: 500; cursor: pointer;
     font-family: 'DM Sans', sans-serif;
     border-radius: 0 100px 100px 0; transition: opacity 0.2s;
@@ -1876,7 +1877,7 @@ export default function Landing() {
       <canvas ref={bgCanvas} className="bg-scene" />
       <div id="scroll-flood" style={{
         position:'fixed', inset:0, zIndex:1, pointerEvents:'none',
-        background:'#e23744', opacity:0, transition:'none'
+        background:'#7a1f2b', opacity:0, transition:'none'
       }} />
       <div className="progress" ref={progressRef} />
 
@@ -1885,7 +1886,7 @@ export default function Landing() {
           <img src="/logo.png" alt="AsliVastu" style={{ width:44, height:44, objectFit:'contain', borderRadius:8 }} />
           <div>
             <div style={{ fontWeight:800, fontSize:20, letterSpacing:'-0.4px', color:'#f0ede8', lineHeight:1, fontFamily:'DM Sans, sans-serif' }}>AsliVastu</div>
-            <div style={{ fontSize:11, color:'#e23744', fontWeight:500, marginTop:3, fontFamily:'DM Sans, sans-serif' }}>Your Neighbourhood, By the numbers</div>
+            <div style={{ fontSize:11, color:'#a75a65', fontWeight:500, marginTop:3, fontFamily:'DM Sans, sans-serif' }}>Your Neighbourhood, By the numbers</div>
           </div>
         </div>
         
@@ -1943,7 +1944,7 @@ export default function Landing() {
             {/* CTA nudge */}
             <p style={{ fontSize:13, color:'rgba(255,255,255,0.6)', lineHeight:1.6, maxWidth:360, margin:0 }}>
               Government data. No broker spin. Updated daily.<br/>
-              <span style={{ color:'rgba(226,55,68,0.8)' }}>Scroll down to check your area →</span>
+              <span style={{ color:'rgba(167,90,101,0.8)' }}>Scroll down to check your area →</span>
             </p>
           </div>
         </div>
@@ -1987,7 +1988,7 @@ export default function Landing() {
           {DIMS.map((d, i) => (
             <div key={i} className="dim-card">
               <p className="dim-num">{d.num}</p>
-              <span className="dim-icon"><DimIcon name={d.key} size={28} color="#e23744" /></span>
+              <span className="dim-icon"><DimIcon name={d.key} size={28} color="#a75a65" /></span>
               <p className="dim-name">{d.name}</p>
               <p className="dim-desc">{d.desc}</p>
               <p className="dim-weight">{d.weight}</p>
@@ -2058,7 +2059,7 @@ export default function Landing() {
                   }
                 }}
                   style={{ fontSize:13, fontWeight:600, padding:'6px 14px', borderRadius:7, cursor:'pointer', border:'none',
-                    background: ctaCity===c ? '#e23744' : 'transparent', color: ctaCity===c ? 'white' : 'rgba(255,255,255,0.6)' }}>{c}</button>
+                    background: ctaCity===c ? '#7a1f2b' : 'transparent', color: ctaCity===c ? 'white' : 'rgba(255,255,255,0.6)' }}>{c}</button>
               ))}
             </div>
             <div className="cta-search" style={{ position:'relative' }}>
@@ -2101,7 +2102,7 @@ export default function Landing() {
                       borderBottom:'1px solid rgba(255,255,255,0.05)',
                       transition:'background 0.15s'
                     }}
-                    onMouseEnter={e => e.currentTarget.style.background='rgba(226,55,68,0.12)'}
+                    onMouseEnter={e => e.currentTarget.style.background='rgba(167,90,101,0.12)'}
                     onMouseLeave={e => e.currentTarget.style.background='transparent'}
                   >
                     <span style={{ color:'#f0ede8', fontSize:14, fontWeight:500 }}>{name}</span>
@@ -2128,7 +2129,7 @@ export default function Landing() {
                   fontFamily:'DM Sans, sans-serif',
                   transition:'all 0.2s',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(226,55,68,0.5)'; e.currentTarget.style.color='#e23744' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(167,90,101,0.5)'; e.currentTarget.style.color='#a75a65' }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.1)'; e.currentTarget.style.color='rgba(255,255,255,0.62)' }}
               >{name}</button>
             ))}
@@ -2161,7 +2162,7 @@ export default function Landing() {
           }}>
             <img src="/IMG_6285.jpeg" alt="Gurshaan Singh Baweja" style={{
               width:60, height:60, borderRadius:'50%', margin:'0 auto 16px',
-              display:'block', objectFit:'cover', border:'2px solid rgba(226,55,68,0.4)',
+              display:'block', objectFit:'cover', border:'2px solid rgba(167,90,101,0.4)',
             }} />
             <p style={{ fontSize:17, fontWeight:700, color:'#f0ede8', margin:'0 0 4px' }}>Gurshaan Singh Baweja</p>
             <p style={{ fontSize:12, color:'rgba(255,255,255,0.55)', margin:'0 0 16px', textTransform:'uppercase', letterSpacing:'0.08em' }}>Built AsliVastu</p>
@@ -2200,7 +2201,7 @@ export default function Landing() {
               disabled={!fbText.trim() || fbStatus === 'sending'}
               style={{
                 marginTop:'auto', display:'inline-flex', alignItems:'center', justifyContent:'center', gap:8,
-                padding:'10px 22px', background: fbText.trim() ? '#e23744' : 'rgba(255,255,255,0.08)',
+                padding:'10px 22px', background: fbText.trim() ? '#7a1f2b' : 'rgba(255,255,255,0.08)',
                 color: fbText.trim() ? '#fff' : 'rgba(255,255,255,0.4)', border:'none', borderRadius:100,
                 fontSize:14, fontWeight:600, cursor: fbText.trim() ? 'pointer' : 'default', opacity: fbStatus === 'sending' ? 0.7 : 1,
               }}>

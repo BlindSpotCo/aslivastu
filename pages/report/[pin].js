@@ -32,6 +32,7 @@ const CSS = `
 .iv button:focus-visible, .iv a:focus-visible, .iv input:focus-visible { outline:2px solid var(--acc); outline-offset:2px; }
 .iv ::selection { background:var(--acc); color:#fff; }
 @media (max-width:1024px){ .hero3{grid-template-columns:1fr!important} }
+[data-pdf="1"] .no-pdf { display:none !important; }
 `
 
 function BPF({ children, style, className = '' }) {
@@ -174,6 +175,7 @@ export default function Report({ report, allScores, ogMeta }) {
   const [fbStatus, setFbStatus] = useState('idle')
   const [pdfBusy, setPdfBusy] = useState(false)
   const mapEl = useRef(null)
+  const sheetRef = useRef(null)
   const router = useRouter()
 
   // Keep the search box + city toggle in sync with whichever area is shown.
@@ -218,26 +220,43 @@ export default function Report({ report, allScores, ogMeta }) {
       setFbStatus('sent'); setFbText('')
     } catch { setFbStatus('error') }
   }
+  // Full-report PDF: renders the actual styled page (multi-page A4) rather than a text summary.
   async function generatePDF() {
     if (pdfBusy) return
     setPdfBusy(true)
+    const wasLocked = !unlocked
     try {
+      if (wasLocked) setUnlocked(true)                    // capture the whole report
+      await new Promise(r => setTimeout(r, wasLocked ? 700 : 250))  // let it render/tiles settle
       await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js', () => !!window.jspdf)
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js', () => !!window.html2canvas)
       const { jsPDF } = window.jspdf
+      const node = sheetRef.current
+      if (!node) throw new Error('no node')
+      node.setAttribute('data-pdf', '1')                  // hides interactive-only bits via CSS
+      const bg = dark ? '#151618' : '#f2f2f3'
+      const canvas = await window.html2canvas(node, { scale: 2, backgroundColor: bg, useCORS: true, allowTaint: true, logging: false, windowWidth: 1280 })
+      node.removeAttribute('data-pdf')
+
       const doc = new jsPDF({ unit: 'pt', format: 'a4' })
+      const pw = doc.internal.pageSize.getWidth(), ph = doc.internal.pageSize.getHeight()
+      const m = 18, iw = pw - m * 2
+      const ih = (canvas.height * iw) / canvas.width      // full image height at page width
+      const pageCanvasH = Math.floor((canvas.width * (ph - m * 2)) / iw)  // px of source per page
+      let sy = 0, page = 0
+      while (sy < canvas.height) {
+        const sliceH = Math.min(pageCanvasH, canvas.height - sy)
+        const slice = document.createElement('canvas')
+        slice.width = canvas.width; slice.height = sliceH
+        slice.getContext('2d').drawImage(canvas, 0, sy, canvas.width, sliceH, 0, 0, canvas.width, sliceH)
+        if (page) doc.addPage()
+        doc.setFillColor(bg); doc.rect(0, 0, pw, ph, 'F')
+        doc.addImage(slice.toDataURL('image/jpeg', 0.92), 'JPEG', m, m, iw, (sliceH * iw) / canvas.width)
+        sy += sliceH; page++
+      }
       const name = PIN_META[report.pin_code]?.name || report.pin_code
-      let y = 56
-      doc.setFontSize(22); doc.setTextColor(122, 31, 43); doc.text('ASLIVASTU', 40, y)
-      doc.setFontSize(10); doc.setTextColor(110); doc.text('Neighbourhood intelligence · spec sheet', 40, y + 15); y += 46
-      doc.setFontSize(24); doc.setTextColor(25); doc.text(`${name} (${report.pin_code})`, 40, y); y += 22
-      doc.setFontSize(12); doc.setTextColor(60); doc.text(`NQI ${report.nqi_composite}/100  ·  Grade ${report.grade}  ·  ${verdict.label}`, 40, y); y += 26
-      doc.setFontSize(10); doc.setTextColor(90); doc.text('DIMENSION', 40, y); doc.text('WEIGHT', 300, y); doc.text('SCORE', 380, y); y += 6
-      doc.setDrawColor(200); doc.line(40, y, 460, y); y += 16
-      doc.setTextColor(40)
-      rows.forEach(r => { doc.text(LABEL[r.k], 40, y); doc.text(`${r.weight}%`, 300, y); doc.text(`${r.score}/100`, 380, y); y += 18 })
-      y += 14; doc.setFontSize(8.5); doc.setTextColor(130)
-      doc.text('Estimated from government reports (2023–24); only air is live. Informational only — not financial advice.', 40, y)
       doc.save(`AsliVastu-${String(name).replace(/\s+/g, '-')}-${report.pin_code}.pdf`)
+      void ih
     } catch { /* ignore */ } finally { setPdfBusy(false) }
   }
 
@@ -327,7 +346,7 @@ export default function Report({ report, allScores, ogMeta }) {
       </Head>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
-      <div style={{ maxWidth:1280, margin:'0 auto', padding:'0 40px 60px' }}>
+      <div ref={sheetRef} style={{ maxWidth:1280, margin:'0 auto', padding:'0 40px 60px' }}>
 
         {/* ── Header ── */}
         <header style={{ display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:16, padding:'22px 0 18px', borderBottom:'1px solid var(--acc50, var(--acc60))' }}>
@@ -343,7 +362,7 @@ export default function Report({ report, allScores, ogMeta }) {
         </header>
 
         {/* ── Area search + city switcher ── */}
-        <div style={{ display:'flex', gap:12, alignItems:'center', flexWrap:'wrap', marginTop:18, position:'relative', zIndex:20 }}>
+        <div className="no-pdf" style={{ display:'flex', gap:12, alignItems:'center', flexWrap:'wrap', marginTop:18, position:'relative', zIndex:20 }}>
           <div style={{ display:'inline-flex', border:'1px solid var(--acc45)' }}>
             {['Delhi NCR','Bangalore'].map((c, i) => (
               <button key={c} onClick={() => switchCity(c)}
@@ -373,7 +392,7 @@ export default function Report({ report, allScores, ogMeta }) {
             <p className="kick">Sheet 01 · {meta.area} · PIN {pin}</p>
             <h1 className="cond" style={{ fontSize:54, fontWeight:700, lineHeight:.95, margin:'10px 0 8px', textTransform:'uppercase' }}>{meta.name}</h1>
             <p style={{ fontSize:13, color:'var(--ink65)', margin:0 }}>{report.dimensions_scored}/{report.dimensions_total} dimensions · scored {report.scored_at ? new Date(report.scored_at).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }) : '—'}</p>
-            <div style={{ display:'flex', gap:10, marginTop:18, flexWrap:'wrap' }}>
+            <div className="no-pdf" style={{ display:'flex', gap:10, marginTop:18, flexWrap:'wrap' }}>
               {(() => { const saved = shortlist.includes(pin)
                 const bs = on => ({ fontSize:12, fontWeight:600, letterSpacing:'.06em', padding:'8px 12px', background:'transparent', cursor:'pointer',
                   border:`1px solid ${on ? 'var(--acc)' : 'var(--acc60)'}`, color: on ? 'var(--acc)' : 'var(--ink70)' })
@@ -657,7 +676,7 @@ export default function Report({ report, allScores, ogMeta }) {
             </div>
             <p style={{ fontSize:12.5, color:'var(--ink70)', margin:'12px 0 0', lineHeight:1.55 }}>Buying a home in Delhi NCR or Bangalore means digging through a dozen government portals. AsliVastu puts it all in one place — real data, one score, no guesswork.</p>
           </BPF>
-          <BPF style={{ padding:'18px 20px' }}>
+          <BPF className="no-pdf" style={{ padding:'18px 20px' }}>
             <p className="kick">Correction / feedback</p>
             <p style={{ fontSize:12.5, color:'var(--ink70)', margin:'10px 0 12px', lineHeight:1.5 }}>Live in {meta.name}? Think a score is off? Tell us — it goes straight to the builder.</p>
             {fbStatus === 'sent' ? (
