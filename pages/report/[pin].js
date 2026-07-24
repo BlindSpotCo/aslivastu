@@ -1,2093 +1,670 @@
-import React, { useState, useEffect } from 'react'
+// Industry / blueprint redesign of the report page — built at /report-v2 so the
+// live /report page stays untouched until this is approved and swapped in.
+import { useState, useMemo, useEffect, useRef } from 'react'
 import Head from 'next/head'
-import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer, Tooltip } from 'recharts'
+import Link from 'next/link'
+import { PIN_META } from '../../lib/pinMeta'
+import { AREA_COORDS } from '../../lib/areaCoords'
 
-const ANIM_CSS = `
-* { box-sizing: border-box; }
-body { margin: 0; padding: 0; }
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-.hero-gradient-dark {
-  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(226,55,68,0.18) 0%, transparent 70%),
-              radial-gradient(ellipse 60% 40% at 80% 20%, rgba(120,20,40,0.12) 0%, transparent 60%);
-}
-.hero-gradient-light {
-  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(226,55,68,0.07) 0%, transparent 65%);
-}
-.report-grid { display: block; }
-.report-left { width: 100%; }
-@media (min-width: 960px) {
-  .report-wrap { max-width: 1400px !important; margin: 0 auto !important; padding: 0 40px !important; }
-  .landing-wrap { max-width: 900px !important; }
-  .report-grid {
-    display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 24px;
-    align-items: start;
-  }
-  .report-left { width: auto; }
-  .report-topbar { padding: 20px 0 12px !important; }
-  .hero-title { font-size: 58px !important; }
-  .hero-sub   { font-size: 19px !important; }
-}
+// ── Industry design tokens + blueprint frame (self-contained for v2) ─────────
+const CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+* { box-sizing: border-box; } body { margin:0; }
+.iv { --acc-base:#7a1f2b; --bg:#151618; --ink:#e9e8e6;
+  --acc:color-mix(in srgb, var(--acc-base) 55%, #dfa3ab);
+  --acc-deep:color-mix(in srgb, var(--acc-base) 35%, #f0c9cd);
+  --acc-fill:var(--acc-base);
+  --ink70:color-mix(in srgb,var(--ink) 70%,transparent); --ink65:color-mix(in srgb,var(--ink) 65%,transparent);
+  --ink60:color-mix(in srgb,var(--ink) 60%,transparent); --ink55:color-mix(in srgb,var(--ink) 55%,transparent);
+  --acc60:color-mix(in srgb,var(--acc) 60%,transparent); --acc45:color-mix(in srgb,var(--acc) 45%,transparent);
+  --acc35:color-mix(in srgb,var(--acc) 35%,transparent); --fill7:color-mix(in srgb,var(--ink) 7%,var(--bg));
+  background:var(--bg); color:var(--ink); font-family:'Barlow',sans-serif; min-height:100vh; }
+.iv.light { --bg:#f2f2f3; --ink:#1d1f20; --acc:var(--acc-base); --acc-deep:color-mix(in srgb,var(--acc-base) 70%,#161012); }
+.iv .cond { font-family:'Barlow Condensed',sans-serif; }
+.iv .kick { font-size:11px; text-transform:uppercase; letter-spacing:.14em; font-weight:600; color:var(--acc); margin:0; }
+.iv a { color:var(--acc-deep); text-decoration:none; } .iv a:hover { color:var(--acc); }
+.iv button { font-family:'Barlow',sans-serif; cursor:pointer; }
+.bpf { position:relative; border:1px solid var(--acc60); background:transparent; }
+.bpf > .m { position:absolute; color:var(--acc); font-size:12px; line-height:1; }
+.bpf > .tl{top:-7px;left:-5px} .bpf > .tr{top:-7px;right:-5px} .bpf > .bl{bottom:-8px;left:-5px} .bpf > .br{bottom:-8px;right:-5px}
+.iv .hatch { background-image:repeating-linear-gradient(45deg,var(--ink) 0 3px,transparent 3px 6px); }
+.iv button:focus-visible, .iv a:focus-visible, .iv input:focus-visible { outline:2px solid var(--acc); outline-offset:2px; }
+.iv ::selection { background:var(--acc); color:#fff; }
+@media (max-width:1024px){ .hero3{grid-template-columns:1fr!important} }
 `
 
-const DIM_LABEL = { crime:'Safety', infrastructure:'Infrastructure', air:'Air Quality', power:'Power', schools:'Schools', water:'Water Supply', roads:'Roads', sewerage:'Drainage & Sewerage' }
-const DIM_ICON  = { crime:'🛡', infrastructure:'🏗', air:'🌬', power:'⚡', schools:'🎓', water:'💧', roads:'🛣', sewerage:'🚰' }
-const DIM_DESC  = {
-  crime:          'Delhi Police Annual Report 2022-23 · Estimated, last verified 2023',
-  infrastructure: 'DDA Master Plan 2021 · DMRC Phase 4 · Estimated, last verified 2024',
-  air:            'CPCB live AQI via data.gov.in · Updated daily · Live data',
-  power:          'BSES / Tata Power / DHBVN annual reports · Estimated, last verified 2023',
-  schools:        'CBSE affiliation database · Estimated, last verified 2023',
-  water:          'Delhi Jal Board / local utility supply & quality data · Estimated, last verified 2023',
-  roads:          'Municipal / PWD road-condition surveys · Estimated, last verified 2023',
-  sewerage:       'Drainage coverage & monsoon waterlogging records · Estimated, last verified 2023',
+function BPF({ children, style, className = '' }) {
+  return (
+    <div className={`bpf ${className}`} style={style}>
+      <span className="m tl">+</span><span className="m tr">+</span><span className="m bl">+</span><span className="m br">+</span>
+      {children}
+    </div>
+  )
 }
 
-// Bengaluru source labels — shown instead of the Delhi ones for 560xxx pins.
-const DIM_DESC_BLR = {
-  crime:          'Bengaluru City Police / NCRB · Estimated, last verified 2023',
-  infrastructure: 'BBMP plans · BMRCL Namma Metro · Estimated, last verified 2024',
-  air:            'CPCB / KSPCB live AQI via data.gov.in · Updated daily · Live data',
-  power:          'BESCOM annual reports · Estimated, last verified 2023',
-  schools:        'CBSE affiliation database · Estimated, last verified 2023',
-  water:          'BWSSB (Cauvery) supply & quality data · Estimated, last verified 2023',
-  roads:          'BBMP road-condition surveys · Estimated, last verified 2023',
-  sewerage:       'BWSSB drainage & monsoon waterlogging records · Estimated, last verified 2023',
-}
-function dimDesc(k, city) { return city === 'Bangalore' ? (DIM_DESC_BLR[k] || DIM_DESC[k]) : DIM_DESC[k] }
-
-// Plain-language meaning of each CPCB AQI category (issue #12 — jargon for non-locals).
-const AQI_PLAIN = {
-  'Good':         'Air is clean — safe for everyone, including children and the elderly.',
-  'Satisfactory': 'Air is acceptable — fine for most people; very sensitive individuals may feel minor irritation.',
-  'Moderate':     'Okay for healthy people, but those with asthma or heart/lung conditions should limit long outdoor exertion.',
-  'Poor':         'Unhealthy — prolonged outdoor activity can cause breathing discomfort for most people.',
-  'Very Poor':    'Unhealthy for everyone — avoid outdoor exertion; sensitive groups should stay indoors.',
-  'Severe':       'Hazardous — a serious health risk; everyone should avoid outdoor activity.',
+// "?" info marker with a hover tooltip.
+function Info({ text }) {
+  const [show, setShow] = useState(false)
+  if (!text) return null
+  return (
+    <span style={{ position:'relative', display:'inline-flex', marginLeft:5 }} onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
+      <span style={{ fontSize:9, width:13, height:13, display:'inline-flex', alignItems:'center', justifyContent:'center', border:'1px solid var(--acc45)', color:'var(--acc)', borderRadius:'50%', cursor:'help', lineHeight:1 }}>?</span>
+      {show && <span style={{ position:'absolute', bottom:'calc(100% + 9px)', left:'50%', transform:'translateX(-50%)', width:240, background:'color-mix(in srgb, var(--ink) 14%, var(--bg))', border:'1.5px solid var(--acc)', padding:'11px 13px', fontSize:12, fontWeight:400, textTransform:'none', letterSpacing:'normal', color:'var(--ink)', lineHeight:1.55, zIndex:300, boxShadow:'0 10px 34px rgba(0,0,0,0.55)' }}>{text}</span>}
+    </span>
+  )
 }
 
-const DIM_TAG = {
-  crime:          { label:'Est. 2023',  color:'#f97316' },
-  infrastructure: { label:'Est. 2024',  color:'#f97316' },
-  air:            { label:'Live',        color:'#22c55e' },
-  power:          { label:'Est. 2023',  color:'#f97316' },
-  schools:        { label:'Est. 2023',  color:'#f97316' },
-  water:          { label:'Est. 2023',  color:'#f97316' },
-  roads:          { label:'Est. 2023',  color:'#f97316' },
-  sewerage:       { label:'Est. 2023',  color:'#f97316' },
+// Spec-grid card: kicker title over a grid of label/value cells (Industry deep-dive).
+function StatCard({ title, stats, wide }) {
+  return (
+    <BPF style={{ padding:'18px 20px' }}>
+      <p className="kick">{title}</p>
+      <div style={{ display:'grid', gridTemplateColumns:`repeat(auto-fit, minmax(${wide ? 150 : 118}px, 1fr))`, gap:'14px 20px', marginTop:14 }}>
+        {stats.filter(Boolean).map(([label, val, tip]) => (
+          <div key={label}>
+            <div style={{ fontSize:10.5, textTransform:'uppercase', letterSpacing:'.06em', color:'var(--ink55)', display:'flex', alignItems:'center' }}>{label}<Info text={tip} /></div>
+            <div className="cond" style={{ fontSize:20, fontWeight:600, marginTop:3, lineHeight:1.1 }}>{val}</div>
+          </div>
+        ))}
+      </div>
+    </BPF>
+  )
 }
 
-// User-facing reweighting — lets a visitor see the score through a
-// different lens than the default methodology (scoring.py WEIGHTS).
-// "Custom" starts from the Default preset and the sliders let someone
-// drag freely; weights are normalized to 100% at compute time rather
-// than forcing sliders to interlock, so dragging one never fights you.
-// Default MUST mirror scoring.py WEIGHTS (8 dimensions, Issue #8).
+// ── scoring config (keeps the live preset weights) ───────────────────────────
 const WEIGHT_PRESETS = {
   Default:  { crime:25, infrastructure:20, air:15, power:10, schools:10, water:8,  roads:7,  sewerage:5  },
   Family:   { crime:20, infrastructure:12, air:12, power:8,  schools:30, water:8,  roads:5,  sewerage:5  },
   Investor: { crime:12, infrastructure:28, air:8,  power:18, schools:10, water:6,  roads:12, sewerage:6  },
   Safety:   { crime:40, infrastructure:15, air:12, power:8,  schools:5,  water:8,  roads:5,  sewerage:7  },
 }
-
-function normalizedWeights(weights, availableKeys) {
-  const total = availableKeys.reduce((s, k) => s + (weights[k] || 0), 0)
-  if (!total) return {}
-  const out = {}
-  availableKeys.forEach(k => { out[k] = (weights[k] || 0) / total })
-  return out
+const LABEL = { crime:'Safety', infrastructure:'Infrastructure', air:'Air Quality', power:'Power', schools:'Schools', water:'Water Supply', roads:'Roads', sewerage:'Drainage & Sewerage' }
+const AQI_PLAIN = {
+  'Good':'Air is clean — safe for everyone.', 'Satisfactory':'Air is acceptable — fine for most; sensitive individuals may feel minor irritation.',
+  'Moderate':'Okay for healthy people; asthma/heart/lung patients should limit long outdoor exertion.',
+  'Poor':'Unhealthy — prolonged outdoor activity can cause breathing discomfort.',
+  'Very Poor':'Unhealthy for everyone — avoid outdoor exertion.', 'Severe':'Hazardous — a serious health risk; stay indoors.',
 }
-
-function weightedComposite(scores, weights, availableKeys) {
-  const norm = normalizedWeights(weights, availableKeys)
-  let sum = 0
-  availableKeys.forEach(k => { sum += scores[k] * (norm[k] || 0) })
-  return Math.round(sum)
+function cityOf(pin) { return String(pin).startsWith('560') ? 'Bangalore' : 'Delhi NCR' }
+function gradeFor(s) { return s == null ? '—' : s >= 80 ? 'A' : s >= 70 ? 'B+' : s >= 60 ? 'B' : s >= 50 ? 'C+' : s >= 40 ? 'C' : 'D' }
+function scoreColor(v) { return v >= 80 ? '#22c55e' : v >= 60 ? '#84cc16' : v >= 40 ? '#f59e0b' : '#ef4444' }
+function searchPinV2(q, city) {
+  const s = (q || '').trim().toLowerCase(); if (!s) return []
+  const ok = p => !city || cityOf(p) === city
+  if (/^\d{6}$/.test(s)) return (ok(s) && PIN_META[s]) ? [{ pin: s, name: PIN_META[s].name }] : []
+  return Object.entries(PIN_META).filter(([p, m]) => ok(p) && (m.name.toLowerCase().includes(s) || p.includes(s))).slice(0, 6).map(([p, m]) => ({ pin: p, name: m.name }))
 }
-
-// Mirrors scoring.py's GRADES thresholds so a recomputed score gets a
-// consistent letter grade instead of just showing a bare number.
-const GRADE_THRESHOLDS = [[90,'A+'],[80,'A'],[70,'B+'],[60,'B'],[50,'C+'],[40,'C'],[0,'D']]
-function gradeFor(score) {
-  if (score == null) return null
-  for (const [min, label] of GRADE_THRESHOLDS) if (score >= min) return label
-  return 'D'
-}
-
-// Minimal line-icon set replacing emoji, one per data dimension — flat
-// stroke icons at 1.6px weight so they sit quietly alongside the rest of
-// the UI instead of looking like a different design language.
-function DimIcon({ name, size = 18, color = 'currentColor', strokeWidth = 1.6 }) {
-  const p = { width:size, height:size, viewBox:'0 0 24 24', fill:'none', stroke:color, strokeWidth, strokeLinecap:'round', strokeLinejoin:'round' }
-  switch (name) {
-    case 'crime':
-    case 'safety':
-      return <svg {...p}><path d="M12 2.5 19 5.5V11c0 5-3 8.5-7 10-4-1.5-7-5-7-10V5.5L12 2.5Z"/><path d="M9 12l2 2 4-4"/></svg>
-    case 'infrastructure':
-      return <svg {...p}><rect x="3" y="10" width="5" height="11"/><rect x="10" y="5" width="5" height="16"/><rect x="17" y="13" width="4" height="8"/></svg>
-    case 'air':
-      return <svg {...p}><path d="M3 8h10.5a2.5 2.5 0 1 0-2.1-3.9"/><path d="M3 12.5h13a2.8 2.8 0 1 1-2.4 4.3"/><path d="M3 17h7.5a2 2 0 1 1-1.7 3.1"/></svg>
-    case 'power':
-      return <svg {...p}><path d="M13 2 5 14h6l-1 8 8-12h-6l1-8Z"/></svg>
-    case 'schools':
-      return <svg {...p}><path d="M2 9 12 4l10 5-10 5L2 9Z"/><path d="M6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5"/><path d="M22 9v6"/></svg>
-    case 'water':
-      return <svg {...p}><path d="M12 3c4 5 7 8.7 7 12.2A7 7 0 1 1 5 15.2C5 11.7 8 8 12 3Z"/></svg>
-    case 'roads':
-      return <svg {...p}><path d="M7 3 3 21"/><path d="M17 3l4 18"/><path d="M12 5v3"/><path d="M12 11v3"/><path d="M12 17v3"/></svg>
-    case 'connectivity':
-      return <svg {...p}><circle cx="5" cy="12" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="19" cy="18" r="2"/><path d="M7 12l10-6M7 12l10 6"/></svg>
-    case 'sewerage':
-      return <svg {...p}><path d="M6 4v6a6 6 0 0 0 12 0V4"/><path d="M4 20h16"/></svg>
-    case 'metro':
-      return <svg {...p}><rect x="5" y="4" width="14" height="12" rx="3"/><path d="M5 12h14"/><circle cx="9" cy="20" r="1.3"/><circle cx="15" cy="20" r="1.3"/></svg>
-    case 'car':
-      return <svg {...p}><path d="M4 16l1.4-4.8A2 2 0 0 1 7.3 9.8h9.4a2 2 0 0 1 1.9 1.4L20 16"/><rect x="3" y="16" width="18" height="4" rx="1.5"/><circle cx="7.5" cy="20" r="1.3"/><circle cx="16.5" cy="20" r="1.3"/></svg>
-    case 'distance':
-      return <svg {...p}><rect x="3" y="8" width="18" height="8" rx="1.5"/><path d="M7 8v3M11 8v4M15 8v3M19 8v4"/></svg>
-    case 'fare':
-      return <svg {...p}><circle cx="12" cy="12" r="9"/><path d="M8 8h8M8 8l6 8M8 11.5h5"/></svg>
-    case 'pin':
-      return <svg {...p}><path d="M12 21s7-6.7 7-12a7 7 0 1 0-14 0c0 5.3 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
-    case 'lock':
-      return <svg {...p}><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg>
-    case 'sun':
-      return <svg {...p}><circle cx="12" cy="12" r="4"/><path d="M12 2.5v3M12 18.5v3M3.8 3.8l2.1 2.1M18.1 18.1l2.1 2.1M2.5 12h3M18.5 12h3M3.8 20.2l2.1-2.1M18.1 5.9l2.1-2.1"/></svg>
-    case 'moon':
-      return <svg {...p}><path d="M20 14.2A8.3 8.3 0 1 1 9.8 4a6.8 6.8 0 0 0 10.2 10.2Z"/></svg>
-    case 'compare':
-      return <svg {...p}><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="M16 21l4-4-4-4"/><path d="M20 17H4"/></svg>
-    case 'price':
-      return <svg {...p}><path d="M20.6 13.4 12 22l-9-9V4h9l8.6 8.6a1.4 1.4 0 0 1 0 2Z"/><circle cx="7.4" cy="7.4" r="1.2"/></svg>
-    default:
-      return null
-  }
-}
-
-const PIN_META = {
-  "110002":{ name:"ITO",               area:"Central Delhi" },
-  "110003":{ name:"Lodhi Road",        area:"South Delhi" },
-  "110005":{ name:"Karol Bagh",        area:"Central Delhi" },
-  "110006":{ name:"Chandni Chowk",     area:"Old Delhi" },
-  "110007":{ name:"Delhi University",  area:"North Delhi" },
-  "110008":{ name:"Shadipur",          area:"West Delhi" },
-  "110009":{ name:"Model Town",        area:"North Delhi" },
-  "110010":{ name:"Cantonment",        area:"South Delhi" },
-  "110012":{ name:"Pusa",              area:"Central Delhi" },
-  "110016":{ name:"Hauz Khas",         area:"South Delhi" },
-  "110017":{ name:"Saket",             area:"South Delhi" },
-  "110018":{ name:"Vikaspuri",         area:"West Delhi" },
-  "110019":{ name:"Dwarka Sec 6",      area:"South West Delhi" },
-  "110020":{ name:"Okhla",             area:"South East Delhi" },
-  "110021":{ name:"Moti Bagh",         area:"South Delhi" },
-  "110022":{ name:"R.K. Puram",        area:"South West Delhi" },
-  "110024":{ name:"Lajpat Nagar",      area:"South Delhi" },
-  "110025":{ name:"Mathura Road",      area:"South Delhi" },
-  "110026":{ name:"Punjabi Bagh",      area:"West Delhi" },
-  "110032":{ name:"Anand Vihar",       area:"East Delhi" },
-  "110033":{ name:"Jahangirpuri",      area:"North West Delhi" },
-  "110034":{ name:"Pitampura",         area:"North West Delhi" },
-  "110036":{ name:"Alipur",            area:"North Delhi" },
-  "110037":{ name:"Aerocity",          area:"South West Delhi" },
-  "110039":{ name:"Bawana",            area:"North Delhi" },
-  "110040":{ name:"Narela",            area:"North Delhi" },
-  "110041":{ name:"Mundka",            area:"West Delhi" },
-  "110042":{ name:"DTU",               area:"North West Delhi" },
-  "110043":{ name:"Najafgarh",         area:"South West Delhi" },
-  "110044":{ name:"Tughlakabad",       area:"South Delhi" },
-  "110049":{ name:"Sirifort",          area:"South Delhi" },
-  "110052":{ name:"Ashok Vihar",       area:"North Delhi" },
-  "110053":{ name:"Maujpur",           area:"North East Delhi" },
-  "110058":{ name:"Janakpuri",         area:"West Delhi" },
-  "110063":{ name:"Paschim Vihar",     area:"West Delhi" },
-  "110065":{ name:"Nehru Nagar",       area:"East Delhi" },
-  "110067":{ name:"JNU Area",          area:"South Delhi" },
-  "110068":{ name:"Maidan Garhi",      area:"South Delhi" },
-  "110070":{ name:"Vasant Kunj",       area:"South West Delhi" },
-  "110073":{ name:"Jaffarpur",         area:"West Delhi" },
-  "110077":{ name:"Dwarka Sec 8",      area:"South West Delhi" },
-  "110078":{ name:"Dwarka",            area:"South West Delhi" },
-  "110084":{ name:"Burari",            area:"North Delhi" },
-  "110085":{ name:"Rohini",            area:"North West Delhi" },
-  "110091":{ name:"Mayur Vihar",       area:"East Delhi" },
-  "110092":{ name:"Patparganj",        area:"East Delhi" },
-  "110094":{ name:"Sonia Vihar",       area:"North East Delhi" },
-  "110095":{ name:"Vivek Vihar",       area:"East Delhi" },
-  "121001":{ name:"Faridabad",         area:"Haryana NCR" },
-  "121002":{ name:"Faridabad NIT",     area:"Haryana NCR" },
-  "122001":{ name:"Gurugram",          area:"Haryana NCR" },
-  "122002":{ name:"Cyber City",        area:"Gurugram" },
-  "122003":{ name:"Gurugram Sec 55",   area:"Gurugram" },
-  "122051":{ name:"Manesar",           area:"Gurugram" },
-  "122107":{ name:"Nuh",               area:"Haryana NCR" },
-  "122413":{ name:"Panchgaon",         area:"Gurugram" },
-  "123106":{ name:"Dharuhera",         area:"Haryana NCR" },
-  "124001":{ name:"Rohtak",            area:"Haryana NCR" },
-  "124507":{ name:"Bahadurgarh",       area:"Haryana NCR" },
-  "125050":{ name:"Fatehabad",         area:"Haryana NCR" },
-  "125055":{ name:"Sirsa",             area:"Haryana NCR" },
-  "131001":{ name:"Sonipat",           area:"Haryana NCR" },
-  "132103":{ name:"Panipat",           area:"Haryana NCR" },
-  "135001":{ name:"Yamuna Nagar",      area:"Haryana NCR" },
-  "201001":{ name:"Ghaziabad",         area:"UP NCR" },
-  "201301":{ name:"Noida Sec 1",       area:"UP NCR" },
-  "201304":{ name:"Noida Sec 137",     area:"UP NCR" },
-  "201309":{ name:"Noida Sec 62",      area:"UP NCR" },
-  // NCR fringe — in our coverage zone but no data yet
-  "122505":{ name:"Mahendragarh",      area:"Haryana NCR" },
-  "122502":{ name:"Rewari",            area:"Haryana NCR" },
-  "122108":{ name:"Taoru",             area:"Haryana NCR" },
-  "122101":{ name:"Sohna",             area:"Haryana NCR" },
-  "122103":{ name:"Gurgaon South",     area:"Haryana NCR" },
-  "123001":{ name:"Jhajjar",           area:"Haryana NCR" },
-  "123401":{ name:"Rewari Town",       area:"Haryana NCR" },
-  "131029":{ name:"Kundli",            area:"Haryana NCR" },
-  "131027":{ name:"Murthal",           area:"Haryana NCR" },
-  "201102":{ name:"Loni",              area:"UP NCR" },
-  "201014":{ name:"Indirapuram",       area:"UP NCR" },
-  "201012":{ name:"Vasundhara",        area:"UP NCR" },
-  "201016":{ name:"Crossing Republik", area:"UP NCR" },
-  "201002":{ name:"Raj Nagar",         area:"UP NCR" },
-  "201010":{ name:"Kaushambi",         area:"UP NCR" },
-  "201206":{ name:"Muradnagar",        area:"UP NCR" },
-  "245101":{ name:"Hapur",             area:"UP NCR" },
-  "203001":{ name:"Bulandshahr",       area:"UP NCR" },
-  // ── Bengaluru (city 2) ──
-  "560001":{ name:"MG Road", area:"Central Bengaluru", city:"Bangalore" },
-  "560025":{ name:"Richmond Town", area:"Central Bengaluru", city:"Bangalore" },
-  "560051":{ name:"HKP Road", area:"Central Bengaluru", city:"Bangalore" },
-  "560052":{ name:"Vasanth Nagar", area:"Central Bengaluru", city:"Bangalore" },
-  "560042":{ name:"Shivajinagar", area:"Central Bengaluru", city:"Bangalore" },
-  "560002":{ name:"Chickpet", area:"Central Bengaluru", city:"Bangalore" },
-  "560023":{ name:"Majestic", area:"Central Bengaluru", city:"Bangalore" },
-  "560003":{ name:"Malleshwaram", area:"North Bengaluru", city:"Bangalore" },
-  "560010":{ name:"Rajajinagar", area:"North Bengaluru", city:"Bangalore" },
-  "560020":{ name:"Seshadripuram", area:"North Bengaluru", city:"Bangalore" },
-  "560021":{ name:"Sriramapuram", area:"North Bengaluru", city:"Bangalore" },
-  "560022":{ name:"Yeshwanthpur", area:"North Bengaluru", city:"Bangalore" },
-  "560024":{ name:"Hebbal", area:"North Bengaluru", city:"Bangalore" },
-  "560032":{ name:"RT Nagar", area:"North Bengaluru", city:"Bangalore" },
-  "560045":{ name:"Nagavara", area:"North Bengaluru", city:"Bangalore" },
-  "560092":{ name:"Vidyaranyapura", area:"North Bengaluru", city:"Bangalore" },
-  "560094":{ name:"Sanjaynagar", area:"North Bengaluru", city:"Bangalore" },
-  "560097":{ name:"Byatarayanapura", area:"North Bengaluru", city:"Bangalore" },
-  "560063":{ name:"Yelahanka", area:"North Bengaluru", city:"Bangalore" },
-  "560064":{ name:"Yelahanka New Town", area:"North Bengaluru", city:"Bangalore" },
-  "560065":{ name:"Jakkur", area:"North Bengaluru", city:"Bangalore" },
-  "560008":{ name:"Ulsoor", area:"East Bengaluru", city:"Bangalore" },
-  "560038":{ name:"Indiranagar East", area:"East Bengaluru", city:"Bangalore" },
-  "560046":{ name:"Benson Town", area:"East Bengaluru", city:"Bangalore" },
-  "560005":{ name:"Cox Town", area:"East Bengaluru", city:"Bangalore" },
-  "560017":{ name:"HAL / Old Airport", area:"East Bengaluru", city:"Bangalore" },
-  "560075":{ name:"New Thippasandra", area:"East Bengaluru", city:"Bangalore" },
-  "560093":{ name:"CV Raman Nagar", area:"East Bengaluru", city:"Bangalore" },
-  "560016":{ name:"Ramamurthy Nagar", area:"East Bengaluru", city:"Bangalore" },
-  "560036":{ name:"KR Puram", area:"East Bengaluru", city:"Bangalore" },
-  "560037":{ name:"Marathahalli", area:"East Bengaluru", city:"Bangalore" },
-  "560048":{ name:"Mahadevapura", area:"East Bengaluru", city:"Bangalore" },
-  "560066":{ name:"Whitefield", area:"East Bengaluru", city:"Bangalore" },
-  "560067":{ name:"Whitefield Hope Farm", area:"East Bengaluru", city:"Bangalore" },
-  "560103":{ name:"Bellandur", area:"East Bengaluru", city:"Bangalore" },
-  "560035":{ name:"Sarjapur Road", area:"East Bengaluru", city:"Bangalore" },
-  "560087":{ name:"Varthur", area:"East Bengaluru", city:"Bangalore" },
-  "560034":{ name:"Koramangala", area:"South East Bengaluru", city:"Bangalore" },
-  "560095":{ name:"Koramangala 8th Blk", area:"South East Bengaluru", city:"Bangalore" },
-  "560102":{ name:"HSR Layout", area:"South East Bengaluru", city:"Bangalore" },
-  "560029":{ name:"Adugodi", area:"South East Bengaluru", city:"Bangalore" },
-  "560027":{ name:"Shanti Nagar", area:"South East Bengaluru", city:"Bangalore" },
-  "560030":{ name:"Wilson Garden", area:"South East Bengaluru", city:"Bangalore" },
-  "560068":{ name:"Bommanahalli", area:"South East Bengaluru", city:"Bangalore" },
-  "560004":{ name:"Basavanagudi", area:"South Bengaluru", city:"Bangalore" },
-  "560011":{ name:"Jayanagar", area:"South Bengaluru", city:"Bangalore" },
-  "560041":{ name:"Jayanagar 4th Block", area:"South Bengaluru", city:"Bangalore" },
-  "560019":{ name:"Hanumanthanagar", area:"South Bengaluru", city:"Bangalore" },
-  "560028":{ name:"Tyagarajanagar", area:"South Bengaluru", city:"Bangalore" },
-  "560050":{ name:"Banashankari", area:"South Bengaluru", city:"Bangalore" },
-  "560070":{ name:"BSK 2nd Stage", area:"South Bengaluru", city:"Bangalore" },
-  "560085":{ name:"BSK 3rd Stage", area:"South Bengaluru", city:"Bangalore" },
-  "560078":{ name:"JP Nagar", area:"South Bengaluru", city:"Bangalore" },
-  "560076":{ name:"BTM Layout", area:"South Bengaluru", city:"Bangalore" },
-  "560061":{ name:"Uttarahalli", area:"South Bengaluru", city:"Bangalore" },
-  "560062":{ name:"Konanakunte", area:"South Bengaluru", city:"Bangalore" },
-  "560083":{ name:"Bannerghatta Road", area:"South Bengaluru", city:"Bangalore" },
-  "560040":{ name:"Vijayanagar", area:"West Bengaluru", city:"Bangalore" },
-  "560079":{ name:"Basaveshwaranagar", area:"West Bengaluru", city:"Bangalore" },
-  "560072":{ name:"Nagarbhavi", area:"West Bengaluru", city:"Bangalore" },
-  "560018":{ name:"Chamrajpet", area:"West Bengaluru", city:"Bangalore" },
-  "560091":{ name:"Sunkadakatte", area:"West Bengaluru", city:"Bangalore" },
-  "560056":{ name:"Jnana Bharathi", area:"West Bengaluru", city:"Bangalore" },
-  "560100":{ name:"Electronic City", area:"South Bengaluru", city:"Bangalore" },
-  "560099":{ name:"Hosur Road", area:"South Bengaluru", city:"Bangalore" },
-  "560105":{ name:"Anekal", area:"South Bengaluru", city:"Bangalore" },
-}
-
-// Build reverse lookup: name/area keywords → pin code
-const NAME_TO_PIN = {}
-Object.entries(PIN_META).forEach(([pin, {name, area}]) => {
-  const key = name.toLowerCase()
-  const akey = area.toLowerCase()
-  NAME_TO_PIN[key] = pin
-  // also index first word
-  NAME_TO_PIN[key.split(' ')[0]] = pin
-  // area-level
-  if (!NAME_TO_PIN[akey]) NAME_TO_PIN[akey] = pin
-})
-
-function cityOfPin(pin) { return String(pin).startsWith('560') ? 'Bangalore' : 'Delhi NCR' }
-
-function searchPin(query, city) {
-  const q = query.trim().toLowerCase()
-  if (!q) return []
-  const cityOk = pin => !city || cityOfPin(pin) === city
-  // exact pin code
-  if (/^\d{6}$/.test(q)) return cityOk(q) ? [{pin: q, name: PIN_META[q]?.name || q, area: PIN_META[q]?.area || ''}] : []
-  // fuzzy match on name + area, scoped to the selected city
-  return Object.entries(PIN_META)
-    .filter(([pin, {name, area}]) =>
-      cityOk(pin) && (name.toLowerCase().includes(q) || area.toLowerCase().includes(q) || pin.includes(q))
-    )
-    .map(([pin, {name, area}]) => ({pin, name, area}))
-    .slice(0, 6)
-}
-
-
-const GRADE_COLOR = {
-  'A+':'#22c55e','A':'#22c55e','B+':'#84cc16',
-  'B':'#eab308','C+':'#f97316','C':'#ef4444','D':'#dc2626'
-}
-
-const ACCENT = '#e23744'
-
-function getVerdict(scores, composite) {
-  if (composite >= 75) return { label:"Strong buy",    color:"#22c55e", reason:"This neighborhood scores well across safety, infrastructure and environment — above NCR average on most dimensions." }
-  if (composite >= 60) return { label:"Consider",      color:"#eab308", reason:"Decent overall but has some weak spots. Review each dimension carefully before deciding." }
-  if (scores.crime !== undefined && scores.crime < 30)
-                        return { label:"High risk",     color:"#ef4444", reason:"Safety score is significantly below NCR average. Crime rates are high for this area." }
-  if (composite >= 45) return { label:"Below average", color:"#f97316", reason:"Scores below the tracked-area average. Compare with nearby areas before committing." }
-  return               { label:"Avoid",                color:"#ef4444", reason:"Multiple dimensions score poorly. Strongly recommend comparing alternatives." }
-}
-
-function getHighlights(record, scores) {
-  const good = [], bad = []
-  if (scores.crime >= 80)  good.push("Very low crime — one of the safer areas in Delhi NCR")
-  else if (scores.crime !== undefined && scores.crime < 40) bad.push("High crime rate — significantly above NCR average")
-  if (scores.infrastructure >= 70) good.push("Excellent connectivity — metro and highway access")
-  else if (scores.infrastructure !== undefined && scores.infrastructure < 40) bad.push("Poor connectivity — limited metro or highway access")
-  if (record.metro_planned_stations > 0) good.push(`Metro expansion coming — ${record.metro_planned_stations} station(s) approved nearby`)
-  if (record.metro_stations_nearby > 0)  good.push(`${record.metro_stations_nearby} operational metro station(s) in area`)
-  if (record.smart_city_project) good.push("Smart Cities Mission coverage — infrastructure investment expected")
-  if (record.zone_type === "Residential") good.push("DDA residential zone — lower commercial encroachment risk")
-  if (record.zone_type === "Industrial")  bad.push("Industrial zone — noise and pollution concerns")
-  if (scores.air >= 80) good.push("Clean air — AQI consistently Good or Satisfactory")
-  else if (scores.air !== undefined && scores.air < 50) bad.push("Poor air quality — AQI frequently in Poor range")
-  if (scores.power >= 70) good.push("Reliable power supply — low outage frequency")
-  else if (scores.power !== undefined && scores.power < 40) bad.push("Frequent power cuts — high outage hours reported")
-  // waterlogging_risk is inverted: 5 = safest, 1 = high flood risk
-  if (record.waterlogging_risk != null && record.waterlogging_risk <= 2)
-    bad.push(`High monsoon waterlogging risk${record.flooding_incidents_annual ? ` — ~${record.flooding_incidents_annual} flooding incidents/year` : ''}`)
-  else if (record.waterlogging_risk >= 5) good.push("Low waterlogging risk — drains well through the monsoon")
-  if (scores.water >= 80) good.push("Strong piped-water supply and coverage")
-  else if (scores.water !== undefined && scores.water < 40) bad.push("Weak water supply — short hours or low coverage")
-  if (scores.roads !== undefined && scores.roads < 40) bad.push("Poor road condition — frequent potholes")
-  if (scores.sewerage !== undefined && scores.sewerage < 40) bad.push("Weak drainage & sewerage network")
-  return { good, bad }
-}
-
-function TagBadge({ tag, card, border, dark, muted, text }) {
-  const [show, setShow] = useState(false)
-  const isLive = tag.label === 'Live'
-  const tooltip = isLive
-    ? 'This score uses real-time data pulled directly from government APIs (CPCB). It reflects current conditions and is refreshed daily.'
-    : `This score is estimated from publicly available government reports (${tag.label.replace('Est. ','')}). It is not a live feed — data may not reflect current conditions. Always verify independently before making a property decision.`
-
-  return (
-    <span style={{ position:'relative', display:'inline-flex', alignItems:'center' }}
-      onMouseEnter={() => setShow(true)}
-      onMouseLeave={() => setShow(false)}
-    >
-      <span style={{ fontSize:9, fontWeight:700, color:tag.color, background:tag.color+'20', padding:'1px 5px', borderRadius:3, cursor:'help' }}>
-        {tag.label}
-      </span>
-      {show && (
-        <span style={{
-          position:'absolute', bottom:'calc(100% + 6px)', left:0, zIndex:300,
-          background: dark ? '#1e1e1e' : '#ffffff',
-          border:`1px solid ${border}`,
-          borderRadius:10, padding:'10px 12px',
-          width:220, boxShadow:'0 8px 24px rgba(0,0,0,0.18)',
-          pointerEvents:'none', display:'block',
-        }}>
-          <span style={{ position:'absolute', bottom:-6, left:10, width:10, height:10, background: dark?'#1e1e1e':'#ffffff', border:`1px solid ${border}`, borderTop:'none', borderLeft:'none', transform:'rotate(45deg)', display:'block' }}/>
-          <span style={{ fontSize:11, fontWeight:700, color:tag.color, display:'block', marginBottom:4 }}>{isLive ? 'Live data' : 'Estimated data'}</span>
-          <span style={{ fontSize:11, color: dark?'#c0c0c0':'#444', lineHeight:1.6, display:'block' }}>{tooltip}</span>
-        </span>
-      )}
-    </span>
-  )
-}
-
-function InfoBox({ label, val, tooltip, subtle, muted, text, card, border, dark }) {
-  const [show, setShow] = useState(false)
-  const hasTooltip = !!tooltip
-
-  return (
-    <div
-      style={{ background:subtle, borderRadius:8, padding:'10px 12px', position:'relative', cursor: hasTooltip ? 'help' : 'default', transition:'background 0.15s', outline: show ? `2px solid #e23744` : 'none' }}
-      onMouseEnter={() => hasTooltip && setShow(true)}
-      onMouseLeave={() => setShow(false)}
-    >
-      <p style={{ margin:0, fontSize:10, color:muted, textTransform:'uppercase', letterSpacing:'0.04em', display:'flex', alignItems:'center', gap:4 }}>
-        {label}
-        {hasTooltip && <span style={{ display:'inline-flex', alignItems:'center', justifyContent:'center', width:13, height:13, background:'#e2374430', borderRadius:'50%', fontSize:9, color:'#e23744', fontWeight:700, flexShrink:0 }}>?</span>}
-      </p>
-      <p style={{ margin:'4px 0 0', fontSize:14, fontWeight:600, color:text }}>{val}</p>
-
-      {show && hasTooltip && (
-        <div style={{
-          position:'absolute', bottom:'calc(100% + 8px)', left:0, zIndex:200,
-          background: dark ? '#1e1e1e' : '#ffffff',
-          border:`1px solid ${border}`,
-          borderRadius:10, padding:'12px 14px',
-          width:260, boxShadow:'0 8px 24px rgba(0,0,0,0.18)',
-          pointerEvents:'none',
-        }}>
-          <div style={{ position:'absolute', bottom:-6, left:16, width:10, height:10, background: dark ? '#1e1e1e' : '#ffffff', border:`1px solid ${border}`, borderTop:'none', borderLeft:'none', transform:'rotate(45deg)' }}/>
-          {tooltip.split('\n').map((line, i) => (
-            line === '' ? <div key={i} style={{ height:6 }}/> :
-            line.startsWith('•') ? <p key={i} style={{ margin:0, fontSize:12, color: dark?'#c0c0c0':'#444', lineHeight:1.6 }}>{line}</p> :
-            <p key={i} style={{ margin:0, fontSize:12, fontWeight: i===0?600:400, color: i===0?(dark?'#f0f0f0':'#111'):(dark?'#c0c0c0':'#444'), lineHeight:1.6 }}>{line}</p>
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
-
-function SchoolRow({ s, i, dark, border, text, muted, subtle }) {
-  return (
-    <div style={{
-      display:'flex', alignItems:'center', gap:10,
-      padding:'9px 0',
-      borderBottom:`1px solid ${border}`,
-    }}>
-      <div style={{
-        minWidth:20, height:20, borderRadius:'50%',
-        background: i < 3 ? '#e23744' : subtle,
-        color: i < 3 ? 'white' : muted,
-        fontSize:10, fontWeight:700,
-        display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0,
-      }}>{i + 1}</div>
-      <div style={{ flex:1, minWidth:0 }}>
-        <p style={{ margin:0, fontSize:12, fontWeight:600, color:text, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>
-          {s.name || 'Unknown School'}
-        </p>
-        {s.address && (
-          <p style={{ margin:'1px 0 0', fontSize:11, color:muted, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>
-            {s.address}
-          </p>
-        )}
-      </div>
-      <span style={{ fontSize:10, fontWeight:600, padding:'1px 6px', borderRadius:4, background:'#22c55e20', color:'#22c55e', flexShrink:0 }}>CBSE</span>
-    </div>
-  )
-}
-
-function SchoolList({ schools, dark, card, border, text, muted, subtle }) {
-  const [expanded, setExpanded] = useState(false)
-  const top3 = schools.slice(0, 3)
-  const rest  = schools.slice(3)
-
-  return (
-    <div>
-      <p style={{ margin:'0 0 4px', fontSize:11, color:muted, fontWeight:600, textTransform:'uppercase', letterSpacing:'0.05em' }}>
-        Nearby schools
-      </p>
-      {top3.map((s, i) => (
-        <SchoolRow key={i} s={s} i={i} dark={dark} border={border} text={text} muted={muted} subtle={subtle} />
-      ))}
-
-      {rest.length > 0 && (
-        <>
-          {expanded && rest.map((s, i) => (
-            <SchoolRow key={i+3} s={s} i={i+3} dark={dark} border={border} text={text} muted={muted} subtle={subtle} />
-          ))}
-          <button
-            onClick={() => setExpanded(!expanded)}
-            style={{
-              marginTop:8, width:'100%', padding:'7px 0',
-              background:'none', border:`1px solid ${border}`,
-              borderRadius:8, fontSize:12, color:muted,
-              cursor:'pointer', display:'flex', alignItems:'center',
-              justifyContent:'center', gap:4,
-            }}
-          >
-            {expanded ? `▲ Show less` : `▾ Show ${rest.length} more school${rest.length > 1 ? 's' : ''}`}
-          </button>
-        </>
-      )}
-      <p style={{ margin:'8px 0 0', fontSize:10, color:muted, fontStyle:'italic' }}>
-        Source: CBSE Affiliation Database · Est. 2018
-      </p>
-    </div>
-  )
-}
-
-// ── Pin code approximate coordinates (lat, lon) ──────────────────────────────
-const PIN_COORDS = {
-  "110002":[28.6289,77.2410],"110003":[28.5931,77.2196],"110005":[28.6514,77.1907],
-  "110006":[28.6562,77.2310],"110007":[28.6878,77.2091],"110008":[28.6415,77.1521],
-  "110009":[28.7197,77.1925],"110010":[28.5986,77.1637],"110012":[28.6364,77.1522],
-  "110016":[28.5494,77.2001],"110017":[28.5244,77.2167],"110018":[28.6278,77.0455],
-  "110019":[28.5823,77.0559],"110020":[28.5356,77.2720],"110021":[28.5782,77.1677],
-  "110022":[28.5672,77.1748],"110024":[28.5677,77.2411],"110025":[28.5362,77.2503],
-  "110026":[28.6677,77.1267],"110032":[28.6469,77.3152],"110033":[28.7289,77.1628],
-  "110034":[28.7045,77.1304],"110036":[28.7997,77.1498],"110037":[28.5562,77.0882],
-  "110039":[28.7790,77.0394],"110040":[28.8533,77.1005],"110041":[28.6765,77.0279],
-  "110042":[28.7495,77.1128],"110043":[28.6108,76.9794],"110044":[28.4748,77.2594],
-  "110049":[28.5508,77.2259],"110052":[28.6916,77.1805],"110053":[28.6853,77.2879],
-  "110058":[28.6218,77.0840],"110063":[28.6688,77.1094],"110065":[28.6290,77.2956],
-  "110067":[28.5398,77.1674],"110068":[28.5021,77.1788],"110070":[28.5215,77.1541],
-  "110073":[28.6191,77.0264],"110077":[28.5834,77.0609],"110078":[28.5924,77.0558],
-  "110084":[28.7511,77.2086],"110085":[28.7152,77.1108],"110091":[28.6135,77.3155],
-  "110092":[28.6302,77.2951],"110094":[28.7269,77.2682],"110095":[28.6714,77.3041],
-  "121001":[28.4089,77.3178],"121002":[28.3838,77.3159],"122001":[28.4595,77.0266],
-  "122002":[28.4950,77.0888],"122003":[28.4228,77.0512],"122051":[28.3591,76.9378],
-  "122101":[28.3893,77.0472],"122103":[28.4027,77.0299],"122107":[31.0158,76.9914],
-  "122108":[28.3312,77.0821],"122413":[28.4025,76.9942],"122502":[28.2043,76.6191],
-  "122505":[28.0001,76.1447],"123001":[28.6009,76.6551],"123106":[28.2040,76.6234],
-  "123401":[28.1960,76.6194],"124001":[28.9284,76.5766],"124507":[28.5271,76.9455],
-  "125050":[29.5141,75.4599],"125055":[29.5353,75.0246],"131001":[28.9947,77.0151],
-  "131027":[28.9672,77.0946],"131029":[28.8783,77.1034],"132103":[29.3909,76.9635],
-  "135001":[30.1290,77.2819],"201001":[28.6692,77.4538],"201002":[28.6600,77.4140],
-  "201010":[28.6452,77.3273],"201012":[28.6600,77.3534],"201014":[28.6412,77.3669],
-  "201016":[28.6280,77.4420],"201102":[28.7494,77.2881],"201206":[28.7730,77.4930],
-  "201301":[28.5706,77.3248],"201304":[28.4830,77.4170],"201309":[28.6270,77.3680],
-  "203001":[28.4070,77.8490],"245101":[28.7300,77.7760],
-}
-
-// Metro connectivity — which pins are within ~2km of a metro station
-const METRO_PINS = new Set([
-  "110002","110003","110005","110006","110007","110009","110012","110016","110017",
-  "110019","110020","110021","110022","110024","110025","110026","110032","110034",
-  "110037","110041","110044","110049","110052","110058","110063","110067","110070",
-  "110077","110078","110084","110085","110091","110092","110095",
-  "122001","122002","122003","201001","201010","201012","201014","201301","201309",
-])
-
-// Peak hour multiplier by time of day
-const PEAK_MULTIPLIER = 2.2   // Delhi peak traffic adds ~2.2x to free-flow time
-const OFFPEAK_MULTIPLIER = 1.2
-
-function InfoTooltip({ text, dark }) {
-  const [show, setShow] = React.useState(false)
-  return (
-    <span style={{ position:'relative', display:'inline-flex', alignItems:'center' }}>
-      <button
-        onMouseEnter={() => setShow(true)}
-        onMouseLeave={() => setShow(false)}
-        onFocus={() => setShow(true)}
-        onBlur={() => setShow(false)}
-        style={{
-          width:18, height:18, borderRadius:'50%',
-          background: dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)',
-          color: dark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)',
-          border:'none', cursor:'pointer', fontSize:11, fontWeight:700,
-          display:'flex', alignItems:'center', justifyContent:'center',
-          lineHeight:1, padding:0, fontFamily:'Georgia, serif',
-        }}
-      >?</button>
-      {show && (
-        <div style={{
-          position:'absolute', bottom:'calc(100% + 8px)', left:'50%',
-          transform:'translateX(-50%)',
-          background: dark ? '#1e1e1e' : '#fff',
-          border:`1px solid ${dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.1)'}`,
-          borderRadius:10, padding:'10px 14px',
-          width:260, zIndex:200,
-          boxShadow:'0 8px 24px rgba(0,0,0,0.3)',
-          fontSize:12,
-          color: dark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.7)',
-          lineHeight:1.6,
-          pointerEvents:'none',
-        }}>
-          {text}
-          <div style={{
-            position:'absolute', top:'100%', left:'50%', transform:'translateX(-50%)',
-            width:0, height:0,
-            borderLeft:'6px solid transparent',
-            borderRight:'6px solid transparent',
-            borderTop:`6px solid ${dark ? '#1e1e1e' : '#fff'}`,
-          }}/>
-        </div>
-      )}
-    </span>
-  )
-}
-
-function CommuteChecker({ fromPin, fromName, dark }) {
-  const [officeQ, setOfficeQ]       = React.useState('')
-  const [suggestions, setSuggestions] = React.useState([])
-  const [toPin, setToPin]           = React.useState(null)
-  const [toName, setToName]         = React.useState('')
-  const [result, setResult]         = React.useState(null)
-  const [loading, setLoading]       = React.useState(false)
-  const [focused, setFocused]       = React.useState(false)
-
-  const bg     = dark ? '#111' : '#fff'
-  const card   = dark ? '#161616' : '#f8f8f8'
-  const border = dark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'
-  const text   = dark ? '#f0ede8' : '#111'
-  const muted  = dark ? '#9a9a9a' : '#666'
-  const accent = '#e23744'
-
-  function onSearch(v) {
-    setOfficeQ(v)
-    setResult(null)
-    if (v.trim().length < 2) { setSuggestions([]); return }
-    const s = v.toLowerCase()
-    const hits = Object.entries(PIN_META)
-      .filter(([p, m]) => m.name.toLowerCase().includes(s) || p.includes(s))
-      .slice(0, 6)
-    setSuggestions(hits)
-  }
-
-  function selectOffice(pin, name) {
-    setToPin(pin); setToName(name)
-    setOfficeQ(name); setSuggestions([])
-    computeCommute(pin, name)
-  }
-
-  function computeCommute(pin, name) {
-    setLoading(true); setResult(null)
-    const fromCoords = PIN_COORDS[fromPin]
-    const toCoords   = PIN_COORDS[pin]
-    if (!fromCoords || !toCoords) {
-      setResult({ error: 'Coordinates not available for one of these areas.' })
-      setLoading(false); return
-    }
-
-    // Haversine distance in km
-    const R = 6371
-    const dLat = (toCoords[0]-fromCoords[0]) * Math.PI/180
-    const dLon = (toCoords[1]-fromCoords[1]) * Math.PI/180
-    const a = Math.sin(dLat/2)**2 + Math.cos(fromCoords[0]*Math.PI/180)*Math.cos(toCoords[0]*Math.PI/180)*Math.sin(dLon/2)**2
-    const dist = R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
-
-    // Road distance ≈ 1.3× straight-line for Delhi grid
-    const roadKm = dist * 1.35
-
-    // Free-flow speed ~35 km/h in Delhi inner, ~50 on outer
-    const freeFlowSpeed = roadKm < 15 ? 30 : 40
-    const freeFlowMins  = Math.round((roadKm / freeFlowSpeed) * 60)
-    const peakMins      = Math.round(freeFlowMins * PEAK_MULTIPLIER)
-    const offPeakMins   = Math.round(freeFlowMins * OFFPEAK_MULTIPLIER)
-
-    // Auto cost: ₹25 base + ₹15/km, shared auto cheaper
-    const autoCost = Math.round(25 + roadKm * 15)
-
-    // Metro — check if both ends have metro
-    const fromMetro = METRO_PINS.has(fromPin)
-    const toMetro   = METRO_PINS.has(pin)
-    const metroAvailable = fromMetro && toMetro
-
-    // Broker claim: they typically quote Google Maps off-peak
-    const brokerClaim = offPeakMins
-
-    // Verdict
-    const diff = peakMins - brokerClaim
-    const verdict = diff > 30 ? 'Severely misleading' : diff > 15 ? 'Optimistic' : diff > 5 ? 'Slightly optimistic' : 'Accurate'
-    const verdictColor = diff > 30 ? '#ef4444' : diff > 15 ? '#f97316' : diff > 5 ? '#eab308' : '#22c55e'
-
-    setTimeout(() => {
-      setResult({ dist: roadKm.toFixed(1), peakMins, offPeakMins, autoCost, metroAvailable, fromMetro, toMetro, brokerClaim, verdict, verdictColor, diff })
-      setLoading(false)
-    }, 600)
-  }
-
-  const fmt = m => m >= 60 ? `${Math.floor(m/60)}h ${m%60}m` : `${m} min`
-
-  return (
-    <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:24, marginBottom:12 }}>
-      <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:16 }}>
-        <div style={{ width:4, height:18, background:accent, borderRadius:2 }}/>
-        <p style={{ margin:0, fontSize:16, fontWeight:700, color:text, letterSpacing:'-0.2px' }}>Commute Reality Check</p>
-        <span style={{ fontSize:11, padding:'3px 8px', background:accent+'22', color:accent, borderRadius:99, fontWeight:600 }}>NEW</span>
-        <InfoTooltip dark={dark} text="Brokers always quote Google Maps off-peak times — usually 6am on a Sunday. This tool shows you real peak-hour commute estimates (8–10am weekdays) from this area to your office, based on Delhi traffic patterns. The difference is often 2× or more." />
-      </div>
-      <p style={{ margin:'0 0 14px', fontSize:15, color:dark?'rgba(255,255,255,0.75)':'rgba(0,0,0,0.7)', lineHeight:1.6 }}>
-        How long does it <strong style={{color:text}}>actually</strong> take to reach your office from <strong style={{color:accent}}>{fromName}</strong>? Brokers quote off-peak times. We show you peak-hour reality.
-      </p>
-
-      {/* Office search */}
-      <div style={{ position:'relative', marginBottom: result ? 16 : 0 }}>
-        <div style={{ display:'flex', gap:8 }}>
-          <input
-            value={officeQ}
-            onChange={e => onSearch(e.target.value)}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setTimeout(() => { setFocused(false); setSuggestions([]) }, 150)}
-            placeholder="Enter your office area or pin code…"
-            style={{
-              flex:1, padding:'11px 14px', background:dark?'#1a1a1a':'#fff',
-              border:`1px solid ${border}`, borderRadius:10, color:text,
-              fontSize:14, outline:'none', fontFamily:'inherit'
-            }}
-          />
-          {loading && <div style={{ padding:'11px 14px', color:muted, fontSize:13 }}>Calculating…</div>}
-        </div>
-        {suggestions.length > 0 && focused && (
-          <div style={{ position:'absolute', top:'100%', left:0, right:0, zIndex:100, background:dark?'#1a1a1a':'#fff', border:`1px solid ${border}`, borderRadius:10, overflow:'hidden', marginTop:4, boxShadow:'0 8px 24px rgba(0,0,0,0.4)' }}>
-            {suggestions.map(([p, m]) => (
-              <div key={p} onMouseDown={() => selectOffice(p, m.name)}
-                style={{ padding:'10px 14px', cursor:'pointer', display:'flex', justifyContent:'space-between', fontSize:13, borderBottom:`1px solid ${border}` }}
-                onMouseEnter={e => e.currentTarget.style.background=accent+'15'}
-                onMouseLeave={e => e.currentTarget.style.background='transparent'}
-              >
-                <span style={{color:text,fontWeight:500}}>{m.name}</span>
-                <span style={{color:muted,fontSize:11,fontFamily:'monospace'}}>{p}</span>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* Result */}
-      {result && !result.error && (
-        <div style={{ animation:'fadeUp 0.4s ease both' }}>
-          {/* Verdict banner */}
-          <div style={{ background:result.verdictColor+'18', border:`1px solid ${result.verdictColor}44`, borderRadius:10, padding:'10px 14px', marginBottom:12, display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-            <div>
-              <span style={{ fontSize:12, color:muted }}>Broker's claim vs reality</span>
-              <div style={{ fontSize:15, fontWeight:700, color:result.verdictColor, marginTop:2 }}>
-                {result.verdict} — brokers claim {fmt(result.brokerClaim)}, reality is {fmt(result.peakMins)} in peak hours
-              </div>
-            </div>
-          </div>
-
-          {/* Commute cards */}
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(130px,1fr))', gap:8, marginBottom:12 }}>
-            {[
-              { icon:'car',      label:'Peak hours', val:fmt(result.peakMins), sub:'8–10am / 5–8pm', color:'#ef4444' },
-              { icon:'car',      label:'Off-peak', val:fmt(result.offPeakMins), sub:'What brokers quote', color:'#22c55e' },
-              { icon:'distance', label:'Road distance', val:`${result.dist} km`, sub:'Approx via road', color:accent },
-              { icon:'fare',     label:'Auto fare', val:`₹${result.autoCost}`, sub:'One way estimate', color:'#f97316' },
-            ].map(({ icon, label, val, sub, color }) => (
-              <div key={label} style={{ background:dark?'#1a1a1a':'#fff', border:`1px solid ${border}`, borderRadius:10, padding:'12px 14px' }}>
-                <div style={{ marginBottom:4 }}><DimIcon name={icon} size={16} color={color} /></div>
-                <div style={{ fontSize:18, fontWeight:700, color, lineHeight:1 }}>{val}</div>
-                <div style={{ fontSize:11, color:muted, marginTop:3 }}>{label}</div>
-                <div style={{ fontSize:10, color:muted, opacity:0.6 }}>{sub}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Metro */}
-          <div style={{ background:dark?'#1a1a1a':'#fff', border:`1px solid ${border}`, borderRadius:10, padding:'12px 14px', display:'flex', gap:12, alignItems:'center' }}>
-            <DimIcon name="metro" size={20} color={accent} />
-            <div>
-              <div style={{ fontSize:13, fontWeight:600, color:text }}>
-                {result.metroAvailable ? 'Metro available at both ends' : !result.fromMetro ? `No metro near ${fromName}` : `No metro near ${toName}`}
-              </div>
-              <div style={{ fontSize:12, color:muted, marginTop:2 }}>
-                {result.metroAvailable ? 'Delhi Metro is usually faster than road during peak hours' : 'You will need to rely on road transport'}
-              </div>
-            </div>
-            <div style={{ marginLeft:'auto', fontSize:13, fontWeight:700, color:result.metroAvailable?'#22c55e':'#ef4444' }}>
-              {result.metroAvailable ? '✓' : '✗'}
-            </div>
-          </div>
-
-          <p style={{ fontSize:11, color:muted, marginTop:10, lineHeight:1.5 }}>
-            * Peak time estimates based on Delhi traffic patterns. Road distance is approximate. Actual commute may vary with route and mode.
-          </p>
-        </div>
-      )}
-      {result?.error && <p style={{ color:'#ef4444', fontSize:13 }}>{result.error}</p>}
-    </div>
-  )
-}
-
-function WhatsAppShareButton({ areaName, pin, score, grade, verdict, scores }) {
-  const handleShare = () => {
-    const scoreLines = Object.entries(scores)
-      .map(([k, v]) => `${DIM_ICON[k] || '•'} ${DIM_LABEL[k] || k}: ${v}/100`)
-      .join('\n')
-
-    const message =
-`🏠 *AsliVastu Report — ${areaName} (${pin})*
-NQI Score: *${score}/100 (${grade})* · ${verdict}
-
-${scoreLines}
-
-Full report (free): https://aslivastu.vercel.app/report/${pin}`
-
-    const encoded = encodeURIComponent(message)
-    const isMobile = /iPhone|Android/i.test(navigator.userAgent)
-    const url = isMobile
-      ? `whatsapp://send?text=${encoded}`
-      : `https://web.whatsapp.com/send?text=${encoded}`
-    window.open(url, '_blank')
-  }
-
-  return (
-    <button
-      onClick={handleShare}
-      style={{
-        display: 'flex', alignItems: 'center', gap: '7px',
-        background: '#25D366', color: '#fff', border: 'none',
-        borderRadius: '8px', padding: '9px 14px', fontSize: '13px',
-        fontWeight: '600', cursor: 'pointer', transition: 'opacity 0.2s', flexShrink: 0,
-      }}
-      onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-      onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-    >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      Share
-    </button>
-  )
-}
-
-function PDFDownloadButton({ areaName, pin }) {
-  const [loading, setLoading] = useState(false)
-
-  const loadScript = (src, check) => new Promise((resolve, reject) => {
-    if (check()) { resolve(); return }
-    const s = document.createElement('script')
-    s.src = src
-    s.onload = resolve
-    s.onerror = reject
-    document.head.appendChild(s)
+function loadScript(src, check) {
+  return new Promise((resolve, reject) => {
+    if (check()) return resolve()
+    const el = document.createElement('script'); el.src = src; el.onload = resolve; el.onerror = reject; document.body.appendChild(el)
   })
-
-  const handleDownload = async () => {
-    setLoading(true)
-    try {
-      await Promise.all([
-        loadScript(
-          'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
-          () => !!window.html2canvas
-        ),
-        loadScript(
-          'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
-          () => !!window.jspdf
-        ),
-      ])
-
-      // Auto-unlock full report if not already visible
-      const unlockBtn = document.querySelector('[data-unlock="true"]')
-      if (unlockBtn) {
-        unlockBtn.click()
-        await new Promise(r => setTimeout(r, 500))
-      }
-
-      const { jsPDF } = window.jspdf
-      const fullPage = document.querySelector('.report-wrap')
-      if (!fullPage) throw new Error('Report not found')
-
-      // Expand all clipped/scrollable elements so full content is captured
-      const els = fullPage.querySelectorAll('*')
-      const saved = []
-      els.forEach(el => {
-        saved.push([el, el.style.overflow, el.style.maxHeight])
-        el.style.overflow = 'visible'
-        el.style.maxHeight = 'none'
-      })
-
-      const canvas = await window.html2canvas(fullPage, {
-        scale: 1.5,
-        useCORS: true,
-        backgroundColor: '#0f0f0f',
-        scrollX: -window.scrollX,
-        scrollY: -window.scrollY,
-        width: fullPage.scrollWidth,
-        height: fullPage.scrollHeight,
-        windowWidth: fullPage.scrollWidth,
-      })
-
-      // Restore styles
-      saved.forEach(([el, ov, mh]) => {
-        el.style.overflow = ov
-        el.style.maxHeight = mh
-      })
-
-      const imgData = canvas.toDataURL('image/jpeg', 0.95)
-      const pdfW = 210
-      const pdfH = (canvas.height / canvas.width) * pdfW
-
-      const doc = new jsPDF({
-        orientation: 'portrait',
-        unit: 'mm',
-        format: [pdfW, pdfH],
-      })
-
-      doc.addImage(imgData, 'JPEG', 0, 0, pdfW, pdfH)
-      doc.save(`AsliVastu-${areaName.replace(/\s+/g, '-')}-${pin}.pdf`)
-
-    } catch (e) {
-      console.error('PDF error:', e)
-      alert('PDF failed: ' + e.message)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  return (
-    <button
-      onClick={handleDownload}
-      disabled={loading}
-      style={{
-        display: 'flex', alignItems: 'center', gap: '7px',
-        background: 'none', color: '#f0f0f0',
-        border: '1px solid rgba(255,255,255,0.15)',
-        borderRadius: '8px', padding: '9px 14px', fontSize: '13px',
-        fontWeight: '600', cursor: loading ? 'wait' : 'pointer',
-        transition: 'all 0.2s', flexShrink: 0, opacity: loading ? 0.6 : 1,
-      }}
-      onMouseEnter={e => { e.currentTarget.style.borderColor = '#e23744'; e.currentTarget.style.color = '#e23744' }}
-      onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; e.currentTarget.style.color = '#f0f0f0' }}
-    >
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-        <polyline points="7 10 12 15 17 10"/>
-        <line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
-      {loading ? 'Generating…' : 'PDF'}
-    </button>
-  )
 }
 
+function source(k, city) {
+  const blr = city === 'Bangalore'
+  const m = {
+    crime: blr ? 'Bengaluru City Police / NCRB · est. 2023' : 'Delhi Police Annual Report · est. 2023',
+    infrastructure: blr ? 'BBMP plans · BMRCL Namma Metro · est. 2024' : 'DDA Master Plan · DMRC · est. 2024',
+    air: blr ? 'CPCB / KSPCB live AQI · updated daily' : 'CPCB live AQI · updated daily',
+    power: blr ? 'BESCOM annual reports · est. 2023' : 'BSES / Tata Power · est. 2023',
+    schools: 'CBSE affiliation database · est. 2023',
+    water: blr ? 'BWSSB (Cauvery) supply & quality · est. 2023' : 'Delhi Jal Board supply & quality · est. 2023',
+    roads: blr ? 'BBMP road-condition surveys · est. 2023' : 'MCD / PWD road surveys · est. 2023',
+    sewerage: blr ? 'BWSSB waterlogging records · est. 2023' : 'Drainage & waterlogging records · est. 2023',
+  }
+  return m[k] || ''
+}
 
-export default function Home({ initialPin, initialReport, initialAllScores, ogMeta }) {
-  const [dark, setDark]           = useState(false)
-  const [query, setQuery]         = useState(initialPin ? (PIN_META[initialPin]?.name || initialPin) : '')
-  const [pin, setPin]             = useState(initialPin || '')
-  const [suggestions, setSuggestions] = useState([])
-  const [showSugg, setShowSugg]   = useState(false)
-  const [searchCity, setSearchCity] = useState(initialPin ? cityOfPin(initialPin) : 'Delhi NCR')
-  const [report, setReport]       = useState(initialReport || null)
-  const [noData, setNoData]       = useState(null) // { pin, name, area } when area known but no data
-  const [allScores, setAllScores] = useState(initialAllScores || [])
-  const [error, setError]         = useState('')
-  const [loading, setLoading]     = useState(false)
-  const [unlocked, setUnlocked]   = useState(false)
-  const [showLanding, setShowLanding] = useState(!initialPin)
-  const [weightPreset, setWeightPreset] = useState('Default')
+// One explanation sentence per dimension, from the report data.
+function explain(k, r) {
+  const city = r.city || 'Delhi NCR'
+  switch (k) {
+    case 'crime': return r.crime_percentile != null
+      ? `${r.total_cognizable_crimes} crimes reported — safer than ${r.crime_percentile}% of tracked ${city} areas (${(r.crime_tier||'').toLowerCase()} tier).`
+      : 'Cognizable crimes reported for the police catchment.'
+    case 'infrastructure': return `${r.metro_stations_nearby||0} operational metro station(s) · ${(r.highway_proximity||'—').toLowerCase()} highway access · ${(r.zone_type||'mixed').toLowerCase()} zone.`
+    case 'air': return r.aqi_category ? `AQI ~${Math.round(r.aqi_avg)}, ${r.aqi_category} — ${AQI_PLAIN[r.aqi_category] || 'CPCB band.'}` : 'Live CPCB air-quality reading.'
+    case 'power': return `${r.reliability || '—'} reliability · ~${r.avg_outage_hours ?? '—'} outage hrs/month via ${r.discom || 'the local DISCOM'}.`
+    case 'schools': return r.schools_count ? `${r.schools_count} CBSE school(s) mapped to this pin.` : 'No CBSE-affiliated school in this exact pin.'
+    case 'water': return `${r.supply_hours ?? '—'} hrs daily supply · ${(r.tds_level||'—')} TDS · ${(r.water_coverage ?? r.coverage_pct) ?? '—'}% piped coverage.`
+    case 'roads': return `${r.road_condition || '—'} condition · ~${r.pothole_density ?? '—'} potholes/km · last resurfaced ${r.last_resurfaced || '—'}.`
+    case 'sewerage': { const wl = r.waterlogging_risk; const lvl = wl==null?'—':wl>=4?'low':wl>=3?'moderate':'high'
+      return `${lvl} monsoon waterlogging risk${r.flooding_incidents_annual?` — ~${r.flooding_incidents_annual} flooding incidents a year`:''}.` }
+    default: return ''
+  }
+}
+
+function verdictFor(nqi) {
+  if (nqi >= 80) return { label:'Strong buy', why:'Scores well across the board — few weak spots to worry about.' }
+  if (nqi >= 60) return { label:'Consider', why:'Decent overall, with some weak dimensions worth inspecting on site before deciding.' }
+  if (nqi >= 45) return { label:'Below average', why:'Below the tracked-area average — compare nearby areas before committing.' }
+  return { label:'Avoid', why:'Multiple dimensions score poorly — strongly recommend comparing alternatives.' }
+}
+
+function highlights(r) {
+  const good = [], bad = [], s = r.scores
+  if (s.crime >= 80) good.push('Very low crime — one of the safer areas.')
+  else if (s.crime != null && s.crime < 40) bad.push('High crime rate — well above average.')
+  if (s.infrastructure >= 70) good.push('Excellent connectivity — metro and highway access.')
+  else if (s.infrastructure != null && s.infrastructure < 40) bad.push('Poor connectivity — limited metro/highway access.')
+  if (s.air >= 80) good.push('Clean air — AQI consistently Good or Satisfactory.')
+  else if (s.air != null && s.air < 50) bad.push('Poor air quality — AQI frequently in Poor range.')
+  if (s.power >= 70) good.push('Reliable power supply — low outage frequency.')
+  else if (s.power != null && s.power < 40) bad.push('Frequent power cuts — high outage hours.')
+  if (s.schools >= 70) good.push('Strong CBSE school density near this pin.')
+  if (r.waterlogging_risk != null && r.waterlogging_risk <= 2) bad.push(`High monsoon waterlogging risk${r.flooding_incidents_annual ? ` — ~${r.flooding_incidents_annual} flooding incidents a year` : ''}.`)
+  if (s.water != null && s.water < 45) bad.push('Only limited daily water supply — budget for filtration/tankers.')
+  return { good: good.slice(0, 3), bad: bad.slice(0, 3) }
+}
+
+export default function Report({ report, allScores, ogMeta }) {
+  const [persona, setPersona] = useState('Default')
+  const [dark, setDark] = useState(true)
+  const [shortlist, setShortlist] = useState([])
+  const [unlocked, setUnlocked] = useState(false)
   const [customWeights, setCustomWeights] = useState({ ...WEIGHT_PRESETS.Default })
+  const [query, setQuery] = useState('')
+  const [suggestions, setSuggestions] = useState([])
+  const [searchCity, setSearchCity] = useState(report ? (report.city || cityOf(report.pin_code)) : 'Delhi NCR')
   const [fbText, setFbText] = useState('')
   const [fbStatus, setFbStatus] = useState('idle')
-  const [fbError, setFbError] = useState('')
-  const [shortlist, setShortlist] = useState([]) // saved PINs (issue #5)
+  const [pdfBusy, setPdfBusy] = useState(false)
+  const mapEl = useRef(null)
 
   useEffect(() => {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)')
-    setDark(mq.matches)
+    let s = []
+    try { s = JSON.parse(localStorage.getItem('aslivastu_shortlist') || '[]') } catch { /* ignore */ }
+    if (Array.isArray(s) && s.length) setShortlist(s)
   }, [])
-
-  // Load saved shortlist from localStorage on mount.
-  useEffect(() => {
-    try {
-      const saved = JSON.parse(localStorage.getItem('aslivastu_shortlist') || '[]')
-      if (Array.isArray(saved)) setShortlist(saved.filter(p => PIN_META[p]))
-    } catch { /* ignore */ }
-  }, [])
-
   function toggleSaved(p) {
-    setShortlist(prev => {
-      const next = prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p]
+    setShortlist(prev => { const next = prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p]
       try { localStorage.setItem('aslivastu_shortlist', JSON.stringify(next)) } catch { /* ignore */ }
-      return next
-    })
+      return next })
   }
-
-  // Auto-load from URL params (fallback for /report?pin= links) — skipped when SSR props are present
-  useEffect(() => {
-    if (initialPin) return // already loaded via getServerSideProps
-    const params = new URLSearchParams(window.location.search)
-    const pinParam = params.get('pin')
-    const qParam   = params.get('q')
-    if (pinParam && /^\d{6}$/.test(pinParam)) {
-      const meta = PIN_META[pinParam]
-      if (meta) setQuery(meta.name)
-      setPin(pinParam)
-      fetchReportByPin(pinParam)
-    } else if (qParam) {
-      setQuery(qParam)
-      const results = searchPin(qParam)
-      if (results.length > 0) {
-        setPin(results[0].pin)
-        fetchReportByPin(results[0].pin)
-      }
-    }
-  }, []) // eslint-disable-line
-
-  const bg     = dark ? '#0f0f0f' : '#ffffff'
-  const card   = dark ? '#161616' : '#ffffff'
-  const border = dark ? '#ffffff08' : '#f0f0f0'
-  const text   = dark ? '#f0f0f0' : '#111111'
-  const muted  = dark ? '#9a9a9a' : '#595959'
-  const subtle = dark ? '#1e1e1e' : '#f7f7f7'
-
-  function handleQueryChange(val) {
-    setQuery(val)
-    setError('')
-    if (val.trim().length < 2) { setSuggestions([]); setShowSugg(false); return }
-    const results = searchPin(val, searchCity)
-    setSuggestions(results)
-    setShowSugg(results.length > 0)
+  function share() {
+    const url = typeof window !== 'undefined' ? window.location.origin + '/report/' + report.pin_code : ''
+    const txt = `${PIN_META[report.pin_code]?.name || report.pin_code}: NQI ${report.nqi_composite}/100 (${report.grade}) on AsliVastu`
+    if (typeof navigator !== 'undefined' && navigator.share) navigator.share({ title: 'AsliVastu', text: txt, url }).catch(() => {})
+    else if (typeof window !== 'undefined') window.open(`https://wa.me/?text=${encodeURIComponent(txt + ' ' + url)}`, '_blank')
   }
-
-  function pickSuggestion(item) {
-    setQuery(item.name)
-    setPin(item.pin)
-    setSuggestions([])
-    setShowSugg(false)
-    fetchReportByPin(item.pin)
-  }
-
-  async function fetchReport() {
-    // resolve query to pin
-    let resolvedPin = pin
-    if (!resolvedPin || resolvedPin.length !== 6) {
-      const results = searchPin(query)
-      if (results.length === 0) { setError('Area not found — try a pin code or different name'); return }
-      resolvedPin = results[0].pin
-      setQuery(results[0].name)
-      setPin(resolvedPin)
-    }
-    await fetchReportByPin(resolvedPin)
-  }
-
-  async function fetchReportByPin(resolvedPin) {
-    setLoading(true); setError(''); setReport(null); setNoData(null); setUnlocked(false); setShowLanding(false); setShowSugg(false)
-    try {
-      const [r1, r2] = await Promise.all([fetch(`/api/report?pin=${resolvedPin}`), fetch(`/api/all`)])
-      const data = await r1.json()
-      const all  = await r2.json()
-      if (!r1.ok) {
-        // Area known but no data yet — show coming soon
-        const meta = PIN_META[resolvedPin]
-        if (meta) {
-          setNoData({ pin: resolvedPin, ...meta })
-        } else {
-          setError('This area is outside our current Delhi NCR / Bangalore coverage.')
-        }
-        setLoading(false)
-        return
-      }
-      setReport(data); setAllScores(all || [])
-    } catch(e) { setError('Network error') }
-    finally { setLoading(false) }
-  }
-
-  const meta    = report ? (PIN_META[report.pin_code] || { name: report.pin_code, area: 'Delhi NCR' }) : null
-  const verdict = report ? getVerdict(report.scores, report.nqi_composite) : null
-  const { good, bad } = report ? getHighlights(report, report.scores) : { good:[], bad:[] }
-  const RADAR_SHORT = { crime:'Safety', infrastructure:'Infra', air:'Air', power:'Power', schools:'Schools', water:'Water', roads:'Roads', sewerage:'Drainage' }
-  const radarData = report ? Object.entries(report.scores).map(([k,v]) => ({ subject: RADAR_SHORT[k] || DIM_LABEL[k] || k, score: v })) : []
-  const nearby = report
-    ? allScores
-        .filter(r => r.pin_code !== report.pin_code && r.nqi_composite)
-        .sort((a,b) => Math.abs(parseInt(a.pin_code)-parseInt(report.pin_code)) - Math.abs(parseInt(b.pin_code)-parseInt(report.pin_code)))
-        .slice(0,4)
-    : []
-
-  // User-adjustable reweighting — see WEIGHT_PRESETS above.
-  const availableDims  = report ? Object.keys(report.scores) : []
-  const activeWeights  = weightPreset === 'Custom' ? customWeights : WEIGHT_PRESETS[weightPreset]
-  const normWeights    = report ? normalizedWeights(activeWeights, availableDims) : {}
-  const recomputedNqi  = report ? weightedComposite(report.scores, activeWeights, availableDims) : null
-  const isDefaultWeight = weightPreset === 'Default'
-  const displayedNqi   = isDefaultWeight ? report?.nqi_composite : recomputedNqi
-  const displayedGrade = isDefaultWeight ? report?.grade : gradeFor(recomputedNqi)
-
-  const sendFeedback = async () => {
+  async function sendFeedback() {
     if (!fbText.trim() || fbStatus === 'sending') return
     setFbStatus('sending')
-    const areaLabel = meta ? `${meta.name} (${report.pin_code})` : (report ? report.pin_code : null)
     try {
-      const res = await fetch('/api/feedback', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: fbText,
-          area: areaLabel,
-          pin: report ? report.pin_code : null,
-          nqi: report ? report.nqi_composite : null,
-          grade: report ? report.grade : null,
-          page: 'report',
-        }),
-      })
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok) throw new Error(data.error || 'Request failed')
-      setFbStatus('sent')
-      setFbText('')
-    } catch (err) {
-      setFbError(err.message || 'Something went wrong')
-      setFbStatus('error')
-    }
+      const res = await fetch('/api/feedback', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: fbText, area: `${PIN_META[report.pin_code]?.name || report.pin_code} (${report.pin_code})`, pin: report.pin_code, nqi: report.nqi_composite, grade: report.grade, page: 'report-v2' }) })
+      if (!res.ok) throw new Error()
+      setFbStatus('sent'); setFbText('')
+    } catch { setFbStatus('error') }
+  }
+  async function generatePDF() {
+    if (pdfBusy) return
+    setPdfBusy(true)
+    try {
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js', () => !!window.jspdf)
+      const { jsPDF } = window.jspdf
+      const doc = new jsPDF({ unit: 'pt', format: 'a4' })
+      const name = PIN_META[report.pin_code]?.name || report.pin_code
+      let y = 56
+      doc.setFontSize(22); doc.setTextColor(122, 31, 43); doc.text('ASLIVASTU', 40, y)
+      doc.setFontSize(10); doc.setTextColor(110); doc.text('Neighbourhood intelligence · spec sheet', 40, y + 15); y += 46
+      doc.setFontSize(24); doc.setTextColor(25); doc.text(`${name} (${report.pin_code})`, 40, y); y += 22
+      doc.setFontSize(12); doc.setTextColor(60); doc.text(`NQI ${report.nqi_composite}/100  ·  Grade ${report.grade}  ·  ${verdict.label}`, 40, y); y += 26
+      doc.setFontSize(10); doc.setTextColor(90); doc.text('DIMENSION', 40, y); doc.text('WEIGHT', 300, y); doc.text('SCORE', 380, y); y += 6
+      doc.setDrawColor(200); doc.line(40, y, 460, y); y += 16
+      doc.setTextColor(40)
+      rows.forEach(r => { doc.text(LABEL[r.k], 40, y); doc.text(`${r.weight}%`, 300, y); doc.text(`${r.score}/100`, 380, y); y += 18 })
+      y += 14; doc.setFontSize(8.5); doc.setTextColor(130)
+      doc.text('Estimated from government reports (2023–24); only air is live. Informational only — not financial advice.', 40, y)
+      doc.save(`AsliVastu-${String(name).replace(/\s+/g, '-')}-${report.pin_code}.pdf`)
+    } catch { /* ignore */ } finally { setPdfBusy(false) }
   }
 
+  const pin = report?.pin_code
+  const meta = report ? (PIN_META[pin] || { name: pin, area: cityOf(pin) }) : null
+  const city = report?.city || (pin ? cityOf(pin) : 'Delhi NCR')
+
+  const { nqi, grade, rows } = useMemo(() => {
+    if (!report) return { nqi: null, grade: '—', rows: [] }
+    const w = persona === 'Custom' ? customWeights : WEIGHT_PRESETS[persona]
+    const keys = Object.keys(report.scores)
+    const totalW = keys.reduce((s, k) => s + (w[k] || 0), 0) || 1
+    const composite = Math.round(keys.reduce((s, k) => s + report.scores[k] * (w[k] || 0), 0) / totalW)
+    const rws = keys
+      .map(k => ({ k, score: report.scores[k], weight: Math.round((w[k] || 0) / totalW * 100) }))
+      .sort((a, b) => b.weight - a.weight || b.score - a.score)
+    return { nqi: composite, grade: gradeFor(composite), rows: rws }
+  }, [report, persona, customWeights])
+
+  const nearby = useMemo(() => {
+    if (!report || !allScores) return []
+    return allScores.filter(x => x.pin_code !== pin && x.nqi_composite != null)
+      .sort((a, b) => Math.abs(+a.pin_code - +pin) - Math.abs(+b.pin_code - +pin)).slice(0, 4)
+  }, [report, allScores, pin])
+
+  // Real interactive map (Leaflet via CDN + CARTO tiles). Pins = current area + nearby.
+  useEffect(() => {
+    if (typeof window === 'undefined' || !report) return
+    const center = AREA_COORDS[pin]
+    if (!center || !mapEl.current) return
+    let map
+    const init = () => {
+      const L = window.L
+      if (!L || !mapEl.current || mapEl.current._leaflet_id) return
+      map = L.map(mapEl.current, { zoomControl: true, attributionControl: false, scrollWheelZoom: false }).setView(center, 13)
+      const tiles = dark
+        ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+        : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+      L.tileLayer(tiles, { maxZoom: 19, attribution: '© OpenStreetMap © CARTO' }).addTo(map)
+      const pts = [{ p: pin, nqi: report.nqi_composite, cur: true }, ...nearby.map(n => ({ p: n.pin_code, nqi: n.nqi_composite }))]
+      pts.forEach(({ p, nqi, cur }) => {
+        const c = AREA_COORDS[p]; if (!c) return
+        const mk = L.circleMarker(c, { radius: cur ? 10 : 7, color: '#7a1f2b', weight: 2, fillColor: cur ? '#7a1f2b' : '#a75a65', fillOpacity: cur ? 0.95 : 0.55 }).addTo(map)
+        mk.bindTooltip(`${PIN_META[p]?.name || p} · ${nqi}`, { direction: 'top' })
+        mk.on('click', () => { window.location.href = `/report/${p}` })
+      })
+    }
+    if (window.L) init()
+    else {
+      if (!document.getElementById('leaflet-css')) {
+        const link = document.createElement('link'); link.id = 'leaflet-css'; link.rel = 'stylesheet'
+        link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'; document.head.appendChild(link)
+      }
+      let s = document.getElementById('leaflet-js')
+      if (!s) { s = document.createElement('script'); s.id = 'leaflet-js'; s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'; s.onload = init; document.body.appendChild(s) }
+      else s.addEventListener('load', init)
+    }
+    return () => { if (map) map.remove() }
+  }, [pin, report, nearby, dark, unlocked])
+
+  if (!report) return <div style={{ padding:40, fontFamily:'system-ui' }}>No data for this pin.</div>
+
+  const verdict = verdictFor(nqi)
+  const acc = '#7a1f2b'
+  const { good, bad } = highlights(report)
+  const pc = report.price_context
+  const inr = n => '₹' + Number(n).toLocaleString('en-IN')
+
   return (
-    <div style={{ minHeight:'100vh', background:bg, color:text, fontFamily:'"Inter",-apple-system,sans-serif', transition:'background 0.2s' }}>
-      <style>{ANIM_CSS}</style>
-
-      {/* ── Server-side SEO tags ── */}
-      {ogMeta && (
-        <Head>
-          <title>{ogMeta.title}</title>
+    <div className={`iv${dark ? '' : ' light'}`}>
+      <Head>
+        <title>{ogMeta?.title || `${meta.name} — AsliVastu spec sheet`}</title>
+        {ogMeta && <>
           <meta name="description" content={ogMeta.description} />
-          <meta name="robots" content="index, follow" />
           <link rel="canonical" href={ogMeta.url} />
-
-          {/* OG */}
+          <meta property="og:type" content="website" />
           <meta property="og:title" content={ogMeta.title} />
           <meta property="og:description" content={ogMeta.description} />
           <meta property="og:image" content={ogMeta.image} />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
           <meta property="og:url" content={ogMeta.url} />
-          <meta property="og:type" content="website" />
-          <meta property="og:site_name" content="AsliVastu" />
-
-          {/* Twitter */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={ogMeta.title} />
           <meta name="twitter:description" content={ogMeta.description} />
           <meta name="twitter:image" content={ogMeta.image} />
+          {ogMeta.jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: ogMeta.jsonLd }} />}
+        </>}
+      </Head>
+      <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
-          {/* JSON-LD structured data */}
-          {ogMeta.jsonLd && (
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: ogMeta.jsonLd }}
-            />
-          )}
-        </Head>
-      )}
+      <div style={{ maxWidth:1280, margin:'0 auto', padding:'0 40px 60px' }}>
 
-      {/* ── Nav ── */}
-      <nav style={{ borderBottom:`1px solid ${dark ? '#ffffff0f' : '#f0f0f0'}`, padding:'0 24px', height:68, display:'flex', alignItems:'center', justifyContent:'space-between', background: dark ? '#111111' : '#ffffff', position:'sticky', top:0, zIndex:100 }}>
-        <a href="/" style={{ display:'flex', alignItems:'center', gap:12, textDecoration:'none' }}>
-          <img src="/logo.png" alt="AsliVastu" style={{ width:48, height:48, objectFit:'contain', borderRadius:8 }} />
-          <div>
-            <div style={{ fontWeight:800, fontSize:20, letterSpacing:'-0.4px', color:text, lineHeight:1 }}>AsliVastu</div>
-            <div style={{ fontSize:11, color:ACCENT, fontWeight:500, marginTop:3 }}>Your Neighbourhood, By the numbers</div>
+        {/* ── Header ── */}
+        <header style={{ display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:16, padding:'22px 0 18px', borderBottom:'1px solid var(--acc50, var(--acc60))' }}>
+          <div style={{ display:'flex', alignItems:'baseline', gap:14 }}>
+            <Link href="/" className="cond" style={{ fontWeight:700, fontSize:22, letterSpacing:'.04em', color:'var(--ink)' }}>ASLIVASTU</Link>
+            <span className="kick">Neighbourhood intelligence · spec sheet</span>
           </div>
-        </a>
-        <div style={{ display:'flex', alignItems:'center', gap:12 }}>
-          <span style={{ fontSize:12, color:muted }}>152 areas · 2 cities</span>
-          <a href="/compare" style={{ fontSize:13, fontWeight:600, color:'white', textDecoration:'none', padding:'8px 16px', background:ACCENT, borderRadius:8, display:'flex', alignItems:'center', gap:6 }}><DimIcon name="compare" size={14} color="white" /> Compare areas</a>
-          <button onClick={() => setDark(!dark)} style={{ background:'none', border:`1px solid ${border}`, borderRadius:6, padding:'4px 10px', fontSize:12, cursor:'pointer', color:muted, display:'flex', alignItems:'center', gap:5 }}>
-            <DimIcon name={dark ? 'sun' : 'moon'} size={13} color={muted} /> {dark ? 'Light' : 'Dark'}
-          </button>
-        </div>
-      </nav>
-
-      {/* ── Landing ── */}
-      {showLanding && !report && (
-        <div style={{ position:'relative', overflow:'hidden' }}>
-          {/* Gradient blob behind hero */}
-          <div style={{
-            position:'absolute', top:0, left:0, right:0, height:'520px',
-            background: dark
-              ? 'radial-gradient(ellipse 90% 70% at 15% 5%, #9b1c2e88 0%, #5a0d1d44 40%, transparent 70%), radial-gradient(ellipse 70% 60% at 85% 15%, #e2374435 0%, transparent 55%), radial-gradient(ellipse 50% 40% at 50% 0%, #ff000018 0%, transparent 60%)'
-              : 'radial-gradient(ellipse 80% 60% at 50% 0%, #ffe4e6 0%, #fff0f0 40%, transparent 70%), radial-gradient(ellipse 40% 30% at 85% 10%, #fecdd3 0%, transparent 50%)',
-            pointerEvents:'none', zIndex:0,
-          }}/>
-          <div className="landing-wrap" style={{ position:'relative', zIndex:1, maxWidth:720, margin:'0 auto', padding:'80px 24px 48px', isolation:'isolate' }}>
-
-          <div style={{ animation:'fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) 0.05s both', marginBottom:12 }}>
-            <span style={{ fontSize:12, fontWeight:600, color:ACCENT, letterSpacing:'0.08em', textTransform:'uppercase' }}>
-              Delhi NCR & Bangalore · 152 Neighbourhoods Scored
-            </span>
+          <div style={{ display:'flex', alignItems:'center', gap:20 }}>
+            <span style={{ fontSize:13, color:'var(--ink60)', letterSpacing:'.04em' }}>152 AREAS · 2 CITIES</span>
+            <Link href="/compare" style={{ fontSize:13, fontWeight:600, letterSpacing:'.06em' }}>COMPARE</Link>
+            <button onClick={() => setDark(!dark)} style={{ background:'var(--acc-fill)', color:'#f6f3f3', border:'none', padding:'8px 16px', fontSize:12, fontWeight:600, letterSpacing:'.06em' }}>{dark ? 'LIGHT MODE' : 'DARK MODE'}</button>
           </div>
+        </header>
 
-          <h1 className="hero-title" style={{ animation:'fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) 0.15s both', fontSize:'clamp(28px,5vw,50px)', fontWeight:800, lineHeight:1.1, letterSpacing:'-1.5px', margin:'0 0 20px', color:text }}>
-            Before you buy a home,<br/>
-            <span style={{ color:ACCENT }}>know the neighbourhood.</span>
-          </h1>
-
-          <p style={{ animation:'fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) 0.25s both', fontSize:17, color:muted, margin:'0 0 12px', lineHeight:1.7, maxWidth:540 }}>
-            You research everything before buying a house — price, vastu, builder reputation. But what about the <strong style={{color:text}}>neighbourhood itself?</strong>
-          </p>
-
-          <p style={{ animation:'fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) 0.28s both', fontSize:15, color:muted, margin:'0 0 32px', lineHeight:1.7, maxWidth:540 }}>
-            AsliVastu gives you a data-backed score for any Delhi NCR or Bangalore area — covering safety, air quality, water supply, road condition, power reliability, and more. Type your area name or pin code and see the full picture.
-          </p>
-
-          {/* City switcher */}
-          <div style={{ animation:'fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) 0.3s both', display:'inline-flex', gap:4, padding:4, background:subtle, borderRadius:10, marginBottom:10 }}>
-            {['Delhi NCR','Bangalore'].map(c => (
-              <button key={c} onClick={() => { setSearchCity(c); if (query.trim().length>=2) { const r = searchPin(query, c); setSuggestions(r); setShowSugg(r.length>0) } }}
-                style={{ fontSize:13, fontWeight:600, padding:'6px 14px', borderRadius:7, cursor:'pointer', border:'none',
-                  background: searchCity===c ? ACCENT : 'transparent', color: searchCity===c ? 'white' : muted }}>{c}</button>
+        {/* ── Area search + city switcher ── */}
+        <div style={{ display:'flex', gap:12, alignItems:'center', flexWrap:'wrap', marginTop:18, position:'relative', zIndex:20 }}>
+          <div style={{ display:'inline-flex', border:'1px solid var(--acc45)' }}>
+            {['Delhi NCR','Bangalore'].map((c, i) => (
+              <button key={c} onClick={() => { setSearchCity(c); if (query.trim().length >= 2) setSuggestions(searchPinV2(query, c)) }}
+                style={{ fontSize:11, fontWeight:600, letterSpacing:'.06em', textTransform:'uppercase', padding:'7px 12px', border:'none', borderLeft: i ? '1px solid var(--acc45)' : 'none', background: searchCity === c ? acc : 'transparent', color: searchCity === c ? '#fff' : 'var(--ink70)' }}>{c}</button>
             ))}
           </div>
+          <div style={{ position:'relative', flex:1, minWidth:240, maxWidth:440 }}>
+            <input value={query} onChange={e => { setQuery(e.target.value); setSuggestions(searchPinV2(e.target.value, searchCity)) }}
+              placeholder={searchCity === 'Bangalore' ? 'Look up another area — e.g. Koramangala' : 'Look up another area — e.g. Hauz Khas'}
+              style={{ width:'100%', padding:'9px 12px', border:'1px solid var(--acc35)', background:'transparent', color:'var(--ink)', fontSize:13, outline:'none' }} />
+            {suggestions.length > 0 && (
+              <div style={{ position:'absolute', top:'calc(100% + 2px)', left:0, right:0, background:'var(--bg)', border:'1px solid var(--acc45)', zIndex:50 }}>
+                {suggestions.map(s => (
+                  <Link key={s.pin} href={`/report-v2/${s.pin}`} style={{ display:'flex', justifyContent:'space-between', padding:'8px 12px', fontSize:13, color:'var(--ink)', borderTop:'1px solid var(--acc35)' }}>
+                    <span>{s.name}</span><span style={{ color:'var(--ink55)', fontFamily:'monospace', fontSize:11 }}>{s.pin}</span>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
 
-          {/* Search */}
-          <div style={{ animation:'fadeUp 0.55s cubic-bezier(0.22,1,0.36,1) 0.35s both', position:'relative', marginBottom:14, maxWidth:500, zIndex:50 }}>
-            <div style={{ display:'flex', gap:10 }}>
-              <div style={{ position:'relative', flex:1 }}>
-                <input
-                  value={query}
-                  onChange={e => handleQueryChange(e.target.value)}
-                  onKeyDown={e => { if(e.key==='Enter') fetchReport(); if(e.key==='Escape') setShowSugg(false) }}
-                  onFocus={() => suggestions.length > 0 && setShowSugg(true)}
-                  onBlur={() => setTimeout(() => setShowSugg(false), 150)}
-                  placeholder={searchCity==='Bangalore' ? 'Area or pin code — e.g. Koramangala, Whitefield' : 'Area or pin code — e.g. Hauz Khas, Rohini'}
-                  style={{ width:'100%', padding:'14px 16px', background:card, border:`1.5px solid ${border}`, borderRadius:10, fontSize:15, color:text, outline:'none', boxSizing:'border-box' }}
-                />
-                {showSugg && suggestions.length > 0 && (
-                  <div style={{ position:'absolute', top:'calc(100% + 4px)', left:0, right:0, background:card, border:`1px solid ${border}`, borderRadius:10, zIndex:999, overflow:'hidden', boxShadow:'0 8px 32px rgba(0,0,0,0.28)' }}>
-                    {suggestions.map(s => (
-                      <div key={s.pin} onMouseDown={() => pickSuggestion(s)}
-                        style={{ padding:'10px 16px', cursor:'pointer', display:'flex', justifyContent:'space-between', alignItems:'center', borderBottom:`1px solid ${border}` }}
-                        onMouseEnter={e => e.currentTarget.style.background = subtle}
-                        onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-                      >
-                        <div>
-                          <span style={{ fontSize:14, fontWeight:500, color:text }}>{s.name}</span>
-                          <span style={{ fontSize:12, color:muted, marginLeft:8 }}>{s.area}</span>
-                        </div>
-                        <span style={{ fontSize:12, color:muted, fontFamily:'monospace' }}>{s.pin}</span>
+        {/* ── Hero: 3 cards ── */}
+        <div className="hero3" style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:24, paddingTop:28 }}>
+          {/* Identity */}
+          <BPF style={{ padding:24 }}>
+            <p className="kick">Sheet 01 · {meta.area} · PIN {pin}</p>
+            <h1 className="cond" style={{ fontSize:54, fontWeight:700, lineHeight:.95, margin:'10px 0 8px', textTransform:'uppercase' }}>{meta.name}</h1>
+            <p style={{ fontSize:13, color:'var(--ink65)', margin:0 }}>{report.dimensions_scored}/{report.dimensions_total} dimensions · scored {report.scored_at ? new Date(report.scored_at).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }) : '—'}</p>
+            <div style={{ display:'flex', gap:10, marginTop:18, flexWrap:'wrap' }}>
+              {(() => { const saved = shortlist.includes(pin)
+                const bs = on => ({ fontSize:12, fontWeight:600, letterSpacing:'.06em', padding:'8px 12px', background:'transparent', cursor:'pointer',
+                  border:`1px solid ${on ? 'var(--acc)' : 'var(--acc60)'}`, color: on ? 'var(--acc)' : 'var(--ink70)' })
+                return (<>
+                  <button onClick={() => toggleSaved(pin)} style={bs(saved)}>{saved ? '★ SHORTLISTED' : '☆ SHORTLIST'}</button>
+                  <button onClick={generatePDF} style={bs(false)}>{pdfBusy ? '…' : 'PDF'}</button>
+                  <button onClick={share} style={bs(false)}>SHARE</button>
+                </>)
+              })()}
+            </div>
+          </BPF>
+
+          {/* Score */}
+          <BPF style={{ padding:24 }}>
+            <p className="kick">Composite index · {persona} weighting</p>
+            <div style={{ display:'flex', alignItems:'flex-end', gap:14, margin:'8px 0 6px' }}>
+              <span className="cond" style={{ fontSize:84, fontWeight:700, lineHeight:.85 }}>{nqi}</span>
+              <span className="cond" style={{ fontSize:30, fontWeight:700, color:'var(--acc)', marginBottom:12 }}>{grade}</span>
+            </div>
+            <p style={{ fontSize:13, color:'var(--ink65)', margin:0, lineHeight:1.5 }}>NQI · weighted mean of {report.dimensions_total} dimensions — switch profile to re-weight.</p>
+          </BPF>
+
+          {/* Verdict (solid accent) */}
+          <div style={{ background:acc, color:'#f6f3f3', padding:24, position:'relative' }}>
+            <p className="kick" style={{ color:'rgba(246,243,243,.8)' }}>Verdict</p>
+            <h2 className="cond" style={{ fontSize:34, fontWeight:700, margin:'8px 0 10px', textTransform:'uppercase' }}>{verdict.label}</h2>
+            <p style={{ fontSize:13, lineHeight:1.5, margin:0, color:'rgba(246,243,243,.92)' }}>{verdict.why}</p>
+          </div>
+        </div>
+
+        {/* ── Persona toggle + freshness legend ── */}
+        <div style={{ display:'flex', alignItems:'center', gap:20, flexWrap:'wrap', margin:'28px 0 0' }}>
+          <div style={{ display:'inline-flex', border:'1px solid var(--acc45)' }}>
+            {[...Object.keys(WEIGHT_PRESETS), 'Custom'].map((p, i) => (
+              <button key={p} onClick={() => setPersona(p)} style={{
+                fontSize:12, fontWeight:600, letterSpacing:'.06em', textTransform:'uppercase', padding:'7px 14px', border:'none',
+                borderLeft: i ? '1px solid var(--acc45)' : 'none',
+                background: persona === p ? acc : 'transparent', color: persona === p ? '#fff' : 'var(--ink70)' }}>{p}</button>
+            ))}
+          </div>
+          <span style={{ fontSize:12, color:'var(--ink65)', lineHeight:1.5 }}>
+            <strong style={{ color:'var(--ink)' }}>AIR = LIVE FEED</strong> (daily) · all other channels estimated, gov. reports verified 2023–24 · rows re-rank with the selected profile
+          </span>
+        </div>
+
+        {persona === 'Custom' && (
+          <BPF style={{ marginTop:16, padding:'16px 20px' }}>
+            <p className="kick">Custom weighting · drag to set your priorities</p>
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(200px, 1fr))', gap:'12px 24px', marginTop:14 }}>
+              {['crime','infrastructure','air','power','schools','water','roads','sewerage'].map(k => (
+                <div key={k}>
+                  <div style={{ display:'flex', justifyContent:'space-between', fontSize:11, color:'var(--ink65)', marginBottom:4 }}>
+                    <span style={{ textTransform:'uppercase', letterSpacing:'.04em' }}>{LABEL[k]}</span>
+                    <span style={{ color:'var(--acc-deep)', fontWeight:600 }}>{customWeights[k]}</span>
+                  </div>
+                  <input type="range" min="0" max="50" value={customWeights[k]} onChange={e => setCustomWeights({ ...customWeights, [k]: +e.target.value })} style={{ width:'100%', accentColor:acc }} />
+                </div>
+              ))}
+            </div>
+          </BPF>
+        )}
+
+        {/* ── Dimension readout ── */}
+        <BPF style={{ marginTop:24, padding:'0 24px 8px' }}>
+          <p className="kick" style={{ padding:'16px 0 4px' }}>Dimension readout · weight = exact contribution to the {nqi}</p>
+          {rows.map((row) => {
+            const weak = row.score < 50
+            const col = scoreColor(row.score)
+            return (
+              <div key={row.k} style={{ display:'grid', gridTemplateColumns:'200px 52px 1fr 76px', gap:14, alignItems:'start', padding:'11px 0', borderTop:'1px dashed var(--acc35)' }}>
+                <div>
+                  <div className="cond" style={{ fontSize:18, fontWeight:600, textTransform:'uppercase', lineHeight:1.1 }}>{LABEL[row.k]}</div>
+                  <div style={{ fontSize:11, color:'var(--ink55)', marginTop:2 }}>{source(row.k, city)}</div>
+                </div>
+                <div style={{ fontSize:12, fontWeight:600, color:'var(--acc-deep)', paddingTop:4 }}>{row.weight}%</div>
+                <div style={{ paddingTop:2 }}>
+                  <div style={{ height:8, border:'1px solid var(--acc35)', position:'relative', overflow:'hidden' }}>
+                    <div style={{ position:'absolute', inset:0, width:`${row.score}%`,
+                      background: weak ? undefined : col,
+                      backgroundImage: weak ? `repeating-linear-gradient(45deg, ${col} 0 3px, transparent 3px 6px)` : undefined }} />
+                  </div>
+                  <p style={{ fontSize:12, color:'var(--ink70)', margin:'6px 0 0', lineHeight:1.45 }}>{explain(row.k, report)}</p>
+                </div>
+                <div className="cond" style={{ fontSize:26, fontWeight:700, textAlign:'right', color: col }}>{row.score}</div>
+              </div>
+            )
+          })}
+        </BPF>
+
+        {/* ── Paywall / unlock gate ── */}
+        {!unlocked ? (
+          <BPF style={{ marginTop:24, padding:'40px 24px', textAlign:'center' }}>
+            <p className="kick">Locked · Sheet 02</p>
+            <h3 className="cond" style={{ fontSize:30, fontWeight:700, textTransform:'uppercase', margin:'8px 0 6px' }}>Full neighbourhood report</h3>
+            <p style={{ fontSize:13, color:'var(--ink65)', margin:'0 0 22px' }}>Plan-view map, nearby comparison, inspection notes, price context &amp; commute check.</p>
+            <div style={{ display:'inline-grid', gridTemplateColumns:'1fr 1fr', gap:'8px 28px', textAlign:'left', margin:'0 auto 24px', fontSize:12, color:'var(--ink70)' }}>
+              {['Plan-view map + nearby pins','Area comparison table','Inspection notes (buy / avoid)','Price context & market gap','Commute reality check','Persona re-weighting'].map(i => (
+                <div key={i} style={{ display:'flex', gap:8 }}><span style={{ color:'var(--acc)' }}>+</span>{i}</div>
+              ))}
+            </div>
+            <div><button onClick={() => setUnlocked(true)} style={{ background:acc, color:'#f6f3f3', border:'none', padding:'13px 40px', fontSize:14, fontWeight:600, letterSpacing:'.06em', cursor:'pointer' }}>VIEW FULL REPORT →</button></div>
+            <p style={{ fontSize:11, color:'var(--ink55)', margin:'12px 0 0', letterSpacing:'.04em' }}>Includes map, comparison, notes, price &amp; commute</p>
+          </BPF>
+        ) : (<>
+
+        {/* ── Map + comparison ── */}
+        <div className="hero3" style={{ display:'grid', gridTemplateColumns:'400px 1fr', gap:24, marginTop:24 }}>
+          <BPF style={{ padding:20 }}>
+            <p className="kick">Plan view · nearby areas</p>
+            <div ref={mapEl} style={{ height:230, marginTop:12, border:'1px solid var(--acc35)', background:'var(--fill7)' }}>
+              {!AREA_COORDS[pin] && <div style={{ height:'100%', display:'flex', alignItems:'center', justifyContent:'center', fontSize:12, color:'var(--ink55)' }}>map not available for this pin</div>}
+            </div>
+            <p style={{ fontSize:12, color:'var(--ink60)', margin:'10px 0 0' }}>Pins show each area&apos;s NQI; tap one to open its sheet.</p>
+          </BPF>
+
+          <BPF style={{ padding:'20px 22px' }}>
+            <p className="kick">Comparison</p>
+            <table style={{ width:'100%', borderCollapse:'collapse', marginTop:12, fontSize:13 }}>
+              <thead>
+                <tr style={{ fontSize:11, textTransform:'uppercase', color:'var(--ink55)', letterSpacing:'.06em' }}>
+                  {['Area','NQI','Safety','Air','Water','Drainage'].map((h, i) => (
+                    <th key={h} style={{ textAlign: i ? 'right' : 'left', padding:'0 0 8px', borderBottom:'1px solid var(--acc45)' }}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[{ pin_code: pin, nqi_composite: report.nqi_composite, scores: report.scores, cur: true }, ...nearby].map(r => (
+                  <tr key={r.pin_code} style={{ fontWeight: r.cur ? 600 : 400, color: r.cur ? 'var(--acc-deep)' : 'var(--ink)' }}>
+                    <td style={{ padding:'9px 0', borderBottom:'1px dashed var(--acc35)' }}>{PIN_META[r.pin_code]?.name || r.pin_code}</td>
+                    {['nqi_composite','crime','air','water','sewerage'].map((f, i) => (
+                      <td key={f} style={{ textAlign:'right', padding:'9px 0', borderBottom:'1px dashed var(--acc35)' }}>{i === 0 ? r.nqi_composite : (r.scores?.[f] ?? '—')}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {nearby[0] && <p style={{ fontSize:12, color:'var(--ink60)', margin:'12px 0 0' }}>{meta.name} {report.nqi_composite >= nearby[0].nqi_composite ? 'leads' : 'trails'} its nearest neighbour {PIN_META[nearby[0].pin_code]?.name || nearby[0].pin_code} on the composite index.</p>}
+          </BPF>
+        </div>
+
+        {/* ── Notes + price ── */}
+        <div className="hero3" style={{ display:'grid', gridTemplateColumns:'400px 1fr', gap:24, marginTop:24 }}>
+          <BPF style={{ padding:20 }}>
+            <p className="kick">Inspection notes</p>
+            <div style={{ marginTop:12, display:'flex', flexDirection:'column', gap:9 }}>
+              {good.map((g, i) => <div key={'g'+i} style={{ display:'flex', gap:9, fontSize:13, lineHeight:1.45 }}><span style={{ color:'var(--ink)', fontWeight:600 }}>✓</span><span style={{ color:'var(--ink70)' }}>{g}</span></div>)}
+              {bad.map((b, i) => <div key={'b'+i} style={{ display:'flex', gap:9, fontSize:13, lineHeight:1.45 }}><span style={{ color:'var(--acc-deep)', fontWeight:600 }}>✕</span><span style={{ color:'var(--ink70)' }}>{b}</span></div>)}
+              {good.length + bad.length === 0 && <span style={{ fontSize:13, color:'var(--ink60)' }}>No standout flags either way.</span>}
+            </div>
+          </BPF>
+
+          <BPF style={{ padding:'20px 22px' }}>
+            <p className="kick">Price context · guidance value</p>
+            {pc && pc.rate_sqft ? (() => {
+              const [lo, hi] = pc.rate_sqft
+              const bands = ['Premium','Upper','Mid','Modest','Value']
+              const ops = [1,.55,.3,.15,.07]
+              const mLo = Math.round(lo * 1.2 / 100) * 100, mHi = Math.round(hi * 1.6 / 100) * 100
+              const blr = city === 'Bangalore'
+              return (
+                <>
+                  <div style={{ display:'flex', alignItems:'baseline', gap:10, margin:'8px 0 2px', flexWrap:'wrap' }}>
+                    <span className="cond" style={{ fontSize:40, fontWeight:700 }}>{inr(lo)}–{inr(hi)}</span>
+                    <span style={{ fontSize:13, color:'var(--ink60)' }}>per sq ft · {pc.label.toLowerCase()} band for {blr ? 'Bengaluru' : 'the NCR'}</span>
+                  </div>
+                  <div style={{ display:'flex', gap:5, margin:'14px 0 6px' }}>
+                    {bands.map((b, i) => (
+                      <div key={b} style={{ flex:1 }}>
+                        <div style={{ height:8, background:acc, opacity: (i + 1) === pc.tier ? 1 : ops[i] }} />
+                        <div style={{ fontSize:10, textTransform:'uppercase', letterSpacing:'.04em', color: (i + 1) === pc.tier ? 'var(--acc-deep)' : 'var(--ink55)', marginTop:5, fontWeight: (i + 1) === pc.tier ? 600 : 400 }}>{b}{(i + 1) === pc.tier ? ' ▲' : ''}</div>
                       </div>
                     ))}
                   </div>
-                )}
-              </div>
-              <button onClick={fetchReport} disabled={loading}
-                style={{ padding:'14px 24px', background:ACCENT, color:'white', border:'none', borderRadius:10, fontSize:15, cursor:'pointer', fontWeight:700, whiteSpace:'nowrap', opacity:loading?0.7:1, flexShrink:0 }}>
-                {loading ? '...' : 'Check →'}
-              </button>
-            </div>
-          </div>
-
-          {error && <p style={{ color:'#ef4444', fontSize:13, margin:'0 0 12px' }}>{error}</p>}
-
-          <div style={{ animation:'fadeIn 0.6s ease 0.5s both', display:'flex', flexWrap:'wrap', gap:8, marginBottom:20 }}>
-            {(searchCity==='Bangalore'
-              ? [['560034','Koramangala'],['560038','Indiranagar'],['560066','Whitefield'],['560102','HSR Layout'],['560011','Jayanagar'],['560100','Electronic City']]
-              : [['110016','Hauz Khas'],['110070','Vasant Kunj'],['122001','Gurugram'],['110033','Jahangirpuri'],['110085','Rohini'],['201301','Noida']]
-             ).map(([p,name]) => (
-              <button key={p} onClick={() => { setQuery(name); setPin(p); fetchReportByPin(p) }}
-                style={{ padding:'6px 14px', background:'none', border:`1px solid ${border}`, borderRadius:20, fontSize:12, cursor:'pointer', color:muted }}>
-                {name}
-              </button>
-            ))}
-          </div>
-
-          <div style={{ animation:'fadeIn 0.6s ease 0.55s both', marginBottom:48 }}>
-            <a href="/compare" style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'10px 20px', background:'none', border:`1.5px solid ${ACCENT}`, borderRadius:10, fontSize:13, fontWeight:600, color:ACCENT, textDecoration:'none' }}>
-              <DimIcon name="compare" size={15} color={ACCENT} /> Compare two areas side by side →
-            </a>
-          </div>
-
-          {/* What we score */}
-          <div style={{ animation:'fadeIn 0.6s ease 0.6s both', marginBottom:48 }}>
-            <p style={{ fontSize:12, fontWeight:600, color:muted, textTransform:'uppercase', letterSpacing:'0.08em', marginBottom:14 }}>What we score</p>
-            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(140px,1fr))', gap:10 }}>
-              {[
-                { key:'crime',          label:'Safety',         desc:'Crime rate per area from city police data' },
-                { key:'air',            label:'Air Quality',     desc:'Live AQI from CPCB monitoring stations' },
-                { key:'power',          label:'Power Supply',    desc:'Outage hours from the local DISCOM (BESCOM / BSES / Tata Power)' },
-                { key:'water',          label:'Water Supply',    desc:'Daily supply hours and TDS quality rating' },
-                { key:'roads',          label:'Road Condition',  desc:'Pothole density and last resurfacing year' },
-                { key:'infrastructure', label:'Infrastructure',  desc:'Metro access, highway proximity, zone type' },
-              ].map(f => (
-                <div key={f.label} style={{ padding:'14px', background:card, border:`1px solid ${border}`, borderRadius:12 }}>
-                  <div style={{ marginBottom:8 }}><DimIcon name={f.key} size={20} color={ACCENT} /></div>
-                  <div style={{ fontWeight:600, fontSize:13, marginBottom:4, color:text }}>{f.label}</div>
-                  <div style={{ fontSize:11, color:muted, lineHeight:1.5 }}>{f.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* How it works */}
-          <div style={{ animation:'fadeIn 0.6s ease 0.7s both', marginBottom:48 }}>
-            <p style={{ fontSize:12, fontWeight:600, color:muted, textTransform:'uppercase', letterSpacing:'0.08em', marginBottom:14 }}>How it works</p>
-            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))', gap:10 }}>
-              {[
-                { step:'1', title:'Enter your area', desc:'Type a neighbourhood name or 6-digit pin code' },
-                { step:'2', title:'See free preview', desc:'Safety, infrastructure and air quality scores instantly' },
-                { step:'3', title:'Unlock full report', desc:'Water, roads, sewerage, comparison and deep analysis for ₹199' },
-              ].map(f => (
-                <div key={f.step} style={{ padding:'16px', background:card, border:`1px solid ${border}`, borderRadius:12, display:'flex', gap:12, alignItems:'flex-start' }}>
-                  <div style={{ width:28, height:28, borderRadius:'50%', background:ACCENT, color:'white', display:'flex', alignItems:'center', justifyContent:'center', fontSize:13, fontWeight:800, flexShrink:0 }}>{f.step}</div>
-                  <div>
-                    <div style={{ fontWeight:600, fontSize:13, color:text, marginBottom:4 }}>{f.title}</div>
-                    <div style={{ fontSize:12, color:muted, lineHeight:1.5 }}>{f.desc}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Trust bar */}
-          <div style={{ animation:'fadeIn 0.6s ease 0.8s both', padding:'16px 20px', background:card, border:`1px solid ${border}`, borderRadius:12, display:'flex', flexWrap:'wrap', gap:20, alignItems:'center', justifyContent:'center', marginBottom:16 }}>
-            {[
-              { val:'152', label:'areas covered' },
-              { val:'8', label:'data dimensions' },
-              { val:'Live', label:'AQI data' },
-              { val:'₹199', label:'full report' },
-            ].map(s => (
-              <div key={s.label} style={{ textAlign:'center' }}>
-                <div style={{ fontSize:20, fontWeight:800, color:ACCENT }}>{s.val}</div>
-                <div style={{ fontSize:11, color:muted }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
-          </div>
-        </div>
-      )}
-
-      {/* ── Report ── */}
-      {!showLanding && (
-        <div className="report-wrap" style={{ maxWidth:1200, margin:'0 auto', padding:'24px 16px 80px' }}>
-
-          {/* Back + search */}
-          <div className="report-topbar" style={{ display:'flex', gap:8, marginBottom:20, alignItems:'center' }}>
-            <button onClick={() => { window.location.href = '/' }}
-              style={{ background:'none', border:`1px solid ${border}`, borderRadius:8, padding:'8px 12px', fontSize:13, cursor:'pointer', color:muted, flexShrink:0 }}>
-              ← Back
-            </button>
-            <div style={{ position:'relative', flex:1 }}>
-              <input value={query}
-                onChange={e => handleQueryChange(e.target.value)}
-                onKeyDown={e => { if(e.key==='Enter') fetchReport(); if(e.key==='Escape') setShowSugg(false) }}
-                onFocus={() => suggestions.length > 0 && setShowSugg(true)}
-                onBlur={() => setTimeout(() => setShowSugg(false), 150)}
-                placeholder="Area name or pin code"
-                style={{ width:'100%', padding:'8px 14px', background:card, border:`1px solid ${border}`, borderRadius:8, fontSize:14, color:text, outline:'none', boxSizing:'border-box' }} />
-              {showSugg && suggestions.length > 0 && (
-                <div style={{ position:'absolute', top:'calc(100% + 4px)', left:0, right:0, background:card, border:`1px solid ${border}`, borderRadius:10, zIndex:100, overflow:'hidden', boxShadow:'0 8px 24px rgba(0,0,0,0.12)' }}>
-                  {suggestions.map(s => (
-                    <div key={s.pin} onMouseDown={() => pickSuggestion(s)}
-                      style={{ padding:'10px 16px', cursor:'pointer', display:'flex', justifyContent:'space-between', alignItems:'center', borderBottom:`1px solid ${border}` }}
-                      onMouseEnter={e => e.currentTarget.style.background = subtle}
-                      onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-                    >
-                      <div>
-                        <span style={{ fontSize:13, fontWeight:500, color:text }}>{s.name}</span>
-                        <span style={{ fontSize:11, color:muted, marginLeft:8 }}>{s.area}</span>
-                      </div>
-                      <span style={{ fontSize:11, color:muted, fontFamily:'monospace' }}>{s.pin}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-            <button onClick={fetchReport} disabled={loading}
-              style={{ padding:'8px 16px', background:ACCENT, color:'white', border:'none', borderRadius:8, fontSize:13, cursor:'pointer', fontWeight:600, flexShrink:0 }}>
-              {loading ? '...' : 'Go'}
-            </button>
-          </div>
-
-          {loading && (
-            <div style={{ textAlign:'center', padding:'60px 0', color:muted }}>
-              <div style={{ fontSize:32, marginBottom:12 }}>⏳</div>
-              <p style={{ fontSize:14 }}>Loading report...</p>
-            </div>
-          )}
-
-          {error && <div style={{ background:'#fee2e2', border:'1px solid #fca5a5', borderRadius:10, padding:'12px 16px', color:'#dc2626', fontSize:14 }}>{error}</div>}
-
-          {noData && !report && (
-            <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:32, textAlign:'center', marginBottom:12 }}>
-              <div style={{ width:56, height:56, background:ACCENT+'15', borderRadius:14, display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 16px' }}><DimIcon name="pin" size={26} color={ACCENT} /></div>
-              <p style={{ margin:'0 0 4px', fontSize:12, color:muted, textTransform:'uppercase', letterSpacing:'0.06em' }}>{noData.area}</p>
-              <h2 style={{ margin:'0 0 8px', fontSize:24, fontWeight:800, color:text }}>{noData.name}</h2>
-              <p style={{ margin:'0 0 4px', fontSize:13, color:muted }}>Pin {noData.pin}</p>
-
-              <div style={{ margin:'20px auto', padding:'16px 20px', background: dark?'#1a1a1a':'#f9fafb', border:`1px solid ${border}`, borderRadius:12, maxWidth:360 }}>
-                <p style={{ margin:'0 0 6px', fontSize:14, fontWeight:600, color:text }}>Data coming soon</p>
-                <p style={{ margin:0, fontSize:13, color:muted, lineHeight:1.6 }}>
-                  We don't have neighborhood quality data for {noData.name} yet. We're expanding our coverage across Delhi NCR and will add this area soon.
-                </p>
-              </div>
-
-              <div style={{ margin:'0 auto 20px', maxWidth:360 }}>
-                <p style={{ fontSize:13, color:muted, marginBottom:10 }}>Get notified when {noData.name} data is available:</p>
-                <div style={{ display:'flex', gap:8 }}>
-                  <input
-                    placeholder="your@email.com"
-                    style={{ flex:1, padding:'10px 14px', background:card, border:`1px solid ${border}`, borderRadius:8, fontSize:13, color:text, outline:'none' }}
-                    onKeyDown={e => {
-                      if (e.key === 'Enter' && e.target.value.includes('@')) {
-                        e.target.value = ''
-                        e.target.placeholder = 'Thanks! We will notify you.'
-                        e.target.disabled = true
-                      }
-                    }}
-                  />
-                  <button
-                    style={{ padding:'10px 16px', background:ACCENT, color:'white', border:'none', borderRadius:8, fontSize:13, cursor:'pointer', fontWeight:600, whiteSpace:'nowrap' }}
-                    onClick={e => {
-                      const input = e.currentTarget.previousSibling
-                      if (input.value.includes('@')) {
-                        input.value = ''
-                        input.placeholder = 'Thanks! We will notify you.'
-                        input.disabled = true
-                      }
-                    }}
-                  >
-                    Notify me
-                  </button>
-                </div>
-              </div>
-
-              <p style={{ fontSize:12, color:muted }}>
-                Currently covering <strong style={{color:text}}>152 areas</strong> across Delhi NCR (Delhi, Gurugram, Noida, Faridabad) and Bangalore.
-              </p>
-            </div>
-          )}
-
-          {report && (
-            <>
-              <div className="report-grid">
-
-                {/* ── LEFT COLUMN ── */}
-                <div className="report-left">
-
-                  {/* Hero card */}
-                  <div style={{ position:'relative', zIndex:1, background:card, border:`1px solid ${border}`, borderRadius:16, padding:24, marginBottom:12, overflow:'hidden' }}>
-                    <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:`linear-gradient(90deg, ${ACCENT} 0%, ${ACCENT}88 50%, transparent 100%)`, borderRadius:'16px 16px 0 0' }}/>
-                    <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:20, marginTop:8 }}>
-                      <div>
-                        <p style={{ margin:0, fontSize:13, color:muted, textTransform:'uppercase', letterSpacing:'0.06em' }}>{meta.area}</p>
-                        <h2 style={{ margin:'4px 0 0', fontSize:34, fontWeight:800, letterSpacing:'-0.5px', color:text }}>{meta.name}</h2>
-                        <p style={{ margin:'4px 0 0', fontSize:14, color:muted }}>Pin {report.pin_code} · {report.dimensions_scored} of {report.dimensions_total} dimensions</p>
-                        {(() => { const saved = shortlist.includes(report.pin_code); return (
-                          <button onClick={() => toggleSaved(report.pin_code)}
-                            style={{ marginTop:10, display:'inline-flex', alignItems:'center', gap:6, fontSize:12.5, fontWeight:600, padding:'6px 12px', borderRadius:8, cursor:'pointer',
-                              border:`1px solid ${saved ? ACCENT : border}`, background: saved ? `${ACCENT}1a` : 'transparent', color: saved ? ACCENT : muted }}>
-                            <span style={{ fontSize:14 }}>{saved ? '★' : '☆'}</span>{saved ? 'Saved to shortlist' : 'Save to shortlist'}
-                          </button>
-                        )})()}
-                      </div>
-                      <div style={{ textAlign:'center', background:GRADE_COLOR[displayedGrade]+'18', borderRadius:12, padding:'12px 16px', minWidth:80, boxShadow:`0 0 20px ${GRADE_COLOR[displayedGrade]}30` }}>
-                        <div style={{ fontSize:46, fontWeight:900, color:GRADE_COLOR[displayedGrade], lineHeight:1, letterSpacing:'-1px' }}>{displayedNqi}</div>
-                        <div style={{ fontSize:18, fontWeight:700, color:GRADE_COLOR[displayedGrade] }}>{displayedGrade}</div>
-                        <div style={{ fontSize:10, color:muted, marginTop:2 }}>{isDefaultWeight ? 'NQI Score' : `Your score · ${weightPreset}`}</div>
-                      </div>
-                    </div>
-                    <div style={{ padding:'12px 14px', background:verdict.color+'15', borderLeft:`3px solid ${verdict.color}`, borderRadius:'0 8px 8px 0' }}>
-                      <span style={{ fontWeight:700, color:verdict.color, fontSize:16 }}>{verdict.label}</span>
-                      <p style={{ margin:'6px 0 0', fontSize:15, color:text, lineHeight:1.6 }}>{verdict.reason}</p>
-                    </div>
-                  </div>
-
-                  {/* Shortlist (issue #5) — saved areas, persisted in localStorage */}
-                  {shortlist.length > 0 && (
-                    <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:16, marginBottom:12 }}>
-                      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:10 }}>
-                        <p style={{ margin:0, fontSize:13, fontWeight:600, color:text, display:'flex', alignItems:'center', gap:8 }}>
-                          <span style={{ display:'inline-block', width:3, height:14, background:ACCENT, borderRadius:2 }}/>
-                          Your shortlist ({shortlist.length})
-                        </p>
-                        {shortlist.length >= 2 && (
-                          <a href={`/compare?a=${shortlist[0]}&b=${shortlist[1]}`} style={{ fontSize:11.5, fontWeight:600, color:ACCENT, textDecoration:'none' }}>Compare top 2 →</a>
-                        )}
-                      </div>
-                      <div style={{ display:'flex', flexWrap:'wrap', gap:8 }}>
-                        {shortlist.map(p => (
-                          <div key={p} style={{ display:'inline-flex', alignItems:'center', gap:4, padding:'5px 6px 5px 12px', background:subtle, borderRadius:20, fontSize:12 }}>
-                            <a href={`/report/${p}`} style={{ color:text, textDecoration:'none', fontWeight:500 }}>{PIN_META[p]?.name || p}</a>
-                            <button onClick={() => toggleSaved(p)} aria-label={`Remove ${PIN_META[p]?.name || p}`} style={{ border:'none', background:'none', color:muted, cursor:'pointer', fontSize:15, lineHeight:1, padding:'0 3px' }}>×</button>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Radar — Dimension overview */}
-                  {radarData.length > 1 && (
-                    <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:'20px 16px', marginBottom:12 }}>
-                      <p style={{ margin:'0 0 12px', fontSize:14, fontWeight:600, color:text, display:'flex', alignItems:'center', gap:8 }}>
-                        <span style={{ display:'inline-block', width:3, height:14, background:ACCENT, borderRadius:2 }}/>
-                        Dimension overview
-                      </p>
-                      <ResponsiveContainer width="100%" height={300}>
-                        <RadarChart data={radarData} outerRadius="72%">
-                          <PolarGrid stroke={border} />
-                          <PolarAngleAxis dataKey="subject" tick={{ fontSize:11, fill:muted }} />
-                          <Radar dataKey="score" stroke={ACCENT} fill={ACCENT} fillOpacity={0.15} strokeWidth={2} />
-                          <Tooltip contentStyle={{ background:card, border:`1px solid ${border}`, borderRadius:8, fontSize:12 }} />
-                        </RadarChart>
-                      </ResponsiveContainer>
-                    </div>
-                  )}
-                </div>
-
-                {/* ── RIGHT COLUMN ── */}
-                <div>
-
-                <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
-                  <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:10, marginBottom:14 }}>
-                    <p style={{ margin:0, fontSize:16, fontWeight:600, color:text, display:'flex', alignItems:'center', gap:8 }}>
-                      <span style={{ display:'inline-block', width:3, height:16, background:ACCENT, borderRadius:2 }}/>
-                      Score breakdown
-                    </p>
-                    <div style={{ display:'flex', gap:6, flexWrap:'wrap' }}>
-                      {[...Object.keys(WEIGHT_PRESETS), 'Custom'].map(name => (
-                        <button key={name} onClick={() => setWeightPreset(name)} style={{
-                          fontSize:11, fontWeight:600, padding:'5px 11px', borderRadius:100, cursor:'pointer',
-                          border:`1px solid ${weightPreset===name ? ACCENT : border}`,
-                          background: weightPreset===name ? ACCENT+'1a' : 'transparent',
-                          color: weightPreset===name ? ACCENT : muted,
-                        }}>{name}</button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {isDefaultWeight ? (
-                    <p style={{ margin:'0 0 20px', fontSize:12, color:muted, lineHeight:1.5 }}>
-                      The {report.nqi_composite ?? '—'} NQI is a weighted average of the dimensions below — the % next to each
-                      one is exactly how much it counts.
-                      {report.dimensions_scored != null && report.dimensions_total != null && report.dimensions_scored < report.dimensions_total && (
-                        <> Only {report.dimensions_scored} of {report.dimensions_total} had data for this pin, so the rest were rescaled to still add up to 100%.</>
-                      )}
-                    </p>
-                  ) : (
-                    <div style={{ margin:'0 0 20px', padding:'14px', background:subtle, borderRadius:10 }}>
-                      <p style={{ margin:'0 0 8px', fontSize:12, color:muted, lineHeight:1.5 }}>
-                        {weightPreset === 'Custom'
-                          ? 'Drag to set your own priorities — the weights below adjust automatically to stay at 100%.'
-                          : `Same underlying data, recalculated using the "${weightPreset}" weighting.`}
-                      </p>
-                      <p style={{ margin:0 }}>
-                        <span style={{ fontSize:24, fontWeight:800, color:text }}>{recomputedNqi}</span>
-                        <span style={{ fontSize:12, color:muted, fontWeight:400 }}>/100 for you</span>
-                        <span style={{ fontSize:11, color:muted, fontWeight:400, marginLeft:10 }}>official score: {report.nqi_composite}</span>
-                      </p>
-                      {weightPreset === 'Custom' && (
-                        <div style={{ marginTop:14, display:'flex', flexDirection:'column', gap:12 }}>
-                          {availableDims.map(k => (
-                            <div key={k}>
-                              <div style={{ display:'flex', justifyContent:'space-between', fontSize:11, color:muted, marginBottom:4 }}>
-                                <span>{DIM_LABEL[k]}</span>
-                                <span style={{ color:text, fontWeight:600 }}>{Math.round((normWeights[k]||0)*100)}%</span>
-                              </div>
-                              <input
-                                type="range" min="0" max="100" step="1"
-                                value={customWeights[k] ?? 0}
-                                onChange={e => setCustomWeights({ ...customWeights, [k]: Number(e.target.value) })}
-                                style={{ width:'100%', accentColor:ACCENT }}
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {/* Data freshness (issue #1) */}
-                  <div style={{ display:'flex', alignItems:'center', gap:8, flexWrap:'wrap', margin:'0 0 16px', padding:'8px 12px', background:subtle, borderRadius:8, fontSize:11.5, color:muted, lineHeight:1.5 }}>
-                    <span style={{ display:'inline-flex', alignItems:'center', gap:5 }}><span style={{ width:6, height:6, borderRadius:'50%', background:'#22c55e', display:'inline-block' }}/><strong style={{ color:text }}>Air</strong> is live — refreshed daily.</span>
-                    <span style={{ opacity:0.5 }}>·</span>
-                    <span style={{ display:'inline-flex', alignItems:'center', gap:5 }}><span style={{ width:6, height:6, borderRadius:'50%', background:'#f97316', display:'inline-block' }}/>All other dimensions are estimated from government reports, <strong style={{ color:text }}>last verified 2023–24</strong>.</span>
-                    {report.scored_at && <span style={{ opacity:0.8 }}>Scored {new Date(report.scored_at).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' })}.</span>}
-                  </div>
-
-                  {Object.entries(report.scores).map(([k,v]) => {
-                    const c = v>=80?'#22c55e':v>=60?'#84cc16':v>=40?'#f97316':'#ef4444'
-                    const baseW    = report.weights_base?.[k]
-                    const appliedW = report.weights_applied?.[k]
-                    const reweighted = baseW !== undefined && appliedW !== undefined && Math.abs(appliedW - baseW) > 0.001
-                    const shownWeight = isDefaultWeight ? appliedW : normWeights[k]
-                    return (
-                      <div key={k} style={{ marginBottom:20 }}>
-                        <div style={{ display:'flex', justifyContent:'space-between', marginBottom:8, flexWrap:'wrap', gap:6 }}>
-                          <div style={{ display:'flex', alignItems:'center', gap:8, flexWrap:'wrap' }}>
-                            <DimIcon name={k} size={18} color={ACCENT} />
-                            <span style={{ fontSize:16, fontWeight:600, color:text }}>{DIM_LABEL[k]}</span>
-                            {DIM_TAG[k] && <TagBadge tag={DIM_TAG[k]} card={card} border={border} dark={dark} muted={muted} text={text} />}
-                            {shownWeight !== undefined && (
-                              <span style={{ fontSize:11, fontWeight:600, color:muted, background:subtle, padding:'3px 9px', borderRadius:7, whiteSpace:'nowrap' }}>
-                                {isDefaultWeight && reweighted && (
-                                  <span style={{ textDecoration:'line-through', opacity:0.55, marginRight:4 }}>
-                                    {Math.round(baseW * 100)}%
-                                  </span>
-                                )}
-                                {Math.round(shownWeight * 100)}% weight
-                              </span>
-                            )}
-                          </div>
-                          <span style={{ fontSize:18, fontWeight:800, color:c }}>{v}<span style={{ fontSize:13, color:muted, fontWeight:400 }}>/100</span></span>
-                        </div>
-                        <div style={{ background:subtle, borderRadius:99, height:8, overflow:'hidden' }}>
-                          <div style={{ width:v+'%', height:'100%', background:c, borderRadius:99, transition:'width 0.8s ease' }}/>
-                        </div>
-                        <p style={{ fontSize:12, color:muted, margin:'6px 0 0', lineHeight:1.5 }}>{dimDesc(k, report.city)}</p>
-                        {k === 'crime' && report.crime_percentile != null && (
-                          <p style={{ fontSize:12, color:muted, margin:'4px 0 0', lineHeight:1.5 }}>
-                            {report.total_cognizable_crimes} total crimes reported — safer than <strong style={{color:text}}>{report.crime_percentile}%</strong> of tracked areas in {report.city} ({report.crime_tier} tier).
-                          </p>
-                        )}
-                        {k === 'air' && report.aqi_category && (
-                          <p style={{ fontSize:12, color:muted, margin:'4px 0 0', lineHeight:1.5 }}>
-                            {report.aqi_avg != null && <>AQI ~{Math.round(report.aqi_avg)} · </>}<strong style={{color:text}}>{report.aqi_category}</strong> — {AQI_PLAIN[report.aqi_category] || 'air quality band from CPCB thresholds.'}
-                          </p>
-                        )}
-                      </div>
-                    )
-                  })}
-                </div>
-
-              </div>{/* end right column */}
-              </div>{/* end report-grid */}
-
-              {/* Paywall — full width, below fold */}
-                {!unlocked ? (
-                  <div style={{ marginTop:80, marginBottom:12 }}>
-                    <div style={{ background:card, border:`2px dashed ${border}`, borderRadius:16, padding:40, textAlign:'center', maxWidth:600, margin:'0 auto' }}>
-                      <div style={{ width:44, height:44, background:subtle, borderRadius:12, display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 12px' }}><DimIcon name="lock" size={20} color={muted} /></div>
-                      <h3 style={{ margin:'0 0 6px', fontSize:18, fontWeight:700, color:text }}>Full neighbourhood report</h3>
-                      <p style={{ margin:'0 0 20px', color:muted, fontSize:13 }}>Deep dive into safety, infrastructure, water, roads, sewerage and more</p>
-                      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8, marginBottom:24, textAlign:'left', maxWidth:360, margin:'0 auto 24px' }}>
-                        {["Highlights & risk flags","Buy / Consider / Avoid","Crime deep-dive","Infrastructure details","Compare 4 nearby areas","Data methodology"].map(item => (
-                          <div key={item} style={{ display:'flex', gap:6, fontSize:12, color:muted, alignItems:'flex-start' }}>
-                            <span style={{ color:'#22c55e', fontWeight:700 }}>✓</span>{item}
-                          </div>
-                        ))}
-                      </div>
-                      <div style={{ display:'flex', justifyContent:'center' }}>
-                        <button onClick={() => setUnlocked(true)} data-unlock="true"
-                          style={{ background:ACCENT, color:'white', border:'none', padding:'13px 40px', borderRadius:10, fontSize:15, cursor:'pointer', fontWeight:700, boxShadow:`0 4px 24px ${ACCENT}55` }}>
-                          View full report →
-                        </button>
-                      </div>
-                      <p style={{ margin:'10px 0 0', fontSize:11, color:muted }}>Includes water, roads, sewerage, comparison & methodology</p>
-                    </div>
-                  </div>
-                ) : (
-                  <>
-                  {/* Neighbourhood Report heading — moved here (above Highlights) so the
-                      score breakdown can align with the NQI card at the top. */}
-                  <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:12, paddingBottom:14, borderBottom:`1px solid ${border}` }}>
-                    <span style={{ display:'inline-block', width:3, height:20, background:ACCENT, borderRadius:2 }}/>
-                    <h2 style={{ margin:0, fontSize:20, fontWeight:700, color:text, letterSpacing:'-0.3px' }}>Neighbourhood Report</h2>
-                    <div style={{ marginLeft:'auto', display:'flex', alignItems:'center', gap:8 }}>
-                      <span style={{ fontSize:12, color:muted }}>{meta?.name} · {report?.pin_code}</span>
-                      <PDFDownloadButton
-                        areaName={meta?.name}
-                        pin={report?.pin_code}
-                      />
-                      <WhatsAppShareButton
-                        areaName={meta?.name}
-                        pin={report?.pin_code}
-                        score={report?.nqi_composite}
-                        grade={report?.grade}
-                        verdict={verdict?.label}
-                        scores={report?.scores || {}}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Highlights */}
-                  {(good.length > 0 || bad.length > 0) && (
-                    <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
-                      <p style={{ margin:'0 0 14px', fontSize:13, fontWeight:600, color:text, display:'flex', alignItems:'center', gap:8 }}>
-                        <span style={{ display:'inline-block', width:3, height:14, background:ACCENT, borderRadius:2 }}/>
-                        Highlights & risks
-                      </p>
-                      {good.map((h,i) => (
-                        <div key={i} style={{ display:'flex', gap:8, marginBottom:8, fontSize:13 }}>
-                          <span style={{ color:'#22c55e', fontWeight:700 }}>✓</span>
-                          <span style={{ color:text, lineHeight:1.4 }}>{h}</span>
-                        </div>
-                      ))}
-                      {bad.map((r,i) => (
-                        <div key={i} style={{ display:'flex', gap:8, marginBottom:8, fontSize:13 }}>
-                          <span style={{ color:'#ef4444', fontWeight:700 }}>✗</span>
-                          <span style={{ color:text, lineHeight:1.4 }}>{r}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Price context — buyer-facing ₹/sq ft govt circle-rate band (Issue #7).
-                      Informational only, deliberately NOT part of the NQI. */}
-                  {report.price_context && report.price_context.rate_sqft && (() => {
-                    const pc = report.price_context
-                    const bands = ['Premium','Upper','Mid','Modest','Value']
-                    const inr = n => '₹' + Number(n).toLocaleString('en-IN')
-                    const [lo, hi] = pc.rate_sqft
-                    const typeLabel = pc.rate_type === 'land'
-                      ? 'government land / plot rate'
-                      : pc.rate_type === 'apartment/land'
-                        ? 'government rate (flats or plots)'
-                        : 'government apartment rate'
-                    // market estimate: circle rate is a floor; NCR market ~20-70% higher.
-                    const mLo = Math.round(lo * 1.2 / 100) * 100
-                    const mHi = Math.round(hi * 1.6 / 100) * 100
-                    const fmtTot = v => v >= 10000000
-                      ? '₹' + (v / 10000000).toFixed(v / 10000000 >= 10 ? 0 : 1) + ' cr'
-                      : '₹' + Math.round(v / 100000) + ' lakh'
-                    const totLo = fmtTot(mLo * 1000), totHi = fmtTot(mHi * 1000)
-                    const blr = report.city === 'Bangalore'
-                    const rateWord = blr ? 'guidance value' : 'circle rate'
-                    const regionShort = blr ? 'Bengaluru' : 'NCR'
-                    return (
-                      <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
-                        <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 16px' }}>
-                          <DimIcon name="price" size={16} color={ACCENT} />
-                          <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Price context</span>
-                          <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
-                        </div>
-
-                        {/* Headline number */}
-                        <div style={{ display:'flex', flexWrap:'wrap', alignItems:'baseline', gap:'6px 10px', marginBottom:4 }}>
-                          <span style={{ fontSize:26, fontWeight:800, color:text, letterSpacing:'-0.5px' }}>{inr(lo)}–{inr(hi)}</span>
-                          <span style={{ fontSize:14, color:muted, fontWeight:500 }}>/ sq ft</span>
-                          <span style={{ fontSize:11, fontWeight:700, color:ACCENT, background:`${ACCENT}1a`, padding:'3px 8px', borderRadius:6 }}>{pc.label} band</span>
-                        </div>
-                        <p style={{ fontSize:12.5, color:muted, margin:'0 0 16px', lineHeight:1.5 }}>
-                          {pc.rate_exact ? 'Official' : 'Indicative'} {typeLabel} — the <strong style={{ color:text }}>{rateWord}</strong> ({blr ? <>Karnataka&apos;s term for the government minimum rate</> : <>Haryana calls it the <strong style={{ color:text }}>collector rate</strong></>} — same thing), i.e. the government&apos;s minimum value used to calculate stamp duty &amp; registration.
-                          {pc.land_sqft ? <> Plot / land here is officially <strong style={{ color:text }}>{inr(pc.land_sqft)}/sq ft</strong>.</> : null}
-                        </p>
-
-                        {/* Tier scale */}
-                        <div style={{ display:'flex', gap:5, marginBottom:8 }}>
-                          {bands.map((label, idx) => {
-                            const on = (idx + 1) === pc.tier
-                            return (
-                              <div key={label} style={{ flex:1, textAlign:'center' }}>
-                                <div style={{ height:9, borderRadius:99, background:on?ACCENT:subtle, boxShadow:on?`0 0 0 3px ${ACCENT}33`:'none' }}/>
-                                <div style={{ fontSize:11, fontWeight:on?800:500, color:on?text:muted, marginTop:7 }}>{label}</div>
-                              </div>
-                            )
-                          })}
-                        </div>
-                        <div style={{ display:'flex', justifyContent:'space-between', fontSize:10.5, color:muted, opacity:0.8, marginBottom:16 }}>
-                          <span>Most expensive in {regionShort}</span><span>Most affordable</span>
-                        </div>
-
-                        {/* What you'll actually pay */}
-                        <div style={{ background:subtle, borderRadius:10, padding:'12px 14px', marginBottom:10 }}>
-                          <p style={{ fontSize:13, color:text, margin:'0 0 4px', lineHeight:1.5, fontWeight:600 }}>
-                            What you&apos;ll actually pay is higher
-                          </p>
-                          <p style={{ fontSize:12.5, color:muted, margin:0, lineHeight:1.6 }}>
-                            Market prices in {blr ? 'Bengaluru' : 'the NCR'} usually run <strong style={{ color:text }}>20–70% above</strong> the {rateWord}, so expect roughly <strong style={{ color:text }}>{inr(mLo)}–{inr(mHi)}/sq ft</strong> in practice. A ~1,000 sq ft flat here would be around <strong style={{ color:text }}>{totLo}–{totHi}</strong>. Home loans are usually capped near the {rateWord} value, so the gap above it typically comes from your own funds.
-                          </p>
-                        </div>
-
-                        <p style={{ fontSize:11.5, color:muted, margin:0, lineHeight:1.55, opacity:0.85 }}>
-                          Indicative government valuation, not a market quote — a single PIN spans cheaper and pricier pockets, and this does not affect the livability score. Source: {pc.basis}.
-                        </p>
-                      </div>
-                    )
-                  })()}
-
-                  {/* Crime */}
-                  <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
-                    <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 14px' }}>
-                      <DimIcon name="crime" size={16} color={ACCENT} />
-                      <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Crime</span>
-                      <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
-                    </div>
-                    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8 }}>
-                      {[
-                        ['Total crimes', report.total_cognizable_crimes ?? '—', 'Total cognizable crimes reported annually for this pin\'s police station catchment — IPC offences serious enough that police can arrest without a warrant. The catchment can span a wider area than any one street or colony.\n\nSource: ' + (report.city === 'Bangalore' ? 'Bengaluru City Police / NCRB.' : 'Delhi Police Annual Report 2022-23.')],
-                        ['Safety score', (report.scores.crime ?? '—') + '/100', 'Inverse-normalized against total cognizable crimes: 250 or fewer scores 100, 650 or more scores 0, linear in between.'],
-                        ['Safer than', report.crime_percentile != null ? report.crime_percentile + '% of areas' : '—', 'Percentile rank of this pin\'s raw crime count against every other tracked area in the same city (Delhi crime and Bengaluru crime are ranked separately, since they come from different police datasets). A tied count gets no credit either way.\n\nThis is a relative ranking, not a true per-capita rate — it doesn\'t yet account for how many people live in each catchment.'],
-                        ['Crime tier', report.crime_tier ?? '—', 'Very Low / Low / Moderate / High / Very High, based on percentile rank:\n\n• 80%+ = Very Low\n• 60-79% = Low\n• 40-59% = Moderate\n• 20-39% = High\n• Below 20% = Very High'],
-                        ['Source year', '2022-23', null],
-                      ].map(([label, val, tooltip]) => (
-                        <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Power */}
-                  <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
-                    <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 14px' }}>
-                      <DimIcon name="power" size={16} color={ACCENT} />
-                      <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Power supply</span>
-                      <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
-                    </div>
-                    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8 }}>
-                      {[
-                        ['Discom', report.discom ?? '—', 'The electricity distribution company serving this area — BESCOM in Bengaluru; BSES Rajdhani, BSES Yamuna, Tata Power, or DHBVN in Delhi NCR.'],
-                        ['Reliability', report.reliability ?? '—', 'Qualitative reliability rating derived from outage frequency and consumer complaint data in DISCOM annual reports.'],
-                        ['Avg cut hrs', (report.avg_outage_hours ?? '—') + ' hrs/mo', 'Average monthly power outage duration in hours, based on DISCOM annual reports and consumer complaint data — not live-metered.'],
-                        ['Score', (report.scores.power ?? '—') + '/100', 'Weighted blend of outage frequency (60% of this dimension) and average outage duration (40%).'],
-                      ].map(([label, val, tooltip]) => (
-                        <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Infrastructure */}
-                  <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
-                    <p style={{ margin:'0 0 14px', fontSize:16, fontWeight:700, color:text, display:'flex', alignItems:'center', gap:10, letterSpacing:'-0.2px' }}>
-                      <span style={{ display:'inline-block', width:4, height:18, background:ACCENT, borderRadius:2 }}/>
-                      Infrastructure details
-                    </p>
-
-                    {/* Connectivity */}
-                    <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 14px' }}>
-                      <DimIcon name="connectivity" size={16} color={ACCENT} />
-                      <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Connectivity</span>
-                      <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
-                    </div>
-                    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8, marginBottom:20 }}>
-                      {[
-                        ['Zone', report.zone_type||'—', null],
-                        ['Metro nearby', report.metro_stations_nearby??'—', null],
-                        ['Metro planned', report.metro_planned_stations??'—', null],
-                        ['Highway', report.highway_proximity||'—', null],
-                        ['Smart City', report.smart_city_project?'Yes':'No', null],
-                        ['Infra score', (report.infra_score_raw||'—')+'/100', 'The infrastructure score (0–100) is calculated from 5 factors:\n\n• Zone type: Residential zones score highest (25 pts)\n• Metro access: Each operational station nearby adds 12 pts (max 24)\n• Planned metro: Approved stations add 6 pts\n• Highway proximity: High = 20 pts, Medium = 12, Low = 5\n• Smart Cities Mission coverage: +10 pts\n\nAll components are capped at 100.'],
-                      ].map(([label, val, tooltip]) => (
-                        <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
-                      ))}
-                    </div>
-
-                    {/* Water */}
-                    <div style={{ display:'flex', alignItems:'center', gap:12, margin:'24px 0 14px' }}>
-                      <DimIcon name="water" size={16} color={ACCENT} />
-                      <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Water supply</span>
-                      <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
-                    </div>
-                    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8, marginBottom:20 }}>
-                      {[
-                        ['Daily supply', (report.supply_hours??'—')+' hrs', 'Average number of hours per day that piped water supply is available. Delhi target is 24 hrs. Most areas receive 6–20 hrs depending on zone.'],
-                        ['Quality', report.tds_level ? report.tds_level+' TDS' : '—', 'TDS stands for Total Dissolved Solids — the amount of minerals, salts and metals dissolved in water.\n\n• Low TDS (below 300 mg/L): Ideal drinking water\n• Medium TDS (300–600 mg/L): Acceptable, may taste slightly hard\n• High TDS (600–900 mg/L): Hard water, can cause scaling and health concerns\n• Very High TDS (above 900 mg/L): Not recommended for drinking without filtration\n\nDelhi groundwater often has high TDS due to industrial run-off.'],
-                        ['Coverage', ((report.water_coverage ?? report.coverage_pct)??'—')+'%', 'Percentage of households in this area with a piped water connection from the municipal supply. Areas below 80% rely heavily on tankers or groundwater.'],
-                        ['Authority', report.source||'—', null],
-                        ['Complaints', report.complaints_per_1000 ? report.complaints_per_1000+'/1000' : '—', 'Number of water supply complaints filed per 1,000 households annually with the local water utility (DJB in Delhi, BWSSB in Bengaluru). Lower is better.'],
-                        ['Quality score', ((report.water_quality ?? report.quality_score)??'—')+'/5', 'Composite water quality score (1–5) based on TDS levels, complaint density, and supply hours. 5 = excellent (NDMC zones), 1 = poor (peripheral areas with groundwater dependence).'],
-                      ].map(([label, val, tooltip]) => (
-                        <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
-                      ))}
-                    </div>
-
-                    {/* Roads */}
-                    <div style={{ display:'flex', alignItems:'center', gap:12, margin:'24px 0 14px' }}>
-                      <DimIcon name="roads" size={16} color={ACCENT} />
-                      <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Road quality</span>
-                      <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
-                    </div>
-                    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8, marginBottom:20 }}>
-                      {[
-                        ['Condition', report.road_condition||'—', 'Overall road surface condition rating:\n\n• Excellent: Smooth, no potholes, recently resurfaced\n• Good: Minor wear, few potholes\n• Average: Visible deterioration, moderate potholes\n• Poor: Significant damage, frequent potholes\n• Very Poor: Severely damaged, hazardous conditions'],
-                        ['Potholes/km', report.pothole_density??'—', 'Estimated number of potholes per kilometre of road. Based on municipal road-survey data (MCD in Delhi, BBMP in Bengaluru) and citizen complaint density.\n\n• Below 2/km: Good condition\n• 2–5/km: Average\n• Above 5/km: Poor\n• Above 10/km: Very poor, dangerous for vehicles'],
-                        ['Connectivity', report.connectivity||'—', 'Road network connectivity rating for the area — how well it connects to major arterial roads, highways and neighbouring areas.\n\n• High: Multiple entry/exit points, arterial road access\n• Medium: Limited connections, some bottlenecks\n• Low: Single access road or poor internal network'],
-                        ['Authority', report.authority||'—', 'The government body responsible for road maintenance in this area (e.g. NDMC / PWD / MCD in Delhi, BBMP in Bengaluru). Arterial and civic-agency roads are generally better maintained than dense inner-city municipal roads.'],
-                        ['Last resurfaced', report.last_resurfaced??'—', 'Year when the main roads in this area were last resurfaced or significantly repaired. Roads are typically due for resurfacing every 5–7 years.'],
-                        ['Quality score', ((report.road_quality ?? report.quality_score)??'—')+'/5', 'Road quality score (1–5) based on pothole density, last resurfacing year, and official condition ratings from MCD and PWD surveys.'],
-                      ].map(([label, val, tooltip]) => (
-                        <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
-                      ))}
-                    </div>
-
-                    {/* Sewerage */}
-                    <div style={{ display:'flex', alignItems:'center', gap:12, margin:'24px 0 14px' }}>
-                      <DimIcon name="sewerage" size={16} color={ACCENT} />
-                      <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Sewerage & drainage</span>
-                      <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
-                    </div>
-                    <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8 }}>
-                      {[
-                        ['Sewer coverage', ((report.sewerage_coverage ?? report.coverage_pct)??'—')+'%', 'Percentage of households connected to the underground sewerage network. Areas below 70% rely on septic tanks or open drains which can contaminate groundwater.'],
-                        ['Treatment', report.treatment||'—', 'Whether sewage from this area reaches a Sewage Treatment Plant (STP) before discharge:\n\n• Adequate: Full STP treatment\n• Partial: Some sewage treated, some bypasses\n• Inadequate: Sewage largely untreated, discharged directly\n\nUntreated sewage is a major cause of groundwater contamination in Delhi.'],
-                        ['Waterlogging risk', report.waterlogging_risk ? (6-report.waterlogging_risk)+'/5 risk' : '—', 'Risk of waterlogging during heavy monsoon rains (1 = highest risk, 5 = lowest). Based on drainage network capacity, historical flooding records, and area elevation. Low-lying areas near drains are most at risk.'],
-                        ['Open drains', report.open_drains===true?'Yes':report.open_drains===false?'No':'—', 'Whether the area has open (uncovered) drains. Open drains are a health hazard — they breed mosquitoes, emit foul odour, and overflow during monsoons causing waterlogging.'],
-                        ['Flood incidents', report.flooding_incidents_annual!=null ? report.flooding_incidents_annual+'/year' : '—', 'Average number of significant waterlogging or flooding incidents recorded per year in this area. Based on state disaster-management authority and civic complaint data.'],
-                        ['Overall risk', report.waterlogging_risk>=4?'Low':report.waterlogging_risk>=3?'Medium':'High', 'Overall drainage and flooding risk classification for the area during monsoon season (June–September).'],
-                      ].map(([label, val, tooltip]) => (
-                        <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
-                      ))}
-                    </div>
-
-                    {/* Waterlogging summary (Issue #8) — field inverted: 5 = safest, 1 = high flood risk */}
-                    {report.waterlogging_risk != null && (() => {
-                      const wl = report.waterlogging_risk
-                      const level = wl >= 5 ? 'Very low' : wl >= 4 ? 'Low' : wl >= 3 ? 'Moderate' : wl >= 2 ? 'High' : 'Very high'
-                      const col = wl >= 4 ? '#22c55e' : wl >= 3 ? '#eab308' : '#ef4444'
-                      const msg = wl <= 2
-                        ? `prone to monsoon flooding${report.flooding_incidents_annual ? ` — around ${report.flooding_incidents_annual} incidents a year` : ''}. Check drainage on-site before buying.`
-                        : wl >= 4 ? 'drains well, with a low chance of monsoon waterlogging.'
-                        : 'some monsoon waterlogging possible in low-lying spots.'
-                      return (
-                        <p style={{ fontSize:13, color:muted, margin:'14px 0 0', lineHeight:1.6, display:'flex', gap:8, alignItems:'flex-start' }}>
-                          <span style={{ marginTop:2 }}><DimIcon name="water" size={14} color={col} /></span>
-                          <span><strong style={{ color:col }}>{level} waterlogging risk</strong> — {msg}</span>
-                        </p>
-                      )
-                    })()}
-                  </div>
-
-                  {/* Schools & Education */}
-                  {(report.schools_count > 0) && (
-                    <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
-
-                      {/* Header */}
-                      <div style={{ display:'flex', alignItems:'center', gap:12, margin:'0 0 16px' }}>
-                        <DimIcon name="schools" size={16} color={ACCENT} />
-                        <span style={{ fontSize:15, fontWeight:800, color:text, letterSpacing:'-0.3px', fontFamily:'Georgia, serif' }}>Schools & Education</span>
-                        <div style={{ flex:1, height:1, background:`linear-gradient(90deg, ${ACCENT}60, transparent)` }}/>
-                      </div>
-
-                      {/* Summary stats */}
-                      <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8, marginBottom:16 }}>
-                        {[
-                          ['Schools nearby', report.schools_count ?? '—', 'Total CBSE-affiliated schools found in or near this pin code. Based on CBSE affiliation database (2018 data — school count in established NCR areas is stable).'],
-                          ['CBSE schools', report.schools_cbse ?? '—', 'Number of schools with active CBSE affiliation. CBSE is the national board — generally preferred by homebuyers for transferability and curriculum consistency.'],
-                          ['Avg pass %', report.schools_avg_pass != null ? `${report.schools_avg_pass}%` : 'N/A', 'Average Class 10 / Class 12 pass percentage across schools in this area where result data is available. N/A means pass data was not in this dataset.'],
-                        ].map(([label, val, tooltip]) => (
-                          <InfoBox key={label} label={label} val={String(val)} tooltip={tooltip} subtle={subtle} muted={muted} text={text} card={card} border={border} dark={dark} />
-                        ))}
-                      </div>
-
-                      {/* School list */}
-                      {Array.isArray(report.schools_list) && report.schools_list.length > 0 && (
-                        <SchoolList schools={report.schools_list} dark={dark} card={card} border={border} text={text} muted={muted} subtle={subtle} />
-                      )}
-                    </div>
-                  )}
-
-                  {/* Nearby */}
-                  {nearby.length > 0 && (
-                    <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
-                      <p style={{ margin:'0 0 14px', fontSize:16, fontWeight:700, color:text, display:'flex', alignItems:'center', gap:10, letterSpacing:'-0.2px' }}>
-                        <span style={{ display:'inline-block', width:4, height:18, background:ACCENT, borderRadius:2 }}/>
-                        Compare nearby areas
-                      </p>
-                      {[report,...nearby].map(r => {
-                        const m = PIN_META[r.pin_code]||{name:r.pin_code}
-                        const isMain = r.pin_code === report.pin_code
-                        const gc = GRADE_COLOR[r.grade]||'#888'
-                        return (
-                          <div key={r.pin_code} style={{ display:'flex', alignItems:'center', padding:'10px 0', borderBottom:`1px solid ${border}` }}>
-                            <div style={{ width:4, height:36, borderRadius:2, background:isMain?ACCENT:'transparent', marginRight:12, flexShrink:0 }}/>
-                            <div style={{ flex:1 }}>
-                              <span style={{ fontSize:13, fontWeight:isMain?700:400, color:text }}>{m.name}</span>
-                              {isMain && <span style={{ fontSize:10, background:ACCENT, color:'white', padding:'1px 6px', borderRadius:4, marginLeft:6, fontWeight:600 }}>THIS AREA</span>}
-                              <p style={{ margin:'2px 0 0', fontSize:11, color:muted }}>{r.pin_code}</p>
-                            </div>
-                            <div style={{ textAlign:'right' }}>
-                              <div style={{ fontSize:18, fontWeight:800, color:gc }}>{r.nqi_composite}</div>
-                              <div style={{ fontSize:11, color:gc, fontWeight:600 }}>{r.grade}</div>
-                            </div>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  )}
-
-                  {/* Commute Reality Check */}
-                  <CommuteChecker fromPin={report.pin_code} fromName={meta.name} dark={dark} />
-
-                  {/* Methodology */}
-                  <div style={{ background:card, border:`1px solid ${border}`, borderRadius:16, padding:20, marginBottom:12 }}>
-                    <p style={{ margin:'0 0 12px', fontSize:16, fontWeight:700, color:text, display:'flex', alignItems:'center', gap:10, letterSpacing:'-0.2px' }}>
-                      <span style={{ display:'inline-block', width:4, height:18, background:ACCENT, borderRadius:2 }}/>
-                      Methodology & data sources
-                    </p>
-                    <div style={{ fontSize:12, color:muted, lineHeight:1.9 }}>
-                      {['crime','infrastructure','air','power','schools','water','roads','sewerage'].map(k => {
-                        const w = WEIGHT_PRESETS.Default[k] || 0
-                        const live = k === 'air'
-                        return (
-                          <p key={k} style={{ margin:'0 0 6px' }}>
-                            <strong style={{color:text}}>{DIM_LABEL[k]} {w}%</strong>
-                            <span style={{ marginLeft:8, fontSize:10, background:(live?'#22c55e25':'#f9731620'), color:(live?'#22c55e':'#f97316'), padding:'1px 6px', borderRadius:4, fontWeight:600 }}>{live?'LIVE':'ESTIMATED'}</span>
-                            <br/>{dimDesc(k, report.city)}
-                          </p>
-                        )
-                      })}
-                    </div>
-
-                    {/* Legal disclaimer box */}
-                    <div style={{ marginTop:16, padding:'12px 14px', background: dark?'#1f1a0a':'#fffbeb', border:`1px solid ${dark?'#92400e44':'#fcd34d'}`, borderRadius:10 }}>
-                      <p style={{ margin:'0 0 4px', fontSize:12, fontWeight:600, color: dark?'#fbbf24':'#92400e' }}>Data disclaimer</p>
-                      <p style={{ margin:0, fontSize:11, color: dark?'#d97706':'#b45309', lineHeight:1.7 }}>
-                        Scores marked ESTIMATED are derived from publicly available government reports and municipal data, not real-time APIs. Data may not reflect current conditions. AsliVastu does not guarantee accuracy and is not liable for decisions made based on these scores. Always verify critical data independently before making a property purchase decision. Only Air Quality data is refreshed in real time.
-                      </p>
-                    </div>
-                  </div>
-                </>
-              )}
-
-              {/* Disclaimer — always shown */}
-              <div style={{ margin:'40px 0 0', padding:'14px 16px', background: dark?'#1a1a1a':'#f9fafb', border:`1px solid ${border}`, borderRadius:12 }}>
-                <p style={{ margin:'0 0 4px', fontSize:11, fontWeight:600, color:muted }}>Important notice</p>
-                <p style={{ margin:0, fontSize:11, color:muted, lineHeight:1.7 }}>
-                  AsliVastu scores are data aggregations for informational and research purposes only. They do not constitute real estate, legal, or financial advice. Most data is estimated from government reports last verified in 2023–24 and may not reflect current conditions. Only Air Quality scores are updated in real time. Do not rely solely on these scores for property purchase decisions. AsliVastu and its creators accept no liability for losses arising from use of this information.
-                </p>
-                <p style={{ margin:'8px 0 0', fontSize:11, color:muted }}>
-                  Scored {report && new Date(report.scored_at).toLocaleDateString('en-IN')} · {report && report.dimensions_scored} of {report && report.dimensions_total} dimensions available
-                </p>
-              </div>
-
-              {/* About the builder */}
-              <div style={{ margin:'16px 0 0', padding:'20px 18px', background:card, border:`1px solid ${border}`, borderRadius:12, display:'flex', alignItems:'center', gap:16, flexWrap:'wrap' }}>
-                <img src="/IMG_6285.jpeg" alt="Gurshaan Singh Baweja" style={{
-                  width:52, height:52, borderRadius:'50%', flexShrink:0,
-                  objectFit:'cover', border:`2px solid ${ACCENT}66`,
-                }} />
-                <div style={{ flex:1, minWidth:200 }}>
-                  <p style={{ margin:'0 0 2px', fontSize:13, fontWeight:700, color:text }}>Built by Gurshaan Singh Baweja</p>
-                  <p style={{ margin:0, fontSize:12, color:muted, lineHeight:1.6 }}>
-                    Tired of digging through a dozen government portals to check if a neighbourhood is actually safe, breathable and well-connected — so I built AsliVastu to put it all in one score.
+                  <p style={{ fontSize:13, color:'var(--ink70)', margin:'12px 0 0', lineHeight:1.5 }}>
+                    Market prices run <strong style={{ color:'var(--ink)' }}>20–70% above</strong> the {blr ? 'guidance value' : 'circle rate'} — expect roughly <strong style={{ color:'var(--ink)' }}>{inr(mLo)}–{inr(mHi)}/sq ft</strong> in practice. Indicative government valuation, not a market quote; does not affect the score.
                   </p>
-                </div>
-                <a href="https://www.linkedin.com/in/gurshaan-singh-baweja" target="_blank" rel="noopener noreferrer"
-                  style={{ flexShrink:0, display:'inline-flex', alignItems:'center', gap:6, padding:'8px 16px', background:'#0A66C2', color:'#fff', borderRadius:100, fontSize:12, fontWeight:600, textDecoration:'none' }}>
-                  Connect on LinkedIn →
-                </a>
-              </div>
-
-              {/* Correction / feedback channel for this specific pin — addresses
-                  residents having no way to flag inaccurate or outdated data. */}
-              <div style={{ margin:'12px 0 0', padding:'16px 18px', background:card, border:`1px solid ${border}`, borderRadius:12 }}>
-                <p style={{ margin:'0 0 2px', fontSize:13, fontWeight:700, color:text }}>
-                  Live in {meta ? meta.name : 'this area'}? Think this score is wrong?
-                </p>
-                <p style={{ margin:'0 0 10px', fontSize:12, color:muted, lineHeight:1.6 }}>
-                  Flag outdated or inaccurate data, or add local context — it goes straight to me, not a black box.
-                </p>
-                <textarea
-                  value={fbText} onChange={e => setFbText(e.target.value)}
-                  placeholder={`What's inaccurate or missing for pin ${report.pin_code}?`}
-                  rows={3}
-                  style={{ width:'100%', boxSizing:'border-box', padding:'10px 12px', marginBottom:10, borderRadius:8, border:`1px solid ${border}`, background:subtle, color:text, fontSize:13, fontFamily:'inherit', resize:'vertical' }}
-                />
-                <button
-                  onClick={sendFeedback}
-                  disabled={!fbText.trim() || fbStatus === 'sending'}
-                  style={{
-                    display:'inline-flex', alignItems:'center', gap:6, padding:'8px 16px',
-                    background: fbText.trim() ? ACCENT : subtle,
-                    color: fbText.trim() ? '#fff' : muted, border:'none', borderRadius:100,
-                    fontSize:12, fontWeight:600, cursor: fbText.trim() ? 'pointer' : 'default', opacity: fbStatus === 'sending' ? 0.7 : 1,
-                  }}>
-                  {fbStatus === 'sending' ? 'Sending…' : 'Send feedback on this pin →'}
-                </button>
-                {fbStatus === 'sent' && (
-                  <p style={{ margin:'8px 0 0', fontSize:12, color:'#22c55e' }}>Thanks — got it.</p>
-                )}
-                {fbStatus === 'error' && (
-                  <p style={{ margin:'8px 0 0', fontSize:12, color:'#ef4444' }}>{fbError || 'Could not send that — try again in a bit.'}</p>
-                )}
-              </div>
-            </>
-          )}
+                </>
+              )
+            })() : <p style={{ fontSize:13, color:'var(--ink60)', marginTop:10 }}>No price data for this pin.</p>}
+          </BPF>
         </div>
-      )}
+
+        {/* ── Deep-dive spec cards ── */}
+        <p className="kick" style={{ margin:'28px 0 4px' }}>Detailed readings</p>
+        <div style={{ display:'grid', gap:20 }}>
+          <StatCard title="Crime" stats={[
+            ['Total crimes', report.total_cognizable_crimes ?? '—', "Total cognizable crimes reported annually for this pin's police-station catchment, which can span a wider area than any one colony."],
+            ['Safety score', (report.scores.crime ?? '—') + '/100', 'Inverse-normalized against total crimes: 250 or fewer scores 100, 650 or more scores 0, linear in between.'],
+            ['Safer than', report.crime_percentile != null ? report.crime_percentile + '%' : '—', 'Percentile rank of this pin\'s crime count against other tracked areas in the same city (cities ranked separately).'],
+            ['Crime tier', report.crime_tier ?? '—', 'Very Low / Low / Moderate / High / Very High, based on the percentile rank.'],
+            ['Source year', '2022–23', 'Reporting year of the source crime data.'],
+          ]} />
+          <StatCard title="Power supply" stats={[
+            ['Discom', report.discom ?? '—', 'The electricity distribution company serving this area.'],
+            ['Reliability', report.reliability ?? '—', 'Qualitative reliability rating derived from outage frequency and consumer complaint data.'],
+            ['Avg cut hrs', (report.avg_outage_hours ?? '—') + ' /mo', 'Average monthly power-outage hours from DISCOM reports — not live-metered.'],
+            ['Score', (report.scores.power ?? '—') + '/100', 'Weighted blend of outage frequency (60%) and average outage duration (40%).'],
+          ]} />
+          <StatCard title="Connectivity & infrastructure" stats={[
+            ['Zone', report.zone_type || '—', 'Land-use zone type — residential, mixed, commercial or industrial.'],
+            ['Metro nearby', report.metro_stations_nearby ?? '—', 'Number of operational metro stations near this pin.'],
+            ['Metro planned', report.metro_planned_stations ?? '—', 'Approved but not-yet-open metro stations nearby.'],
+            ['Highway', report.highway_proximity || '—', 'Proximity to major highways / arterial roads.'],
+            ['Smart city', report.smart_city_project ? 'Yes' : 'No', 'Whether the area falls under the Smart Cities Mission.'],
+            ['Infra score', (report.infra_score_raw ?? '—') + '/100', 'Composite of metro access, highway proximity, zone type and smart-city status.'],
+          ]} />
+          <StatCard title="Water supply" stats={[
+            ['Daily supply', (report.supply_hours ?? '—') + ' hrs', 'Average hours of piped water supply available per day.'],
+            ['Quality', report.tds_level ? report.tds_level + ' TDS' : '—', 'TDS = Total Dissolved Solids. Low = ideal drinking water; High = hard water needing filtration.'],
+            ['Coverage', ((report.water_coverage ?? report.coverage_pct) ?? '—') + '%', '% of households with a piped municipal water connection. Below 80% means heavy tanker/borewell reliance.'],
+            ['Complaints', report.complaints_per_1000 ? report.complaints_per_1000 + '/1k' : '—', 'Water-supply complaints per 1,000 households annually. Lower is better.'],
+            ['Quality score', ((report.water_quality ?? report.quality_score) ?? '—') + '/5', 'Composite 1–5 water-quality rating from TDS, complaints and supply hours.'],
+          ]} />
+          <StatCard title="Roads" stats={[
+            ['Condition', report.road_condition || '—', 'Overall road-surface condition rating (Excellent → Very Poor).'],
+            ['Potholes/km', report.pothole_density ?? '—', 'Estimated potholes per km. Below 2 = good; above 5 = poor; above 10 = dangerous.'],
+            ['Connectivity', report.connectivity || '—', 'How well the area connects to arterial roads and highways.'],
+            ['Authority', report.authority || '—', 'Government body responsible for road maintenance here.'],
+            ['Last resurfaced', report.last_resurfaced || '—', 'Year the main roads were last resurfaced (every 5–7 years is typical).'],
+            ['Quality score', ((report.road_quality ?? report.quality_score) ?? '—') + '/5', 'Composite 1–5 road-quality rating from condition and pothole density.'],
+          ]} />
+          <StatCard title="Drainage & sewerage" stats={[
+            ['Sewer coverage', ((report.sewerage_coverage ?? report.coverage_pct) ?? '—') + '%', '% of households connected to the underground sewerage network.'],
+            ['Treatment', report.treatment || '—', 'Whether sewage reaches a treatment plant — Adequate / Partial / Inadequate.'],
+            ['Waterlogging', report.waterlogging_risk != null ? (report.waterlogging_risk >= 4 ? 'Low risk' : report.waterlogging_risk >= 3 ? 'Moderate' : 'High risk') : '—', 'Monsoon waterlogging risk from drainage capacity, elevation and flooding history.'],
+            ['Open drains', report.open_drains === true ? 'Yes' : report.open_drains === false ? 'No' : '—', 'Whether the area has uncovered drains — a health and flooding hazard.'],
+            ['Flood incidents', report.flooding_incidents_annual != null ? report.flooding_incidents_annual + '/yr' : '—', 'Significant waterlogging/flooding incidents recorded per year.'],
+          ]} />
+          {report.schools_list && report.schools_list.length > 0 && (
+            <BPF style={{ padding:'18px 20px' }}>
+              <p className="kick">Schools · {report.schools_count} CBSE mapped</p>
+              <div style={{ marginTop:12 }}>
+                {report.schools_list.slice(0, 8).map((s, i) => (
+                  <div key={i} style={{ display:'flex', justifyContent:'space-between', gap:12, fontSize:13, padding:'8px 0', borderTop: i ? '1px dashed var(--acc35)' : 'none' }}>
+                    <span style={{ color:'var(--ink)' }}>{s.name}</span>
+                    <span style={{ color:'var(--ink55)', fontSize:11 }}>{s.board || 'CBSE'}</span>
+                  </div>
+                ))}
+              </div>
+            </BPF>
+          )}
+          <BPF style={{ padding:'18px 20px' }}>
+            <p className="kick">Methodology · data sources</p>
+            <div style={{ marginTop:12 }}>
+              {['crime','infrastructure','air','power','schools','water','roads','sewerage'].map(k => (
+                <div key={k} style={{ display:'grid', gridTemplateColumns:'170px 46px 1fr', gap:12, fontSize:12, padding:'7px 0', borderTop:'1px dashed var(--acc35)', alignItems:'baseline' }}>
+                  <span className="cond" style={{ fontSize:15, fontWeight:600, textTransform:'uppercase' }}>{LABEL[k]}</span>
+                  <span style={{ color:'var(--acc-deep)', fontWeight:600 }}>{WEIGHT_PRESETS.Default[k]}%</span>
+                  <span style={{ color:'var(--ink65)' }}>{source(k, city)} {k === 'air' ? '· LIVE' : '· EST'}</span>
+                </div>
+              ))}
+            </div>
+          </BPF>
+        </div>
+
+        {/* ── Commute reality check ── */}
+        <BPF style={{ marginTop:24, padding:'20px 22px' }}>
+          <div style={{ display:'flex', alignItems:'center', gap:10 }}>
+            <p className="kick" style={{ margin:0 }}>Commute reality check</p>
+            <span style={{ background:acc, color:'#f6f3f3', fontSize:10, fontWeight:600, letterSpacing:'.06em', padding:'2px 7px' }}>NEW</span>
+          </div>
+          <p style={{ fontSize:13, color:'var(--ink70)', margin:'10px 0 12px', lineHeight:1.5 }}>How long does it actually take to reach your office from {meta.name}? Brokers quote off-peak times — this shows peak-hour reality.</p>
+          <div style={{ display:'flex', gap:10, maxWidth:560 }}>
+            <input placeholder="Enter your office area or pin code…" style={{ flex:1, padding:'10px 12px', border:'1px solid var(--acc35)', background:'transparent', color:'var(--ink)', fontSize:14, outline:'none' }} />
+            <button style={{ background:acc, color:'#f6f3f3', border:'none', padding:'10px 22px', fontSize:12, fontWeight:600, letterSpacing:'.06em' }}>CHECK</button>
+          </div>
+        </BPF>
+
+        </>)}
+
+        {/* ── About + feedback ── */}
+        <div className="hero3" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:24, marginTop:32 }}>
+          <BPF style={{ padding:'18px 20px' }}>
+            <p className="kick">About the builder</p>
+            <div style={{ display:'flex', gap:14, alignItems:'center', marginTop:12 }}>
+              <img src="/IMG_6285.jpeg" alt="Gurshaan Singh Baweja" style={{ width:52, height:52, objectFit:'cover', border:'1px solid var(--acc60)' }} />
+              <div>
+                <div className="cond" style={{ fontSize:18, fontWeight:600 }}>Gurshaan Singh Baweja</div>
+                <a href="https://linkedin.com/in/gurshaan-singh-baweja" target="_blank" rel="noreferrer" style={{ fontSize:12 }}>Connect on LinkedIn →</a>
+              </div>
+            </div>
+            <p style={{ fontSize:12.5, color:'var(--ink70)', margin:'12px 0 0', lineHeight:1.55 }}>Buying a home in Delhi NCR or Bangalore means digging through a dozen government portals. AsliVastu puts it all in one place — real data, one score, no guesswork.</p>
+          </BPF>
+          <BPF style={{ padding:'18px 20px' }}>
+            <p className="kick">Correction / feedback</p>
+            <p style={{ fontSize:12.5, color:'var(--ink70)', margin:'10px 0 12px', lineHeight:1.5 }}>Live in {meta.name}? Think a score is off? Tell us — it goes straight to the builder.</p>
+            {fbStatus === 'sent' ? (
+              <p style={{ fontSize:13, color:'var(--acc-deep)', fontWeight:600 }}>✓ Thanks — feedback received.</p>
+            ) : (<>
+              <textarea value={fbText} onChange={e => setFbText(e.target.value)} placeholder="What&apos;s inaccurate or missing?" rows={3}
+                style={{ width:'100%', padding:'10px 12px', border:'1px solid var(--acc35)', background:'transparent', color:'var(--ink)', fontSize:13, outline:'none', resize:'vertical', fontFamily:'Barlow,sans-serif' }} />
+              <div style={{ display:'flex', alignItems:'center', gap:12, marginTop:10 }}>
+                <button onClick={sendFeedback} disabled={fbStatus === 'sending'} style={{ background:acc, color:'#f6f3f3', border:'none', padding:'9px 20px', fontSize:12, fontWeight:600, letterSpacing:'.06em', cursor:'pointer' }}>{fbStatus === 'sending' ? 'SENDING…' : 'SUBMIT'}</button>
+                {fbStatus === 'error' && <span style={{ fontSize:12, color:'#ef4444' }}>Failed — try again.</span>}
+              </div>
+            </>)}
+          </BPF>
+        </div>
+
+        {/* ── Footer ── */}
+        <div style={{ marginTop:32, paddingTop:20, borderTop:'1px solid var(--acc35)' }}>
+          <p style={{ fontSize:12, color:'var(--ink65)', lineHeight:1.6, margin:'0 0 14px', maxWidth:900 }}>
+            <strong style={{ color:'var(--ink)' }}>Important notice</strong> — AsliVastu scores are data aggregations for informational and research purposes only, not real-estate, legal or financial advice. Most data is estimated from government reports last verified 2023–24; only Air Quality refreshes in real time. Do not rely solely on these scores for a purchase decision.
+          </p>
+          <div style={{ display:'flex', justifyContent:'space-between', flexWrap:'wrap', gap:12, fontSize:12 }}>
+            <span style={{ color:'var(--ink60)' }}>Built by Gurshaan Singh Baweja · <a href="https://linkedin.com/in/gurshaan-singh-baweja" target="_blank" rel="noreferrer">Connect on LinkedIn →</a></span>
+            <span style={{ color:'var(--ink60)' }}>Live in {meta.name}? Think a score is wrong? <a href={`/report?pin=${pin}`}>FLAG IT →</a></span>
+          </div>
+        </div>
+
+      </div>
     </div>
   )
 }
@@ -2191,14 +768,13 @@ export async function getServerSideProps({ params, req }) {
     }
 
     return {
-      props: { initialPin: pin, initialReport, initialAllScores, ogMeta },
+      props: { report: initialReport, allScores: initialAllScores, ogMeta },
     }
   } catch (e) {
     return {
       props: {
-        initialPin: pin,
-        initialReport: null,
-        initialAllScores: [],
+        report: null,
+        allScores: [],
         ogMeta: {
           title: `${meta.name} — Neighbourhood Report | AsliVastu`,
           description: `Free neighbourhood quality report for ${meta.name}, ${meta.area}.`,
