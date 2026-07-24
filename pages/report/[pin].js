@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { PIN_META } from '../../lib/pinMeta'
 import { AREA_COORDS } from '../../lib/areaCoords'
 
@@ -86,6 +87,8 @@ const AQI_PLAIN = {
   'Very Poor':'Unhealthy for everyone — avoid outdoor exertion.', 'Severe':'Hazardous — a serious health risk; stay indoors.',
 }
 function cityOf(pin) { return String(pin).startsWith('560') ? 'Bangalore' : 'Delhi NCR' }
+// Landing area for each city, used when the city switcher is pressed.
+const CITY_DEFAULT_PIN = { 'Delhi NCR': '110016', 'Bangalore': '560034' }
 function gradeFor(s) { return s == null ? '—' : s >= 80 ? 'A' : s >= 70 ? 'B+' : s >= 60 ? 'B' : s >= 50 ? 'C+' : s >= 40 ? 'C' : 'D' }
 function scoreColor(v) { return v >= 80 ? '#22c55e' : v >= 60 ? '#84cc16' : v >= 40 ? '#f59e0b' : '#ef4444' }
 function searchPinV2(q, city) {
@@ -164,13 +167,30 @@ export default function Report({ report, allScores, ogMeta }) {
   const [shortlist, setShortlist] = useState([])
   const [unlocked, setUnlocked] = useState(false)
   const [customWeights, setCustomWeights] = useState({ ...WEIGHT_PRESETS.Default })
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState(report ? (PIN_META[report.pin_code]?.name || '') : '')
   const [suggestions, setSuggestions] = useState([])
   const [searchCity, setSearchCity] = useState(report ? (report.city || cityOf(report.pin_code)) : 'Delhi NCR')
   const [fbText, setFbText] = useState('')
   const [fbStatus, setFbStatus] = useState('idle')
   const [pdfBusy, setPdfBusy] = useState(false)
   const mapEl = useRef(null)
+  const router = useRouter()
+
+  // Keep the search box + city toggle in sync with whichever area is shown.
+  const shownPin = report?.pin_code
+  useEffect(() => {
+    if (!shownPin) return
+    setQuery(PIN_META[shownPin]?.name || '')
+    setSearchCity(cityOf(shownPin))
+    setSuggestions([])
+  }, [shownPin])
+
+  function switchCity(c) {
+    setSearchCity(c)
+    setSuggestions([])
+    const target = CITY_DEFAULT_PIN[c]
+    if (target && cityOf(shownPin) !== c) router.push(`/report/${target}`)
+  }
 
   useEffect(() => {
     let s = []
@@ -326,7 +346,7 @@ export default function Report({ report, allScores, ogMeta }) {
         <div style={{ display:'flex', gap:12, alignItems:'center', flexWrap:'wrap', marginTop:18, position:'relative', zIndex:20 }}>
           <div style={{ display:'inline-flex', border:'1px solid var(--acc45)' }}>
             {['Delhi NCR','Bangalore'].map((c, i) => (
-              <button key={c} onClick={() => { setSearchCity(c); if (query.trim().length >= 2) setSuggestions(searchPinV2(query, c)) }}
+              <button key={c} onClick={() => switchCity(c)}
                 style={{ fontSize:11, fontWeight:600, letterSpacing:'.06em', textTransform:'uppercase', padding:'7px 12px', border:'none', borderLeft: i ? '1px solid var(--acc45)' : 'none', background: searchCity === c ? acc : 'transparent', color: searchCity === c ? '#fff' : 'var(--ink70)' }}>{c}</button>
             ))}
           </div>
