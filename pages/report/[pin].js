@@ -162,6 +162,145 @@ function highlights(r) {
   return { good: good.slice(0, 3), bad: bad.slice(0, 3) }
 }
 
+// ── Sun & Shadow Check — hands off to SunScout for exact-point solar/shadow
+// analysis. AV's own data is area/pincode-level (AREA_COORDS gives a rough
+// neighbourhood centroid); SunScout needs a precise lat/lon, so this card
+// offers an instant area-level link plus a live address search for anyone
+// who wants their exact building instead. ─────────────────────────────────
+const SS_ORANGE = '#E07B00'
+
+function SunShadowCheck({ pin, city, areaName }) {
+  const [query, setQuery]             = useState('')
+  const [suggestions, setSuggestions] = useState([])
+  const [loading, setLoading]         = useState(false)
+  const [picked, setPicked]           = useState(null) // { lat, lon, label }
+  const debounceRef = useRef(null)
+
+  const centroid = AREA_COORDS[pin]
+
+  function onSearch(v) {
+    setQuery(v)
+    setPicked(null)
+    if (debounceRef.current) clearTimeout(debounceRef.current)
+    if (v.trim().length < 3) { setSuggestions([]); return }
+    setLoading(true)
+    debounceRef.current = setTimeout(async () => {
+      try {
+        const r = await fetch(`/api/geocode?q=${encodeURIComponent(v)}&city=${encodeURIComponent(city)}`)
+        const d = await r.json()
+        setSuggestions(d.results || [])
+      } catch {
+        setSuggestions([])
+      } finally {
+        setLoading(false)
+      }
+    }, 400)
+  }
+
+  function selectResult(s) {
+    setPicked(s)
+    setQuery(s.label.split(',').slice(0, 2).join(','))
+    setSuggestions([])
+  }
+
+  const exactUrl    = picked ? `https://sun-scout.com/?lat=${picked.lat}&lon=${picked.lon}` : null
+  const centroidUrl = centroid ? `https://sun-scout.com/?lat=${centroid[0]}&lon=${centroid[1]}` : null
+
+  return (
+    <BPF style={{ marginTop:24, padding:'28px 30px' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:12, marginBottom:6 }}>
+        <span className="kick" style={{ fontSize:12 }}>Sheet 01b · Powered by SunScout</span>
+        <span style={{ fontSize:11, padding:'3px 10px', background:SS_ORANGE+'22', color:SS_ORANGE, fontWeight:700, letterSpacing:'.06em' }}>NEW</span>
+      </div>
+      <h3 className="cond" style={{ fontSize:32, fontWeight:700, textTransform:'uppercase', margin:'6px 0 10px', lineHeight:1 }}>Sun &amp; Shadow Check</h3>
+      <p style={{ fontSize:14.5, color:'var(--ink70)', margin:'0 0 20px', lineHeight:1.6, maxWidth:640 }}>
+        Pincode data can&apos;t tell you if <strong style={{color:'var(--ink)'}}>your specific balcony</strong> gets afternoon sun.
+        Search your exact building below for a real sunlight and shadow reading through the day and across seasons — or jump straight to the {areaName} area estimate.
+      </p>
+
+      {/* Instant area-level link */}
+      {centroidUrl && (
+        <a href={centroidUrl} target="_blank" rel="noopener noreferrer"
+          style={{ display:'inline-flex', alignItems:'center', gap:8, fontSize:13, fontWeight:600, color:'var(--acc-deep)', marginBottom:22, letterSpacing:'.02em' }}>
+          ☀ View {areaName}&apos;s area estimate on SunScout →
+        </a>
+      )}
+
+      {/* Address search — exact building */}
+      <div style={{ position:'relative', marginBottom: exactUrl ? 18 : 4 }}>
+        <p className="kick" style={{ fontSize:10.5, marginBottom:8 }}>Or search your exact building</p>
+        <div style={{ display:'flex', gap:10 }}>
+          <input
+            value={query}
+            onChange={e => onSearch(e.target.value)}
+            placeholder="Search your building, society, or street…"
+            style={{
+              flex:1, padding:'13px 16px', background:'transparent',
+              border:'1px solid var(--acc45)', color:'var(--ink)',
+              fontSize:15, outline:'none', fontFamily:'Barlow,sans-serif'
+            }}
+          />
+          {loading && <div style={{ padding:'13px 4px', color:'var(--ink55)', fontSize:13 }}>Searching…</div>}
+        </div>
+        {suggestions.length > 0 && (
+          <div style={{ position:'absolute', top:'100%', left:0, right:0, zIndex:100, background:'var(--bg)', border:'1px solid var(--acc45)', marginTop:2 }}>
+            {suggestions.map((s, i) => (
+              <div key={i} onMouseDown={() => selectResult(s)}
+                style={{ padding:'12px 16px', cursor:'pointer', fontSize:13.5, borderTop: i ? '1px solid var(--acc35)' : 'none', color:'var(--ink)' }}
+                onMouseEnter={e => e.currentTarget.style.background = SS_ORANGE+'15'}
+                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+              >
+                {s.label}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Result CTA */}
+      {exactUrl && (
+        <div style={{ display:'flex', alignItems:'center', gap:16, padding:'16px 20px', border:`1px solid ${SS_ORANGE}55`, background:SS_ORANGE+'10' }}>
+          <div style={{ width:42, height:42, background:SS_ORANGE, display:'flex', alignItems:'center', justifyContent:'center', fontSize:19, flexShrink:0 }}>☀️</div>
+          <div style={{ flex:1 }}>
+            <div style={{ fontSize:15, fontWeight:700, color:'var(--ink)' }}>View shadow pattern &amp; sun reading</div>
+            <div style={{ fontSize:12.5, color:'var(--ink60)', marginTop:2 }}>Opens on SunScout for this exact location</div>
+          </div>
+          <a href={exactUrl} target="_blank" rel="noopener noreferrer"
+            style={{ background:SS_ORANGE, color:'#fff', padding:'12px 22px', fontWeight:700, fontSize:14, letterSpacing:'.02em', textDecoration:'none', whiteSpace:'nowrap' }}>
+            OPEN →
+          </a>
+        </div>
+      )}
+    </BPF>
+  )
+}
+
+// Small teaser bar — sits outside/before the full report gate. Just a line
+// of text and a button straight to the area's centroid on SunScout, no
+// search. The full building-level search experience lives in
+// SunShadowCheck, inside the unlocked full report.
+
+// Small teaser bar — sits outside/before the full report gate. Just a line
+// of text and a button straight to the area's centroid on SunScout, no
+// search. The full building-level search experience lives in
+// SunShadowCheck, inside the unlocked full report.
+function SunShadowBar({ pin, areaName }) {
+  const centroid = AREA_COORDS[pin]
+  if (!centroid) return null
+  const url = `https://sun-scout.com/?lat=${centroid[0]}&lon=${centroid[1]}`
+  return (
+    <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', gap:16, flexWrap:'wrap', marginTop:20, padding:'14px 20px', border:'1px solid var(--acc45)' }}>
+      <span style={{ fontSize:13.5, color:'var(--ink)', display:'flex', alignItems:'center', gap:8 }}>
+        ☀ <span>View shadow analysis for <strong>{areaName}</strong> — powered by SunScout</span>
+      </span>
+      <a href={url} target="_blank" rel="noopener noreferrer"
+        style={{ background:SS_ORANGE, color:'#fff', padding:'9px 18px', fontWeight:700, fontSize:12.5, letterSpacing:'.04em', textDecoration:'none', whiteSpace:'nowrap', flexShrink:0 }}>
+        OPEN IN SUNSCOUT →
+      </a>
+    </div>
+  )
+}
+
 export default function Report({ report, allScores, ogMeta }) {
   const [persona, setPersona] = useState('Default')
   const [dark, setDark] = useState(true)
@@ -482,6 +621,9 @@ export default function Report({ report, allScores, ogMeta }) {
           })}
         </BPF>
 
+        {/* ── Sun & Shadow teaser — free, outside the full report ── */}
+        <SunShadowBar pin={pin} areaName={meta.name} />
+
         {/* ── Paywall / unlock gate ── */}
         {!unlocked ? (
           <BPF style={{ marginTop:24, padding:'40px 24px', textAlign:'center' }}>
@@ -660,6 +802,9 @@ export default function Report({ report, allScores, ogMeta }) {
             <button style={{ background:acc, color:'#f6f3f3', border:'none', padding:'10px 22px', fontSize:12, fontWeight:600, letterSpacing:'.06em' }}>CHECK</button>
           </div>
         </BPF>
+
+        {/* ── Sun & Shadow Check — full search version, below Commute Reality Check ── */}
+        <SunShadowCheck pin={pin} city={city} areaName={meta.name} />
 
         </>)}
 
