@@ -5,6 +5,15 @@ const CSS = `
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  .holo-card, .demo-card { position: relative; }
+  .holo-card::before, .demo-card::before,
+  .holo-card::after,  .demo-card::after {
+    content: '+'; position: absolute; color: rgba(167,90,101,0.9);
+    font-size: 12px; line-height: 1; pointer-events: none; z-index: 2;
+  }
+  .holo-card::before, .demo-card::before { top: -7px; left: -5px; }
+  .holo-card::after,  .demo-card::after  { bottom: -8px; right: -5px; }
+
   :root {
     --accent: #a75a65;
     --accent-fill: #7a1f2b;
@@ -57,8 +66,8 @@ const CSS = `
   .nav-cta {
     font-size: 13px; font-weight: 500;
     color: var(--text); text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.12);
-    padding: 10px 22px; border-radius: 100px;
+    border: 1px solid rgba(167,90,101,0.45);
+    padding: 10px 22px; border-radius: 0;
     transition: all 0.3s;
     backdrop-filter: blur(10px);
     background: rgba(255,255,255,0.03);
@@ -110,8 +119,8 @@ const CSS = `
 
   .hero-search {
     display: flex; max-width: 420px;
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 100px; overflow: hidden;
+    border: 1px solid rgba(167,90,101,0.45);
+    border-radius: 0; overflow: hidden;
     backdrop-filter: blur(20px);
     background: rgba(255,255,255,0.03);
     opacity: 0; transform: translateY(16px);
@@ -127,7 +136,7 @@ const CSS = `
     padding: 15px 24px; color: white;
     font-size: 13px; font-weight: 500; cursor: pointer;
     font-family: 'DM Sans', sans-serif;
-    border-radius: 0 100px 100px 0;
+    border-radius: 0;
     white-space: nowrap; transition: opacity 0.2s;
   }
   .hero-search button:hover { opacity: 0.85; }
@@ -150,13 +159,13 @@ const CSS = `
   /* The actual card */
   .holo-card {
     width: 100%; height: 100%;
-    border-radius: 20px;
+    border-radius: 0;
     position: relative;
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
     box-shadow:
       0 0 0 1px rgba(255,255,255,0.08),
       0 32px 80px rgba(0,0,0,0.8),
-      0 0 60px rgba(167,90,101,0.15),
+      0 0 60px rgba(167,90,101,0.09),
       inset 0 1px 0 rgba(255,255,255,0.1);
     overflow: hidden;
     transform-style: preserve-3d;
@@ -165,12 +174,12 @@ const CSS = `
   /* Holographic shimmer layer */
   .holo-shimmer {
     position: absolute; inset: 0;
-    border-radius: 20px;
+    border-radius: 0;
     background: linear-gradient(
       115deg,
       transparent 0%,
       rgba(255,255,255,0.03) 30%,
-      rgba(167,90,101,0.08) 40%,
+      rgba(167,90,101,0.05) 40%,
       rgba(255,200,100,0.06) 50%,
       rgba(100,200,255,0.06) 60%,
       rgba(255,255,255,0.03) 70%,
@@ -193,7 +202,7 @@ const CSS = `
       transparent 60%
     );
     pointer-events: none;
-    border-radius: 20px;
+    border-radius: 0;
     mix-blend-mode: screen;
   }
 
@@ -218,7 +227,7 @@ const CSS = `
   .card-chip {
     width: 32px; height: 24px;
     background: linear-gradient(135deg, #d4a855, #f0c87a, #b8902a);
-    border-radius: 5px;
+    border-radius: 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     position: relative; overflow: hidden;
   }
@@ -301,7 +310,7 @@ const CSS = `
     position: absolute;
     width: 500px; height: 500px;
     border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(167,90,101,0.12) 0%, transparent 65%);
+    background: radial-gradient(ellipse, rgba(167,90,101,0.04) 0%, transparent 65%);
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -419,8 +428,8 @@ const CSS = `
     display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 1px; max-width: 960px; width: 100%;
     background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.04);
-    border-radius: 24px; overflow: hidden;
+    border: 1px solid rgba(167,90,101,0.45);
+    border-radius: 0; overflow: hidden;
   }
   .dim-card {
     background: #080808; padding: 36px 28px;
@@ -432,7 +441,7 @@ const CSS = `
   }
   .dim-card::before {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 0 0, rgba(167,90,101,0.07) 0%, transparent 70%);
+    background: radial-gradient(ellipse at 0 0, rgba(167,90,101,0.04) 0%, transparent 70%);
     opacity: 0; transition: opacity 0.4s;
   }
   .dim-card:hover::before { opacity: 1; }
@@ -479,14 +488,14 @@ const CSS = `
   .demo-btn {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 14px 28px; background: var(--accent-fill); color: white;
-    border-radius: 100px; text-decoration: none;
+    border-radius: 0; text-decoration: none;
     font-size: 14px; font-weight: 500; transition: opacity 0.2s;
   }
   .demo-btn:hover { opacity: 0.85; }
   .demo-card {
     background: #0e0e0e;
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 20px; padding: 28px;
+    border: 1px solid rgba(167,90,101,0.45);
+    border-radius: 0; padding: 28px;
     position: relative; overflow: hidden;
   }
   .demo-card::before {
@@ -508,15 +517,15 @@ const CSS = `
   .score-lbl { font-size: 11px; color: #333; margin-bottom: 20px; letter-spacing: 0.05em; }
   .verdict-strip {
     padding: 10px 14px; border-left: 2px solid #22c55e;
-    background: rgba(34,197,94,0.07); border-radius: 0 8px 8px 0; margin-bottom: 20px;
+    background: rgba(34,197,94,0.07); border-radius: 0; margin-bottom: 20px;
   }
   .verdict-name { font-weight: 600; color: #22c55e; font-size: 14px; display: block; margin-bottom: 3px; }
   .verdict-why { font-size: 12px; color: #444; line-height: 1.5; }
   .bars { display: flex; flex-direction: column; gap: 10px; }
   .bar-row { display: flex; align-items: center; gap: 10px; }
   .bar-lbl { font-size: 11px; color: #333; width: 72px; flex-shrink: 0; }
-  .bar-track { flex: 1; height: 2px; background: #1a1a1a; border-radius: 99px; overflow: hidden; }
-  .bar-fill { height: 100%; border-radius: 99px; width: 0%; transition: width 1.2s cubic-bezier(0.16,1,0.3,1); }
+  .bar-track { flex: 1; height: 2px; background: #1a1a1a; border-radius: 0; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 0; width: 0%; transition: width 1.2s cubic-bezier(0.16,1,0.3,1); }
   .bar-val { font-size: 11px; color: #333; width: 26px; text-align: right; }
 
   /* ── CTA ── */
@@ -527,7 +536,7 @@ const CSS = `
   }
   .cta-glow {
     position: absolute; width: 700px; height: 700px; border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(167,90,101,0.1) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(167,90,101,0.06) 0%, transparent 70%);
     top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
     animation: glowPulse 5s ease-in-out infinite;
   }
@@ -546,7 +555,7 @@ const CSS = `
   }
   .cta-search {
     display: flex; max-width: 480px; width: 100%; margin: 0 auto 40px;
-    border: 1px solid rgba(255,255,255,0.08); border-radius: 100px;
+    border: 1px solid rgba(167,90,101,0.45); border-radius: 0;
     overflow: hidden; background: rgba(255,255,255,0.02); backdrop-filter: blur(20px);
   }
   .cta-search input {
@@ -559,7 +568,7 @@ const CSS = `
     background: var(--accent-fill); border: none; padding: 17px 28px;
     color: white; font-size: 14px; font-weight: 500; cursor: pointer;
     font-family: 'DM Sans', sans-serif;
-    border-radius: 0 100px 100px 0; transition: opacity 0.2s;
+    border-radius: 0; transition: opacity 0.2s;
   }
   .cta-search button:hover { opacity: 0.85; }
   .cta-stats { display: flex; gap: 48px; justify-content: center; align-items: center; }
@@ -1883,7 +1892,7 @@ export default function Landing() {
 
       <nav className="nav">
         <div style={{ display:'flex', alignItems:'center', gap:12 }}>
-          <img src="/logo.png" alt="AsliVastu" style={{ width:44, height:44, objectFit:'contain', borderRadius:8 }} />
+          <img src="/logo.png" alt="AsliVastu" style={{ width:44, height:44, objectFit:'contain', borderRadius:0 }} />
           <div>
             <div style={{ fontWeight:800, fontSize:20, letterSpacing:'-0.4px', color:'#f0ede8', lineHeight:1, fontFamily:'DM Sans, sans-serif' }}>AsliVastu</div>
             <div style={{ fontSize:11, color:'#a75a65', fontWeight:500, marginTop:3, fontFamily:'DM Sans, sans-serif' }}>Your Neighbourhood, By the numbers</div>
@@ -1917,7 +1926,7 @@ export default function Landing() {
                   display:'flex', alignItems:'center', gap:7,
                   padding:'7px 14px',
                   border:'1px solid rgba(255,255,255,0.1)',
-                  borderRadius:100,
+                  borderRadius:0,
                   background:'rgba(255,255,255,0.03)',
                 }}>
                   <DimIcon name={key} size={13} color="rgba(255,255,255,0.8)" />
@@ -2048,7 +2057,7 @@ export default function Landing() {
           <p className="cta-pre">Free · No signup · Instant</p>
           <h2 className="cta-title">Your area.<br/><em>By the numbers.</em></h2>
           <div style={{ position:'relative', width:'100%', maxWidth:480, margin:'0 auto' }}>
-            <div style={{ display:'inline-flex', gap:4, padding:4, background:'rgba(255,255,255,0.06)', borderRadius:10, marginBottom:12 }}>
+            <div style={{ display:'inline-flex', gap:4, padding:4, background:'rgba(255,255,255,0.06)', borderRadius:0, marginBottom:12 }}>
               {['Delhi NCR','Bangalore'].map(c => (
                 <button key={c} onClick={() => {
                   setCtaCity(c)
@@ -2058,7 +2067,7 @@ export default function Landing() {
                       .filter(([pin, name]) => (c==='Bangalore') === pin.startsWith('560') && (name.toLowerCase().includes(s) || pin.includes(s))).slice(0,6))
                   }
                 }}
-                  style={{ fontSize:13, fontWeight:600, padding:'6px 14px', borderRadius:7, cursor:'pointer', border:'none',
+                  style={{ fontSize:13, fontWeight:600, padding:'6px 14px', borderRadius:0, cursor:'pointer', border:'none',
                     background: ctaCity===c ? '#7a1f2b' : 'transparent', color: ctaCity===c ? 'white' : 'rgba(255,255,255,0.6)' }}>{c}</button>
               ))}
             </div>
@@ -2090,7 +2099,7 @@ export default function Landing() {
               <div style={{
                 position:'absolute', top:'100%', left:0, right:0, zIndex:100,
                 background:'#111', border:'1px solid rgba(255,255,255,0.1)',
-                borderRadius:12, overflow:'hidden', marginTop:6,
+                borderRadius:0, overflow:'hidden', marginTop:6,
                 boxShadow:'0 8px 32px rgba(0,0,0,0.6)'
               }}>
                 {ctaSuggestions.map(([pin, name]) => (
@@ -2102,7 +2111,7 @@ export default function Landing() {
                       borderBottom:'1px solid rgba(255,255,255,0.05)',
                       transition:'background 0.15s'
                     }}
-                    onMouseEnter={e => e.currentTarget.style.background='rgba(167,90,101,0.12)'}
+                    onMouseEnter={e => e.currentTarget.style.background='rgba(167,90,101,0.04)'}
                     onMouseLeave={e => e.currentTarget.style.background='transparent'}
                   >
                     <span style={{ color:'#f0ede8', fontSize:14, fontWeight:500 }}>{name}</span>
@@ -2124,7 +2133,7 @@ export default function Landing() {
                 style={{
                   padding:'6px 14px', background:'none',
                   border:'1px solid rgba(255,255,255,0.1)',
-                  borderRadius:100, fontSize:12, cursor:'pointer',
+                  borderRadius:0, fontSize:12, cursor:'pointer',
                   color:'rgba(255,255,255,0.62)',
                   fontFamily:'DM Sans, sans-serif',
                   transition:'all 0.2s',
@@ -2158,7 +2167,7 @@ export default function Landing() {
           <div style={{
             flex:'1 1 440px', maxWidth:480, padding:'40px 32px', textAlign:'center',
             background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)',
-            borderRadius:20,
+            borderRadius:0,
           }}>
             <img src="/IMG_6285.jpeg" alt="Gurshaan Singh Baweja" style={{
               width:60, height:60, borderRadius:'50%', margin:'0 auto 16px',
@@ -2170,7 +2179,7 @@ export default function Landing() {
               Buying a home in Delhi NCR or Bangalore means digging through a dozen government portals just to figure out if an area is actually safe, breathable, and well-connected. I built AsliVastu to put all of that in one place — real data, one score, no guesswork.
             </p>
             <a href="https://www.linkedin.com/in/gurshaan-singh-baweja" target="_blank" rel="noopener noreferrer"
-              style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'10px 22px', background:'#0A66C2', color:'#fff', borderRadius:100, fontSize:14, fontWeight:600, textDecoration:'none' }}>
+              style={{ display:'inline-flex', alignItems:'center', gap:8, padding:'10px 22px', background:'#0A66C2', color:'#fff', borderRadius:0, fontSize:14, fontWeight:600, textDecoration:'none' }}>
               Connect on LinkedIn →
             </a>
           </div>
@@ -2178,7 +2187,7 @@ export default function Landing() {
           <div style={{
             flex:'1 1 440px', maxWidth:480, padding:'40px 32px', textAlign:'left',
             background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)',
-            borderRadius:20, display:'flex', flexDirection:'column',
+            borderRadius:0, display:'flex', flexDirection:'column',
           }}>
             <p style={{ fontSize:17, fontWeight:700, color:'#f0ede8', margin:'0 0 4px' }}>See something off?</p>
             <p style={{ fontSize:12, color:'rgba(255,255,255,0.55)', margin:'0 0 16px', textTransform:'uppercase', letterSpacing:'0.08em' }}>Flag it directly</p>
@@ -2188,13 +2197,13 @@ export default function Landing() {
             <input
               value={fbArea} onChange={e => setFbArea(e.target.value)}
               placeholder="Area or pin code (optional)"
-              style={{ padding:'10px 12px', marginBottom:8, borderRadius:8, border:'1px solid rgba(255,255,255,0.12)', background:'rgba(255,255,255,0.04)', color:'#f0ede8', fontSize:13, fontFamily:'inherit' }}
+              style={{ padding:'10px 12px', marginBottom:8, borderRadius:0, border:'1px solid rgba(255,255,255,0.12)', background:'rgba(255,255,255,0.04)', color:'#f0ede8', fontSize:13, fontFamily:'inherit' }}
             />
             <textarea
               value={fbText} onChange={e => setFbText(e.target.value)}
               placeholder="What's inaccurate or missing?"
               rows={3}
-              style={{ padding:'10px 12px', marginBottom:14, borderRadius:8, border:'1px solid rgba(255,255,255,0.12)', background:'rgba(255,255,255,0.04)', color:'#f0ede8', fontSize:13, fontFamily:'inherit', resize:'vertical' }}
+              style={{ padding:'10px 12px', marginBottom:14, borderRadius:0, border:'1px solid rgba(255,255,255,0.12)', background:'rgba(255,255,255,0.04)', color:'#f0ede8', fontSize:13, fontFamily:'inherit', resize:'vertical' }}
             />
             <button
               onClick={sendFeedback}
@@ -2202,7 +2211,7 @@ export default function Landing() {
               style={{
                 marginTop:'auto', display:'inline-flex', alignItems:'center', justifyContent:'center', gap:8,
                 padding:'10px 22px', background: fbText.trim() ? '#7a1f2b' : 'rgba(255,255,255,0.08)',
-                color: fbText.trim() ? '#fff' : 'rgba(255,255,255,0.4)', border:'none', borderRadius:100,
+                color: fbText.trim() ? '#fff' : 'rgba(255,255,255,0.4)', border:'none', borderRadius:0,
                 fontSize:14, fontWeight:600, cursor: fbText.trim() ? 'pointer' : 'default', opacity: fbStatus === 'sending' ? 0.7 : 1,
               }}>
               {fbStatus === 'sending' ? 'Sending…' : 'Send feedback →'}
