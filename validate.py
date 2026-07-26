@@ -257,6 +257,46 @@ def check_pins(scores, prices):
                f"{len(missing)} without price context" if missing else "")
 
 
+def check_web_in_sync(master, scores):
+    """The pipeline->web handoff is a manual copy, so 'fixed' and 'shipped' can
+    silently diverge: a bug can be fixed in data/processed/ and never reach
+    public/. This has happened. Fail loudly when they drift."""
+    web = Path(__file__).parent.parent / "nqr-web" / "public"
+    if not web.exists():
+        record("WARN", "sync/web-public", "nqr-web/public not found — skipped")
+        return
+    pairs = [("nqi_scores_latest.json", "nqi_scores.json", scores),
+             ("master_by_pin_latest.json", "master_by_pin.json", master)]
+    drift = []
+    for src_name, dst_name, src_data in pairs:
+        dst = web / dst_name
+        if not dst.exists():
+            drift.append(f"{dst_name} missing")
+            continue
+        try:
+            dst_data = json.loads(dst.read_text())
+        except ValueError:
+            drift.append(f"{dst_name} unparseable")
+            continue
+        if dst_data != src_data:
+            # pinpoint an example so the message is actionable
+            s = {r["pin_code"]: r for r in src_data if isinstance(r, dict) and "pin_code" in r}
+            d = {r["pin_code"]: r for r in dst_data if isinstance(r, dict) and "pin_code" in r}
+            ex = next((p for p in s if p in d and s[p] != d[p]), None)
+            hint = ""
+            if ex and "scores" in s[ex]:
+                hint = (f" e.g. {ex} air {d[ex].get('scores',{}).get('air')}"
+                        f" -> {s[ex].get('scores',{}).get('air')}")
+            elif ex:
+                hint = (f" e.g. {ex} aqi {d[ex].get('aqi_avg')} -> {s[ex].get('aqi_avg')}")
+            drift.append(f"{dst_name} stale{hint}")
+    if drift:
+        record("FAIL", "sync/web-public",
+               "; ".join(drift) + " — run ./deploy.sh (or copy data/processed -> nqr-web/public)")
+    else:
+        record("PASS", "sync/web-public", "public/ matches data/processed/")
+
+
 def check_waterlogging(master):
     """Inverted scale: 5 = safest, 1 = worst. Guard the semantics."""
     bad = [f"{r['pin_code']}={r['waterlogging_risk']}" for r in master
@@ -299,6 +339,7 @@ def main():
     check_weights(scores, methodology)
     check_pins(scores, prices)
     check_waterlogging(master)
+    check_web_in_sync(master, scores)
 
     fails = [r for r in results if r[0] == "FAIL"]
     warns = [r for r in results if r[0] == "WARN"]
