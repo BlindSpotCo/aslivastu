@@ -45,7 +45,11 @@ def merge():
     for pin,m in master.items():
         if "aqi_values" in m:
             vals = m.pop("aqi_values")
-            m["aqi_avg"] = round(sum(vals)/len(vals),1)
+            # CPCB defines the AQI as the MAXIMUM sub-index across pollutants —
+            # the worst pollutant determines the air quality. We previously took
+            # the mean, which diluted a genuine spike (e.g. PM10 113) with benign
+            # gases (NH3 4, ozone 7) and made polluted areas look clean.
+            m["aqi_avg"] = round(max(vals), 1)
             m["aqi_category"] = aqi_label(m["aqi_avg"])
 
     for r in load_processed("cbse_schools_by_pin"):
