@@ -125,16 +125,22 @@ def score_infrastructure(record):
     if raw is None: return None
     return min(100, max(0, round(raw)))
 
+# CPCB category boundaries mapped to score anchors. We interpolate BETWEEN these
+# anchors instead of returning a flat score per band: with hard bands, AQI 49.9
+# scored 100 and AQI 50.1 scored 85 — a 15-point cliff from a 0.2 difference,
+# which made cross-area comparison meaningless near a boundary. The anchors still
+# respect CPCB's official categories; interpolation just makes the curve continuous.
+AQI_ANCHORS = [(0, 100), (50, 90), (100, 78), (200, 55), (300, 35), (400, 15), (500, 0)]
+
 def score_air(record):
     aqi = record.get("aqi_avg")
     if aqi is None: return None
-    if aqi <= 50:  return 100
-    if aqi <= 100: return 85
-    if aqi <= 150: return 70
-    if aqi <= 200: return 50
-    if aqi <= 300: return 30
-    if aqi <= 400: return 15
-    return 5
+    if aqi <= 0: return 100
+    for (x0, y0), (x1, y1) in zip(AQI_ANCHORS, AQI_ANCHORS[1:]):
+        if aqi <= x1:
+            frac = (aqi - x0) / (x1 - x0)
+            return round(y0 + frac * (y1 - y0))
+    return 0
 
 def score_power(record):
     freq = record.get("outage_frequency")
