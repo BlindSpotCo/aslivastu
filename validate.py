@@ -1,0 +1,319 @@
+#!/usr/bin/env python3
+"""
+validate.py — data integrity checks for the AsliVastu pipeline.
+
+Run after run_pipeline.py + scoring.py:
+    python3 validate.py            # full report
+    python3 validate.py --quiet    # only failures
+Exits non-zero if any CHECK fails, so it can gate CI or a deploy.
+
+Every check here exists because a real bug shipped:
+  • AQI was stored as the MEAN of pollutant sub-indices instead of the CPCB
+    MAX, so a PM10 spike of 113 got diluted by NH3=4 / ozone=7 into "49.9 Good".
+    Polluted areas with many sensors looked cleanest.
+  • Bengaluru air was seeded with invented values 25-40 points too pessimistic,
+    so the cleaner city scored worse than the dirtier one.
+  • score_air used flat CPCB bands, so AQI 49.9 -> 100 and 50.1 -> 85: a 0.2
+    difference caused a 15-point swing and made comparison meaningless.
+  • water/roads/sewerage all emitted `quality_score`/`coverage_pct`; a blind
+    dict.update() let one silently overwrite the others.
+"""
+import json, sys
+from pathlib import Path
+from datetime import datetime, timedelta
+from collections import Counter, defaultdict
+
+PROC = Path(__file__).parent / "data" / "processed"
+RAW = Path(__file__).parent / "data" / "raw"
+STALE_DAYS = 30
+
+results = []          # (level, name, message)  level: PASS | FAIL | WARN
+
+
+def record(level, name, msg=""):
+    results.append((level, name, msg))
+
+
+def load(name, base=PROC):
+    p = base / f"{name}.json"
+    if not p.exists():
+        return None
+    try:
+        return json.loads(p.read_text())
+    except ValueError:
+        return None
+
+
+def aqi_category(v):
+    for hi, lab in [(50, "Good"), (100, "Satisfactory"), (200, "Moderate"),
+                    (300, "Poor"), (400, "Very Poor")]:
+        if v <= hi:
+            return lab
+    return "Severe"
+
+
+# ── A. AQI methodology ──────────────────────────────────────────────────────
+def check_aqi_is_max(master, cpcb):
+    """CPCB AQI = worst pollutant sub-index, never the average."""
+    if not cpcb:
+        record("WARN", "aqi/max-not-mean", "no cpcb_aqi_latest.json — skipped")
+        return
+    by_pin = defaultdict(list)
+    for r in cpcb:
+        if r.get("pin_code") and r.get("aqi") is not None:
+            by_pin[r["pin_code"]].append(float(r["aqi"]))
+
+    bad = []
+    for rec in master:
+        pin = rec.get("pin_code")
+        vals = by_pin.get(pin)
+        if not vals or rec.get("aqi_avg") is None:
+            continue
+        expected = round(max(vals), 1)
+        actual = round(float(rec["aqi_avg"]), 1)
+        if abs(actual - expected) > 0.5:
+            mean = round(sum(vals) / len(vals), 1)
+            hint = " (looks like the MEAN)" if abs(actual - mean) <= 0.5 else ""
+            bad.append(f"{pin}: stored {actual}, CPCB max {expected}{hint}")
+    if bad:
+        record("FAIL", "aqi/max-not-mean",
+               f"{len(bad)} pins wrong — e.g. " + "; ".join(bad[:3]))
+    else:
+        record("PASS", "aqi/max-not-mean", f"{len(by_pin)} live pins use max sub-index")
+
+
+def check_aqi_category(master):
+    bad = [f"{r['pin_code']}: {r.get('aqi_avg')} labelled {r.get('aqi_category')}"
+           for r in master
+           if r.get("aqi_avg") is not None and r.get("aqi_category")
+           and r["aqi_category"] != aqi_category(r["aqi_avg"])]
+    if bad:
+        record("FAIL", "aqi/category-matches", "; ".join(bad[:3]))
+    else:
+        record("PASS", "aqi/category-matches")
+
+
+# ── B. Freshness ────────────────────────────────────────────────────────────
+def check_freshness(cpcb):
+    if not cpcb:
+        record("WARN", "aqi/freshness", "no live AQI file")
+        return
+    stamps = [r.get("scraped_at", "")[:19] for r in cpcb if r.get("scraped_at")]
+    if not stamps:
+        record("WARN", "aqi/freshness", "no scraped_at timestamps")
+        return
+    newest = max(stamps)
+    try:
+        age = datetime.now() - datetime.fromisoformat(newest)
+    except ValueError:
+        record("WARN", "aqi/freshness", f"unparseable timestamp {newest}")
+        return
+    if age > timedelta(days=STALE_DAYS):
+        record("WARN", "aqi/freshness",
+               f"live AQI is {age.days} days old (last {newest[:10]}) — rerun run_pipeline.py")
+    else:
+        record("PASS", "aqi/freshness", f"{age.days} days old")
+
+
+# ── C. Distribution sanity (catches fabricated / uniform data) ──────────────
+def check_air_distribution(scores):
+    by_city = defaultdict(list)
+    for r in scores:
+        a = r.get("scores", {}).get("air")
+        if a is not None:
+            by_city[r.get("city", "?")].append(a)
+    for city, vals in by_city.items():
+        distinct = len(set(vals))
+        if len(vals) >= 10 and distinct <= 2:
+            record("FAIL", f"air/spread[{city}]",
+                   f"only {distinct} distinct value(s) across {len(vals)} areas — likely fabricated/uniform")
+        else:
+            record("PASS", f"air/spread[{city}]", f"{distinct} distinct values / {len(vals)} areas")
+
+
+def check_cross_city_plausibility(scores, master):
+    """A city whose measured AQI is worse must not score better on air."""
+    m = {r["pin_code"]: r for r in master}
+    agg = defaultdict(lambda: {"aqi": [], "air": []})
+    for r in scores:
+        pin, city = r["pin_code"], r.get("city", "?")
+        air = r.get("scores", {}).get("air")
+        aqi = m.get(pin, {}).get("aqi_avg")
+        if air is not None and aqi is not None:
+            agg[city]["aqi"].append(aqi)
+            agg[city]["air"].append(air)
+    cities = [(c, sum(v["aqi"]) / len(v["aqi"]), sum(v["air"]) / len(v["air"]))
+              for c, v in agg.items() if v["aqi"]]
+    ok = True
+    for i, (c1, aqi1, air1) in enumerate(cities):
+        for c2, aqi2, air2 in cities[i + 1:]:
+            # worse (higher) AQI must not yield a higher air score
+            if (aqi1 - aqi2) * (air1 - air2) > 0:
+                record("FAIL", "air/cross-city",
+                       f"{c1} AQI {aqi1:.0f}/air {air1:.0f} vs {c2} AQI {aqi2:.0f}/air {air2:.0f} — inverted")
+                ok = False
+    if ok:
+        record("PASS", "air/cross-city",
+               " | ".join(f"{c}: AQI {a:.0f} -> air {s:.0f}" for c, a, s in cities))
+
+
+# ── D. Field collisions ─────────────────────────────────────────────────────
+def check_namespaced_fields(master):
+    """water/roads/sewerage must not share one collided value."""
+    missing = [r["pin_code"] for r in master
+               if r.get("supply_hours") is not None
+               and (r.get("water_coverage") is None or r.get("water_quality") is None)]
+    if missing:
+        record("FAIL", "merge/namespaced-fields",
+               f"{len(missing)} pins missing water_* namespaced keys — collision bug may have returned")
+        return
+    collided = [r["pin_code"] for r in master
+                if r.get("water_coverage") is not None
+                and r.get("sewerage_coverage") is not None
+                and r.get("water_quality") is not None
+                and r.get("road_quality") is not None
+                and r["water_coverage"] == r["sewerage_coverage"]
+                and r["water_quality"] == r["road_quality"]]
+    # identical values are possible but suspicious across many pins
+    if len(collided) > len(master) * 0.5:
+        record("FAIL", "merge/namespaced-fields",
+               f"{len(collided)} pins have identical water/sewerage AND water/road values — likely collided")
+    else:
+        record("PASS", "merge/namespaced-fields")
+
+
+# ── E. Score integrity ──────────────────────────────────────────────────────
+GRADES = [(90, "A+"), (80, "A"), (70, "B+"), (60, "B"), (50, "C+"), (40, "C"), (0, "D")]
+
+
+def grade_for(s):
+    for t, g in GRADES:
+        if s >= t:
+            return g
+    return "D"
+
+
+def check_score_ranges(scores):
+    bad = []
+    for r in scores:
+        for k, v in r.get("scores", {}).items():
+            if v is None or not (0 <= v <= 100):
+                bad.append(f"{r['pin_code']}.{k}={v}")
+        n = r.get("nqi_composite")
+        if n is not None and not (0 <= n <= 100):
+            bad.append(f"{r['pin_code']}.nqi={n}")
+    record("FAIL" if bad else "PASS", "scores/range-0-100", "; ".join(bad[:4]))
+
+
+def check_composite_bounds(scores):
+    """A weighted mean must lie between the min and max of its components."""
+    bad = []
+    for r in scores:
+        vals = [v for v in r.get("scores", {}).values() if v is not None]
+        n = r.get("nqi_composite")
+        if vals and n is not None and not (min(vals) - 1 <= n <= max(vals) + 1):
+            bad.append(f"{r['pin_code']}: nqi {n} outside [{min(vals)},{max(vals)}]")
+    record("FAIL" if bad else "PASS", "scores/composite-in-bounds", "; ".join(bad[:3]))
+
+
+def check_grades(scores):
+    bad = [f"{r['pin_code']}: {r['nqi_composite']} labelled {r['grade']}"
+           for r in scores
+           if r.get("nqi_composite") is not None and r.get("grade")
+           and r["grade"] != grade_for(r["nqi_composite"])]
+    record("FAIL" if bad else "PASS", "scores/grade-matches", "; ".join(bad[:3]))
+
+
+def check_weights(scores, methodology):
+    if methodology:
+        total = sum(d["weight"] for d in methodology.get("dimensions", {}).values())
+        if abs(total - 1.0) > 0.001:
+            record("FAIL", "weights/sum-to-1", f"base weights sum to {total}")
+        else:
+            record("PASS", "weights/sum-to-1")
+    bad = []
+    for r in scores:
+        wa = r.get("weights_applied") or {}
+        if wa and abs(sum(wa.values()) - 1.0) > 0.01:
+            bad.append(f"{r['pin_code']}: {round(sum(wa.values()),3)}")
+    record("FAIL" if bad else "PASS", "weights/applied-renormalised", "; ".join(bad[:3]))
+
+
+# ── F. Coverage & semantics ─────────────────────────────────────────────────
+def check_pins(scores, prices):
+    pins = [r["pin_code"] for r in scores]
+    dupes = [p for p, c in Counter(pins).items() if c > 1]
+    record("FAIL" if dupes else "PASS", "pins/no-duplicates", ", ".join(dupes[:5]))
+
+    bad = [p for p in pins if not (len(p) == 6 and p.isdigit())]
+    record("FAIL" if bad else "PASS", "pins/format", ", ".join(bad[:5]))
+
+    nocity = [r["pin_code"] for r in scores if not r.get("city")]
+    record("FAIL" if nocity else "PASS", "pins/city-tagged", ", ".join(nocity[:5]))
+
+    if prices:
+        missing = [p for p in pins if p not in prices.get("pins", {})]
+        record("WARN" if missing else "PASS", "pins/price-coverage",
+               f"{len(missing)} without price context" if missing else "")
+
+
+def check_waterlogging(master):
+    """Inverted scale: 5 = safest, 1 = worst. Guard the semantics."""
+    bad = [f"{r['pin_code']}={r['waterlogging_risk']}" for r in master
+           if r.get("waterlogging_risk") is not None
+           and not (1 <= r["waterlogging_risk"] <= 5)]
+    record("FAIL" if bad else "PASS", "sewerage/waterlogging-range", "; ".join(bad[:4]))
+
+    inconsistent = [r["pin_code"] for r in master
+                    if r.get("waterlogging_risk") is not None
+                    and r.get("flooding_incidents_annual") is not None
+                    and r["waterlogging_risk"] >= 4 and r["flooding_incidents_annual"] > 6]
+    record("WARN" if inconsistent else "PASS", "sewerage/waterlogging-consistency",
+           f"{len(inconsistent)} pins marked low-risk but flood often: {', '.join(inconsistent[:4])}"
+           if inconsistent else "")
+
+
+# ── run ─────────────────────────────────────────────────────────────────────
+def main():
+    quiet = "--quiet" in sys.argv
+    master = load("master_by_pin_latest") or []
+    scores = load("nqi_scores_latest") or []
+    cpcb = load("cpcb_aqi_latest") or []
+    methodology = load("methodology_latest")
+    prices = load("price_tier_by_pin", RAW)
+
+    if not master or not scores:
+        print("FATAL: master_by_pin_latest.json / nqi_scores_latest.json missing. "
+              "Run run_pipeline.py and scoring.py first.")
+        return 2
+
+    check_aqi_is_max(master, cpcb)
+    check_aqi_category(master)
+    check_freshness(cpcb)
+    check_air_distribution(scores)
+    check_cross_city_plausibility(scores, master)
+    check_namespaced_fields(master)
+    check_score_ranges(scores)
+    check_composite_bounds(scores)
+    check_grades(scores)
+    check_weights(scores, methodology)
+    check_pins(scores, prices)
+    check_waterlogging(master)
+
+    fails = [r for r in results if r[0] == "FAIL"]
+    warns = [r for r in results if r[0] == "WARN"]
+
+    print(f"\n{'='*72}\nASLIVASTU DATA VALIDATION — {len(scores)} pins\n{'='*72}")
+    for level, name, msg in results:
+        if quiet and level == "PASS":
+            continue
+        mark = {"PASS": "  ok ", "FAIL": "FAIL ", "WARN": "warn "}[level]
+        print(f"{mark} {name}" + (f"\n         {msg}" if msg else ""))
+    print(f"{'='*72}")
+    print(f"{len(results)-len(fails)-len(warns)} passed · {len(warns)} warnings · {len(fails)} failed")
+    print(f"{'='*72}\n")
+    return 1 if fails else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
