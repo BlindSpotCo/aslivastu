@@ -925,6 +925,20 @@ export default function Landing() {
   const [ctaSuggestions, setCtaSuggestions] = useState([])
   const [ctaFocused, setCtaFocused] = useState(false)
   const [ctaCity, setCtaCity]       = useState('Delhi NCR')
+  // Hero location picker — own state so it never fights the bottom CTA picker.
+  // (heroQ/setHeroQ already declared above.)
+  const [heroSuggestions, setHeroSuggestions] = useState([])
+  const [heroFocused, setHeroFocused]       = useState(false)
+  const [heroCity, setHeroCity]             = useState('Delhi NCR')
+
+  function heroSearch2(v, city) {
+    const s = (v || '').trim().toLowerCase()
+    if (!s) return []
+    return Object.entries(PIN_META_LANDING)
+      .filter(([pin, name]) => (city === 'Bangalore') === pin.startsWith('560')
+        && (name.toLowerCase().includes(s) || pin.includes(s)))
+      .slice(0, 6)
+  }
 
   const [transitioning, setTransitioning] = useState(false)
   const [transitionLabel, setTransitionLabel] = useState('')
@@ -1913,6 +1927,51 @@ export default function Landing() {
           </p>
           <div ref={heroSearch} style={{ display:'flex', flexDirection:'column', gap:24, marginTop:4, opacity:0, transform:'translateY(16px)' }}>
 
+            {/* Location picker — same behaviour as the bottom CTA search */}
+            <div style={{ position:'relative', maxWidth:520 }}>
+              <div style={{ display:'inline-flex', border:'1px solid rgba(167,90,101,0.45)', marginBottom:10 }}>
+                {['Delhi NCR','Bangalore'].map((c, i) => (
+                  <button key={c} onClick={() => { setHeroCity(c); setHeroSuggestions(heroSearch2(heroQ, c)) }}
+                    style={{ fontSize:11, fontWeight:600, letterSpacing:'0.06em', textTransform:'uppercase',
+                      padding:'6px 13px', border:'none', cursor:'pointer',
+                      borderLeft: i ? '1px solid rgba(167,90,101,0.45)' : 'none',
+                      background: heroCity===c ? '#7a1f2b' : 'transparent',
+                      color: heroCity===c ? '#fff' : 'rgba(255,255,255,0.6)' }}>{c}</button>
+                ))}
+              </div>
+              <div className="cta-search" style={{ position:'relative' }}>
+                <input
+                  placeholder={heroCity==='Bangalore' ? 'Area or pin code — e.g. Koramangala' : 'Type area name or pin code…'}
+                  value={heroQ}
+                  onChange={e => { const v = e.target.value; setHeroQ(v); setHeroSuggestions(heroSearch2(v, heroCity)) }}
+                  onKeyDown={e => { if (e.key === 'Enter') { setHeroSuggestions([]); go(heroQ) } }}
+                  onFocus={() => setHeroFocused(true)}
+                  onBlur={() => setTimeout(() => { setHeroFocused(false); setHeroSuggestions([]) }, 150)}
+                  style={{ fontSize:16 }}
+                />
+                <button onClick={() => { setHeroSuggestions([]); go(heroQ) }}>Get report →</button>
+              </div>
+              {heroSuggestions.length > 0 && heroFocused && (
+                <div style={{ position:'absolute', top:'100%', left:0, right:0, zIndex:100,
+                  background:'#111', border:'1px solid rgba(255,255,255,0.1)', borderRadius:0,
+                  overflow:'hidden', marginTop:6, boxShadow:'0 8px 32px rgba(0,0,0,0.6)' }}>
+                  {heroSuggestions.map(([pin, name]) => (
+                    <div key={pin}
+                      onMouseDown={() => { setHeroQ(name); setHeroSuggestions([]); go(name) }}
+                      style={{ padding:'12px 18px', cursor:'pointer', display:'flex',
+                        justifyContent:'space-between', alignItems:'center',
+                        borderBottom:'1px solid rgba(255,255,255,0.05)', transition:'background 0.15s' }}
+                      onMouseEnter={e => e.currentTarget.style.background='rgba(167,90,101,0.04)'}
+                      onMouseLeave={e => e.currentTarget.style.background='transparent'}
+                    >
+                      <span style={{ color:'#f0ede8', fontSize:14, fontWeight:500 }}>{name}</span>
+                      <span style={{ color:'rgba(255,255,255,0.5)', fontSize:12, fontFamily:'monospace' }}>{pin}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {/* Dimension pills */}
             <div style={{ display:'flex', flexWrap:'wrap', gap:10 }}>
               {[
@@ -1938,7 +1997,7 @@ export default function Landing() {
             {/* Stats row */}
             <div style={{ display:'flex', gap:32, alignItems:'flex-start' }}>
               {[
-                { val:'86', lbl:'Areas' },
+                { val:'152', lbl:'Areas' },
                 { val:'8', lbl:'Dimensions' },
                 { val:'Live', lbl:'AQI data' },
                 { val:'Free', lbl:'Always' },
