@@ -556,6 +556,9 @@ const CSS = `
   .hero-picker button:focus-visible,
   .hero-picker input:focus-visible { outline: 2px solid #a75a65; outline-offset: 2px; }
   .hero-picker button:focus:not(:focus-visible) { outline: none; }
+  /* compact variant of .cta-search for the hero */
+  .hero-picker .cta-search input  { padding: 12px 16px; font-size: 14px !important; }
+  .hero-picker .cta-search button { padding: 12px 18px; font-size: 13px; }
   .cta-search {
     display: flex; max-width: 480px; width: 100%; margin: 0 auto 40px;
     border: 1px solid rgba(167,90,101,0.45); border-radius: 0;
@@ -1931,12 +1934,12 @@ export default function Landing() {
           <div ref={heroSearch} style={{ display:'flex', flexDirection:'column', gap:24, marginTop:4, opacity:0, transform:'translateY(16px)' }}>
 
             {/* Location picker — same behaviour as the bottom CTA search */}
-            <div className="hero-picker" style={{ position:'relative', maxWidth:480 }}>
-              <div style={{ display:'inline-flex', border:'1px solid rgba(167,90,101,0.45)', marginBottom:10 }}>
+            <div className="hero-picker" style={{ position:'relative', maxWidth:400 }}>
+              <div style={{ display:'inline-flex', border:'1px solid rgba(167,90,101,0.45)', marginBottom:8 }}>
                 {['Delhi NCR','Bangalore'].map((c, i) => (
                   <button key={c} onClick={() => { setHeroCity(c); setHeroSuggestions(heroSearch2(heroQ, c)) }}
-                    style={{ fontSize:11, fontWeight:600, letterSpacing:'0.06em', textTransform:'uppercase',
-                      padding:'6px 13px', border:'none', cursor:'pointer',
+                    style={{ fontSize:10, fontWeight:600, letterSpacing:'0.06em', textTransform:'uppercase',
+                      padding:'5px 11px', border:'none', cursor:'pointer',
                       borderLeft: i ? '1px solid rgba(167,90,101,0.45)' : 'none',
                       background: heroCity===c ? '#7a1f2b' : 'transparent',
                       color: heroCity===c ? '#fff' : 'rgba(255,255,255,0.6)' }}>{c}</button>
@@ -1973,6 +1976,22 @@ export default function Landing() {
                   ))}
                 </div>
               )}
+
+              {/* Sample areas — follow the selected city */}
+              <div style={{ display:'flex', flexWrap:'wrap', gap:6, alignItems:'center', marginTop:10 }}>
+                <span style={{ fontSize:10, color:'rgba(255,255,255,0.4)', letterSpacing:'0.08em', textTransform:'uppercase', marginRight:2 }}>Try</span>
+                {(heroCity==='Bangalore'
+                  ? [['Koramangala','560034'],['Indiranagar East','560038'],['Whitefield','560066'],['HSR Layout','560102']]
+                  : [['Hauz Khas','110016'],['Vasant Kunj','110070'],['Gurugram','122001'],['Rohini','110085']]
+                 ).map(([name, pin]) => (
+                  <button key={pin} onClick={() => go(name)}
+                    style={{ padding:'4px 10px', background:'none', border:'1px solid rgba(167,90,101,0.35)',
+                      fontSize:11, cursor:'pointer', color:'rgba(255,255,255,0.6)', letterSpacing:'0.01em' }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(167,90,101,0.7)'; e.currentTarget.style.color='#a75a65' }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(167,90,101,0.35)'; e.currentTarget.style.color='rgba(255,255,255,0.6)' }}
+                  >{name}</button>
+                ))}
+              </div>
             </div>
 
             {/* Dimension pills */}
