@@ -553,6 +553,9 @@ const CSS = `
     font-style: normal; color: transparent;
     -webkit-text-stroke: 1px rgba(240,237,232,0.18);
   }
+  .hero-picker button:focus-visible,
+  .hero-picker input:focus-visible { outline: 2px solid #a75a65; outline-offset: 2px; }
+  .hero-picker button:focus:not(:focus-visible) { outline: none; }
   .cta-search {
     display: flex; max-width: 480px; width: 100%; margin: 0 auto 40px;
     border: 1px solid rgba(167,90,101,0.45); border-radius: 0;
@@ -1928,7 +1931,7 @@ export default function Landing() {
           <div ref={heroSearch} style={{ display:'flex', flexDirection:'column', gap:24, marginTop:4, opacity:0, transform:'translateY(16px)' }}>
 
             {/* Location picker — same behaviour as the bottom CTA search */}
-            <div style={{ position:'relative', maxWidth:520 }}>
+            <div className="hero-picker" style={{ position:'relative', maxWidth:480 }}>
               <div style={{ display:'inline-flex', border:'1px solid rgba(167,90,101,0.45)', marginBottom:10 }}>
                 {['Delhi NCR','Bangalore'].map((c, i) => (
                   <button key={c} onClick={() => { setHeroCity(c); setHeroSuggestions(heroSearch2(heroQ, c)) }}
@@ -1939,7 +1942,7 @@ export default function Landing() {
                       color: heroCity===c ? '#fff' : 'rgba(255,255,255,0.6)' }}>{c}</button>
                 ))}
               </div>
-              <div className="cta-search" style={{ position:'relative' }}>
+              <div className="cta-search" style={{ position:'relative', margin:0, maxWidth:'none' }}>
                 <input
                   placeholder={heroCity==='Bangalore' ? 'Area or pin code — e.g. Koramangala' : 'Type area name or pin code…'}
                   value={heroQ}
