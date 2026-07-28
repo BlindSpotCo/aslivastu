@@ -157,6 +157,39 @@ def check_cross_city_plausibility(scores, master):
                " | ".join(f"{c}: AQI {a:.0f} -> air {s:.0f}" for c, a, s in cities))
 
 
+def check_signal_variation(scores):
+    """Estimate data is fine when it's labelled — but a dimension that barely
+    varies within a city carries little independent signal. Bengaluru crime is
+    seeded from per-tier baselines (see bengaluru_data.TIER), so its value mostly
+    restates the area's assigned tier instead of measuring that area: 66 areas
+    collapse onto ~10 values, one of which covers a third of them. Delhi crime,
+    entered per police station, spreads across 30+ values. This flags a
+    count-like field that clusters onto a handful of values across many areas, so
+    a thin dimension can't quietly look as informative as a differentiated one.
+    WARN, not FAIL: the data is honestly labelled, just low-resolution — replace
+    the seed with real per-area figures to clear it."""
+    FIELD = "total_cognizable_crimes"
+    by_city = defaultdict(list)
+    for r in scores:
+        v = r.get(FIELD)
+        if v is not None:
+            by_city[r.get("city", "?")].append(v)
+    for city, vals in by_city.items():
+        n = len(vals)
+        if n < 20:                       # too few areas to judge variation
+            continue
+        distinct = len(set(vals))
+        top3 = sum(c for _, c in Counter(vals).most_common(3)) / n
+        if distinct / n < 0.25 or top3 > 0.70:
+            record("WARN", f"signal/crime-variation[{city}]",
+                   f"{distinct} distinct values across {n} areas, top-3 cover "
+                   f"{top3:.0%} — low independent signal (tracks area tier; "
+                   f"seed with real per-area crime data to clear)")
+        else:
+            record("PASS", f"signal/crime-variation[{city}]",
+                   f"{distinct} distinct values / {n} areas")
+
+
 # ── D. Field collisions ─────────────────────────────────────────────────────
 def check_namespaced_fields(master):
     """water/roads/sewerage must not share one collided value."""
@@ -265,6 +298,17 @@ def check_web_in_sync(master, scores):
     if not web.exists():
         record("WARN", "sync/web-public", "nqr-web/public not found — skipped")
         return
+    # Timestamps change on every regeneration, so comparing raw JSON would always
+    # "fail". Strip volatile fields and compare the data that actually matters.
+    VOLATILE = {"scored_at", "merged_at", "scraped_at", "published_at", "generated_at"}
+
+    def strip(obj):
+        if isinstance(obj, dict):
+            return {k: strip(v) for k, v in obj.items() if k not in VOLATILE}
+        if isinstance(obj, list):
+            return [strip(v) for v in obj]
+        return obj
+
     pairs = [("nqi_scores_latest.json", "nqi_scores.json", scores),
              ("master_by_pin_latest.json", "master_by_pin.json", master)]
     drift = []
@@ -278,6 +322,7 @@ def check_web_in_sync(master, scores):
         except ValueError:
             drift.append(f"{dst_name} unparseable")
             continue
+        src_data, dst_data = strip(src_data), strip(dst_data)
         if dst_data != src_data:
             # pinpoint an example so the message is actionable
             s = {r["pin_code"]: r for r in src_data if isinstance(r, dict) and "pin_code" in r}
@@ -332,6 +377,7 @@ def main():
     check_freshness(cpcb)
     check_air_distribution(scores)
     check_cross_city_plausibility(scores, master)
+    check_signal_variation(scores)
     check_namespaced_fields(master)
     check_score_ranges(scores)
     check_composite_bounds(scores)
