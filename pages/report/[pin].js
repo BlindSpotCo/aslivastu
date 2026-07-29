@@ -313,6 +313,7 @@ export default function Report({ report, allScores, ogMeta }) {
   const [fbText, setFbText] = useState('')
   const [fbStatus, setFbStatus] = useState('idle')
   const [pdfBusy, setPdfBusy] = useState(false)
+  const [pdfError, setPdfError] = useState('')
   const [brand, setBrand] = useState({ agency: '', logo: '' })
   const [brandReady, setBrandReady] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
@@ -400,6 +401,7 @@ export default function Report({ report, allScores, ogMeta }) {
   async function generatePDF() {
     if (pdfBusy) return
     setPdfBusy(true)
+    setPdfError('')
     const wasLocked = !unlocked
     try {
       if (wasLocked) setUnlocked(true)                    // capture the whole report
@@ -411,7 +413,15 @@ export default function Report({ report, allScores, ogMeta }) {
       if (!node) throw new Error('no node')
       node.setAttribute('data-pdf', '1')                  // hides interactive-only bits via CSS
       const bg = dark ? '#151618' : '#f2f2f3'
-      const canvas = await window.html2canvas(node, { scale: 2, backgroundColor: bg, useCORS: true, allowTaint: true, logging: false, windowWidth: 1280 })
+      const canvas = await window.html2canvas(node, {
+        scale: 2, backgroundColor: bg, useCORS: true, allowTaint: false,
+        logging: false, windowWidth: 1280, imageTimeout: 15000,
+        // Skip the Leaflet map: its cross-origin tiles taint the canvas, and a
+        // tainted canvas makes the later toDataURL() throw — which is what made
+        // the whole export fail silently. allowTaint:false + useCORS keeps any
+        // other cross-origin image (e.g. a broker logo) from tainting it too.
+        ignoreElements: (el) => !!(el && el.classList && el.classList.contains('leaflet-container')),
+      })
       node.removeAttribute('data-pdf')
 
       const doc = new jsPDF({ unit: 'pt', format: 'a4' })
@@ -433,7 +443,14 @@ export default function Report({ report, allScores, ogMeta }) {
       const name = PIN_META[report.pin_code]?.name || report.pin_code
       doc.save(`AsliVastu-${String(name).replace(/\s+/g, '-')}-${report.pin_code}.pdf`)
       void ih
-    } catch { /* ignore */ } finally { setPdfBusy(false) }
+    } catch (err) {
+      console.error('[AsliVastu] PDF export failed:', err)
+      setPdfError(err && err.message ? `PDF export failed: ${err.message}` : 'PDF export failed — check the console for details.')
+    } finally {
+      const n = sheetRef.current
+      if (n) n.removeAttribute('data-pdf')   // always restore the interactive UI, even on error
+      setPdfBusy(false)
+    }
   }
 
   const pin = report?.pin_code
@@ -602,11 +619,12 @@ export default function Report({ report, allScores, ogMeta }) {
                   border:`1px solid ${on ? 'var(--acc)' : 'var(--acc60)'}`, color: on ? 'var(--acc)' : 'var(--ink70)' })
                 return (<>
                   <button onClick={() => toggleSaved(pin)} style={bs(saved)}>{saved ? '★ SHORTLISTED' : '☆ SHORTLIST'}</button>
-                  <button onClick={generatePDF} style={bs(false)}>{pdfBusy ? '…' : 'PDF'}</button>
+                  <button onClick={generatePDF} style={bs(false)}>{pdfBusy ? 'BUILDING PDF…' : 'PDF'}</button>
                   <button onClick={share} style={bs(false)}>SHARE</button>
                 </>)
               })()}
             </div>
+            {pdfError && <p className="no-pdf" style={{ margin:'8px 0 0', fontSize:12, color:'#ef4444', lineHeight:1.4 }}>{pdfError}</p>}
           </BPF>
 
           {/* Score */}
