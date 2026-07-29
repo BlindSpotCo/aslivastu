@@ -313,6 +313,9 @@ export default function Report({ report, allScores, ogMeta }) {
   const [fbText, setFbText] = useState('')
   const [fbStatus, setFbStatus] = useState('idle')
   const [pdfBusy, setPdfBusy] = useState(false)
+  const [brand, setBrand] = useState({ agency: '', logo: '' })
+  const [brandReady, setBrandReady] = useState(false)
+  const [linkCopied, setLinkCopied] = useState(false)
   const mapEl = useRef(null)
   const sheetRef = useRef(null)
   const router = useRouter()
@@ -338,13 +341,47 @@ export default function Report({ report, allScores, ogMeta }) {
     try { s = JSON.parse(localStorage.getItem('aslivastu_shortlist') || '[]') } catch { /* ignore */ }
     if (Array.isArray(s) && s.length) setShortlist(s)
   }, [])
+
+  // Broker branding: agency/logo come from a shared branded link (?ref=/&logo=)
+  // or from the broker's own saved brand (localStorage). Client-side only, so a
+  // stale server render never leaks one broker's brand onto another's view.
+  useEffect(() => {
+    let saved = {}
+    try { saved = JSON.parse(localStorage.getItem('aslivastu_brand') || '{}') } catch { /* ignore */ }
+    const q = router.query || {}
+    const qref = typeof q.ref === 'string' ? q.ref.slice(0, 80) : ''
+    const qlogo = typeof q.logo === 'string' ? q.logo : ''
+    setBrand({ agency: qref || saved.agency || '', logo: qlogo || saved.logo || '' })
+    setBrandReady(true)
+  }, [router.query])
+
+  function saveBrand(next) {
+    setBrand(next)
+    try { localStorage.setItem('aslivastu_brand', JSON.stringify(next)) } catch { /* ignore */ }
+  }
+  function brandedUrl() {
+    if (typeof window === 'undefined' || !report) return ''
+    const base = window.location.origin + '/report/' + report.pin_code
+    const p = new URLSearchParams()
+    if (brand.agency) p.set('ref', brand.agency)
+    if (brand.logo) p.set('logo', brand.logo)
+    const qs = p.toString()
+    return qs ? `${base}?${qs}` : base
+  }
+  function copyBrandedLink() {
+    const url = brandedUrl()
+    if (!url) return
+    const done = () => { setLinkCopied(true); setTimeout(() => setLinkCopied(false), 1800) }
+    if (typeof navigator !== 'undefined' && navigator.clipboard) navigator.clipboard.writeText(url).then(done).catch(done)
+    else done()
+  }
   function toggleSaved(p) {
     setShortlist(prev => { const next = prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p]
       try { localStorage.setItem('aslivastu_shortlist', JSON.stringify(next)) } catch { /* ignore */ }
       return next })
   }
   function share() {
-    const url = typeof window !== 'undefined' ? window.location.origin + '/report/' + report.pin_code : ''
+    const url = brandedUrl()   // preserves ?ref=/&logo= so a broker's share stays branded
     const txt = `${PIN_META[report.pin_code]?.name || report.pin_code}: NQI ${report.nqi_composite}/100 (${report.grade}) on AsliVastu`
     if (typeof navigator !== 'undefined' && navigator.share) navigator.share({ title: 'AsliVastu', text: txt, url }).catch(() => {})
     else if (typeof window !== 'undefined') window.open(`https://wa.me/?text=${encodeURIComponent(txt + ' ' + url)}`, '_blank')
@@ -500,6 +537,34 @@ export default function Report({ report, allScores, ogMeta }) {
           </div>
         </header>
 
+        {/* ── Broker branding strip (inside sheet → flows into the PDF) ── */}
+        {brandReady && (brand.agency || brand.logo) && (
+          <div style={{ display:'flex', alignItems:'center', gap:14, marginTop:16, padding:'12px 16px', border:'1px solid var(--acc45)', background:'var(--fill7)' }}>
+            {brand.logo && (
+              <img src={brand.logo} alt="" crossOrigin="anonymous"
+                onError={e => { e.currentTarget.style.display = 'none' }}
+                style={{ height:36, width:'auto', maxWidth:150, objectFit:'contain' }} />
+            )}
+            <div style={{ display:'flex', flexDirection:'column', lineHeight:1.15 }}>
+              <span className="kick" style={{ color:'var(--ink55)' }}>Prepared by</span>
+              <span className="cond" style={{ fontSize:19, fontWeight:700, color:'var(--ink)' }}>{brand.agency || '—'}</span>
+            </div>
+          </div>
+        )}
+
+        {/* ── Branding control (broker-only; hidden from PDF and from shared links) ── */}
+        {brandReady && !router.query.ref && (
+          <div className="no-pdf" style={{ display:'flex', gap:10, alignItems:'center', flexWrap:'wrap', marginTop:14, padding:'12px 16px', border:'1px dashed var(--acc45)' }}>
+            <span className="kick" style={{ color:'var(--ink55)' }}>Brand this report</span>
+            <input value={brand.agency} onChange={e => saveBrand({ ...brand, agency: e.target.value })} placeholder="Your agency / name"
+              style={{ padding:'7px 10px', border:'1px solid var(--acc35)', background:'transparent', color:'var(--ink)', fontSize:13, outline:'none', minWidth:170 }} />
+            <input value={brand.logo} onChange={e => saveBrand({ ...brand, logo: e.target.value })} placeholder="Logo image URL (optional)"
+              style={{ padding:'7px 10px', border:'1px solid var(--acc35)', background:'transparent', color:'var(--ink)', fontSize:13, outline:'none', minWidth:190, flex:1 }} />
+            <button onClick={copyBrandedLink}
+              style={{ background:'var(--acc-fill)', color:'#f6f3f3', border:'none', padding:'8px 16px', fontSize:12, fontWeight:600, letterSpacing:'.06em', cursor:'pointer', whiteSpace:'nowrap' }}>{linkCopied ? 'COPIED ✓' : 'COPY BRANDED LINK'}</button>
+          </div>
+        )}
+
         {/* ── Area search + city switcher ── */}
         <div className="no-pdf" style={{ display:'flex', gap:12, alignItems:'center', flexWrap:'wrap', marginTop:18, position:'relative', zIndex:20 }}>
           <div style={{ display:'inline-flex', border:'1px solid var(--acc45)' }}>
@@ -552,6 +617,7 @@ export default function Report({ report, allScores, ogMeta }) {
               <span className="cond" style={{ fontSize:30, fontWeight:700, color:'var(--acc)', marginBottom:12 }}>{grade}</span>
             </div>
             <p style={{ fontSize:13, color:'var(--ink65)', margin:0, lineHeight:1.5 }}>NQI · weighted mean of {report.dimensions_total} dimensions — switch profile to re-weight.</p>
+            <p className="kick" style={{ margin:'10px 0 0', color:'var(--ink55)', lineHeight:1.4 }}>First-pass area assessment · reflects this PIN, not a specific building or street</p>
           </BPF>
 
           {/* Verdict (solid accent) */}
@@ -839,6 +905,9 @@ export default function Report({ report, allScores, ogMeta }) {
 
         {/* ── Footer ── */}
         <div style={{ marginTop:32, paddingTop:20, borderTop:'1px solid var(--acc35)' }}>
+          <p style={{ fontSize:12.5, color:'var(--ink)', fontWeight:600, lineHeight:1.6, margin:'0 0 10px', maxWidth:900 }}>
+            Scope — AsliVastu measures neighbourhood livability from government sources. Not a substitute for legal, title, or physical verification of a specific property.
+          </p>
           <p style={{ fontSize:12, color:'var(--ink65)', lineHeight:1.6, margin:'0 0 14px', maxWidth:900 }}>
             <strong style={{ color:'var(--ink)' }}>Important notice</strong> — AsliVastu scores are data aggregations for informational and research purposes only, not real-estate, legal or financial advice. Most data is estimated from government reports last verified 2023–24; only Air Quality refreshes in real time. Do not rely solely on these scores for a purchase decision.
           </p>
