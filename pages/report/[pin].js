@@ -659,7 +659,7 @@ export default function Report({ report, allScores, ogMeta }) {
               <span className="cond" style={{ fontSize:30, fontWeight:700, color:'var(--acc)', marginBottom:12 }}>{grade}</span>
             </div>
             <p style={{ fontSize:13, color:'var(--ink65)', margin:0, lineHeight:1.5 }}>NQI · weighted mean of {report.dimensions_total} dimensions — switch profile to re-weight.</p>
-            <p className="kick" style={{ margin:'10px 0 0', color:'var(--ink55)', lineHeight:1.4 }}>First-pass area assessment · reflects this PIN, not a specific building or street</p>
+            <p style={{ fontSize:12.5, color:'var(--ink55)', margin:'8px 0 0', lineHeight:1.5 }}>Area assessment for PIN {pin} — a first-pass read on the whole neighbourhood; individual streets within a PIN can differ.</p>
           </BPF>
 
           {/* Verdict (solid accent) */}
