@@ -432,9 +432,30 @@ export default function Report({ report, allScores, ogMeta }) {
       const m = 18, iw = pw - m * 2
       const ih = (canvas.height * iw) / canvas.width      // full image height at page width
       const pageCanvasH = Math.floor((canvas.width * (ph - m * 2)) / iw)  // px of source per page
+      // Smart page breaks: instead of cutting at a fixed offset (which slices
+      // straight through a card or a line of text), back the cut up to the
+      // nearest near-blank row so every break lands in a whitespace gap between
+      // sections. Falls back to the fixed cut if no gap is found in-window.
+      const srcCtx = canvas.getContext('2d')
+      const bgN = parseInt(bg.replace('#', ''), 16)
+      const bgR = (bgN >> 16) & 255, bgG = (bgN >> 8) & 255, bgB = bgN & 255
+      const rowIsBlank = (y) => {
+        let d
+        try { d = srcCtx.getImageData(0, y, canvas.width, 1).data } catch { return false }
+        for (let x = 0; x < canvas.width * 4; x += 40) {   // sample every ~10th pixel
+          if (Math.abs(d[x] - bgR) > 12 || Math.abs(d[x + 1] - bgG) > 12 || Math.abs(d[x + 2] - bgB) > 12) return false
+        }
+        return true
+      }
       let sy = 0, page = 0
       while (sy < canvas.height) {
-        const sliceH = Math.min(pageCanvasH, canvas.height - sy)
+        let sliceH = Math.min(pageCanvasH, canvas.height - sy)
+        if (sy + sliceH < canvas.height) {                 // not the last page → seek a clean break
+          const floorH = Math.floor(pageCanvasH * 0.7)     // don't waste more than ~30% of a page
+          let y = sy + sliceH
+          while (y > sy + floorH && !rowIsBlank(y)) y--
+          if (y > sy + floorH) sliceH = y - sy
+        }
         const slice = document.createElement('canvas')
         slice.width = canvas.width; slice.height = sliceH
         slice.getContext('2d').drawImage(canvas, 0, sy, canvas.width, sliceH, 0, 0, canvas.width, sliceH)
