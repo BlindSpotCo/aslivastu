@@ -407,13 +407,16 @@ export default function Report({ report, allScores, ogMeta }) {
       if (wasLocked) setUnlocked(true)                    // capture the whole report
       await new Promise(r => setTimeout(r, wasLocked ? 700 : 250))  // let it render/tiles settle
       await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js', () => !!window.jspdf)
-      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js', () => !!window.html2canvas)
+      // html2canvas-pro: drop-in fork that parses modern CSS color() / color-mix()
+      // (the design system's --acc tokens resolve to color(srgb …), which the old
+      // html2canvas 1.4.1 could not parse — that was the real export failure).
+      const html2canvas = (await import('html2canvas-pro')).default
       const { jsPDF } = window.jspdf
       const node = sheetRef.current
       if (!node) throw new Error('no node')
       node.setAttribute('data-pdf', '1')                  // hides interactive-only bits via CSS
       const bg = dark ? '#151618' : '#f2f2f3'
-      const canvas = await window.html2canvas(node, {
+      const canvas = await html2canvas(node, {
         scale: 2, backgroundColor: bg, useCORS: true, allowTaint: false,
         logging: false, windowWidth: 1280, imageTimeout: 15000,
         // Skip the Leaflet map: its cross-origin tiles taint the canvas, and a
