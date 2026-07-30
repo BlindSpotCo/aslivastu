@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Analytics } from '@vercel/analytics/next'
 
 // Site-wide custom cursor: an instant leading dot, a dashed ring that
 // eases toward it, and two trailing particles that lag even further —
@@ -95,6 +96,7 @@ export default function App({ Component, pageProps }) {
       `}</style>
       <CustomCursor />
       <Component {...pageProps} />
+      <Analytics />
     </>
   )
 }
