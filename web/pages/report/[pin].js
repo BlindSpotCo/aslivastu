@@ -333,6 +333,7 @@ export default function Report({ report, allScores, ogMeta }) {
   const [pdfError, setPdfError] = useState('')
   const [brand, setBrand] = useState({ agency: '', logo: '' })
   const [brandReady, setBrandReady] = useState(false)
+  const [brandOpen, setBrandOpen] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
   const [saveState, setSaveState] = useState('idle') // idle | saving | saved | error
   const [saveError, setSaveError] = useState('')
@@ -373,6 +374,10 @@ export default function Report({ report, allScores, ogMeta }) {
     const qlogo = typeof q.logo === 'string' ? q.logo : ''
     setBrand({ agency: qref || saved.agency || '', logo: qlogo || saved.logo || '' })
     setBrandReady(true)
+    // Returning brokers who already saved a brand see the editor open by
+    // default; everyone else gets it collapsed so it doesn't sit ahead of
+    // their actual report on a phone screen.
+    if (saved.agency || saved.logo) setBrandOpen(true)
   }, [router.query])
 
   function saveBrand(next) {
@@ -659,17 +664,30 @@ export default function Report({ report, allScores, ogMeta }) {
           </div>
         )}
 
-        {/* ── Branding control (broker-only; hidden from PDF and from shared links) ── */}
+        {/* ── Branding control (broker-only; hidden from PDF and from shared links) ──
+             Collapsed behind a toggle by default: on a phone this used to render as
+             a full-width form right under the header, ahead of the actual report,
+             which read as confusing for the vast majority of visitors who aren't
+             brokers. Returning brokers with a saved brand still get it pre-opened. */}
         {brandReady && !router.query.ref && (
-          <div className="no-pdf" style={{ display:'flex', gap:10, alignItems:'center', flexWrap:'wrap', marginTop:14, padding:'12px 16px', border:'1px dashed var(--acc45)' }}>
-            <span className="kick" style={{ color:'var(--ink55)' }}>Brand this report</span>
-            <input value={brand.agency} onChange={e => saveBrand({ ...brand, agency: e.target.value })} placeholder="Your agency / name"
-              style={{ padding:'7px 10px', border:'1px solid var(--acc35)', background:'transparent', color:'var(--ink)', fontSize:13, outline:'none', minWidth:170 }} />
-            <input value={brand.logo} onChange={e => saveBrand({ ...brand, logo: e.target.value })} placeholder="Logo image URL (optional)"
-              style={{ padding:'7px 10px', border:'1px solid var(--acc35)', background:'transparent', color:'var(--ink)', fontSize:13, outline:'none', minWidth:190, flex:1 }} />
-            <button onClick={copyBrandedLink}
-              style={{ background:'var(--acc-fill)', color:'#f6f3f3', border:'none', padding:'8px 16px', fontSize:12, fontWeight:600, letterSpacing:'.06em', cursor:'pointer', whiteSpace:'nowrap' }}>{linkCopied ? 'COPIED ✓' : 'COPY BRANDED LINK'}</button>
-          </div>
+          brandOpen ? (
+            <div className="no-pdf" style={{ display:'flex', gap:10, alignItems:'center', flexWrap:'wrap', marginTop:14, padding:'12px 16px', border:'1px dashed var(--acc45)' }}>
+              <span className="kick" style={{ color:'var(--ink55)' }}>Brand this report</span>
+              <input value={brand.agency} onChange={e => saveBrand({ ...brand, agency: e.target.value })} placeholder="Your agency / name"
+                style={{ padding:'7px 10px', border:'1px solid var(--acc35)', background:'transparent', color:'var(--ink)', fontSize:13, outline:'none', minWidth:170 }} />
+              <input value={brand.logo} onChange={e => saveBrand({ ...brand, logo: e.target.value })} placeholder="Logo image URL (optional)"
+                style={{ padding:'7px 10px', border:'1px solid var(--acc35)', background:'transparent', color:'var(--ink)', fontSize:13, outline:'none', minWidth:190, flex:1 }} />
+              <button onClick={copyBrandedLink}
+                style={{ background:'var(--acc-fill)', color:'#f6f3f3', border:'none', padding:'8px 16px', fontSize:12, fontWeight:600, letterSpacing:'.06em', cursor:'pointer', whiteSpace:'nowrap' }}>{linkCopied ? 'COPIED ✓' : 'COPY BRANDED LINK'}</button>
+              <button onClick={() => setBrandOpen(false)}
+                style={{ background:'transparent', border:'none', color:'var(--ink55)', fontSize:12, cursor:'pointer', padding:'8px 4px' }}>Hide</button>
+            </div>
+          ) : (
+            <button className="no-pdf" onClick={() => setBrandOpen(true)}
+              style={{ display:'inline-flex', alignItems:'center', gap:6, marginTop:14, background:'transparent', border:'1px dashed var(--acc45)', color:'var(--ink55)', fontSize:11.5, fontWeight:600, letterSpacing:'.04em', textTransform:'uppercase', padding:'7px 12px', cursor:'pointer' }}>
+              + Brand this report
+            </button>
+          )
         )}
 
         {/* ── Area search + city switcher ── */}
