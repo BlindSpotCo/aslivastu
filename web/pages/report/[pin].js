@@ -395,12 +395,14 @@ export default function Report({ report, allScores, ogMeta }) {
     setSaveState('saving')
     setSaveError('')
     const payload = {
-      pin_code: report.pin_code,
+      // Everything the report itself has -- full dimension breakdown
+      // (crime, power, water, roads, sewerage, connectivity, schools,
+      // price context, scores, weights), not just the headline numbers.
+      ...report,
       areaName: PIN_META[report.pin_code]?.name || report.pin_code,
       city: report.city || cityOf(report.pin_code),
-      nqi_composite: report.nqi_composite,
-      grade: report.grade,
       persona,
+      weights: customWeights,
       url: brandedUrl(),
     }
     try {

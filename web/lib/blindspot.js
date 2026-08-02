@@ -46,13 +46,7 @@ export async function saveReportToBlindSpot(report) {
     source: 'aslivastu',
     title: report.reportLabel || report.areaName || report.pin_code,
     data: {
-      pin_code: report.pin_code,
-      areaName: report.areaName,
-      city: report.city,
-      nqi_composite: report.nqi_composite,
-      grade: report.grade,
-      persona: report.persona,
-      url: report.url,
+      ...report,
       generatedAt: new Date().toISOString(),
     },
   });
