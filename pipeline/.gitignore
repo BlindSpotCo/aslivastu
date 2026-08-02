@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+data/raw/*.json
+data/processed/*.json
+.DS_Store
+*.csv
+
+# Curated source data (hand-maintained, NOT a scraper dump) — keep in version control
+!data/raw/price_tier_by_pin.json
+latitude54-site/

@@ -1,0 +1,2179 @@
+{
+  "_meta": {
+    "field": "price_context",
+    "purpose": "Indicative government circle-rate price band per PIN, shown in Rs/sq ft for buyers.",
+    "circle_rate_note": "'Circle rate' and 'collector rate' are the SAME thing — the government's minimum property value, used to calculate stamp duty and registration charges. Delhi/UP call it circle rate; Haryana calls it collector rate.",
+    "unit_note": "All figures converted to Rs per sq ft. rate_sqft is the apartment/built-up band a buyer would see; land_sqft (where present) is the government plot/land rate per sq ft. Exact where rate_exact/land_exact is true (Delhi land categories, Noida sectors, Indirapuram); indicative bands elsewhere.",
+    "market_gap_note": "Actual market prices in NCR typically run 20–70% ABOVE the circle rate (highest in prime Delhi & Gurugram, per Anarock/industry data). The circle rate is only the legal floor — budget for the difference in your own funds, since home loans are usually capped near this valuation.",
+    "tiers": {
+      "1": "Premium",
+      "2": "Upper",
+      "3": "Mid",
+      "4": "Modest",
+      "5": "Value"
+    },
+    "disclaimer": "Government minimum valuation, not market price. Figures are indicative Rs/sq ft bands unless marked exact, and a single PIN can span cheaper and pricier pockets. Not part of the NQI score.",
+    "not_in_composite": true,
+    "sources": {
+      "bangalore": "Karnataka guidance value — Kaveri portal, Dept. of Stamps & Registration"
+    }
+  },
+  "pins": {
+    "110001": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        8000,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 71907,
+      "land_exact": true,
+      "basis": "Delhi MCD Category A",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110002": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110003": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        6500,
+        10000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 22810,
+      "land_exact": true,
+      "basis": "Delhi MCD Category B",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110005": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4800,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11862,
+      "land_exact": true,
+      "basis": "Delhi MCD Category D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110006": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4000,
+        5800
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 6511,
+      "land_exact": true,
+      "basis": "Delhi MCD Category E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110007": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110008": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4800,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11862,
+      "land_exact": true,
+      "basis": "Delhi MCD Category D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110009": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110010": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110012": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110016": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        6500,
+        10000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 22810,
+      "land_exact": true,
+      "basis": "Delhi MCD Category B",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110017": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110018": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4800,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11862,
+      "land_exact": true,
+      "basis": "Delhi MCD Category D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110019": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4800,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11862,
+      "land_exact": true,
+      "basis": "Delhi MCD Category D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110020": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3500,
+        5000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 5262,
+      "land_exact": true,
+      "basis": "Delhi MCD Category F",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110021": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        8000,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 71907,
+      "land_exact": true,
+      "basis": "Delhi MCD Category A",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110022": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110024": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110025": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110026": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        6500,
+        10000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 22810,
+      "land_exact": true,
+      "basis": "Delhi MCD Category B",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110032": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4800,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11862,
+      "land_exact": true,
+      "basis": "Delhi MCD Category D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110033": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3000,
+        4500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 4292,
+      "land_exact": true,
+      "basis": "Delhi MCD Category G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110034": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110036": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        1563,
+        3063
+      ],
+      "rate_type": "land",
+      "rate_exact": false,
+      "land_sqft": 2163,
+      "land_exact": true,
+      "basis": "Delhi MCD Category H",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110037": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110039": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3692,
+        5192
+      ],
+      "rate_type": "land",
+      "rate_exact": false,
+      "land_sqft": 4292,
+      "land_exact": true,
+      "basis": "Delhi MCD Category G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110040": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3692,
+        5192
+      ],
+      "rate_type": "land",
+      "rate_exact": false,
+      "land_sqft": 4292,
+      "land_exact": true,
+      "basis": "Delhi MCD Category G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110041": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3000,
+        4500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 4292,
+      "land_exact": true,
+      "basis": "Delhi MCD Category G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110042": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4000,
+        5800
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 6511,
+      "land_exact": true,
+      "basis": "Delhi MCD Category E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110043": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3000,
+        4500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 4292,
+      "land_exact": true,
+      "basis": "Delhi MCD Category G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110044": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4000,
+        5800
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 6511,
+      "land_exact": true,
+      "basis": "Delhi MCD Category E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110049": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        6500,
+        10000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 22810,
+      "land_exact": true,
+      "basis": "Delhi MCD Category B",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110052": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4800,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11862,
+      "land_exact": true,
+      "basis": "Delhi MCD Category D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110053": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3500,
+        5000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 5262,
+      "land_exact": true,
+      "basis": "Delhi MCD Category F",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110058": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4800,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11862,
+      "land_exact": true,
+      "basis": "Delhi MCD Category D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110063": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4800,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11862,
+      "land_exact": true,
+      "basis": "Delhi MCD Category D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110065": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110067": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110068": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4000,
+        5800
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 6511,
+      "land_exact": true,
+      "basis": "Delhi MCD Category E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110070": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110073": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3692,
+        5192
+      ],
+      "rate_type": "land",
+      "rate_exact": false,
+      "land_sqft": 4292,
+      "land_exact": true,
+      "basis": "Delhi MCD Category G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110077": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4800,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11862,
+      "land_exact": true,
+      "basis": "Delhi MCD Category D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110078": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4800,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11862,
+      "land_exact": true,
+      "basis": "Delhi MCD Category D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110084": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3000,
+        4500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 4292,
+      "land_exact": true,
+      "basis": "Delhi MCD Category G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110085": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4000,
+        5800
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 6511,
+      "land_exact": true,
+      "basis": "Delhi MCD Category E",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110091": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110092": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        8000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 14850,
+      "land_exact": true,
+      "basis": "Delhi MCD Category C",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110094": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3000,
+        4500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 4292,
+      "land_exact": true,
+      "basis": "Delhi MCD Category G",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "110095": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4800,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11862,
+      "land_exact": true,
+      "basis": "Delhi MCD Category D",
+      "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)"
+    },
+    "122002": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        12000,
+        35000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 5556,
+      "land_exact": false,
+      "basis": "Cyber City / DLF Phase (Golf Course belt) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "source": "Govt of Haryana"
+    },
+    "122003": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        12000,
+        28000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 5556,
+      "land_exact": false,
+      "basis": "Sector 55 (Golf Course Rd) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "source": "Govt of Haryana"
+    },
+    "122001": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 3333,
+      "land_exact": false,
+      "basis": "Gurugram (Civil Lines / old sectors) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "source": "Govt of Haryana"
+    },
+    "122103": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Gurgaon South (Sohna Rd belt) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "source": "Govt of Haryana"
+    },
+    "122101": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        4000,
+        5500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sohna (developing) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "source": "Govt of Haryana"
+    },
+    "122051": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        4000,
+        5500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Manesar (industrial/residential) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "source": "Govt of Haryana"
+    },
+    "122413": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2500,
+        3800
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Panchgaon (Manesar fringe) — Gurugram district collector rates (gurugram.gov.in, 2024–25)",
+      "source": "Govt of Haryana"
+    },
+    "122107": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        1800,
+        3000
+      ],
+      "rate_type": "land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Nuh (Mewat) — Nuh district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "122108": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        1800,
+        3000
+      ],
+      "rate_type": "land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Taoru (Nuh dist) — Nuh district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "122502": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2000,
+        3300
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Rewari — Rewari district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "122505": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        1800,
+        3000
+      ],
+      "rate_type": "land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Mahendragarh — Mahendragarh district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "123106": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2200,
+        3500
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Dharuhera (Rewari dist, industrial) — Rewari district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "123401": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2000,
+        3300
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Rewari Town — Rewari district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "123001": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2000,
+        3300
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Jhajjar — Jhajjar district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "121001": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3500,
+        5500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Faridabad (Sec 14/15 higher) — Faridabad district collector rates (faridabad.nic.in, 2024–25)",
+      "source": "Govt of Haryana"
+    },
+    "121002": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3500,
+        5200
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Faridabad NIT — Faridabad district collector rates (faridabad.nic.in, 2024–25)",
+      "source": "Govt of Haryana"
+    },
+    "121102": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2500,
+        3800
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Ballabgarh (Faridabad dist) — Faridabad district collector rates (faridabad.nic.in, 2024–25)",
+      "source": "Govt of Haryana"
+    },
+    "124001": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        2800,
+        4200
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Rohtak — Rohtak district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "124507": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        2800,
+        4200
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Bahadurgarh (Delhi border) — Jhajjar district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "125050": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2000,
+        3200
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Fatehabad — Fatehabad district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "125055": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2000,
+        3200
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sirsa — Sirsa district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "131001": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        2800,
+        4200
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sonipat — Sonipat district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "131027": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2000,
+        3300
+      ],
+      "rate_type": "land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Murthal (Sonipat dist, highway) — Sonipat district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "131029": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        2800,
+        4200
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Kundli (Sonipat dist, Delhi border) — Sonipat district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "132103": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        2800,
+        4200
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Panipat — Panipat district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "135001": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2000,
+        3200
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Yamuna Nagar — Yamuna Nagar district collector rates (jamabandi.nic.in)",
+      "source": "Govt of Haryana"
+    },
+    "201301": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        4500,
+        5500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11645,
+      "land_exact": true,
+      "basis": "Noida Sector 1 (Cat A) — Gautam Budh Nagar (Noida) circle rates (igrsup.gov.in, Apr 2025)",
+      "source": "Govt of UP"
+    },
+    "201304": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        3500,
+        4800
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 8120,
+      "land_exact": true,
+      "basis": "Noida Sector 137 (Expressway, Cat B) — Gautam Budh Nagar (Noida) circle rates (igrsup.gov.in, Apr 2025)",
+      "source": "Govt of UP"
+    },
+    "201309": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        4500,
+        5500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 11645,
+      "land_exact": true,
+      "basis": "Noida Sector 62 (IT hub, Cat A) — Gautam Budh Nagar (Noida) circle rates (igrsup.gov.in, Apr 2025)",
+      "source": "Govt of UP"
+    },
+    "201014": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4000,
+        5500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": 6745,
+      "land_exact": true,
+      "basis": "Indirapuram — Ghaziabad circle rates (igrsup.gov.in)",
+      "source": "Govt of UP"
+    },
+    "201012": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        3800,
+        5200
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Vasundhara — Ghaziabad circle rates (igrsup.gov.in)",
+      "source": "Govt of UP"
+    },
+    "201010": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        3800,
+        5200
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Kaushambi (metro) — Ghaziabad circle rates (igrsup.gov.in)",
+      "source": "Govt of UP"
+    },
+    "201002": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        3800,
+        5000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Raj Nagar (RDC belt) — Ghaziabad circle rates (igrsup.gov.in)",
+      "source": "Govt of UP"
+    },
+    "201016": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3000,
+        4200
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Crossing Republik (township) — Ghaziabad circle rates (igrsup.gov.in)",
+      "source": "Govt of UP"
+    },
+    "201001": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        3000,
+        4500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Ghaziabad (general) — Ghaziabad circle rates (igrsup.gov.in)",
+      "source": "Govt of UP"
+    },
+    "201102": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2000,
+        3200
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Loni — Ghaziabad circle rates (igrsup.gov.in)",
+      "source": "Govt of UP"
+    },
+    "201206": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2000,
+        3200
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Muradnagar — Ghaziabad circle rates (igrsup.gov.in)",
+      "source": "Govt of UP"
+    },
+    "245101": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2000,
+        3200
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Hapur — Hapur district circle rates (igrsup.gov.in)",
+      "source": "Govt of UP"
+    },
+    "203001": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        2000,
+        3200
+      ],
+      "rate_type": "apartment/land",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Bulandshahr — Bulandshahr district circle rates (igrsup.gov.in)",
+      "source": "Govt of UP"
+    },
+    "560001": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        9000,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "MG Road — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560025": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        8500,
+        12000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Richmond Town — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560051": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        8500,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "HKP Road — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560052": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        8000,
+        11500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Vasanth Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560042": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Shivajinagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560002": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Chickpet — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560023": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Majestic — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560003": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        8500,
+        12000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Malleshwaram — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560010": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Rajajinagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560020": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Seshadripuram — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560021": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sriramapuram — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560022": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Yeshwanthpur — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560024": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        6000,
+        8500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Hebbal — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560032": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "RT Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560045": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Nagavara — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560092": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Vidyaranyapura — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560094": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sanjaynagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560097": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Byatarayanapura — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560063": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        4500,
+        6500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Yelahanka — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560064": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Yelahanka New Town — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560065": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Jakkur — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560008": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        7500,
+        11000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Ulsoor — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560038": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        8000,
+        12000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Indiranagar East — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560046": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Benson Town — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560005": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Cox Town — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560017": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "HAL / Old Airport — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560075": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "New Thippasandra — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560093": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "CV Raman Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560016": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        4000,
+        5800
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Ramamurthy Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560036": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        4200,
+        6000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "KR Puram — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560037": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        7800
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Marathahalli — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560048": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        7800
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Mahadevapura — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560066": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        7500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Whitefield — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560067": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        4800,
+        6500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Whitefield Hope Farm — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560103": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        7500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Bellandur — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560035": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        5500,
+        7500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sarjapur Road — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560087": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        4000,
+        5800
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Varthur — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560034": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        10000,
+        14000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Koramangala — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560095": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        9500,
+        13500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Koramangala 8th Blk — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560102": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        7000,
+        9500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "HSR Layout — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560029": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Adugodi — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560027": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Shanti Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560030": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Wilson Garden — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560068": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Bommanahalli — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560004": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        8000,
+        11500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Basavanagudi — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560011": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        9000,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Jayanagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560041": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        9000,
+        13000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Jayanagar 4th Block — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560019": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Hanumanthanagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560028": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Tyagarajanagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560050": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        8500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Banashankari — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560070": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "BSK 2nd Stage — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560085": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "BSK 3rd Stage — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560078": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        8500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "JP Nagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560076": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6500,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "BTM Layout — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560061": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        4000,
+        6000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Uttarahalli — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560062": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Konanakunte — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560083": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Bannerghatta Road — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560040": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Vijayanagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560079": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        6000,
+        9000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Basaveshwaranagar — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560072": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Nagarbhavi — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560018": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        7000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Chamrajpet — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560091": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        4000,
+        6000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sunkadakatte — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560056": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        4000,
+        6000
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Jnana Bharathi — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560100": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        5000,
+        6500
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Electronic City — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560099": {
+      "tier": 4,
+      "label": "Modest",
+      "rate_sqft": [
+        4200,
+        5800
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Hosur Road — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    },
+    "560105": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        3500,
+        4800
+      ],
+      "rate_type": "apartment",
+      "rate_exact": false,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Anekal — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
+      "source": "Govt of Karnataka"
+    }
+  }
+}
