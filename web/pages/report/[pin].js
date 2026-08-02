@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { PIN_META } from '../../lib/pinMeta'
 import { AREA_COORDS } from '../../lib/areaCoords'
+import { getBlindSpotSession, saveReportToBlindSpot, redirectToBlindSpotLogin } from '../../lib/blindspot'
 
 // ── Industry design tokens + blueprint frame (self-contained for v2) ─────────
 const CSS = `
@@ -312,6 +313,8 @@ export default function Report({ report, allScores, ogMeta }) {
   const [brand, setBrand] = useState({ agency: '', logo: '' })
   const [brandReady, setBrandReady] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
+  const [saveState, setSaveState] = useState('idle') // idle | saving | saved | error
+  const [saveError, setSaveError] = useState('')
   const mapEl = useRef(null)
   const sheetRef = useRef(null)
   const router = useRouter()
@@ -376,6 +379,49 @@ export default function Report({ report, allScores, ogMeta }) {
       try { localStorage.setItem('aslivastu_shortlist', JSON.stringify(next)) } catch { /* ignore */ }
       return next })
   }
+  // If we're back from a successful BlindSpot login round-trip, the
+  // callback page already finished the save -- just reflect that here
+  // and strip the flag from the URL.
+  useEffect(() => {
+    if (router.query.blindspot_saved === '1') {
+      setSaveState('saved')
+      const { blindspot_saved, ...rest } = router.query
+      router.replace({ pathname: router.pathname, query: rest }, undefined, { shallow: true })
+    }
+  }, [router.query.blindspot_saved])
+
+  async function handleSaveToBlindSpot() {
+    if (!report) return
+    setSaveState('saving')
+    setSaveError('')
+    const payload = {
+      // Everything the report itself has -- full dimension breakdown
+      // (crime, power, water, roads, sewerage, connectivity, schools,
+      // price context, scores, weights), not just the headline numbers.
+      ...report,
+      areaName: PIN_META[report.pin_code]?.name || report.pin_code,
+      city: report.city || cityOf(report.pin_code),
+      persona,
+      weights: customWeights,
+      url: brandedUrl(),
+    }
+    try {
+      const session = await getBlindSpotSession()
+      if (!session) {
+        // Full-page redirect to BlindSpot's login -- same proven flow as
+        // SunScout. Stashes the report and returns to /blindspot-callback
+        // once signed in, which sends the person right back here.
+        redirectToBlindSpotLogin(payload)
+        return
+      }
+      await saveReportToBlindSpot(payload)
+      setSaveState('saved')
+    } catch (e) {
+      setSaveState('error')
+      setSaveError(e.message || 'Could not save. Try again.')
+    }
+  }
+
   function share() {
     const url = brandedUrl()   // preserves ?ref=/&logo= so a broker's share stays branded
     const txt = `${PIN_META[report.pin_code]?.name || report.pin_code}: NQI ${report.nqi_composite}/100 (${report.grade}) on AsliVastu`
@@ -643,10 +689,18 @@ export default function Report({ report, allScores, ogMeta }) {
                 return (<>
                   <button onClick={generatePDF} style={bs(false)}>{pdfBusy ? 'BUILDING PDF…' : 'PDF'}</button>
                   <button onClick={share} style={bs(false)}>SHARE</button>
+                  {saveState === 'saved' ? (
+                    <span style={{ fontSize:12, fontWeight:600, letterSpacing:'.06em', padding:'8px 12px', border:'1px solid #16a34a', color:'#16a34a' }}>✓ SAVED TO BLINDSPOT</span>
+                  ) : (
+                    <button onClick={handleSaveToBlindSpot} disabled={saveState === 'saving'} style={bs(false)}>
+                      {saveState === 'saving' ? '…' : 'SAVE TO BLINDSPOT'}
+                    </button>
+                  )}
                 </>)
               })()}
             </div>
             {pdfError && <p className="no-pdf" style={{ margin:'8px 0 0', fontSize:12, color:'#ef4444', lineHeight:1.4 }}>{pdfError}</p>}
+            {saveState === 'error' && <p className="no-pdf" style={{ margin:'8px 0 0', fontSize:12, color:'#ef4444', lineHeight:1.4 }}>⚠️ {saveError}</p>}
           </BPF>
 
           {/* Score */}
