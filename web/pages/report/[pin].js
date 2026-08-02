@@ -214,7 +214,7 @@ function SunShadowCheck({ pin, city, areaName }) {
       </div>
       <h3 className="cond" style={{ fontSize:32, fontWeight:700, textTransform:'uppercase', margin:'6px 0 10px', lineHeight:1 }}>Sun &amp; Shadow Check</h3>
       <p style={{ fontSize:14.5, color:'var(--ink70)', margin:'0 0 20px', lineHeight:1.6, maxWidth:640 }}>
-        Pincode data can&apos;t tell you if <strong style={{color:'var(--ink)'}}>your specific balcony</strong> gets afternoon sun.
+        Pincode data can't tell you if <strong style={{color:'var(--ink)'}}>your specific balcony</strong> gets afternoon sun.
         Search your exact building below for a real sunlight and shadow reading through the day and across seasons — or jump straight to the {areaName} area estimate.
       </p>
 
@@ -222,7 +222,7 @@ function SunShadowCheck({ pin, city, areaName }) {
       {centroidUrl && (
         <a href={centroidUrl} target="_blank" rel="noopener noreferrer"
           style={{ display:'inline-flex', alignItems:'center', gap:8, fontSize:13, fontWeight:600, color:'var(--acc-deep)', marginBottom:22, letterSpacing:'.02em' }}>
-          ☀ View {areaName}&apos;s area estimate on SunScout →
+          ☀ View {areaName}'s area estimate on SunScout →
         </a>
       )}
 
@@ -274,11 +274,6 @@ function SunShadowCheck({ pin, city, areaName }) {
     </BPF>
   )
 }
-
-// Small teaser bar — sits outside/before the full report gate. Just a line
-// of text and a button straight to the area's centroid on SunScout, no
-// search. The full building-level search experience lives in
-// SunShadowCheck, inside the unlocked full report.
 
 // Small teaser bar — sits outside/before the full report gate. Just a line
 // of text and a button straight to the area's centroid on SunScout, no
