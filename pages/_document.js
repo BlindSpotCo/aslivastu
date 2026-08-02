@@ -35,8 +35,8 @@ export default function Document() {
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
         {/* Favicon */}
-        <link rel="icon" href="/logo.png" />
-        <link rel="apple-touch-icon" href="/logo.png" />
+        <link rel="icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
 
         {/* Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

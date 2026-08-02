@@ -1914,7 +1914,7 @@ export default function Landing() {
         <div style={{ display:'flex', alignItems:'center', gap:12 }}>
           <img src="/logo.png" alt="AsliVastu" style={{ width:44, height:44, objectFit:'contain', borderRadius:0 }} />
           <div>
-            <div style={{ fontWeight:800, fontSize:20, letterSpacing:'-0.4px', color:'#f0ede8', lineHeight:1, fontFamily:'DM Sans, sans-serif' }}>AsliVastu</div>
+            <div style={{ fontWeight:800, fontSize:20, letterSpacing:'-0.4px', color:'#f0ede8', lineHeight:1, fontFamily:'DM Sans, sans-serif' }}>AsliVastu <span style={{ fontSize:11, fontWeight:600, color:'#a75a65', letterSpacing:'0.02em' }}>By BlindSpot</span></div>
             <div style={{ fontSize:11, color:'#a75a65', fontWeight:500, marginTop:3, fontFamily:'DM Sans, sans-serif' }}>Your Neighbourhood, By the numbers</div>
           </div>
         </div>
@@ -2308,7 +2308,7 @@ export default function Landing() {
       </section>
 
       <footer className="footer">
-        <span className="footer-logo">ASLIVASTU</span>
+        <span className="footer-logo">ASLIVASTU <span style={{ fontSize:11, fontWeight:600, letterSpacing:1, color:'#555' }}>By BlindSpot</span></span>
         <span className="footer-note">Data from government sources · Not financial advice</span>
       </footer>
 

@@ -567,8 +567,12 @@ export default function Report({ report, allScores, ogMeta }) {
 
         {/* ── Header ── */}
         <header style={{ display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:16, padding:'22px 0 18px', borderBottom:'1px solid var(--acc50, var(--acc60))' }}>
-          <div style={{ display:'flex', alignItems:'baseline', gap:14 }}>
-            <Link href="/" className="cond" style={{ fontWeight:700, fontSize:22, letterSpacing:'.04em', color:'var(--ink)' }}>ASLIVASTU</Link>
+          <div style={{ display:'flex', alignItems:'center', gap:12, flexWrap:'wrap' }}>
+            <Link href="/" style={{ display:'flex', alignItems:'center', gap:10, textDecoration:'none' }}>
+              <img src={dark ? '/logo.png' : '/logo-maroon.png'} alt="AsliVastu" style={{ height:28, width:'auto' }} />
+              <span className="cond" style={{ fontWeight:700, fontSize:22, letterSpacing:'.04em', color:'var(--ink)', lineHeight:1 }}>ASLIVASTU</span>
+              <span style={{ fontSize:11, fontWeight:600, letterSpacing:'.08em', color:'var(--acc)', textTransform:'uppercase' }}>By BlindSpot</span>
+            </Link>
             <span className="kick">Neighbourhood intelligence · spec sheet</span>
           </div>
           <div style={{ display:'flex', alignItems:'center', gap:20 }}>
@@ -659,7 +663,7 @@ export default function Report({ report, allScores, ogMeta }) {
               <span className="cond" style={{ fontSize:30, fontWeight:700, color:'var(--acc)', marginBottom:12 }}>{grade}</span>
             </div>
             <p style={{ fontSize:13, color:'var(--ink65)', margin:0, lineHeight:1.5 }}>NQI · weighted mean of {report.dimensions_total} dimensions — switch profile to re-weight.</p>
-            <p style={{ fontSize:12.5, color:'var(--ink55)', margin:'8px 0 0', lineHeight:1.5 }}>Area assessment for PIN {pin} — a first-pass read on the whole neighbourhood; individual streets within a PIN can differ.</p>
+            <p className="kick" style={{ margin:'10px 0 0', color:'var(--ink55)', lineHeight:1.4 }}>First-pass area assessment · reflects this PIN, not a specific building or street</p>
           </BPF>
 
           {/* Verdict (solid accent) */}
