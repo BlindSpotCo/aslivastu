@@ -20,7 +20,7 @@ const CSS = `
   --ink60:color-mix(in srgb,var(--ink) 60%,transparent); --ink55:color-mix(in srgb,var(--ink) 55%,transparent);
   --acc60:color-mix(in srgb,var(--acc) 60%,transparent); --acc45:color-mix(in srgb,var(--acc) 45%,transparent);
   --acc35:color-mix(in srgb,var(--acc) 35%,transparent); --fill7:color-mix(in srgb,var(--ink) 7%,var(--bg));
-  background:var(--bg); color:var(--ink); font-family:'Barlow',sans-serif; min-height:100vh; }
+  background:var(--bg); color:var(--ink); font-family:'Barlow',sans-serif; min-height:100vh; overflow-x:hidden; }
 .iv.light { --bg:#f2f2f3; --ink:#1d1f20; --acc:var(--acc-base); --acc-deep:color-mix(in srgb,var(--acc-base) 70%,#161012); }
 .iv .cond { font-family:'Barlow Condensed',sans-serif; }
 .iv .kick { font-size:11px; text-transform:uppercase; letter-spacing:.14em; font-weight:600; color:var(--acc); margin:0; }
@@ -34,6 +34,27 @@ const CSS = `
 .iv ::selection { background:var(--acc); color:#fff; }
 @media (max-width:1024px){ .hero3{grid-template-columns:1fr!important} }
 [data-pdf="1"] .no-pdf { display:none !important; }
+/* ── Mobile pass ── these override fixed desktop px values (grid columns,
+   large display type) that were never designed to fit a ~320-400px screen.
+   Uses !important the same way the existing .hero3 rule does, since the
+   targets are inline styles. */
+@media (max-width:640px){
+  .sheet { padding:0 18px 48px !important; }
+  .hdr-right { gap:10px !important; font-size:11px !important; }
+  .hdr-right .kick-count { display:none; }
+  .persona-toggle { flex-wrap:wrap !important; }
+  .persona-toggle button { flex:1 1 auto !important; }
+  .hero-name { font-size:36px !important; }
+  .hero-score { font-size:56px !important; }
+  .hero-grade { font-size:22px !important; }
+  .hero-verdict { font-size:24px !important; }
+  .dim-row { grid-template-columns:1fr !important; gap:6px !important; }
+  .dim-score { text-align:left !important; font-size:22px !important; }
+  .meth-row { grid-template-columns:1fr !important; gap:4px !important; padding:10px 0 !important; }
+  .gate-list { grid-template-columns:1fr !important; }
+  .table-scroll { overflow-x:auto !important; -webkit-overflow-scrolling:touch; margin:0 -2px; }
+  .table-scroll table { min-width:480px !important; }
+}
 `
 
 function BPF({ children, style, className = '' }) {
@@ -604,7 +625,7 @@ export default function Report({ report, allScores, ogMeta }) {
       </Head>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
 
-      <div ref={sheetRef} style={{ maxWidth:1280, margin:'0 auto', padding:'0 40px 60px' }}>
+      <div ref={sheetRef} className="sheet" style={{ maxWidth:1280, margin:'0 auto', padding:'0 40px 60px' }}>
 
         {/* ── Header ── */}
         <header style={{ display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:16, padding:'22px 0 18px', borderBottom:'1px solid var(--acc50, var(--acc60))' }}>
@@ -616,8 +637,8 @@ export default function Report({ report, allScores, ogMeta }) {
             </Link>
             <span className="kick">Neighbourhood intelligence · spec sheet</span>
           </div>
-          <div style={{ display:'flex', alignItems:'center', gap:20 }}>
-            <span style={{ fontSize:13, color:'var(--ink60)', letterSpacing:'.04em' }}>152 AREAS · 2 CITIES</span>
+          <div className="hdr-right" style={{ display:'flex', alignItems:'center', gap:20 }}>
+            <span className="kick-count" style={{ fontSize:13, color:'var(--ink60)', letterSpacing:'.04em' }}>152 AREAS · 2 CITIES</span>
             <Link href="/compare" style={{ fontSize:13, fontWeight:600, letterSpacing:'.06em' }}>COMPARE</Link>
             <button onClick={() => setDark(!dark)} style={{ background:'var(--acc-fill)', color:'#f6f3f3', border:'none', padding:'8px 16px', fontSize:12, fontWeight:600, letterSpacing:'.06em' }}>{dark ? 'LIGHT MODE' : 'DARK MODE'}</button>
           </div>
@@ -680,7 +701,7 @@ export default function Report({ report, allScores, ogMeta }) {
           {/* Identity */}
           <BPF style={{ padding:24 }}>
             <p className="kick">Sheet 01 · {meta.area} · PIN {pin}</p>
-            <h1 className="cond" style={{ fontSize:54, fontWeight:700, lineHeight:.95, margin:'10px 0 8px', textTransform:'uppercase' }}>{meta.name}</h1>
+            <h1 className="cond hero-name" style={{ fontSize:54, fontWeight:700, lineHeight:.95, margin:'10px 0 8px', textTransform:'uppercase' }}>{meta.name}</h1>
             <p style={{ fontSize:13, color:'var(--ink65)', margin:0 }}>{report.dimensions_scored}/{report.dimensions_total} dimensions · scored {report.scored_at ? new Date(report.scored_at).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }) : '—'}</p>
             <div className="no-pdf" style={{ display:'flex', gap:10, marginTop:18, flexWrap:'wrap' }}>
               {(() => {
@@ -707,8 +728,8 @@ export default function Report({ report, allScores, ogMeta }) {
           <BPF style={{ padding:24 }}>
             <p className="kick">Composite index · {persona} weighting</p>
             <div style={{ display:'flex', alignItems:'flex-end', gap:14, margin:'8px 0 6px' }}>
-              <span className="cond" style={{ fontSize:84, fontWeight:700, lineHeight:.85 }}>{nqi}</span>
-              <span className="cond" style={{ fontSize:30, fontWeight:700, color:'var(--acc)', marginBottom:12 }}>{grade}</span>
+              <span className="cond hero-score" style={{ fontSize:84, fontWeight:700, lineHeight:.85 }}>{nqi}</span>
+              <span className="cond hero-grade" style={{ fontSize:30, fontWeight:700, color:'var(--acc)', marginBottom:12 }}>{grade}</span>
             </div>
             <p style={{ fontSize:13, color:'var(--ink65)', margin:0, lineHeight:1.5 }}>NQI · weighted mean of {report.dimensions_total} dimensions — switch profile to re-weight.</p>
             <p className="kick" style={{ margin:'10px 0 0', color:'var(--ink55)', lineHeight:1.4 }}>First-pass area assessment · reflects this PIN, not a specific building or street</p>
@@ -717,14 +738,14 @@ export default function Report({ report, allScores, ogMeta }) {
           {/* Verdict (solid accent) */}
           <div style={{ background:acc, color:'#f6f3f3', padding:24, position:'relative' }}>
             <p className="kick" style={{ color:'rgba(246,243,243,.8)' }}>Verdict</p>
-            <h2 className="cond" style={{ fontSize:34, fontWeight:700, margin:'8px 0 10px', textTransform:'uppercase' }}>{verdict.label}</h2>
+            <h2 className="cond hero-verdict" style={{ fontSize:34, fontWeight:700, margin:'8px 0 10px', textTransform:'uppercase' }}>{verdict.label}</h2>
             <p style={{ fontSize:13, lineHeight:1.5, margin:0, color:'rgba(246,243,243,.92)' }}>{verdict.why}</p>
           </div>
         </div>
 
         {/* ── Persona toggle + freshness legend ── */}
         <div style={{ display:'flex', alignItems:'center', gap:20, flexWrap:'wrap', margin:'28px 0 0' }}>
-          <div style={{ display:'inline-flex', border:'1px solid var(--acc45)' }}>
+          <div className="persona-toggle" style={{ display:'inline-flex', border:'1px solid var(--acc45)' }}>
             {[...Object.keys(WEIGHT_PRESETS), 'Custom'].map((p, i) => (
               <button key={p} onClick={() => setPersona(p)} style={{
                 fontSize:12, fontWeight:600, letterSpacing:'.06em', textTransform:'uppercase', padding:'7px 14px', border:'none',
@@ -761,7 +782,7 @@ export default function Report({ report, allScores, ogMeta }) {
             const weak = row.score < 50
             const col = scoreColor(row.score)
             return (
-              <div key={row.k} style={{ display:'grid', gridTemplateColumns:'200px 52px 1fr 76px', gap:14, alignItems:'start', padding:'11px 0', borderTop:'1px dashed var(--acc35)' }}>
+              <div key={row.k} className="dim-row" style={{ display:'grid', gridTemplateColumns:'200px 52px 1fr 76px', gap:14, alignItems:'start', padding:'11px 0', borderTop:'1px dashed var(--acc35)' }}>
                 <div>
                   <div className="cond" style={{ fontSize:18, fontWeight:600, textTransform:'uppercase', lineHeight:1.1 }}>{LABEL[row.k]}</div>
                   <div style={{ fontSize:11, color:'var(--ink55)', marginTop:2 }}>{source(row.k, city)}</div>
@@ -775,7 +796,7 @@ export default function Report({ report, allScores, ogMeta }) {
                   </div>
                   <p style={{ fontSize:12, color:'var(--ink70)', margin:'6px 0 0', lineHeight:1.45 }}>{explain(row.k, report)}</p>
                 </div>
-                <div className="cond" style={{ fontSize:26, fontWeight:700, textAlign:'right', color: col }}>{row.score}</div>
+                <div className="cond dim-score" style={{ fontSize:26, fontWeight:700, textAlign:'right', color: col }}>{row.score}</div>
               </div>
             )
           })}
@@ -790,7 +811,7 @@ export default function Report({ report, allScores, ogMeta }) {
             <p className="kick">Locked · Sheet 02</p>
             <h3 className="cond" style={{ fontSize:30, fontWeight:700, textTransform:'uppercase', margin:'8px 0 6px' }}>Full neighbourhood report</h3>
             <p style={{ fontSize:13, color:'var(--ink65)', margin:'0 0 22px' }}>Plan-view map, nearby comparison, inspection notes, price context &amp; commute check.</p>
-            <div style={{ display:'inline-grid', gridTemplateColumns:'1fr 1fr', gap:'8px 28px', textAlign:'left', margin:'0 auto 24px', fontSize:12, color:'var(--ink70)' }}>
+            <div className="gate-list" style={{ display:'inline-grid', gridTemplateColumns:'1fr 1fr', gap:'8px 28px', textAlign:'left', margin:'0 auto 24px', fontSize:12, color:'var(--ink70)' }}>
               {['Plan-view map + nearby pins','Area comparison table','Inspection notes (buy / avoid)','Price context & market gap','Commute reality check','Persona re-weighting'].map(i => (
                 <div key={i} style={{ display:'flex', gap:8 }}><span style={{ color:'var(--acc)' }}>+</span>{i}</div>
               ))}
@@ -812,6 +833,7 @@ export default function Report({ report, allScores, ogMeta }) {
 
           <BPF style={{ padding:'20px 22px' }}>
             <p className="kick">Comparison</p>
+            <div className="table-scroll">
             <table style={{ width:'100%', borderCollapse:'collapse', marginTop:12, fontSize:13 }}>
               <thead>
                 <tr style={{ fontSize:11, textTransform:'uppercase', color:'var(--ink55)', letterSpacing:'.06em' }}>
@@ -831,6 +853,7 @@ export default function Report({ report, allScores, ogMeta }) {
                 ))}
               </tbody>
             </table>
+            </div>
             {nearby[0] && <p style={{ fontSize:12, color:'var(--ink60)', margin:'12px 0 0' }}>{meta.name} {report.nqi_composite >= nearby[0].nqi_composite ? 'leads' : 'trails'} its nearest neighbour {PIN_META[nearby[0].pin_code]?.name || nearby[0].pin_code} on the composite index.</p>}
           </BPF>
         </div>
@@ -940,7 +963,7 @@ export default function Report({ report, allScores, ogMeta }) {
             <p className="kick">Methodology · data sources</p>
             <div style={{ marginTop:12 }}>
               {['crime','infrastructure','air','power','schools','water','roads','sewerage'].map(k => (
-                <div key={k} style={{ display:'grid', gridTemplateColumns:'170px 46px 1fr', gap:12, fontSize:12, padding:'7px 0', borderTop:'1px dashed var(--acc35)', alignItems:'baseline' }}>
+                <div key={k} className="meth-row" style={{ display:'grid', gridTemplateColumns:'170px 46px 1fr', gap:12, fontSize:12, padding:'7px 0', borderTop:'1px dashed var(--acc35)', alignItems:'baseline' }}>
                   <span className="cond" style={{ fontSize:15, fontWeight:600, textTransform:'uppercase' }}>{LABEL[k]}</span>
                   <span style={{ color:'var(--acc-deep)', fontWeight:600 }}>{WEIGHT_PRESETS.Default[k]}%</span>
                   <span style={{ color:'var(--ink65)' }}>{source(k, city)} {k === 'air' ? '· LIVE' : '· EST'}</span>

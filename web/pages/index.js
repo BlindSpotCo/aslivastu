@@ -646,6 +646,42 @@ const CSS = `
     white-space: nowrap;
     z-index: 2;
   }
+
+  /* ── Mobile pass ── the hero/demo/dimension sections were built as fixed
+     two- and three-column layouts with a few fixed-px elements (a 520px 3D
+     canvas, a 340px holo card) that were never given a stacked mobile
+     version. This adds that, without touching the desktop layout. */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      height: auto;
+      min-height: 100vh;
+      padding: 110px 6vw 60px;
+      gap: 36px;
+    }
+    .hero-right { min-height: 260px; }
+    .demo { flex-direction: column; gap: 40px; }
+    .demo-left, .demo-right { max-width: 100%; margin-left: 0; }
+    .dim-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .nav { padding: 14px 20px; }
+    .dim-grid { grid-template-columns: 1fr; }
+    .dim-card { padding: 28px 24px; }
+    .cta-stats { gap: 22px; flex-wrap: wrap; }
+    .footer { flex-direction: column; gap: 8px; text-align: center; padding: 28px 6vw; }
+    .hero-right canvas { width: 260px !important; height: 260px !important; }
+  }
+  @media (max-width: 480px) {
+    .hero-title { font-size: clamp(42px, 13vw, 72px); }
+    .problem-text { font-size: clamp(32px, 9vw, 56px); }
+    .section-title { font-size: clamp(34px, 9vw, 56px); }
+    .demo-title { font-size: clamp(34px, 9vw, 48px); }
+    .cta-title { font-size: clamp(40px, 13vw, 64px); }
+    .demo-name { font-size: 30px; }
+    .score-num { font-size: 62px; }
+    .score-grade { font-size: 32px; }
+  }
 `
 
 const DIMS = [
@@ -2016,7 +2052,7 @@ export default function Landing() {
             </div>
 
             {/* Stats row */}
-            <div style={{ display:'flex', gap:32, alignItems:'flex-start' }}>
+            <div style={{ display:'flex', gap:24, alignItems:'flex-start', flexWrap:'wrap' }}>
               {[
                 { val:'152', lbl:'Areas' },
                 { val:'8', lbl:'Dimensions' },

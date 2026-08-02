@@ -249,6 +249,19 @@ export default function Compare() {
 
   return (
     <div style={{ minHeight: '100vh', background: bg, color: text, fontFamily: '"Inter",-apple-system,sans-serif' }}>
+      {/* Mobile pass — this page is all inline styles with a couple of fixed
+          side-by-side layouts (the A/vs/B search row, the NQI header grid)
+          that get uncomfortably cramped under ~360px. !important is needed
+          here because it's overriding inline styles, same technique used on
+          the report page. */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media (max-width: 560px) {
+          .cmp-search-row { flex-direction: column !important; }
+          .cmp-vs { padding-bottom: 0 !important; justify-content: center !important; padding: 6px 0 !important; }
+          .cmp-nqi-grid { grid-template-columns: 1fr !important; }
+          .cmp-dim-mid { min-width: 48px !important; }
+        }
+      ` }} />
 
       {/* Nav */}
       <nav style={{ borderBottom: `1px solid ${border}`, padding: '0 24px', height: 68, display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: card, position: 'sticky', top: 0, zIndex: 100 }}>
@@ -276,12 +289,12 @@ export default function Compare() {
         </div>
 
         {/* Search row */}
-        <div style={{ display: 'flex', gap: 16, marginBottom: 28, alignItems: 'flex-start' }}>
+        <div className="cmp-search-row" style={{ display: 'flex', gap: 16, marginBottom: 28, alignItems: 'flex-start' }}>
           <SearchBox label="Area A" value={qA} onChange={v => handleChange(v,'A')} onSelect={pickA}
             suggestions={suggA} showSugg={showA} onFocus={() => setShowA(true)} onBlur={() => setTimeout(() => setShowA(false), 150)}
             card={card} border={border} text={text} muted={muted} subtle={subtle} dark={dark} />
 
-          <div style={{ display: 'flex', alignItems: 'flex-end', paddingBottom: 12, flexShrink: 0 }}>
+          <div className="cmp-vs" style={{ display: 'flex', alignItems: 'flex-end', paddingBottom: 12, flexShrink: 0 }}>
             <div style={{ width: 32, height: 32, borderRadius: '50%', background: subtle, border: `1px solid ${border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 700, color: muted }}>vs</div>
           </div>
 
@@ -317,7 +330,7 @@ export default function Compare() {
             )}
 
             {/* NQI header cards */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 12, marginBottom: 12, alignItems: 'stretch' }}>
+            <div className="cmp-nqi-grid" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 12, marginBottom: 12, alignItems: 'stretch' }}>
               {[['A', reportA, metaA], ['B', reportB, metaB]].map(([side, rpt, meta], idx) => (
                 <>
                   {idx === 1 && <div/>}
@@ -341,7 +354,7 @@ export default function Compare() {
               {/* Header row */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', background: subtle, padding: '10px 20px', borderBottom: `1px solid ${border}` }}>
                 <span style={{ fontSize: 13, fontWeight: 700, color: text }}>{metaA.name}</span>
-                <span style={{ fontSize: 11, color: muted, textAlign: 'center', minWidth: 80 }}>Dimension</span>
+                <span className="cmp-dim-mid" style={{ fontSize: 11, color: muted, textAlign: 'center', minWidth: 80 }}>Dimension</span>
                 <span style={{ fontSize: 13, fontWeight: 700, color: text, textAlign: 'right' }}>{metaB.name}</span>
               </div>
 
@@ -366,7 +379,7 @@ export default function Compare() {
                     </div>
 
                     {/* Dimension label */}
-                    <div style={{ textAlign: 'center', minWidth: 80 }}>
+                    <div className="cmp-dim-mid" style={{ textAlign: 'center', minWidth: 80 }}>
                       <div><DimIcon name={dim} size={16} color={ACCENT} /></div>
                       <div style={{ fontSize: 11, color: muted, marginTop: 2 }}>{DIM_LABEL[dim]}</div>
                     </div>
@@ -400,7 +413,7 @@ export default function Compare() {
                       <span style={{ fontSize: 15, fontWeight: 800, color: col(a) }}>{lvl(a)} risk</span>
                       {w === 'A' && <span style={{ marginLeft: 6, fontSize: 10, background: '#22c55e20', color: '#22c55e', padding: '1px 6px', borderRadius: 4, fontWeight: 700 }}>SAFER</span>}
                     </div>
-                    <div style={{ textAlign: 'center', minWidth: 80 }}>
+                    <div className="cmp-dim-mid" style={{ textAlign: 'center', minWidth: 80 }}>
                       <div><DimIcon name="water" size={16} color={ACCENT} /></div>
                       <div style={{ fontSize: 11, color: muted, marginTop: 2 }}>Waterlogging</div>
                     </div>
