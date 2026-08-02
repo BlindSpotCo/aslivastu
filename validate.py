@@ -215,6 +215,26 @@ def check_namespaced_fields(master):
         record("PASS", "merge/namespaced-fields")
 
 
+def check_area_profile(scores):
+    """Sub-PIN honesty: every scored PIN must carry an area_profile with a known
+    representativeness level (high/medium/low/unknown, derived from zone_type).
+    This is the flag that tells a reader how well one PIN-level score represents
+    the whole PIN — guard against a pin shipping without that caveat."""
+    VALID = {"high", "medium", "low", "unknown"}
+    bad = [r["pin_code"] for r in scores
+           if not isinstance(r.get("area_profile"), dict)
+           or r["area_profile"].get("representativeness") not in VALID]
+    if bad:
+        record("FAIL", "granularity/area-profile",
+               f"{len(bad)} pins missing/invalid area_profile: {', '.join(bad[:5])}")
+    else:
+        n_low = sum(1 for r in scores
+                    if r["area_profile"]["representativeness"] in ("low", "unknown"))
+        record("PASS", "granularity/area-profile",
+               f"all {len(scores)} pins carry a representativeness signal "
+               f"({n_low} flagged low/unknown)")
+
+
 # ── E. Score integrity ──────────────────────────────────────────────────────
 GRADES = [(90, "A+"), (80, "A"), (70, "B+"), (60, "B"), (50, "C+"), (40, "C"), (0, "D")]
 
@@ -378,6 +398,7 @@ def main():
     check_air_distribution(scores)
     check_cross_city_plausibility(scores, master)
     check_signal_variation(scores)
+    check_area_profile(scores)
     check_namespaced_fields(master)
     check_score_ranges(scores)
     check_composite_bounds(scores)

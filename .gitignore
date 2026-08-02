@@ -9,3 +9,4 @@ data/processed/*.json
 
 # Curated source data (hand-maintained, NOT a scraper dump) — keep in version control
 !data/raw/price_tier_by_pin.json
+latitude54-site/

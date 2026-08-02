@@ -198,6 +198,45 @@ def _merge_schools(master):
         rec["avg_pass_percentage"] = data.get("avg_pass_pct")  # kept for compat
     return master
 
+# ── Area representativeness (sub-PIN honesty) ──────────────────────────────
+# A PIN is a coarse unit: one PIN can span a quiet residential pocket, an older
+# colony and a commercial strip, all sharing this single score. We deliberately
+# do NOT invent a finer score — the source data isn't published below PIN level,
+# and crime is reported per police-station catchment, coarser still. What we CAN
+# do honestly is tell the reader how representative this one number is likely to
+# be, derived from the PIN's zone_type, plus the standing caveat that crime spans
+# the whole catchment. This is the honest first step on sub-PIN granularity: flag
+# internal diversity rather than fake a precision the data can't support.
+REPRESENTATIVENESS = {
+    "Residential": ("high",
+        "Predominantly residential — this score is fairly representative of the whole PIN."),
+    "Mixed": ("medium",
+        "Mixed-use PIN: residential, commercial and other pockets sit side by side, so "
+        "treat this as an area average — individual streets or societies can differ."),
+    "Commercial": ("low",
+        "Primarily a commercial catchment — residential sub-pockets within it can differ "
+        "substantially from this score."),
+    "Industrial": ("low",
+        "Primarily an industrial catchment — residential sub-pockets within it can differ "
+        "substantially from this score."),
+    "Rural": ("low",
+        "Largely rural/peripheral — conditions can vary widely across the area."),
+}
+
+def area_representativeness(record):
+    """How well a single PIN-level score represents the whole PIN, from zone_type.
+    Never a score penalty — purely a transparency signal for the reader."""
+    zt = record.get("zone_type")
+    level, note = REPRESENTATIVENESS.get(
+        zt, ("unknown", "Zone type unknown — treat this score as a broad area average."))
+    return {
+        "zone_type": zt,
+        "representativeness": level,          # high | medium | low | unknown
+        "note": note,
+        "crime_note": ("Crime reflects the whole police-station jurisdiction, which is "
+                       "typically larger than any single colony within this PIN."),
+    }
+
 # ───────────────────────────────────────────────────────────────────────────
 
 def compute_nqi(record):
@@ -232,6 +271,8 @@ def compute_nqi(record):
         "dimensions_total":   len(WEIGHTS),
         "nqi_composite":      composite,
         "grade":              grade(composite) if composite is not None else None,
+        # sub-PIN honesty: how representative this single score is of the whole PIN
+        "area_profile":       area_representativeness(record),
         "scored_at":          datetime.now().isoformat(),
         # raw crime count, carried through so add_crime_percentiles() can
         # rank it against every other pin without a second data lookup
