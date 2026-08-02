@@ -637,11 +637,10 @@ export default function Report({ report, allScores, ogMeta }) {
             <h1 className="cond" style={{ fontSize:54, fontWeight:700, lineHeight:.95, margin:'10px 0 8px', textTransform:'uppercase' }}>{meta.name}</h1>
             <p style={{ fontSize:13, color:'var(--ink65)', margin:0 }}>{report.dimensions_scored}/{report.dimensions_total} dimensions · scored {report.scored_at ? new Date(report.scored_at).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' }) : '—'}</p>
             <div className="no-pdf" style={{ display:'flex', gap:10, marginTop:18, flexWrap:'wrap' }}>
-              {(() => { const saved = shortlist.includes(pin)
+              {(() => {
                 const bs = on => ({ fontSize:12, fontWeight:600, letterSpacing:'.06em', padding:'8px 12px', background:'transparent', cursor:'pointer',
                   border:`1px solid ${on ? 'var(--acc)' : 'var(--acc60)'}`, color: on ? 'var(--acc)' : 'var(--ink70)' })
                 return (<>
-                  <button onClick={() => toggleSaved(pin)} style={bs(saved)}>{saved ? '★ SHORTLISTED' : '☆ SHORTLIST'}</button>
                   <button onClick={generatePDF} style={bs(false)}>{pdfBusy ? 'BUILDING PDF…' : 'PDF'}</button>
                   <button onClick={share} style={bs(false)}>SHARE</button>
                 </>)
