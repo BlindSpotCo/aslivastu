@@ -2,7 +2,7 @@
 # deploy.sh — regenerate AsliVastu data, validate it, and sync it to the web app.
 #
 # Exists because the pipeline->web handoff used to be a manual copy: data was
-# fixed in data/processed/ and never reached nqr-web/public/, so the live site
+# fixed in data/processed/ and never reached web/public/, so the live site
 # served stale numbers while the terminal showed correct ones. This makes the
 # steps atomic — validation must pass before anything is copied.
 #
@@ -13,7 +13,7 @@
 set -euo pipefail
 
 PIPELINE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-WEB_DIR="$(cd "$PIPELINE_DIR/../nqr-web" 2>/dev/null && pwd || echo "")"
+WEB_DIR="$(cd "$PIPELINE_DIR/../web" 2>/dev/null && pwd || echo "")"
 cd "$PIPELINE_DIR"
 
 bold() { printf "\033[1m%s\033[0m\n" "$1"; }
@@ -59,8 +59,8 @@ fi
 ok "all checks passed"
 
 # ── 4. sync to the web app ─────────────────────────────────────────────────
-bold "4/4  Syncing to nqr-web/public"
-[ -n "$WEB_DIR" ] || die "nqr-web not found next to this repo — copy manually"
+bold "4/4  Syncing to web/public"
+[ -n "$WEB_DIR" ] || die "web not found next to pipeline/ — copy manually"
 for pair in "nqi_scores_latest.json:nqi_scores.json" \
             "master_by_pin_latest.json:master_by_pin.json" \
             "methodology_latest.json:methodology.json"; do
