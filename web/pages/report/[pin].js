@@ -52,8 +52,12 @@ const CSS = `
   .dim-score { text-align:left !important; font-size:22px !important; }
   .meth-row { grid-template-columns:1fr !important; gap:4px !important; padding:10px 0 !important; }
   .gate-list { grid-template-columns:1fr !important; }
-  .table-scroll { overflow-x:auto !important; -webkit-overflow-scrolling:touch; margin:0 -2px; }
-  .table-scroll table { min-width:480px !important; }
+  .table-scroll { overflow-x:auto !important; -webkit-overflow-scrolling:touch; }
+  /* Drop the two least-decisive columns instead of forcing a wide,
+     off-screen-with-no-visual-cue horizontal-scroll table — the fixed
+     min-width made the card look cut off/broken rather than scrollable. */
+  .table-scroll table th:nth-child(5), .table-scroll table td:nth-child(5),
+  .table-scroll table th:nth-child(6), .table-scroll table td:nth-child(6) { display:none; }
 }
 `
 
