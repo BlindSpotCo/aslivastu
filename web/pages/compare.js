@@ -1,83 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { PIN_META } from '../lib/pinMeta'
 
-const PIN_META = {
-  "110001":{ name:"Connaught Place",   area:"Central Delhi" },
-  "110002":{ name:"ITO",               area:"Central Delhi" },
-  "110003":{ name:"Lodhi Road",        area:"South Delhi" },
-  "110005":{ name:"Karol Bagh",        area:"Central Delhi" },
-  "110006":{ name:"Chandni Chowk",     area:"Old Delhi" },
-  "110007":{ name:"Delhi University",  area:"North Delhi" },
-  "110008":{ name:"Shadipur",          area:"West Delhi" },
-  "110009":{ name:"Model Town",        area:"North Delhi" },
-  "110010":{ name:"Cantonment",        area:"South Delhi" },
-  "110012":{ name:"Pusa",              area:"Central Delhi" },
-  "110016":{ name:"Hauz Khas",         area:"South Delhi" },
-  "110017":{ name:"Saket",             area:"South Delhi" },
-  "110018":{ name:"Vikaspuri",         area:"West Delhi" },
-  "110019":{ name:"Dwarka Sec 6",      area:"South West Delhi" },
-  "110020":{ name:"Okhla",             area:"South East Delhi" },
-  "110021":{ name:"Moti Bagh",         area:"South Delhi" },
-  "110022":{ name:"R.K. Puram",        area:"South West Delhi" },
-  "110024":{ name:"Lajpat Nagar",      area:"South Delhi" },
-  "110025":{ name:"Mathura Road",      area:"South Delhi" },
-  "110026":{ name:"Punjabi Bagh",      area:"West Delhi" },
-  "110032":{ name:"Anand Vihar",       area:"East Delhi" },
-  "110033":{ name:"Jahangirpuri",      area:"North West Delhi" },
-  "110036":{ name:"Alipur",            area:"North Delhi" },
-  "110037":{ name:"Aerocity",          area:"South West Delhi" },
-  "110039":{ name:"Bawana",            area:"North Delhi" },
-  "110040":{ name:"Narela",            area:"North Delhi" },
-  "110041":{ name:"Mundka",            area:"West Delhi" },
-  "110042":{ name:"DTU",               area:"North West Delhi" },
-  "110043":{ name:"Najafgarh",         area:"South West Delhi" },
-  "110044":{ name:"Tughlakabad",       area:"South Delhi" },
-  "110049":{ name:"Sirifort",          area:"South Delhi" },
-  "110052":{ name:"Ashok Vihar",       area:"North Delhi" },
-  "110053":{ name:"Maujpur",           area:"North East Delhi" },
-  "110058":{ name:"Janakpuri",         area:"West Delhi" },
-  "110063":{ name:"Paschim Vihar",     area:"West Delhi" },
-  "110065":{ name:"Nehru Nagar",       area:"East Delhi" },
-  "110067":{ name:"JNU Area",          area:"South Delhi" },
-  "110068":{ name:"Maidan Garhi",      area:"South Delhi" },
-  "110070":{ name:"Vasant Kunj",       area:"South West Delhi" },
-  "110073":{ name:"Jaffarpur",         area:"West Delhi" },
-  "110077":{ name:"Dwarka Sec 8",      area:"South West Delhi" },
-  "110078":{ name:"Dwarka",            area:"South West Delhi" },
-  "110084":{ name:"Burari",            area:"North Delhi" },
-  "110085":{ name:"Rohini",            area:"North West Delhi" },
-  "110092":{ name:"Patparganj",        area:"East Delhi" },
-  "110094":{ name:"Sonia Vihar",       area:"North East Delhi" },
-  "110095":{ name:"Vivek Vihar",       area:"East Delhi" },
-  "121001":{ name:"Faridabad",         area:"Haryana NCR" },
-  "121002":{ name:"Faridabad NIT",     area:"Haryana NCR" },
-  "121102":{ name:"Palwal",            area:"Haryana NCR" },
-  "122001":{ name:"Gurugram",          area:"Haryana NCR" },
-  "122002":{ name:"Cyber City",        area:"Gurugram" },
-  "122003":{ name:"Gurugram Sec 55",   area:"Gurugram" },
-  "122051":{ name:"Manesar",           area:"Gurugram" },
-  "122107":{ name:"Nuh",               area:"Haryana NCR" },
-  "122413":{ name:"Panchgaon",         area:"Gurugram" },
-  "123106":{ name:"Dharuhera",         area:"Haryana NCR" },
-  "124001":{ name:"Rohtak",            area:"Haryana NCR" },
-  "124507":{ name:"Bahadurgarh",       area:"Haryana NCR" },
-  "125050":{ name:"Fatehabad",         area:"Haryana NCR" },
-  "125055":{ name:"Sirsa",             area:"Haryana NCR" },
-  "131001":{ name:"Sonipat",           area:"Haryana NCR" },
-  "132103":{ name:"Panipat",           area:"Haryana NCR" },
-  "135001":{ name:"Yamuna Nagar",      area:"Haryana NCR" },
-  "201001":{ name:"Ghaziabad",         area:"UP NCR" },
-  "201301":{ name:"Noida Sec 1",       area:"UP NCR" },
-  "201304":{ name:"Noida Sec 137",     area:"UP NCR" },
-  "201309":{ name:"Noida Sec 62",      area:"UP NCR" },
-  "560001":{ name:"MG Road", area:"Central Bengaluru", city:"Bangalore" }, "560025":{ name:"Richmond Town", area:"Central Bengaluru", city:"Bangalore" }, "560051":{ name:"HKP Road", area:"Central Bengaluru", city:"Bangalore" }, "560052":{ name:"Vasanth Nagar", area:"Central Bengaluru", city:"Bangalore" }, "560042":{ name:"Shivajinagar", area:"Central Bengaluru", city:"Bangalore" }, "560002":{ name:"Chickpet", area:"Central Bengaluru", city:"Bangalore" }, "560023":{ name:"Majestic", area:"Central Bengaluru", city:"Bangalore" },
-  "560003":{ name:"Malleshwaram", area:"North Bengaluru", city:"Bangalore" }, "560010":{ name:"Rajajinagar", area:"North Bengaluru", city:"Bangalore" }, "560020":{ name:"Seshadripuram", area:"North Bengaluru", city:"Bangalore" }, "560021":{ name:"Sriramapuram", area:"North Bengaluru", city:"Bangalore" }, "560022":{ name:"Yeshwanthpur", area:"North Bengaluru", city:"Bangalore" }, "560024":{ name:"Hebbal", area:"North Bengaluru", city:"Bangalore" }, "560032":{ name:"RT Nagar", area:"North Bengaluru", city:"Bangalore" }, "560045":{ name:"Nagavara", area:"North Bengaluru", city:"Bangalore" }, "560092":{ name:"Vidyaranyapura", area:"North Bengaluru", city:"Bangalore" }, "560094":{ name:"Sanjaynagar", area:"North Bengaluru", city:"Bangalore" }, "560097":{ name:"Byatarayanapura", area:"North Bengaluru", city:"Bangalore" }, "560063":{ name:"Yelahanka", area:"North Bengaluru", city:"Bangalore" }, "560064":{ name:"Yelahanka New Town", area:"North Bengaluru", city:"Bangalore" }, "560065":{ name:"Jakkur", area:"North Bengaluru", city:"Bangalore" },
-  "560008":{ name:"Ulsoor", area:"East Bengaluru", city:"Bangalore" }, "560038":{ name:"Indiranagar East", area:"East Bengaluru", city:"Bangalore" }, "560046":{ name:"Benson Town", area:"East Bengaluru", city:"Bangalore" }, "560005":{ name:"Cox Town", area:"East Bengaluru", city:"Bangalore" }, "560017":{ name:"HAL / Old Airport", area:"East Bengaluru", city:"Bangalore" }, "560075":{ name:"New Thippasandra", area:"East Bengaluru", city:"Bangalore" }, "560093":{ name:"CV Raman Nagar", area:"East Bengaluru", city:"Bangalore" }, "560016":{ name:"Ramamurthy Nagar", area:"East Bengaluru", city:"Bangalore" }, "560036":{ name:"KR Puram", area:"East Bengaluru", city:"Bangalore" }, "560037":{ name:"Marathahalli", area:"East Bengaluru", city:"Bangalore" }, "560048":{ name:"Mahadevapura", area:"East Bengaluru", city:"Bangalore" }, "560066":{ name:"Whitefield", area:"East Bengaluru", city:"Bangalore" }, "560067":{ name:"Whitefield Hope Farm", area:"East Bengaluru", city:"Bangalore" }, "560103":{ name:"Bellandur", area:"East Bengaluru", city:"Bangalore" }, "560035":{ name:"Sarjapur Road", area:"East Bengaluru", city:"Bangalore" }, "560087":{ name:"Varthur", area:"East Bengaluru", city:"Bangalore" },
-  "560034":{ name:"Koramangala", area:"South East Bengaluru", city:"Bangalore" }, "560095":{ name:"Koramangala 8th Blk", area:"South East Bengaluru", city:"Bangalore" }, "560102":{ name:"HSR Layout", area:"South East Bengaluru", city:"Bangalore" }, "560029":{ name:"Adugodi", area:"South East Bengaluru", city:"Bangalore" }, "560027":{ name:"Shanti Nagar", area:"South East Bengaluru", city:"Bangalore" }, "560030":{ name:"Wilson Garden", area:"South East Bengaluru", city:"Bangalore" }, "560068":{ name:"Bommanahalli", area:"South East Bengaluru", city:"Bangalore" },
-  "560004":{ name:"Basavanagudi", area:"South Bengaluru", city:"Bangalore" }, "560011":{ name:"Jayanagar", area:"South Bengaluru", city:"Bangalore" }, "560041":{ name:"Jayanagar 4th Block", area:"South Bengaluru", city:"Bangalore" }, "560019":{ name:"Hanumanthanagar", area:"South Bengaluru", city:"Bangalore" }, "560028":{ name:"Tyagarajanagar", area:"South Bengaluru", city:"Bangalore" }, "560050":{ name:"Banashankari", area:"South Bengaluru", city:"Bangalore" }, "560070":{ name:"BSK 2nd Stage", area:"South Bengaluru", city:"Bangalore" }, "560085":{ name:"BSK 3rd Stage", area:"South Bengaluru", city:"Bangalore" }, "560078":{ name:"JP Nagar", area:"South Bengaluru", city:"Bangalore" }, "560076":{ name:"BTM Layout", area:"South Bengaluru", city:"Bangalore" }, "560061":{ name:"Uttarahalli", area:"South Bengaluru", city:"Bangalore" }, "560062":{ name:"Konanakunte", area:"South Bengaluru", city:"Bangalore" }, "560083":{ name:"Bannerghatta Road", area:"South Bengaluru", city:"Bangalore" },
-  "560040":{ name:"Vijayanagar", area:"West Bengaluru", city:"Bangalore" }, "560079":{ name:"Basaveshwaranagar", area:"West Bengaluru", city:"Bangalore" }, "560072":{ name:"Nagarbhavi", area:"West Bengaluru", city:"Bangalore" }, "560018":{ name:"Chamrajpet", area:"West Bengaluru", city:"Bangalore" }, "560091":{ name:"Sunkadakatte", area:"West Bengaluru", city:"Bangalore" }, "560056":{ name:"Jnana Bharathi", area:"West Bengaluru", city:"Bangalore" },
-  "560100":{ name:"Electronic City", area:"South Bengaluru", city:"Bangalore" }, "560099":{ name:"Hosur Road", area:"South Bengaluru", city:"Bangalore" }, "560105":{ name:"Anekal", area:"South Bengaluru", city:"Bangalore" },
-}
 
 const DIM_LABEL = { crime:'Safety', infrastructure:'Infrastructure', air:'Air Quality', power:'Power', schools:'Schools', water:'Water Supply', roads:'Roads', sewerage:'Drainage & Sewerage' }
 const GRADE_COLOR = { 'A+':'#22c55e','A':'#22c55e','B+':'#84cc16','B':'#eab308','C+':'#f97316','C':'#ef4444','D':'#dc2626' }
@@ -131,7 +55,10 @@ function scoreColor(v) {
 function searchPin(query) {
   const q = query.trim().toLowerCase()
   if (!q) return []
-  if (/^\d{6}$/.test(q)) return [{ pin: q, name: PIN_META[q]?.name || q, area: PIN_META[q]?.area || '' }]
+  // Was `/^\d{6}$/.test(q)`, a numeric-pincode fast path — exact-match any
+  // area id (pincode or slug) directly instead of falling through to the
+  // substring search below.
+  if (PIN_META[q]) return [{ pin: q, name: PIN_META[q].name, area: PIN_META[q].area }]
   return Object.entries(PIN_META)
     .filter(([pin, { name, area }]) =>
       name.toLowerCase().includes(q) || area.toLowerCase().includes(q) || pin.includes(q)
@@ -218,8 +145,11 @@ export default function Compare() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const a = params.get('a'), b = params.get('b')
-    if (a && /^\d{6}$/.test(a)) { setQA(PIN_META[a]?.name || a); fetchFor(a, 'A') }
-    if (b && /^\d{6}$/.test(b)) { setQB(PIN_META[b]?.name || b); fetchFor(b, 'B') }
+    // Was `/^\d{6}$/.test(...)`, which silently ignored any slug-keyed ?a=/?b=
+    // prefill (e.g. a Punjab area shared via a shortlist link). PIN_META
+    // existence is the real validation.
+    if (a && PIN_META[a]) { setQA(PIN_META[a].name); fetchFor(a, 'A') }
+    if (b && PIN_META[b]) { setQB(PIN_META[b].name); fetchFor(b, 'B') }
   }, [])
 
   const dims = ['crime', 'infrastructure', 'air', 'power', 'schools', 'water', 'roads', 'sewerage']

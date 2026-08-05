@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { PIN_META, CITIES, CITY_META, TOTAL_SCORED_AREAS, cityFor } from '../lib/pinMeta'
 
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
@@ -736,14 +737,21 @@ const PARTICLES = Array.from({ length: 12 }, (_, i) => ({
   ty:    `${-20 - Math.random() * 60}px`,
 }))
 
-// Pin lookup — used by go() to navigate directly to /report/[pin] with no flash
-const PIN_META_LANDING = {"110002":"ITO","110003":"Lodhi Road","110005":"Karol Bagh","110006":"Chandni Chowk","110007":"Delhi University","110008":"Shadipur","110009":"Model Town","110010":"Cantonment","110012":"Pusa","110016":"Hauz Khas","110017":"Saket","110018":"Vikaspuri","110019":"Dwarka Sec 6","110020":"Okhla","110021":"Moti Bagh","110022":"R.K. Puram","110024":"Lajpat Nagar","110025":"Mathura Road","110026":"Punjabi Bagh","110032":"Anand Vihar","110033":"Jahangirpuri","110034":"Pitampura","110036":"Alipur","110037":"Aerocity","110039":"Bawana","110040":"Narela","110041":"Mundka","110042":"DTU","110043":"Najafgarh","110044":"Tughlakabad","110049":"Sirifort","110052":"Ashok Vihar","110053":"Maujpur","110058":"Janakpuri","110063":"Paschim Vihar","110065":"Nehru Nagar","110067":"JNU Area","110068":"Maidan Garhi","110070":"Vasant Kunj","110073":"Jaffarpur","110077":"Dwarka Sec 8","110078":"Dwarka","110084":"Burari","110085":"Rohini","110091":"Mayur Vihar","110092":"Patparganj","110094":"Sonia Vihar","110095":"Vivek Vihar","121001":"Faridabad","121002":"Faridabad NIT","122001":"Gurugram","122002":"Cyber City","122003":"Gurugram Sec 55","122051":"Manesar","122107":"Nuh","122413":"Panchgaon","123106":"Dharuhera","124001":"Rohtak","124507":"Bahadurgarh","125050":"Fatehabad","125055":"Sirsa","131001":"Sonipat","132103":"Panipat","135001":"Yamuna Nagar","201001":"Ghaziabad","201301":"Noida Sec 1","201304":"Noida Sec 137","201309":"Noida Sec 62","560001":"MG Road","560025":"Richmond Town","560051":"HKP Road","560052":"Vasanth Nagar","560042":"Shivajinagar","560002":"Chickpet","560023":"Majestic","560003":"Malleshwaram","560010":"Rajajinagar","560020":"Seshadripuram","560021":"Sriramapuram","560022":"Yeshwanthpur","560024":"Hebbal","560032":"RT Nagar","560045":"Nagavara","560092":"Vidyaranyapura","560094":"Sanjaynagar","560097":"Byatarayanapura","560063":"Yelahanka","560064":"Yelahanka New Town","560065":"Jakkur","560008":"Ulsoor","560038":"Indiranagar East","560046":"Benson Town","560005":"Cox Town","560017":"HAL / Old Airport","560075":"New Thippasandra","560093":"CV Raman Nagar","560016":"Ramamurthy Nagar","560036":"KR Puram","560037":"Marathahalli","560048":"Mahadevapura","560066":"Whitefield","560067":"Whitefield Hope Farm","560103":"Bellandur","560035":"Sarjapur Road","560087":"Varthur","560034":"Koramangala","560095":"Koramangala 8th Blk","560102":"HSR Layout","560029":"Adugodi","560027":"Shanti Nagar","560030":"Wilson Garden","560068":"Bommanahalli","560004":"Basavanagudi","560011":"Jayanagar","560041":"Jayanagar 4th Block","560019":"Hanumanthanagar","560028":"Tyagarajanagar","560050":"Banashankari","560070":"BSK 2nd Stage","560085":"BSK 3rd Stage","560078":"JP Nagar","560076":"BTM Layout","560061":"Uttarahalli","560062":"Konanakunte","560083":"Bannerghatta Road","560040":"Vijayanagar","560079":"Basaveshwaranagar","560072":"Nagarbhavi","560018":"Chamrajpet","560091":"Sunkadakatte","560056":"Jnana Bharathi","560100":"Electronic City","560099":"Hosur Road","560105":"Anekal"}
+// Pin lookup — used by go() to navigate directly to /report/[pin] with no flash.
+// Derived from the shared PIN_META module (was its own copy-pasted literal —
+// see ADDING_A_CITY.md §1). Excludes `scored:false` entries (NCR-fringe pins
+// with no report data yet) to match this page's pre-refactor behaviour of
+// only offering areas that actually resolve to a report.
+const PIN_META_LANDING = Object.fromEntries(
+  Object.entries(PIN_META).filter(([, m]) => m.scored !== false).map(([pin, m]) => [pin, m.name])
+)
 
 function resolvePin(q) {
   const s = q.trim()
   if (!s) return null
-  // Direct 6-digit pin
-  if (/^\d{6}$/.test(s)) return PIN_META_LANDING[s] ? s : null
+  // Direct area id (pincode or slug) — was a `/^\d{6}$/` numeric-only check,
+  // which never matched a Punjab slug id like "ldh-mall-road".
+  if (PIN_META_LANDING[s]) return s
   // Name match
   const lower = s.toLowerCase()
   return Object.entries(PIN_META_LANDING).find(([, name]) =>
@@ -976,8 +984,10 @@ export default function Landing() {
   function heroSearch2(v, city) {
     const s = (v || '').trim().toLowerCase()
     if (!s) return []
+    // Was `(city === 'Bangalore') === pin.startsWith('560')`, a binary check
+    // that only ever worked for exactly two cities. cityFor() generalizes.
     return Object.entries(PIN_META_LANDING)
-      .filter(([pin, name]) => (city === 'Bangalore') === pin.startsWith('560')
+      .filter(([pin, name]) => cityFor(pin) === city
         && (name.toLowerCase().includes(s) || pin.includes(s)))
       .slice(0, 6)
   }
@@ -1970,8 +1980,8 @@ export default function Landing() {
 
             {/* Location picker — same behaviour as the bottom CTA search */}
             <div className="hero-picker" style={{ position:'relative', maxWidth:400 }}>
-              <div style={{ display:'inline-flex', border:'1px solid rgba(167,90,101,0.45)', marginBottom:8 }}>
-                {['Delhi NCR','Bangalore'].map((c, i) => (
+              <div style={{ display:'inline-flex', flexWrap:'wrap', border:'1px solid rgba(167,90,101,0.45)', marginBottom:8 }}>
+                {CITIES.map((c, i) => (
                   <button key={c} onClick={() => { setHeroCity(c); setHeroSuggestions(heroSearch2(heroQ, c)) }}
                     style={{ fontSize:10, fontWeight:600, letterSpacing:'0.06em', textTransform:'uppercase',
                       padding:'5px 11px', border:'none', cursor:'pointer',
@@ -1982,7 +1992,7 @@ export default function Landing() {
               </div>
               <div className="cta-search" style={{ position:'relative', margin:0, maxWidth:'none' }}>
                 <input
-                  placeholder={heroCity==='Bangalore' ? 'Area or pin code — e.g. Koramangala' : 'Type area name or pin code…'}
+                  placeholder={`Area or pin code — e.g. ${CITY_META[heroCity]?.example || 'Hauz Khas'}`}
                   value={heroQ}
                   onChange={e => { const v = e.target.value; setHeroQ(v); setHeroSuggestions(heroSearch2(v, heroCity)) }}
                   onKeyDown={e => { if (e.key === 'Enter') { setHeroSuggestions([]); go(heroQ) } }}
@@ -2054,7 +2064,7 @@ export default function Landing() {
             {/* Stats row */}
             <div style={{ display:'flex', gap:24, alignItems:'flex-start', flexWrap:'wrap' }}>
               {[
-                { val:'152', lbl:'Areas' },
+                { val:String(TOTAL_SCORED_AREAS), lbl:'Areas' },
                 { val:'8', lbl:'Dimensions' },
                 { val:'Live', lbl:'AQI data' },
                 { val:'Free', lbl:'Always' },
@@ -2173,14 +2183,14 @@ export default function Landing() {
           <p className="cta-pre">Free · No signup · Instant</p>
           <h2 className="cta-title">Your area.<br/><em>By the numbers.</em></h2>
           <div style={{ position:'relative', width:'100%', maxWidth:480, margin:'0 auto' }}>
-            <div style={{ display:'inline-flex', gap:4, padding:4, background:'rgba(255,255,255,0.06)', borderRadius:0, marginBottom:12 }}>
-              {['Delhi NCR','Bangalore'].map(c => (
+            <div style={{ display:'inline-flex', flexWrap:'wrap', gap:4, padding:4, background:'rgba(255,255,255,0.06)', borderRadius:0, marginBottom:12 }}>
+              {CITIES.map(c => (
                 <button key={c} onClick={() => {
                   setCtaCity(c)
                   if (ctaQ.trim().length > 0) {
                     const s = ctaQ.toLowerCase()
                     setCtaSuggestions(Object.entries(PIN_META_LANDING)
-                      .filter(([pin, name]) => (c==='Bangalore') === pin.startsWith('560') && (name.toLowerCase().includes(s) || pin.includes(s))).slice(0,6))
+                      .filter(([pin, name]) => cityFor(pin) === c && (name.toLowerCase().includes(s) || pin.includes(s))).slice(0,6))
                   }
                 }}
                   style={{ fontSize:13, fontWeight:600, padding:'6px 14px', borderRadius:0, cursor:'pointer', border:'none',
@@ -2189,7 +2199,7 @@ export default function Landing() {
             </div>
             <div className="cta-search" style={{ position:'relative' }}>
               <input
-                placeholder={ctaCity==='Bangalore' ? 'Area or pin code — e.g. Koramangala' : 'Type area name or pin code…'}
+                placeholder={`Area or pin code — e.g. ${CITY_META[ctaCity]?.example || 'Hauz Khas'}`}
                 value={ctaQ}
                 onChange={e => {
                   const v = e.target.value
@@ -2197,7 +2207,7 @@ export default function Landing() {
                   if (v.trim().length > 0) {
                     const s = v.toLowerCase()
                     const results = Object.entries(PIN_META_LANDING)
-                      .filter(([pin, name]) => (ctaCity==='Bangalore') === pin.startsWith('560') && (name.toLowerCase().includes(s) || pin.includes(s)))
+                      .filter(([pin, name]) => cityFor(pin) === ctaCity && (name.toLowerCase().includes(s) || pin.includes(s)))
                       .slice(0, 6)
                     setCtaSuggestions(results)
                   } else {
@@ -2261,7 +2271,7 @@ export default function Landing() {
           </div>
 
           <div className="cta-stats">
-            {[['152','areas covered'],['8','dimensions'],['2','cities'],['Free','always']].map(([v,l],i,arr) => (
+            {[[String(TOTAL_SCORED_AREAS),'areas covered'],['8','dimensions'],[String(CITIES.length),'cities'],['Free','always']].map(([v,l],i,arr) => (
               <>
                 <div key={v}>
                   <span className="cta-stat-val">{v}</span>

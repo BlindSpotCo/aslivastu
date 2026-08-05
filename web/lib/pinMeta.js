@@ -1,92 +1,100 @@
-// Shared PIN -> locality map (extracted from report page).
+// Shared PIN -> locality map — the single source of truth for area metadata.
+// Every page that needs the area list imports from here (previously this was
+// copy-pasted as a separate literal object in index.js, compare.js, report.js,
+// api/og.js and sitemap.xml.js — see ADDING_A_CITY.md §1 for why that was a
+// problem). `city` is required on every entry now (used to be inferred from
+// the pin prefix via cityOf(), which only worked for exactly two cities).
 export const PIN_META = {
-  "110002":{ name:"ITO",               area:"Central Delhi" },
-  "110003":{ name:"Lodhi Road",        area:"South Delhi" },
-  "110005":{ name:"Karol Bagh",        area:"Central Delhi" },
-  "110006":{ name:"Chandni Chowk",     area:"Old Delhi" },
-  "110007":{ name:"Delhi University",  area:"North Delhi" },
-  "110008":{ name:"Shadipur",          area:"West Delhi" },
-  "110009":{ name:"Model Town",        area:"North Delhi" },
-  "110010":{ name:"Cantonment",        area:"South Delhi" },
-  "110012":{ name:"Pusa",              area:"Central Delhi" },
-  "110016":{ name:"Hauz Khas",         area:"South Delhi" },
-  "110017":{ name:"Saket",             area:"South Delhi" },
-  "110018":{ name:"Vikaspuri",         area:"West Delhi" },
-  "110019":{ name:"Dwarka Sec 6",      area:"South West Delhi" },
-  "110020":{ name:"Okhla",             area:"South East Delhi" },
-  "110021":{ name:"Moti Bagh",         area:"South Delhi" },
-  "110022":{ name:"R.K. Puram",        area:"South West Delhi" },
-  "110024":{ name:"Lajpat Nagar",      area:"South Delhi" },
-  "110025":{ name:"Mathura Road",      area:"South Delhi" },
-  "110026":{ name:"Punjabi Bagh",      area:"West Delhi" },
-  "110032":{ name:"Anand Vihar",       area:"East Delhi" },
-  "110033":{ name:"Jahangirpuri",      area:"North West Delhi" },
-  "110034":{ name:"Pitampura",         area:"North West Delhi" },
-  "110036":{ name:"Alipur",            area:"North Delhi" },
-  "110037":{ name:"Aerocity",          area:"South West Delhi" },
-  "110039":{ name:"Bawana",            area:"North Delhi" },
-  "110040":{ name:"Narela",            area:"North Delhi" },
-  "110041":{ name:"Mundka",            area:"West Delhi" },
-  "110042":{ name:"DTU",               area:"North West Delhi" },
-  "110043":{ name:"Najafgarh",         area:"South West Delhi" },
-  "110044":{ name:"Tughlakabad",       area:"South Delhi" },
-  "110049":{ name:"Sirifort",          area:"South Delhi" },
-  "110052":{ name:"Ashok Vihar",       area:"North Delhi" },
-  "110053":{ name:"Maujpur",           area:"North East Delhi" },
-  "110058":{ name:"Janakpuri",         area:"West Delhi" },
-  "110063":{ name:"Paschim Vihar",     area:"West Delhi" },
-  "110065":{ name:"Nehru Nagar",       area:"East Delhi" },
-  "110067":{ name:"JNU Area",          area:"South Delhi" },
-  "110068":{ name:"Maidan Garhi",      area:"South Delhi" },
-  "110070":{ name:"Vasant Kunj",       area:"South West Delhi" },
-  "110073":{ name:"Jaffarpur",         area:"West Delhi" },
-  "110077":{ name:"Dwarka Sec 8",      area:"South West Delhi" },
-  "110078":{ name:"Dwarka",            area:"South West Delhi" },
-  "110084":{ name:"Burari",            area:"North Delhi" },
-  "110085":{ name:"Rohini",            area:"North West Delhi" },
-  "110091":{ name:"Mayur Vihar",       area:"East Delhi" },
-  "110092":{ name:"Patparganj",        area:"East Delhi" },
-  "110094":{ name:"Sonia Vihar",       area:"North East Delhi" },
-  "110095":{ name:"Vivek Vihar",       area:"East Delhi" },
-  "121001":{ name:"Faridabad",         area:"Haryana NCR" },
-  "121002":{ name:"Faridabad NIT",     area:"Haryana NCR" },
-  "122001":{ name:"Gurugram",          area:"Haryana NCR" },
-  "122002":{ name:"Cyber City",        area:"Gurugram" },
-  "122003":{ name:"Gurugram Sec 55",   area:"Gurugram" },
-  "122051":{ name:"Manesar",           area:"Gurugram" },
-  "122107":{ name:"Nuh",               area:"Haryana NCR" },
-  "122413":{ name:"Panchgaon",         area:"Gurugram" },
-  "123106":{ name:"Dharuhera",         area:"Haryana NCR" },
-  "124001":{ name:"Rohtak",            area:"Haryana NCR" },
-  "124507":{ name:"Bahadurgarh",       area:"Haryana NCR" },
-  "125050":{ name:"Fatehabad",         area:"Haryana NCR" },
-  "125055":{ name:"Sirsa",             area:"Haryana NCR" },
-  "131001":{ name:"Sonipat",           area:"Haryana NCR" },
-  "132103":{ name:"Panipat",           area:"Haryana NCR" },
-  "135001":{ name:"Yamuna Nagar",      area:"Haryana NCR" },
-  "201001":{ name:"Ghaziabad",         area:"UP NCR" },
-  "201301":{ name:"Noida Sec 1",       area:"UP NCR" },
-  "201304":{ name:"Noida Sec 137",     area:"UP NCR" },
-  "201309":{ name:"Noida Sec 62",      area:"UP NCR" },
-  // NCR fringe — in our coverage zone but no data yet
-  "122505":{ name:"Mahendragarh",      area:"Haryana NCR" },
-  "122502":{ name:"Rewari",            area:"Haryana NCR" },
-  "122108":{ name:"Taoru",             area:"Haryana NCR" },
-  "122101":{ name:"Sohna",             area:"Haryana NCR" },
-  "122103":{ name:"Gurgaon South",     area:"Haryana NCR" },
-  "123001":{ name:"Jhajjar",           area:"Haryana NCR" },
-  "123401":{ name:"Rewari Town",       area:"Haryana NCR" },
-  "131029":{ name:"Kundli",            area:"Haryana NCR" },
-  "131027":{ name:"Murthal",           area:"Haryana NCR" },
-  "201102":{ name:"Loni",              area:"UP NCR" },
-  "201014":{ name:"Indirapuram",       area:"UP NCR" },
-  "201012":{ name:"Vasundhara",        area:"UP NCR" },
-  "201016":{ name:"Crossing Republik", area:"UP NCR" },
-  "201002":{ name:"Raj Nagar",         area:"UP NCR" },
-  "201010":{ name:"Kaushambi",         area:"UP NCR" },
-  "201206":{ name:"Muradnagar",        area:"UP NCR" },
-  "245101":{ name:"Hapur",             area:"UP NCR" },
-  "203001":{ name:"Bulandshahr",       area:"UP NCR" },
+  "110002":{ name:"ITO",               area:"Central Delhi", city:"Delhi NCR" },
+  "110003":{ name:"Lodhi Road",        area:"South Delhi", city:"Delhi NCR" },
+  "110005":{ name:"Karol Bagh",        area:"Central Delhi", city:"Delhi NCR" },
+  "110006":{ name:"Chandni Chowk",     area:"Old Delhi", city:"Delhi NCR" },
+  "110007":{ name:"Delhi University",  area:"North Delhi", city:"Delhi NCR" },
+  "110008":{ name:"Shadipur",          area:"West Delhi", city:"Delhi NCR" },
+  "110009":{ name:"Model Town",        area:"North Delhi", city:"Delhi NCR" },
+  "110010":{ name:"Cantonment",        area:"South Delhi", city:"Delhi NCR" },
+  "110012":{ name:"Pusa",              area:"Central Delhi", city:"Delhi NCR" },
+  "110016":{ name:"Hauz Khas",         area:"South Delhi", city:"Delhi NCR" },
+  "110017":{ name:"Saket",             area:"South Delhi", city:"Delhi NCR" },
+  "110018":{ name:"Vikaspuri",         area:"West Delhi", city:"Delhi NCR" },
+  "110019":{ name:"Dwarka Sec 6",      area:"South West Delhi", city:"Delhi NCR" },
+  "110020":{ name:"Okhla",             area:"South East Delhi", city:"Delhi NCR" },
+  "110021":{ name:"Moti Bagh",         area:"South Delhi", city:"Delhi NCR" },
+  "110022":{ name:"R.K. Puram",        area:"South West Delhi", city:"Delhi NCR" },
+  "110024":{ name:"Lajpat Nagar",      area:"South Delhi", city:"Delhi NCR" },
+  "110025":{ name:"Mathura Road",      area:"South Delhi", city:"Delhi NCR" },
+  "110026":{ name:"Punjabi Bagh",      area:"West Delhi", city:"Delhi NCR" },
+  "110032":{ name:"Anand Vihar",       area:"East Delhi", city:"Delhi NCR" },
+  "110033":{ name:"Jahangirpuri",      area:"North West Delhi", city:"Delhi NCR" },
+  "110034":{ name:"Pitampura",         area:"North West Delhi", city:"Delhi NCR" },
+  "110036":{ name:"Alipur",            area:"North Delhi", city:"Delhi NCR" },
+  "110037":{ name:"Aerocity",          area:"South West Delhi", city:"Delhi NCR" },
+  "110039":{ name:"Bawana",            area:"North Delhi", city:"Delhi NCR" },
+  "110040":{ name:"Narela",            area:"North Delhi", city:"Delhi NCR" },
+  "110041":{ name:"Mundka",            area:"West Delhi", city:"Delhi NCR" },
+  "110042":{ name:"DTU",               area:"North West Delhi", city:"Delhi NCR" },
+  "110043":{ name:"Najafgarh",         area:"South West Delhi", city:"Delhi NCR" },
+  "110044":{ name:"Tughlakabad",       area:"South Delhi", city:"Delhi NCR" },
+  "110049":{ name:"Sirifort",          area:"South Delhi", city:"Delhi NCR" },
+  "110052":{ name:"Ashok Vihar",       area:"North Delhi", city:"Delhi NCR" },
+  "110053":{ name:"Maujpur",           area:"North East Delhi", city:"Delhi NCR" },
+  "110058":{ name:"Janakpuri",         area:"West Delhi", city:"Delhi NCR" },
+  "110063":{ name:"Paschim Vihar",     area:"West Delhi", city:"Delhi NCR" },
+  "110065":{ name:"Nehru Nagar",       area:"East Delhi", city:"Delhi NCR" },
+  "110067":{ name:"JNU Area",          area:"South Delhi", city:"Delhi NCR" },
+  "110068":{ name:"Maidan Garhi",      area:"South Delhi", city:"Delhi NCR" },
+  "110070":{ name:"Vasant Kunj",       area:"South West Delhi", city:"Delhi NCR" },
+  "110073":{ name:"Jaffarpur",         area:"West Delhi", city:"Delhi NCR" },
+  "110077":{ name:"Dwarka Sec 8",      area:"South West Delhi", city:"Delhi NCR" },
+  "110078":{ name:"Dwarka",            area:"South West Delhi", city:"Delhi NCR" },
+  "110084":{ name:"Burari",            area:"North Delhi", city:"Delhi NCR" },
+  "110085":{ name:"Rohini",            area:"North West Delhi", city:"Delhi NCR" },
+  "110091":{ name:"Mayur Vihar",       area:"East Delhi", city:"Delhi NCR" },
+  "110092":{ name:"Patparganj",        area:"East Delhi", city:"Delhi NCR" },
+  "110094":{ name:"Sonia Vihar",       area:"North East Delhi", city:"Delhi NCR" },
+  "110095":{ name:"Vivek Vihar",       area:"East Delhi", city:"Delhi NCR" },
+  "121001":{ name:"Faridabad",         area:"Haryana NCR", city:"Delhi NCR" },
+  "121002":{ name:"Faridabad NIT",     area:"Haryana NCR", city:"Delhi NCR" },
+  "122001":{ name:"Gurugram",          area:"Haryana NCR", city:"Delhi NCR" },
+  "122002":{ name:"Cyber City",        area:"Gurugram", city:"Delhi NCR" },
+  "122003":{ name:"Gurugram Sec 55",   area:"Gurugram", city:"Delhi NCR" },
+  "122051":{ name:"Manesar",           area:"Gurugram", city:"Delhi NCR" },
+  "122107":{ name:"Nuh",               area:"Haryana NCR", city:"Delhi NCR" },
+  "122413":{ name:"Panchgaon",         area:"Gurugram", city:"Delhi NCR" },
+  "123106":{ name:"Dharuhera",         area:"Haryana NCR", city:"Delhi NCR" },
+  "124001":{ name:"Rohtak",            area:"Haryana NCR", city:"Delhi NCR" },
+  "124507":{ name:"Bahadurgarh",       area:"Haryana NCR", city:"Delhi NCR" },
+  "125050":{ name:"Fatehabad",         area:"Haryana NCR", city:"Delhi NCR" },
+  "125055":{ name:"Sirsa",             area:"Haryana NCR", city:"Delhi NCR" },
+  "131001":{ name:"Sonipat",           area:"Haryana NCR", city:"Delhi NCR" },
+  "132103":{ name:"Panipat",           area:"Haryana NCR", city:"Delhi NCR" },
+  "135001":{ name:"Yamuna Nagar",      area:"Haryana NCR", city:"Delhi NCR" },
+  "201001":{ name:"Ghaziabad",         area:"UP NCR", city:"Delhi NCR" },
+  "201301":{ name:"Noida Sec 1",       area:"UP NCR", city:"Delhi NCR" },
+  "201304":{ name:"Noida Sec 137",     area:"UP NCR", city:"Delhi NCR" },
+  "201309":{ name:"Noida Sec 62",      area:"UP NCR", city:"Delhi NCR" },
+  // NCR fringe — in our coverage zone but no scored data yet. `scored:false`
+  // lets consumers (e.g. index.js's landing search) exclude these without a
+  // second hardcoded pin list — see ADDING_A_CITY.md for why duplicate lists
+  // caused drift bugs before.
+  "122505":{ name:"Mahendragarh",      area:"Haryana NCR", city:"Delhi NCR", scored:false },
+  "122502":{ name:"Rewari",            area:"Haryana NCR", city:"Delhi NCR", scored:false },
+  "122108":{ name:"Taoru",             area:"Haryana NCR", city:"Delhi NCR", scored:false },
+  "122101":{ name:"Sohna",             area:"Haryana NCR", city:"Delhi NCR", scored:false },
+  "122103":{ name:"Gurgaon South",     area:"Haryana NCR", city:"Delhi NCR", scored:false },
+  "123001":{ name:"Jhajjar",           area:"Haryana NCR", city:"Delhi NCR", scored:false },
+  "123401":{ name:"Rewari Town",       area:"Haryana NCR", city:"Delhi NCR", scored:false },
+  "131029":{ name:"Kundli",            area:"Haryana NCR", city:"Delhi NCR", scored:false },
+  "131027":{ name:"Murthal",           area:"Haryana NCR", city:"Delhi NCR", scored:false },
+  "201102":{ name:"Loni",              area:"UP NCR", city:"Delhi NCR", scored:false },
+  "201014":{ name:"Indirapuram",       area:"UP NCR", city:"Delhi NCR", scored:false },
+  "201012":{ name:"Vasundhara",        area:"UP NCR", city:"Delhi NCR", scored:false },
+  "201016":{ name:"Crossing Republik", area:"UP NCR", city:"Delhi NCR", scored:false },
+  "201002":{ name:"Raj Nagar",         area:"UP NCR", city:"Delhi NCR", scored:false },
+  "201010":{ name:"Kaushambi",         area:"UP NCR", city:"Delhi NCR", scored:false },
+  "201206":{ name:"Muradnagar",        area:"UP NCR", city:"Delhi NCR", scored:false },
+  "245101":{ name:"Hapur",             area:"UP NCR", city:"Delhi NCR", scored:false },
+  "203001":{ name:"Bulandshahr",       area:"UP NCR", city:"Delhi NCR", scored:false },
   // ── Bengaluru (city 2) ──
   "560001":{ name:"MG Road", area:"Central Bengaluru", city:"Bangalore" },
   "560025":{ name:"Richmond Town", area:"Central Bengaluru", city:"Bangalore" },
@@ -154,4 +162,37 @@ export const PIN_META = {
   "560100":{ name:"Electronic City", area:"South Bengaluru", city:"Bangalore" },
   "560099":{ name:"Hosur Road", area:"South Bengaluru", city:"Bangalore" },
   "560105":{ name:"Anekal", area:"South Bengaluru", city:"Bangalore" },
+  // ── Punjab (city 3) — Phase 1: Ludhiana + Amritsar. Area ids are
+  // city-prefixed slugs (e.g. "ldh-mall-road"), not postal pincodes — Punjab's
+  // tier-2 cities have far coarser postal pincodes than Delhi/Bangalore (one
+  // pincode often covers several distinct named localities), so pincode can't
+  // be the area unit here. See ADDING_A_CITY.md for the full rationale. These
+  // are placeholders pending real per-dimension data — see PUNJAB_ROLLOUT.md.
+}
+
+// Total areas with SCORED data (i.e. present in nqi_scores.json) — not the
+// same as Object.keys(PIN_META).length, since PIN_META also carries a few
+// "NCR fringe" pins that are named but have no data yet. Kept as one
+// explicit constant instead of a literal string repeated in three separate
+// UI files (see ADDING_A_CITY.md §2) — update this by hand when the scored
+// count changes, e.g. after a new city's pipeline data goes live.
+export const TOTAL_SCORED_AREAS = 152
+
+// Ordered list of live cities, driving every city-toggle button in the UI.
+// Adding a city = add one line here (plus its PIN_META entries) instead of
+// editing three separate hardcoded ['Delhi NCR','Bangalore'] arrays.
+export const CITIES = ['Delhi NCR', 'Bangalore']
+
+// Per-city defaults used by the city switcher (landing pin to jump to) and
+// search placeholders (an example area name shown in the input).
+export const CITY_META = {
+  'Delhi NCR': { defaultPin: '110016', example: 'Hauz Khas' },
+  'Bangalore': { defaultPin: '560034', example: 'Koramangala' },
+}
+
+// city(pin) replaces the old cityOf() which only handled exactly two cities
+// via `pin.startsWith('560')`. Falls back to 'Delhi NCR' for legacy callers
+// that pass an unrecognized/undefined pin rather than throwing.
+export function cityFor(pin) {
+  return PIN_META[pin]?.city || 'Delhi NCR'
 }

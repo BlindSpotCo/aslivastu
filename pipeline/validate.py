@@ -18,7 +18,7 @@ Every check here exists because a real bug shipped:
   • water/roads/sewerage all emitted `quality_score`/`coverage_pct`; a blind
     dict.update() let one silently overwrite the others.
 """
-import json, sys
+import json, re, sys
 from pathlib import Path
 from datetime import datetime, timedelta
 from collections import Counter, defaultdict
@@ -298,7 +298,12 @@ def check_pins(scores, prices):
     dupes = [p for p, c in Counter(pins).items() if c > 1]
     record("FAIL" if dupes else "PASS", "pins/no-duplicates", ", ".join(dupes[:5]))
 
-    bad = [p for p in pins if not (len(p) == 6 and p.isdigit())]
+    # A valid pin_code is either a legacy 6-digit postal pincode (Delhi,
+    # Bangalore) or a city-prefixed locality slug (Punjab and future tier-2/3
+    # cities, e.g. "ldh-mall-road") — see ADDING_A_CITY.md for why pincode
+    # stopped being a usable area unit once we went past metro cities.
+    PIN_RE = re.compile(r"^\d{6}$|^[a-z]{2,6}-[a-z0-9]+(-[a-z0-9]+)*$")
+    bad = [p for p in pins if not PIN_RE.match(p)]
     record("FAIL" if bad else "PASS", "pins/format", ", ".join(bad[:5]))
 
     nocity = [r["pin_code"] for r in scores if not r.get("city")]

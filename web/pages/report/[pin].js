@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect, useRef } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { PIN_META } from '../../lib/pinMeta'
+import { PIN_META, CITIES, CITY_META, TOTAL_SCORED_AREAS, cityFor } from '../../lib/pinMeta'
 import { AREA_COORDS } from '../../lib/areaCoords'
 import { getBlindSpotSession, saveReportToBlindSpot, redirectToBlindSpotLogin } from '../../lib/blindspot'
 
@@ -113,14 +113,14 @@ const AQI_PLAIN = {
   'Poor':'Unhealthy — prolonged outdoor activity can cause breathing discomfort.',
   'Very Poor':'Unhealthy for everyone — avoid outdoor exertion.', 'Severe':'Hazardous — a serious health risk; stay indoors.',
 }
-function cityOf(pin) { return String(pin).startsWith('560') ? 'Bangalore' : 'Delhi NCR' }
-// Landing area for each city, used when the city switcher is pressed.
-const CITY_DEFAULT_PIN = { 'Delhi NCR': '110016', 'Bangalore': '560034' }
+// city(pin) and per-city defaults now live in lib/pinMeta.js (cityFor,
+// CITY_META) so every page shares one implementation instead of each
+// re-deriving it from the pin prefix, which only worked for two cities.
 function gradeFor(s) { return s == null ? '—' : s >= 80 ? 'A' : s >= 70 ? 'B+' : s >= 60 ? 'B' : s >= 50 ? 'C+' : s >= 40 ? 'C' : 'D' }
 function scoreColor(v) { return v >= 80 ? '#22c55e' : v >= 60 ? '#84cc16' : v >= 40 ? '#f59e0b' : '#ef4444' }
 function searchPinV2(q, city) {
   const s = (q || '').trim().toLowerCase(); if (!s) return []
-  const ok = p => !city || cityOf(p) === city
+  const ok = p => !city || cityFor(p) === city
   if (/^\d{6}$/.test(s)) return (ok(s) && PIN_META[s]) ? [{ pin: s, name: PIN_META[s].name }] : []
   return Object.entries(PIN_META).filter(([p, m]) => ok(p) && (m.name.toLowerCase().includes(s) || p.includes(s))).slice(0, 6).map(([p, m]) => ({ pin: p, name: m.name }))
 }
@@ -186,6 +186,22 @@ function highlights(r) {
   if (r.waterlogging_risk != null && r.waterlogging_risk <= 2) bad.push(`High monsoon waterlogging risk${r.flooding_incidents_annual ? ` — ~${r.flooding_incidents_annual} flooding incidents a year` : ''}.`)
   if (s.water != null && s.water < 45) bad.push('Only limited daily water supply — budget for filtration/tankers.')
   return { good: good.slice(0, 3), bad: bad.slice(0, 3) }
+}
+
+// Straight-line distance in km between two [lat, lng] points. Replaces the
+// old `Math.abs(+a.pin_code - +pin)` "nearby areas" sort, which treated pin
+// codes as numbers close in value = geographically close — already a loose
+// approximation for legacy 6-digit pincodes, and a silent no-op (NaN vs NaN)
+// for non-numeric slug ids like Punjab's "ldh-mall-road". Real coordinates
+// via AREA_COORDS work correctly for both, and are more accurate than
+// pincode-distance ever was.
+function haversineKm([lat1, lon1], [lat2, lon2]) {
+  const R = 6371
+  const dLat = (lat2 - lat1) * Math.PI / 180
+  const dLon = (lon2 - lon1) * Math.PI / 180
+  const a = Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) ** 2
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 }
 
 // ── Sun & Shadow Check — hands off to SunScout for exact-point solar/shadow
@@ -330,7 +346,7 @@ export default function Report({ report, allScores, ogMeta }) {
   const [customWeights, setCustomWeights] = useState({ ...WEIGHT_PRESETS.Default })
   const [query, setQuery] = useState(report ? (PIN_META[report.pin_code]?.name || '') : '')
   const [suggestions, setSuggestions] = useState([])
-  const [searchCity, setSearchCity] = useState(report ? (report.city || cityOf(report.pin_code)) : 'Delhi NCR')
+  const [searchCity, setSearchCity] = useState(report ? (report.city || cityFor(report.pin_code)) : 'Delhi NCR')
   const [fbText, setFbText] = useState('')
   const [fbStatus, setFbStatus] = useState('idle')
   const [pdfBusy, setPdfBusy] = useState(false)
@@ -350,15 +366,15 @@ export default function Report({ report, allScores, ogMeta }) {
   useEffect(() => {
     if (!shownPin) return
     setQuery(PIN_META[shownPin]?.name || '')
-    setSearchCity(cityOf(shownPin))
+    setSearchCity(cityFor(shownPin))
     setSuggestions([])
   }, [shownPin])
 
   function switchCity(c) {
     setSearchCity(c)
     setSuggestions([])
-    const target = CITY_DEFAULT_PIN[c]
-    if (target && cityOf(shownPin) !== c) router.push(`/report/${target}`)
+    const target = CITY_META[c]?.defaultPin
+    if (target && cityFor(shownPin) !== c) router.push(`/report/${target}`)
   }
 
   useEffect(() => {
@@ -430,7 +446,7 @@ export default function Report({ report, allScores, ogMeta }) {
       // price context, scores, weights), not just the headline numbers.
       ...report,
       areaName: PIN_META[report.pin_code]?.name || report.pin_code,
-      city: report.city || cityOf(report.pin_code),
+      city: report.city || cityFor(report.pin_code),
       persona,
       weights: customWeights,
       url: brandedUrl(),
@@ -549,8 +565,8 @@ export default function Report({ report, allScores, ogMeta }) {
   }
 
   const pin = report?.pin_code
-  const meta = report ? (PIN_META[pin] || { name: pin, area: cityOf(pin) }) : null
-  const city = report?.city || (pin ? cityOf(pin) : 'Delhi NCR')
+  const meta = report ? (PIN_META[pin] || { name: pin, area: cityFor(pin) }) : null
+  const city = report?.city || (pin ? cityFor(pin) : 'Delhi NCR')
 
   const { nqi, grade, rows } = useMemo(() => {
     if (!report) return { nqi: null, grade: '—', rows: [] }
@@ -566,8 +582,18 @@ export default function Report({ report, allScores, ogMeta }) {
 
   const nearby = useMemo(() => {
     if (!report || !allScores) return []
-    return allScores.filter(x => x.pin_code !== pin && x.nqi_composite != null)
-      .sort((a, b) => Math.abs(+a.pin_code - +pin) - Math.abs(+b.pin_code - +pin)).slice(0, 4)
+    const here = AREA_COORDS[pin]
+    const candidates = allScores.filter(x => x.pin_code !== pin && x.nqi_composite != null)
+    if (!here) {
+      // No coordinates for this area yet (e.g. a brand-new city before its
+      // AREA_COORDS entries are added) — fall back to same-city candidates
+      // in whatever order they come rather than a meaningless sort.
+      return candidates.filter(x => cityFor(x.pin_code) === cityFor(pin)).slice(0, 4)
+    }
+    return candidates
+      .map(x => ({ ...x, _dist: AREA_COORDS[x.pin_code] ? haversineKm(here, AREA_COORDS[x.pin_code]) : Infinity }))
+      .sort((a, b) => a._dist - b._dist)
+      .slice(0, 4)
   }, [report, allScores, pin])
 
   // Real interactive map (Leaflet via CDN + CARTO tiles). Pins = current area + nearby.
@@ -647,7 +673,7 @@ export default function Report({ report, allScores, ogMeta }) {
             <span className="kick">Neighbourhood intelligence · spec sheet</span>
           </div>
           <div className="hdr-right" style={{ display:'flex', alignItems:'center', gap:20 }}>
-            <span className="kick-count" style={{ fontSize:13, color:'var(--ink60)', letterSpacing:'.04em' }}>152 AREAS · 2 CITIES</span>
+            <span className="kick-count" style={{ fontSize:13, color:'var(--ink60)', letterSpacing:'.04em' }}>{TOTAL_SCORED_AREAS} AREAS · {CITIES.length} CITIES</span>
             <Link href="/compare" style={{ fontSize:13, fontWeight:600, letterSpacing:'.06em' }}>COMPARE</Link>
             <button onClick={() => setDark(!dark)} style={{ background:'var(--acc-fill)', color:'#f6f3f3', border:'none', padding:'8px 16px', fontSize:12, fontWeight:600, letterSpacing:'.06em' }}>{dark ? 'LIGHT MODE' : 'DARK MODE'}</button>
           </div>
@@ -696,15 +722,15 @@ export default function Report({ report, allScores, ogMeta }) {
 
         {/* ── Area search + city switcher ── */}
         <div className="no-pdf" style={{ display:'flex', gap:12, alignItems:'center', flexWrap:'wrap', marginTop:18, position:'relative', zIndex:20 }}>
-          <div style={{ display:'inline-flex', border:'1px solid var(--acc45)' }}>
-            {['Delhi NCR','Bangalore'].map((c, i) => (
+          <div style={{ display:'inline-flex', border:'1px solid var(--acc45)', flexWrap:'wrap' }}>
+            {CITIES.map((c, i) => (
               <button key={c} onClick={() => switchCity(c)}
                 style={{ fontSize:11, fontWeight:600, letterSpacing:'.06em', textTransform:'uppercase', padding:'7px 12px', border:'none', borderLeft: i ? '1px solid var(--acc45)' : 'none', background: searchCity === c ? acc : 'transparent', color: searchCity === c ? '#fff' : 'var(--ink70)' }}>{c}</button>
             ))}
           </div>
           <div style={{ position:'relative', flex:1, minWidth:240, maxWidth:440 }}>
             <input value={query} onChange={e => { setQuery(e.target.value); setSuggestions(searchPinV2(e.target.value, searchCity)) }}
-              placeholder={searchCity === 'Bangalore' ? 'Look up another area — e.g. Koramangala' : 'Look up another area — e.g. Hauz Khas'}
+              placeholder={`Look up another area — e.g. ${CITY_META[searchCity]?.example || 'Hauz Khas'}`}
               style={{ width:'100%', padding:'9px 12px', border:'1px solid var(--acc35)', background:'transparent', color:'var(--ink)', fontSize:13, outline:'none' }} />
             {suggestions.length > 0 && (
               <div style={{ position:'absolute', top:'calc(100% + 2px)', left:0, right:0, background:'var(--bg)', border:'1px solid var(--acc45)', zIndex:50 }}>
@@ -1064,14 +1090,16 @@ export default function Report({ report, allScores, ogMeta }) {
 export async function getServerSideProps({ params, req }) {
   const pin = params?.pin
 
-  if (!pin || !/^\d{6}$/.test(pin)) {
-    return { redirect: { destination: '/report', permanent: false } }
-  }
-
-  const meta = PIN_META[pin]
+  // Was `!/^\d{6}$/.test(pin)`, which rejected anything that wasn't a
+  // 6-digit postal pincode — that silently 404'd every slug-keyed area
+  // (e.g. Punjab's "ldh-mall-road" ids) before the lookup even ran. The
+  // PIN_META existence check below is the real validation; the format
+  // check was redundant with it for numeric pins and actively wrong for
+  // slug ids.
+  const meta = pin ? PIN_META[pin] : null
 
   if (!meta) {
-    return { redirect: { destination: `/report?pin=${pin}`, permanent: false } }
+    return { redirect: { destination: '/report', permanent: false } }
   }
 
   try {
