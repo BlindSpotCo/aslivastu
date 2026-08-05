@@ -166,8 +166,68 @@ export const PIN_META = {
   // city-prefixed slugs (e.g. "ldh-mall-road"), not postal pincodes — Punjab's
   // tier-2 cities have far coarser postal pincodes than Delhi/Bangalore (one
   // pincode often covers several distinct named localities), so pincode can't
-  // be the area unit here. See ADDING_A_CITY.md for the full rationale. These
-  // are placeholders pending real per-dimension data — see PUNJAB_ROLLOUT.md.
+  // be the area unit here. See ADDING_A_CITY.md for the full rationale.
+  //
+  // These 52 localities are real, sourced places (see PUNJAB_ROLLOUT.md for
+  // full citations per locality) — but NOT scored. `scored:false` means no
+  // nqi_composite/dimension data exists for them yet; they resolve correctly
+  // as routes and show "No data for this pin" rather than a fabricated score
+  // or a broken redirect. Do not remove `scored:false` until real pipeline
+  // data actually exists for a given locality — see PUNJAB_ROLLOUT.md §"What
+  // this rollout does NOT include" for why that's a separate, larger task.
+  "ldh-mall-road":{ name:"Mall Road", area:"Central Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-navi-market":{ name:"Navi Market", area:"Central Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-sadar-bazaar":{ name:"Sadar Bazaar", area:"Central Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-chaura-bazaar":{ name:"Chaura Bazaar", area:"Central Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-ghumar-mandi":{ name:"Ghumar Mandi", area:"Central Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-civil-lines":{ name:"Civil Lines", area:"Central Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-model-town":{ name:"Model Town", area:"East Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-model-gram":{ name:"Model Gram", area:"Central Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-sarabha-nagar":{ name:"Sarabha Nagar", area:"Central-West Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-brs-nagar":{ name:"BRS Nagar", area:"West Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-pakhowal-road":{ name:"Pakhowal Road", area:"West Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-ferozepur-road":{ name:"Ferozepur Road", area:"West Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-dugri":{ name:"Dugri", area:"South Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-gill-road":{ name:"Gill Road", area:"East Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-jamalpur":{ name:"Jamalpur", area:"East Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-haibowal":{ name:"Haibowal", area:"North-Central Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-shimlapuri":{ name:"Shimlapuri", area:"East Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-rishi-nagar":{ name:"Rishi Nagar", area:"North-Central Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-kitchlu-nagar":{ name:"Kitchlu Nagar", area:"North-Central Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-focal-point":{ name:"Focal Point", area:"East Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-dhandari-kalan":{ name:"Dhandari Kalan", area:"East Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-salem-tabri":{ name:"Salem Tabri", area:"North Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-jawahar-nagar":{ name:"Jawahar Nagar", area:"North-Central Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-rajguru-nagar":{ name:"Rajguru Nagar", area:"West Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-basti-jodhewal":{ name:"Basti Jodhewal", area:"Central-East Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-field-ganj":{ name:"Field Ganj", area:"Central Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-chandigarh-road":{ name:"Chandigarh Road", area:"East Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-ayali-kalan":{ name:"Ayali Kalan", area:"West Ludhiana", city:"Ludhiana", scored:false },
+  // ── Amritsar (city 4) ──
+  "asr-ranjit-avenue":{ name:"Ranjit Avenue", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-green-avenue":{ name:"Green Avenue", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-lawrence-road":{ name:"Lawrence Road", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-mall-road":{ name:"Mall Road", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-hall-bazaar":{ name:"Hall Bazaar", area:"Walled City / Old Amritsar", city:"Amritsar", scored:false },
+  "asr-katra-jaimal-singh":{ name:"Katra Jaimal Singh", area:"Walled City / Old Amritsar", city:"Amritsar", scored:false },
+  "asr-batala-road":{ name:"Batala Road", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-gt-road":{ name:"GT Road", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-chheharta":{ name:"Chheharta", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-majitha-road":{ name:"Majitha Road", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-circular-road":{ name:"Circular Road", area:"Walled City / Old Amritsar", city:"Amritsar", scored:false },
+  "asr-court-road":{ name:"Court Road", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-cantt":{ name:"Amritsar Cantt", area:"Amritsar Cantonment", city:"Amritsar", scored:false },
+  "asr-putlighar":{ name:"Putlighar", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-islamabad":{ name:"Islamabad", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-gate-hakiman":{ name:"Gate Hakiman", area:"Walled City / Old Amritsar", city:"Amritsar", scored:false },
+  "asr-rani-ka-bagh":{ name:"Rani Ka Bagh", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-sultanwind":{ name:"Sultanwind", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-gndu-area":{ name:"GNDU Area", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-tarn-taran-road":{ name:"Tarn Taran Road", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-fatehgarh-churian-road":{ name:"Fatehgarh Churian Road", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-golden-avenue":{ name:"Golden Avenue", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-vijay-nagar":{ name:"Vijay Nagar", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-basant-avenue":{ name:"Basant Avenue", area:"Amritsar", city:"Amritsar", scored:false },
 }
 
 // Total areas with SCORED data (i.e. present in nqi_scores.json) — not the
@@ -181,10 +241,27 @@ export const TOTAL_SCORED_AREAS = 152
 // Ordered list of live cities, driving every city-toggle button in the UI.
 // Adding a city = add one line here (plus its PIN_META entries) instead of
 // editing three separate hardcoded ['Delhi NCR','Bangalore'] arrays.
+//
+// Ludhiana and Amritsar are deliberately NOT added here yet, even though
+// their PIN_META entries already exist above. Every one of their areas is
+// `scored:false` (see PUNJAB_ROLLOUT.md) — the landing/CTA city search
+// (heroSearch2 etc. in index.js) filters against PIN_META_LANDING, which
+// excludes scored:false entries, so a "Ludhiana" tab today would let someone
+// select it and then get zero results for everything they type — a dead end
+// that reads as broken rather than "coming soon". Once real scored data
+// lands for even a handful of these localities, add 'Ludhiana'/'Amritsar'
+// here — that one-line change is exactly what this refactor was for. Until
+// then, their /report/<slug> URLs still resolve directly and correctly show
+// "No data for this pin" (see report/[pin].js), and they're reachable via
+// compare.js's general search, which isn't scored-gated.
 export const CITIES = ['Delhi NCR', 'Bangalore']
 
 // Per-city defaults used by the city switcher (landing pin to jump to) and
-// search placeholders (an example area name shown in the input).
+// search placeholders (an example area name shown in the input). Add
+// Ludhiana/Amritsar entries here in the same commit that adds them to CITIES
+// above — 'Ludhiana': { defaultPin: 'ldh-sarabha-nagar', example: 'Sarabha Nagar' }
+// and 'Amritsar': { defaultPin: 'asr-ranjit-avenue', example: 'Ranjit Avenue' }
+// are the best-documented localities in each city per PUNJAB_ROLLOUT.md.
 export const CITY_META = {
   'Delhi NCR': { defaultPin: '110016', example: 'Hauz Khas' },
   'Bangalore': { defaultPin: '560034', example: 'Koramangala' },

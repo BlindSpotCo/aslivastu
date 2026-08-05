@@ -15,11 +15,18 @@ function generateSitemap() {
     { url: `${base}/compare`, priority: '0.6', changefreq: 'monthly' },
   ]
 
-  const reportPages = Object.keys(PIN_META).map(pin => ({
-    url: `${base}/report/${pin}`,
-    priority: '0.9',
-    changefreq: 'daily',
-  }))
+  // Excludes scored:false entries (NCR-fringe pins and all of Punjab Phase 1
+  // right now — see PUNJAB_ROLLOUT.md) so search engines don't index a batch
+  // of "No data for this pin" pages. Was previously indexing all of them
+  // unconditionally, which got worse the moment 52 unscored Punjab entries
+  // were added to PIN_META — fixing it here rather than carrying it forward.
+  const reportPages = Object.entries(PIN_META)
+    .filter(([, m]) => m.scored !== false)
+    .map(([pin]) => ({
+      url: `${base}/report/${pin}`,
+      priority: '0.9',
+      changefreq: 'daily',
+    }))
 
   const allPages = [...staticPages, ...reportPages]
 

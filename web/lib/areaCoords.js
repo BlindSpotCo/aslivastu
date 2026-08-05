@@ -46,4 +46,29 @@ export const AREA_COORDS = {
   "201014":[28.642,77.371],"201016":[28.633,77.430],"201102":[28.750,77.290],"201206":[28.786,77.498],
   "201301":[28.583,77.320],"201304":[28.500,77.400],"201309":[28.610,77.360],"203001":[28.406,77.850],
   "245101":[28.730,77.780],
+  // ── Ludhiana — 24 of 28 Phase-1 localities have a sourced coordinate
+  // (landmark-derived, not an official polygon centroid — see
+  // PUNJAB_ROLLOUT.md for exactly which landmark backs each point).
+  // ldh-navi-market, ldh-haibowal, ldh-salem-tabri, ldh-basti-jodhewal are
+  // deliberately absent — no real coordinate was found for them; the report
+  // page already handles a missing AREA_COORDS entry gracefully (shows "map
+  // not available for this pin", falls back to same-city nearby-areas).
+  "ldh-mall-road":[30.9150,75.8537],"ldh-sadar-bazaar":[30.9145,75.8438],
+  "ldh-chaura-bazaar":[30.9150,75.8537],"ldh-ghumar-mandi":[30.9023,75.8323],
+  "ldh-civil-lines":[30.9150,75.8281],"ldh-model-town":[30.8884,75.8404],
+  "ldh-model-gram":[30.9021,75.8378],"ldh-sarabha-nagar":[30.8928,75.8213],
+  "ldh-brs-nagar":[30.8854,75.8055],"ldh-pakhowal-road":[30.8816,75.8193],
+  "ldh-ferozepur-road":[30.8989,75.8230],"ldh-dugri":[30.8699,75.8371],
+  "ldh-gill-road":[30.8797,75.8590],"ldh-jamalpur":[30.9001,75.9356],
+  "ldh-shimlapuri":[30.8888,75.8615],"ldh-rishi-nagar":[30.9110,75.8030],
+  "ldh-kitchlu-nagar":[30.9130,75.8120],"ldh-focal-point":[30.8736,75.9392],
+  "ldh-dhandari-kalan":[30.8587,75.9164],"ldh-jawahar-nagar":[30.8970,75.8430],
+  "ldh-rajguru-nagar":[30.8870,75.7900],"ldh-field-ganj":[30.9070,75.8540],
+  "ldh-chandigarh-road":[30.9055,75.8943],"ldh-ayali-kalan":[30.8960,75.7610],
+  // ── Amritsar — only 6 of 24 Phase-1 localities have a sourced coordinate;
+  // the other 18 had nothing more precise than a pincode or a zone name
+  // available (see PUNJAB_ROLLOUT.md) — left out rather than guessed.
+  "asr-ranjit-avenue":[31.65704,74.859485],"asr-hall-bazaar":[31.629309,74.877759],
+  "asr-chheharta":[31.626261,74.789291],"asr-majitha-road":[31.655551,74.888117],
+  "asr-cantt":[31.6666,74.8424],"asr-gndu-area":[31.6329,74.87775],
 }
