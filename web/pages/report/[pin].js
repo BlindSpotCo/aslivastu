@@ -133,6 +133,26 @@ function loadScript(src, check) {
 
 function source(k, city) {
   const blr = city === 'Bangalore'
+  const pb = city === 'Ludhiana' || city === 'Amritsar'
+  // Punjab deliberately does NOT use the tier-estimate pattern the other
+  // cities use — every Punjab dimension is either real, individually
+  // sourced data (schools, water) or genuinely not yet available (the
+  // rest). Mislabeling these with the wrong city agency ('Delhi Jal
+  // Board' for a Ludhiana pin) or the wrong 'est.' tag would misrepresent
+  // the one thing this rollout is built around — see PUNJAB_ROLLOUT.md.
+  if (pb) {
+    const m = {
+      crime:          'Not yet available for Punjab — see PUNJAB_ROLLOUT.md',
+      infrastructure: 'Not yet available for Punjab — see PUNJAB_ROLLOUT.md',
+      air:            'CPCB / PPCB live AQI · updated daily',
+      power:          'Not yet available for Punjab — see PUNJAB_ROLLOUT.md',
+      schools:        'Individually researched, CBSE-verified · 2026',
+      water:          'AIIB PMSIP bulk-water ESIA · city-wide, 2024',
+      roads:          'Not yet available for Punjab — see PUNJAB_ROLLOUT.md',
+      sewerage:       'Not yet available for Punjab — see PUNJAB_ROLLOUT.md',
+    }
+    return m[k] || ''
+  }
   const m = {
     crime: blr ? 'Bengaluru City Police / NCRB · est. 2023' : 'Delhi Police Annual Report · est. 2023',
     infrastructure: blr ? 'BBMP plans · BMRCL Namma Metro · est. 2024' : 'DDA Master Plan · DMRC · est. 2024',
@@ -813,7 +833,11 @@ export default function Report({ report, allScores, ogMeta }) {
             ))}
           </div>
           <span style={{ fontSize:12, color:'var(--ink65)', lineHeight:1.5 }}>
-            <strong style={{ color:'var(--ink)' }}>AIR = LIVE FEED</strong> (daily) · all other channels estimated, gov. reports verified 2023–24 · rows re-rank with the selected profile
+            {city === 'Ludhiana' || city === 'Amritsar' ? (<>
+              <strong style={{ color:'var(--ink)' }}>AIR = LIVE FEED</strong> (daily) · Schools & Water are REAL, individually sourced data, not estimates · rows re-rank with the selected profile
+            </>) : (<>
+              <strong style={{ color:'var(--ink)' }}>AIR = LIVE FEED</strong> (daily) · all other channels estimated, gov. reports verified 2023–24 · rows re-rank with the selected profile
+            </>)}
           </span>
         </div>
 
@@ -1025,7 +1049,12 @@ export default function Report({ report, allScores, ogMeta }) {
                 <div key={k} className="meth-row" style={{ display:'grid', gridTemplateColumns:'170px 46px 1fr', gap:12, fontSize:12, padding:'7px 0', borderTop:'1px dashed var(--acc35)', alignItems:'baseline' }}>
                   <span className="cond" style={{ fontSize:15, fontWeight:600, textTransform:'uppercase' }}>{LABEL[k]}</span>
                   <span style={{ color:'var(--acc-deep)', fontWeight:600 }}>{WEIGHT_PRESETS.Default[k]}%</span>
-                  <span style={{ color:'var(--ink65)' }}>{source(k, city)} {k === 'air' ? '· LIVE' : '· EST'}</span>
+                  <span style={{ color:'var(--ink65)' }}>{source(k, city)} {
+                    k === 'air' ? '· LIVE'
+                    : (city === 'Ludhiana' || city === 'Amritsar')
+                      ? (['schools','water'].includes(k) ? '· REAL' : '· N/A')
+                      : '· EST'
+                  }</span>
                 </div>
               ))}
             </div>

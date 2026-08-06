@@ -82,6 +82,19 @@ STATION_PIN_MAP = {
     "Bapuji Nagar":"560018",
     "Nimhans":"560029",
     "SG Halli":"560021",
+    # ── Punjab (PPCB) — the ONLY two real-time CPCB/PPCB stations in Ludhiana/
+    # Amritsar. Both map to a station-level placeholder pin (not a real
+    # locality), then FALLBACK_AQI_PINS below copies that single reading onto
+    # every Punjab locality sharing that city — same city-wide-not-locality-
+    # specific treatment already used for the water dimension (see
+    # scrapers/punjab_data.py). If neither of these substrings match a live
+    # "station" value from the API, check data/raw/cpcb_aqi_latest.json for
+    # the actual string data.gov.in returns for Punjab and update the key —
+    # this wasn't verified against a live API response, only against the
+    # naming convention every other state in this map already follows
+    # ("<station>, <city> - <SPCB abbrev>").
+    "Punjab Agricultural University": "ldh-pau-station",
+    "Golden Temple": "asr-golden-temple-station",
 }
 
 # Fringe pins with no direct CPCB station — borrow from nearest monitored pin
@@ -121,6 +134,14 @@ FALLBACK_AQI_PINS = {
     "560097": "560024", "560063": "560024", "560064": "560024", "560065": "560024",
     "560072": "560022", "560091": "560022", "560056": "560022", "560099": "560076",
     "560105": "560076", "560030": "560027",
+    # ── Punjab: single-station city readings copied onto every scored
+    # locality in that city. Real, sourced CPCB data — just city-wide
+    # resolution, disclosed the same way water's supply_hours is.
+    "ldh-sarabha-nagar": "ldh-pau-station",
+    "ldh-dugri": "ldh-pau-station",
+    "ldh-model-town": "ldh-pau-station",
+    "asr-majitha-road": "asr-golden-temple-station",
+    "asr-rani-ka-bagh": "asr-golden-temple-station",
 }
 
 def resolve_pin(station):
@@ -134,11 +155,23 @@ def aqi_cat(v):
         if lo <= v <= hi: return label
     return "Severe"
 
+
+# data.gov.in's gateway appears to allow curl's TLS/HTTP fingerprint but
+# silently drop (not reject — just never respond) connections carrying
+# requests' default "python-requests/x.x" User-Agent: curl against the exact
+# same URL/key/params returned instantly, while requests hung to a 60s
+# timeout on every single state. Sending a browser-like UA is the standard
+# fix for this class of gateway filtering.
+REQUEST_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+}
+
 def fetch_state(state, key):
     records, offset = [], 0
     while True:
         try:
-            r = requests.get(API_BASE, params={"api-key":key,"format":"json","limit":500,"offset":offset,"filters[state]":state}, timeout=60)
+            r = requests.get(API_BASE, params={"api-key":key,"format":"json","limit":500,"offset":offset,"filters[state]":state}, headers=REQUEST_HEADERS, timeout=60)
             r.raise_for_status()
             page = r.json()
         except Exception as e:
@@ -159,7 +192,7 @@ def run():
     scraped_at = datetime.now().isoformat()
 
     all_raw = []
-    for state in ["Delhi", "Haryana", "Uttar Pradesh", "Karnataka"]:
+    for state in ["Delhi", "Haryana", "Uttar Pradesh", "Karnataka", "Punjab"]:
         log.info(f"Fetching {state}...")
         recs = fetch_state(state, key)
         log.info(f"  {len(recs)} stations")

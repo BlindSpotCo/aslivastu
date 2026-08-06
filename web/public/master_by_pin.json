@@ -6789,8 +6789,9 @@
       "punjab_schools_manual",
       "punjab_water_citywide"
     ],
+    "aqi_avg": 45.4,
     "data_completeness": 2,
-    "merged_at": "2026-08-06T12:00:00.000000"
+    "merged_at": "2026-08-06T23:35:27.303149"
   },
   {
     "pin_code": "ldh-dugri",
@@ -6800,8 +6801,9 @@
       "punjab_schools_manual",
       "punjab_water_citywide"
     ],
+    "aqi_avg": 45.4,
     "data_completeness": 2,
-    "merged_at": "2026-08-06T12:00:00.000000"
+    "merged_at": "2026-08-06T23:35:27.303157"
   },
   {
     "pin_code": "ldh-model-town",
@@ -6811,8 +6813,9 @@
       "punjab_schools_manual",
       "punjab_water_citywide"
     ],
+    "aqi_avg": 45.4,
     "data_completeness": 2,
-    "merged_at": "2026-08-06T12:00:00.000000"
+    "merged_at": "2026-08-06T23:35:27.303158"
   },
   {
     "pin_code": "asr-majitha-road",
@@ -6822,8 +6825,9 @@
       "punjab_schools_manual",
       "punjab_water_citywide"
     ],
+    "aqi_avg": 35.9,
     "data_completeness": 2,
-    "merged_at": "2026-08-06T12:00:00.000000"
+    "merged_at": "2026-08-06T23:35:27.303160"
   },
   {
     "pin_code": "asr-rani-ka-bagh",
@@ -6833,7 +6837,8 @@
       "punjab_schools_manual",
       "punjab_water_citywide"
     ],
+    "aqi_avg": 35.9,
     "data_completeness": 2,
-    "merged_at": "2026-08-06T12:00:00.000000"
+    "merged_at": "2026-08-06T23:35:27.303161"
   }
 ]
