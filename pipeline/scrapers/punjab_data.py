@@ -34,7 +34,7 @@ Data provenance, per dimension, for the 5 localities below (research dated
     2M-population threshold for even NCRB's city-level table, and Punjab
     Police publishes no aggregate crime-statistics dashboard. Confirmed dead
     end — see PUNJAB_MANUAL_TODO.md.
-  • Infrastructure, power, water, roads, sewerage — NOT included. No real
+  • Infrastructure, power, roads, sewerage — NOT included. No real
     per-locality source was researched for these yet; do not backfill with
     tier estimates the way bengaluru_data.py does without an explicit,
     separate decision to relax the honesty bar for Punjab the way it was
@@ -161,13 +161,55 @@ def schools_records():
     return dict(SCHOOLS)
 
 
-# ── Master records (minimal — only pin_code/city/sources) ─────────────────
-# Deliberately does NOT set aqi_avg, total_cognizable_crimes, infra_score_raw,
-# or any power/water/roads/sewerage field — leaving those keys absent is what
-# makes compute_nqi() drop those dimensions instead of scoring a fabricated
-# value. schools_count/cbse/icse etc. are NOT set here either; they're
-# injected separately by scoring.py's _merge_schools() from
-# data/raw/schools_raw.json, same as every other city.
+# ── Master records ──────────────────────────────────────────────────────
+# Deliberately does NOT set total_cognizable_crimes, infra_score_raw, or any
+# power/roads/sewerage field — leaving those keys absent is what makes
+# compute_nqi() drop those dimensions instead of scoring a fabricated value.
+# schools_count/cbse/icse etc. are NOT set here either; they're injected
+# separately by scoring.py's _merge_schools() from data/raw/schools_raw.json,
+# same as every other city.
+#
+# 2026-08-06 follow-up research (infrastructure/power/water/roads/sewerage,
+# plus a second look at air) confirmed almost none of it clears the bar for
+# a locality-specific NUMERIC score. Full reasoning, dimension by dimension:
+#
+#   • Infrastructure — real facts exist (both cities have zero metro; NH-5
+#     confirmed for Sarabha Nagar; a named Smart City project each for
+#     Sarabha Nagar and Hall Bazaar) but for the OTHER localities the
+#     research came back "not found," and treating "not found" as "not near
+#     a highway" would be presenting absence-of-evidence as evidence-of-
+#     absence — a real risk of quietly asserting something false. Skipped.
+#   • Power (PSPCL) — no public dashboard publishes outage frequency/
+#     duration below city-wide, and the one number that exists (Ludhiana
+#     Main Town circle SAIFI/SAIDI) is from 2014-15 — 11+ years stale, plus
+#     circle-wide not locality-wide. Skipped. Real qualitative signal exists
+#     (Majitha Road named "worst hit," hourly cuts, Tribune Jun 2024) — used
+#     as an inspection note below instead of a fabricated number.
+#   • Roads — no MC/PWD source publishes a pothole-density or quality
+#     rating anywhere, only incident reports. Converting "recarpeted road
+#     peeled within 12 hours" into a 1-5 number would be inventing the
+#     rating ourselves. Skipped; used as inspection notes below.
+#   • Sewerage — same as roads: real, well-dated incident reports exist
+#     (some localities chronic over 2+ years, one — Rani Ka Bagh — has zero
+#     documented incidents at all) but no coverage %/waterlogging-risk
+#     rating is published anywhere. Converting "how many news reports we
+#     found" into a 1-5 risk score would encode journalistic attention as
+#     if it were a measured rating. Skipped; used as inspection notes below.
+#   • Air — still not achievable with real CPCB-methodology numbers (see
+#     the module-level docstring above); the one thing that changed is now
+#     confirmed with a documented reason (gov.in/data.gov.in blocked from
+#     this environment's proxy), not just "didn't find it."
+#   • Water — the ONE dimension that clears the bar, with a caveat. AIIB's
+#     Environmental & Social Impact Assessments for the PMSIP bulk-water
+#     projects quote MC/DWSS-sourced CITY-WIDE supply hours: Ludhiana ~7
+#     hrs/day (Aug 2024 ESIA), Amritsar ~12 hrs/day, in 3 blocks (May 2024
+#     ESIA). This is real and sourced, but city-wide, not locality-
+#     differentiated — every Ludhiana locality gets the same figure, same
+#     for Amritsar. Added ONLY to localities that already have at least one
+#     genuinely locality-specific dimension (schools) — NOT used to newly
+#     score Hall Bazaar, since a "score" built from 100% city-wide, 0%
+#     locality-specific data would misrepresent what the number means, even
+#     with dimensions_scored:1/8 shown. Hall Bazaar stays unscored.
 
 LOCALITIES = list(SCHOOLS.keys())
 
@@ -179,18 +221,74 @@ CITY_OF = {
     "asr-rani-ka-bagh": "Amritsar",
 }
 
+# City-wide daily water-supply hours (NOT locality-specific — see note above).
+# Source: AIIB PMSIP bulk-water-supply ESIA reports, citing MC/DWSS data.
+#   Ludhiana:  "supplied intermittently... nearly 7 hours a day" (Aug 2024)
+#     https://www.aiib.org/en/projects/details/2024/_download/India/PMSIP-Final-ESIA_ESMP_Ludhiana-Bulk-Water-Supply-Project-Report.pdf
+#   Amritsar: "intermittent, occurring for 12 hours each day... 5 hours in
+#     the morning, 2 hours at noon, and 5 hours in the evening" (May 2024)
+#     https://www.aiib.org/en/projects/details/2024/_download/India/PMSIP-ESIA_ESMP_Amritsar-Bulk-Water-Supply-Project.pdf
+WATER_HOURS_CITYWIDE = {"Ludhiana": 7, "Amritsar": 12}
+
+# Real, sourced, dated qualitative findings — NOT part of the NQI composite,
+# surfaced only as inspection-note bullets on the report page (see
+# highlights() in pages/report/[pin].js, extended to merge these in).
+# Every item below is a real, cited incident/fact; nothing here is invented,
+# and localities with no solid finding (e.g. Rani Ka Bagh) simply have none.
+QUALITATIVE_NOTES = {
+    "ldh-sarabha-nagar": {
+        "good": [
+            "On NH-5 (Ferozepur Road) with direct access to the Ludhiana Elevated "
+            "Corridor, and a Ludhiana Smart City market-retrofit project underway "
+            "(Tribune; Ludhiana Smart City Ltd).",
+        ],
+        "bad": [
+            "Recurring monsoon waterlogging — flooded in at least 3 separate rain "
+            "events since Aug 2025; residents cite overloaded old sewer lines "
+            "(Tribune).",
+        ],
+    },
+    "ldh-dugri": {
+        "good": [],
+        "bad": [
+            "A newly recarpeted road began peeling within 12 hours of laying — "
+            "flagged as substandard by the National Road Safety Council (Tribune); "
+            "chronic potholes reported on Beri Road.",
+        ],
+    },
+    "ldh-model-town": {
+        "good": [],
+        "bad": [
+            "Chronic sewage backing into homes on rainfall — residents report the "
+            "problem has recurred for 2+ years without a fix (Tribune, Jul 2026).",
+        ],
+    },
+    "asr-majitha-road": {
+        "good": [],
+        "bad": [
+            "Named 'worst hit' by frequent power cuts, with outages reported "
+            "roughly hourly (Tribune, Jun 2024); recurring monsoon waterlogging "
+            "documented across 4 separate reports, 2023-2026.",
+        ],
+    },
+    "asr-rani-ka-bagh": {"good": [], "bad": []},  # no solid locality-specific finding either way — left empty, not guessed
+}
+
 
 def master_records():
     """Full master-shaped records for the Punjab localities that have at
-    least one real, sourced dimension — currently just schools. Each
-    record only carries pin_code/city/sources; everything else is left for
-    other (future, real) data sources to fill in."""
+    least one real, sourced dimension. Each record carries pin_code/city/
+    sources plus supply_hours (see WATER_HOURS_CITYWIDE note above) —
+    everything else is left for other (future, real) data sources to fill
+    in."""
     out = []
     for slug in LOCALITIES:
+        city = CITY_OF[slug]
         out.append({
             "pin_code": slug,
-            "city": CITY_OF[slug],
-            "sources": ["punjab_schools_manual"],
+            "city": city,
+            "supply_hours": WATER_HOURS_CITYWIDE[city],
+            "sources": ["punjab_schools_manual", "punjab_water_citywide"],
         })
     return out
 
@@ -262,6 +360,15 @@ PRICE_NOTE = (
 
 def price_entries():
     return dict(PRICE)
+
+
+def notes_records():
+    """Real, sourced, dated qualitative good/bad notes per locality — NOT
+    part of the NQI composite. See QUALITATIVE_NOTES above for the citations.
+    Consumed by scoring.py's run() to attach notes_good/notes_bad onto each
+    scored record, which pages/report/[pin].js's highlights() merges into
+    the inspection-notes UI alongside the score-derived bullets."""
+    return dict(QUALITATIVE_NOTES)
 
 
 def pin_meta():

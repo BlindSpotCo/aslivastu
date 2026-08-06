@@ -185,6 +185,12 @@ function highlights(r) {
   if (s.schools >= 70) good.push('Strong CBSE school density near this pin.')
   if (r.waterlogging_risk != null && r.waterlogging_risk <= 2) bad.push(`High monsoon waterlogging risk${r.flooding_incidents_annual ? ` — ~${r.flooding_incidents_annual} flooding incidents a year` : ''}.`)
   if (s.water != null && s.water < 45) bad.push('Only limited daily water supply — budget for filtration/tankers.')
+  // Real, sourced qualitative notes (e.g. Punjab localities — see
+  // pipeline/scrapers/punjab_data.py) that aren't derived from a numeric
+  // score at all. Appended after the score-derived bullets so those take
+  // priority within the 3-item cap.
+  if (Array.isArray(r.notes_good)) good.push(...r.notes_good)
+  if (Array.isArray(r.notes_bad)) bad.push(...r.notes_bad)
   return { good: good.slice(0, 3), bad: bad.slice(0, 3) }
 }
 

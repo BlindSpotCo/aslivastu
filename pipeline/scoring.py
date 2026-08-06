@@ -371,6 +371,25 @@ def add_price_context(results):
         }
     return results
 
+def add_punjab_notes(results):
+    """Attach real, sourced qualitative good/bad notes (from
+    scrapers/punjab_data.py's notes_records()) onto matching Punjab records.
+    NOT part of the NQI composite — same design stance as crime_percentile/
+    price_context. Consumed by pages/report/[pin].js's highlights(), merged
+    alongside the score-derived inspection-note bullets."""
+    try:
+        from scrapers.punjab_data import notes_records
+        notes = notes_records()
+    except Exception as e:
+        log.warning(f"Punjab notes load failed: {e}")
+        notes = {}
+    for r in results:
+        n = notes.get(r["pin_code"])
+        if n:
+            r["notes_good"] = n.get("good", [])
+            r["notes_bad"] = n.get("bad", [])
+    return results
+
 def save_methodology():
     """Publish the scoring rubric as its own file so it can be surfaced in the
     UI (e.g. an 'How is this calculated?' panel) instead of staying implicit
@@ -399,6 +418,7 @@ def run():
     results = [compute_nqi(r) for r in master if r.get("pin_code")]
     results = add_crime_percentiles(results)
     results = add_price_context(results)
+    results = add_punjab_notes(results)
     results.sort(key=lambda r: r["nqi_composite"] or 0, reverse=True)
     path = save_processed(results, "nqi_scores")
     log.info(f"Scores saved → {path}")

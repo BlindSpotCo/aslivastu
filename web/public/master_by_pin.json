@@ -6784,46 +6784,56 @@
   {
     "pin_code": "ldh-sarabha-nagar",
     "city": "Ludhiana",
+    "supply_hours": 7,
     "sources": [
-      "punjab_schools_manual"
+      "punjab_schools_manual",
+      "punjab_water_citywide"
     ],
-    "data_completeness": 1,
-    "merged_at": "2026-08-06T10:30:00.000000"
+    "data_completeness": 2,
+    "merged_at": "2026-08-06T12:00:00.000000"
   },
   {
     "pin_code": "ldh-dugri",
     "city": "Ludhiana",
+    "supply_hours": 7,
     "sources": [
-      "punjab_schools_manual"
+      "punjab_schools_manual",
+      "punjab_water_citywide"
     ],
-    "data_completeness": 1,
-    "merged_at": "2026-08-06T10:30:00.000000"
+    "data_completeness": 2,
+    "merged_at": "2026-08-06T12:00:00.000000"
   },
   {
     "pin_code": "ldh-model-town",
     "city": "Ludhiana",
+    "supply_hours": 7,
     "sources": [
-      "punjab_schools_manual"
+      "punjab_schools_manual",
+      "punjab_water_citywide"
     ],
-    "data_completeness": 1,
-    "merged_at": "2026-08-06T10:30:00.000000"
+    "data_completeness": 2,
+    "merged_at": "2026-08-06T12:00:00.000000"
   },
   {
     "pin_code": "asr-majitha-road",
     "city": "Amritsar",
+    "supply_hours": 12,
     "sources": [
-      "punjab_schools_manual"
+      "punjab_schools_manual",
+      "punjab_water_citywide"
     ],
-    "data_completeness": 1,
-    "merged_at": "2026-08-06T10:30:00.000000"
+    "data_completeness": 2,
+    "merged_at": "2026-08-06T12:00:00.000000"
   },
   {
     "pin_code": "asr-rani-ka-bagh",
     "city": "Amritsar",
+    "supply_hours": 12,
     "sources": [
-      "punjab_schools_manual"
+      "punjab_schools_manual",
+      "punjab_water_citywide"
     ],
-    "data_completeness": 1,
-    "merged_at": "2026-08-06T10:30:00.000000"
+    "data_completeness": 2,
+    "merged_at": "2026-08-06T12:00:00.000000"
   }
 ]
