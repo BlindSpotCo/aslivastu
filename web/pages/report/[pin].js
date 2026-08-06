@@ -722,11 +722,16 @@ export default function Report({ report, allScores, ogMeta }) {
 
         {/* ── Area search + city switcher ── */}
         <div className="no-pdf" style={{ display:'flex', gap:12, alignItems:'center', flexWrap:'wrap', marginTop:18, position:'relative', zIndex:20 }}>
-          <div style={{ display:'inline-flex', border:'1px solid var(--acc45)', flexWrap:'wrap' }}>
-            {CITIES.map((c, i) => (
-              <button key={c} onClick={() => switchCity(c)}
-                style={{ fontSize:11, fontWeight:600, letterSpacing:'.06em', textTransform:'uppercase', padding:'7px 12px', border:'none', borderLeft: i ? '1px solid var(--acc45)' : 'none', background: searchCity === c ? acc : 'transparent', color: searchCity === c ? '#fff' : 'var(--ink70)' }}>{c}</button>
-            ))}
+          <div style={{ position:'relative', display:'inline-block' }}>
+            <select
+              value={searchCity}
+              onChange={e => switchCity(e.target.value)}
+              style={{ fontSize:11, fontWeight:600, letterSpacing:'.06em', textTransform:'uppercase', padding:'7px 26px 7px 12px',
+                border:'1px solid var(--acc45)', background:'transparent', color:'var(--ink)', cursor:'pointer',
+                appearance:'none', WebkitAppearance:'none', MozAppearance:'none', borderRadius:0 }}>
+              {CITIES.map(c => <option key={c} value={c}>{c}</option>)}
+            </select>
+            <span style={{ position:'absolute', right:9, top:'50%', transform:'translateY(-50%)', fontSize:9, color:'var(--ink55)', pointerEvents:'none' }}>▾</span>
           </div>
           <div style={{ position:'relative', flex:1, minWidth:240, maxWidth:440 }}>
             <input value={query} onChange={e => { setQuery(e.target.value); setSuggestions(searchPinV2(e.target.value, searchCity)) }}
@@ -929,7 +934,7 @@ export default function Report({ report, allScores, ogMeta }) {
                 <>
                   <div style={{ display:'flex', alignItems:'baseline', gap:10, margin:'8px 0 2px', flexWrap:'wrap' }}>
                     <span className="cond" style={{ fontSize:40, fontWeight:700 }}>{inr(lo)}–{inr(hi)}</span>
-                    <span style={{ fontSize:13, color:'var(--ink60)' }}>per sq ft · {pc.label.toLowerCase()} band for {blr ? 'Bengaluru' : 'the NCR'}</span>
+                    <span style={{ fontSize:13, color:'var(--ink60)' }}>per sq ft · {pc.label.toLowerCase()} band for {blr ? 'Bengaluru' : (city === 'Ludhiana' || city === 'Amritsar') ? city : 'the NCR'}</span>
                   </div>
                   <div style={{ display:'flex', gap:5, margin:'14px 0 6px' }}>
                     {bands.map((b, i) => (

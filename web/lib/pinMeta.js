@@ -169,25 +169,32 @@ export const PIN_META = {
   // be the area unit here. See ADDING_A_CITY.md for the full rationale.
   //
   // These 52 localities are real, sourced places (see PUNJAB_ROLLOUT.md for
-  // full citations per locality) — but NOT scored. `scored:false` means no
-  // nqi_composite/dimension data exists for them yet; they resolve correctly
-  // as routes and show "No data for this pin" rather than a fabricated score
-  // or a broken redirect. Do not remove `scored:false` until real pipeline
-  // data actually exists for a given locality — see PUNJAB_ROLLOUT.md §"What
-  // this rollout does NOT include" for why that's a separate, larger task.
+  // full citations per locality). As of 2026-08-06, 5 of them
+  // (ldh-sarabha-nagar, ldh-dugri, ldh-model-town, asr-majitha-road,
+  // asr-rani-ka-bagh) have real, sourced SCHOOLS data and are scored — see
+  // pipeline/scrapers/punjab_data.py. Every other entry keeps `scored:false`:
+  // no nqi_composite/dimension data exists for them yet; they resolve
+  // correctly as routes and show "No data for this pin" rather than a
+  // fabricated score or a broken redirect. Do not remove `scored:false` until
+  // real pipeline data actually exists for a given locality — see
+  // PUNJAB_ROLLOUT.md §"What this rollout does NOT include" for why that's a
+  // separate, larger task. Note the 5 scored ones are schools-ONLY
+  // (dimensions_scored: 1 of 8) — air and crime were both ruled out as
+  // genuinely unavailable for this batch, not just not-yet-built; see
+  // punjab_data.py's module docstring.
   "ldh-mall-road":{ name:"Mall Road", area:"Central Ludhiana", city:"Ludhiana", scored:false },
   "ldh-navi-market":{ name:"Navi Market", area:"Central Ludhiana", city:"Ludhiana", scored:false },
   "ldh-sadar-bazaar":{ name:"Sadar Bazaar", area:"Central Ludhiana", city:"Ludhiana", scored:false },
   "ldh-chaura-bazaar":{ name:"Chaura Bazaar", area:"Central Ludhiana", city:"Ludhiana", scored:false },
   "ldh-ghumar-mandi":{ name:"Ghumar Mandi", area:"Central Ludhiana", city:"Ludhiana", scored:false },
   "ldh-civil-lines":{ name:"Civil Lines", area:"Central Ludhiana", city:"Ludhiana", scored:false },
-  "ldh-model-town":{ name:"Model Town", area:"East Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-model-town":{ name:"Model Town", area:"East Ludhiana", city:"Ludhiana" },
   "ldh-model-gram":{ name:"Model Gram", area:"Central Ludhiana", city:"Ludhiana", scored:false },
-  "ldh-sarabha-nagar":{ name:"Sarabha Nagar", area:"Central-West Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-sarabha-nagar":{ name:"Sarabha Nagar", area:"Central-West Ludhiana", city:"Ludhiana" },
   "ldh-brs-nagar":{ name:"BRS Nagar", area:"West Ludhiana", city:"Ludhiana", scored:false },
   "ldh-pakhowal-road":{ name:"Pakhowal Road", area:"West Ludhiana", city:"Ludhiana", scored:false },
   "ldh-ferozepur-road":{ name:"Ferozepur Road", area:"West Ludhiana", city:"Ludhiana", scored:false },
-  "ldh-dugri":{ name:"Dugri", area:"South Ludhiana", city:"Ludhiana", scored:false },
+  "ldh-dugri":{ name:"Dugri", area:"South Ludhiana", city:"Ludhiana" },
   "ldh-gill-road":{ name:"Gill Road", area:"East Ludhiana", city:"Ludhiana", scored:false },
   "ldh-jamalpur":{ name:"Jamalpur", area:"East Ludhiana", city:"Ludhiana", scored:false },
   "ldh-haibowal":{ name:"Haibowal", area:"North-Central Ludhiana", city:"Ludhiana", scored:false },
@@ -208,19 +215,26 @@ export const PIN_META = {
   "asr-green-avenue":{ name:"Green Avenue", area:"Amritsar", city:"Amritsar", scored:false },
   "asr-lawrence-road":{ name:"Lawrence Road", area:"Amritsar", city:"Amritsar", scored:false },
   "asr-mall-road":{ name:"Mall Road", area:"Amritsar", city:"Amritsar", scored:false },
+  // Researched specifically (2026-08-06) as part of the first scored batch —
+  // stays scored:false on purpose, not an oversight: zero schools were found
+  // tied to this specific locality, air was ruled out (no live CPCB feed for
+  // Punjab yet, and the one nearby station's live reading uses a different,
+  // non-CPCB index), and crime data doesn't exist for any Punjab locality.
+  // There's currently no real dimension to build a composite from — see
+  // PUNJAB_ROLLOUT.md and pipeline/scrapers/punjab_data.py.
   "asr-hall-bazaar":{ name:"Hall Bazaar", area:"Walled City / Old Amritsar", city:"Amritsar", scored:false },
   "asr-katra-jaimal-singh":{ name:"Katra Jaimal Singh", area:"Walled City / Old Amritsar", city:"Amritsar", scored:false },
   "asr-batala-road":{ name:"Batala Road", area:"Amritsar", city:"Amritsar", scored:false },
   "asr-gt-road":{ name:"GT Road", area:"Amritsar", city:"Amritsar", scored:false },
   "asr-chheharta":{ name:"Chheharta", area:"Amritsar", city:"Amritsar", scored:false },
-  "asr-majitha-road":{ name:"Majitha Road", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-majitha-road":{ name:"Majitha Road", area:"Amritsar", city:"Amritsar" },
   "asr-circular-road":{ name:"Circular Road", area:"Walled City / Old Amritsar", city:"Amritsar", scored:false },
   "asr-court-road":{ name:"Court Road", area:"Amritsar", city:"Amritsar", scored:false },
   "asr-cantt":{ name:"Amritsar Cantt", area:"Amritsar Cantonment", city:"Amritsar", scored:false },
   "asr-putlighar":{ name:"Putlighar", area:"Amritsar", city:"Amritsar", scored:false },
   "asr-islamabad":{ name:"Islamabad", area:"Amritsar", city:"Amritsar", scored:false },
   "asr-gate-hakiman":{ name:"Gate Hakiman", area:"Walled City / Old Amritsar", city:"Amritsar", scored:false },
-  "asr-rani-ka-bagh":{ name:"Rani Ka Bagh", area:"Amritsar", city:"Amritsar", scored:false },
+  "asr-rani-ka-bagh":{ name:"Rani Ka Bagh", area:"Amritsar", city:"Amritsar" },
   "asr-sultanwind":{ name:"Sultanwind", area:"Amritsar", city:"Amritsar", scored:false },
   "asr-gndu-area":{ name:"GNDU Area", area:"Amritsar", city:"Amritsar", scored:false },
   "asr-tarn-taran-road":{ name:"Tarn Taran Road", area:"Amritsar", city:"Amritsar", scored:false },
@@ -236,35 +250,31 @@ export const PIN_META = {
 // explicit constant instead of a literal string repeated in three separate
 // UI files (see ADDING_A_CITY.md §2) — update this by hand when the scored
 // count changes, e.g. after a new city's pipeline data goes live.
-export const TOTAL_SCORED_AREAS = 152
+export const TOTAL_SCORED_AREAS = 157
 
 // Ordered list of live cities, driving every city-toggle button in the UI.
 // Adding a city = add one line here (plus its PIN_META entries) instead of
 // editing three separate hardcoded ['Delhi NCR','Bangalore'] arrays.
 //
-// Ludhiana and Amritsar are deliberately NOT added here yet, even though
-// their PIN_META entries already exist above. Every one of their areas is
-// `scored:false` (see PUNJAB_ROLLOUT.md) — the landing/CTA city search
-// (heroSearch2 etc. in index.js) filters against PIN_META_LANDING, which
-// excludes scored:false entries, so a "Ludhiana" tab today would let someone
-// select it and then get zero results for everything they type — a dead end
-// that reads as broken rather than "coming soon". Once real scored data
-// lands for even a handful of these localities, add 'Ludhiana'/'Amritsar'
-// here — that one-line change is exactly what this refactor was for. Until
-// then, their /report/<slug> URLs still resolve directly and correctly show
-// "No data for this pin" (see report/[pin].js), and they're reachable via
-// compare.js's general search, which isn't scored-gated.
-export const CITIES = ['Delhi NCR', 'Bangalore']
+// Ludhiana and Amritsar were added 2026-08-06, once the first 5 localities
+// (3 Ludhiana + 2 Amritsar) got real, sourced schools data — see
+// pipeline/scrapers/punjab_data.py. The other 47 Punjab localities in
+// PIN_META above are still `scored:false` and stay unreachable from the
+// landing/CTA city search (which filters against PIN_META_LANDING, itself
+// filtered to scored areas) — only reachable via their direct /report/<slug>
+// URL (shows "No data for this pin") or compare.js's general search.
+export const CITIES = ['Delhi NCR', 'Bangalore', 'Ludhiana', 'Amritsar']
 
 // Per-city defaults used by the city switcher (landing pin to jump to) and
-// search placeholders (an example area name shown in the input). Add
-// Ludhiana/Amritsar entries here in the same commit that adds them to CITIES
-// above — 'Ludhiana': { defaultPin: 'ldh-sarabha-nagar', example: 'Sarabha Nagar' }
-// and 'Amritsar': { defaultPin: 'asr-ranjit-avenue', example: 'Ranjit Avenue' }
-// are the best-documented localities in each city per PUNJAB_ROLLOUT.md.
+// search placeholders (an example area name shown in the input).
+// Ludhiana/Amritsar default to their strongest-data scored locality (not
+// necessarily the "best known" name) since every other Punjab locality is
+// still scored:false and would be a dead end as a default.
 export const CITY_META = {
   'Delhi NCR': { defaultPin: '110016', example: 'Hauz Khas' },
   'Bangalore': { defaultPin: '560034', example: 'Koramangala' },
+  'Ludhiana': { defaultPin: 'ldh-dugri', example: 'Dugri' },
+  'Amritsar': { defaultPin: 'asr-majitha-road', example: 'Majitha Road' },
 }
 
 // city(pin) replaces the old cityOf() which only handled exactly two cities

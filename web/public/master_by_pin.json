@@ -6780,5 +6780,50 @@
     "flooding_incidents_annual": 12,
     "data_completeness": 1,
     "merged_at": "2026-07-28T13:54:49.674331"
+  },
+  {
+    "pin_code": "ldh-sarabha-nagar",
+    "city": "Ludhiana",
+    "sources": [
+      "punjab_schools_manual"
+    ],
+    "data_completeness": 1,
+    "merged_at": "2026-08-06T10:30:00.000000"
+  },
+  {
+    "pin_code": "ldh-dugri",
+    "city": "Ludhiana",
+    "sources": [
+      "punjab_schools_manual"
+    ],
+    "data_completeness": 1,
+    "merged_at": "2026-08-06T10:30:00.000000"
+  },
+  {
+    "pin_code": "ldh-model-town",
+    "city": "Ludhiana",
+    "sources": [
+      "punjab_schools_manual"
+    ],
+    "data_completeness": 1,
+    "merged_at": "2026-08-06T10:30:00.000000"
+  },
+  {
+    "pin_code": "asr-majitha-road",
+    "city": "Amritsar",
+    "sources": [
+      "punjab_schools_manual"
+    ],
+    "data_completeness": 1,
+    "merged_at": "2026-08-06T10:30:00.000000"
+  },
+  {
+    "pin_code": "asr-rani-ka-bagh",
+    "city": "Amritsar",
+    "sources": [
+      "punjab_schools_manual"
+    ],
+    "data_completeness": 1,
+    "merged_at": "2026-08-06T10:30:00.000000"
   }
 ]

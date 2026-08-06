@@ -15,8 +15,10 @@
     "disclaimer": "Government minimum valuation, not market price. Figures are indicative Rs/sq ft bands unless marked exact, and a single PIN can span cheaper and pricier pockets. Not part of the NQI score.",
     "not_in_composite": true,
     "sources": {
-      "bangalore": "Karnataka guidance value — Kaveri portal, Dept. of Stamps & Registration"
-    }
+      "bangalore": "Karnataka guidance value — Kaveri portal, Dept. of Stamps & Registration",
+      "punjab": "Punjab collector rate (Sub Registrar/Tehsil rate lists), 2025-26 — quoted per sq yd in source, converted ÷9 to Rs/sq ft"
+    },
+    "punjab_unit_note": "Punjab collector rates are notified per square YARD, not per square foot like Delhi/Bangalore — converted here (÷9) for a consistent display unit. A single named locality can span more than one priced row in the source document; the row cited is the best match, not necessarily every parcel in the area."
   },
   "pins": {
     "110001": {
@@ -2174,6 +2176,76 @@
       "land_exact": false,
       "basis": "Anekal — Karnataka guidance value (Kaveri, Dept. of Stamps & Registration)",
       "source": "Govt of Karnataka"
+    },
+    "ldh-sarabha-nagar": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        2689,
+        6722
+      ],
+      "rate_type": "land",
+      "rate_exact": true,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sarabha Nagar — Ludhiana Municipal Corporation collector rate 2025-26, Zone D Block 20 West (core Blocks B&A/F-K row, ₹24,200-60,500/sq yd; premium Block C/D/E variant up to ₹38,000/69,600/sq yd converted here as the range low/high)",
+      "source": "Govt of Punjab — Ludhiana collector rate 2025-26"
+    },
+    "ldh-dugri": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        433,
+        656
+      ],
+      "rate_type": "land",
+      "rate_exact": true,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Dugri / Urban Estate Dugri — Ludhiana collector rate 2025-26, Jagdish Nagar Dugri row, ₹3,900-5,900/sq yd",
+      "source": "Govt of Punjab — Ludhiana collector rate 2025-26"
+    },
+    "ldh-model-town": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        1533,
+        4222
+      ],
+      "rate_type": "land",
+      "rate_exact": true,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Model Town — Ludhiana collector rate 2025-26, Zone D Block 18 (core row ₹13,800/sq yd res; sub-block variants ₹11,400-17,500/sq yd, converted here as the range low/high; commercial ₹38,000/sq yd)",
+      "source": "Govt of Punjab — Ludhiana collector rate 2025-26"
+    },
+    "asr-majitha-road": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        3722,
+        3889
+      ],
+      "rate_type": "land",
+      "rate_exact": true,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Majitha Road — Amritsar collector rate 2025-26, Circle 110 Sr.5, ₹33,500→35,000/sq yd res (+4.47%)",
+      "source": "Govt of Punjab — Sub Registrar Amritsar-1 collector rate 2025-26"
+    },
+    "asr-rani-ka-bagh": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        4222,
+        4222
+      ],
+      "rate_type": "land",
+      "rate_exact": true,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Rani Ka Bagh — Amritsar collector rate 2025-26, Circle 109 Sr.8, ₹38,000/sq yd res (flat, no revision from prior year)",
+      "source": "Govt of Punjab — Sub Registrar Amritsar-1 collector rate 2025-26"
     }
   }
 }

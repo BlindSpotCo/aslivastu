@@ -1980,15 +1980,17 @@ export default function Landing() {
 
             {/* Location picker — same behaviour as the bottom CTA search */}
             <div className="hero-picker" style={{ position:'relative', maxWidth:400 }}>
-              <div style={{ display:'inline-flex', flexWrap:'wrap', border:'1px solid rgba(167,90,101,0.45)', marginBottom:8 }}>
-                {CITIES.map((c, i) => (
-                  <button key={c} onClick={() => { setHeroCity(c); setHeroSuggestions(heroSearch2(heroQ, c)) }}
-                    style={{ fontSize:10, fontWeight:600, letterSpacing:'0.06em', textTransform:'uppercase',
-                      padding:'5px 11px', border:'none', cursor:'pointer',
-                      borderLeft: i ? '1px solid rgba(167,90,101,0.45)' : 'none',
-                      background: heroCity===c ? '#7a1f2b' : 'transparent',
-                      color: heroCity===c ? '#fff' : 'rgba(255,255,255,0.6)' }}>{c}</button>
-                ))}
+              <div style={{ position:'relative', display:'inline-block', marginBottom:8 }}>
+                <select
+                  value={heroCity}
+                  onChange={e => { const c = e.target.value; setHeroCity(c); setHeroSuggestions(heroSearch2(heroQ, c)) }}
+                  style={{ fontSize:10, fontWeight:600, letterSpacing:'0.06em', textTransform:'uppercase',
+                    padding:'6px 26px 6px 11px', border:'1px solid rgba(167,90,101,0.45)', cursor:'pointer',
+                    background:'#7a1f2b', color:'#fff', appearance:'none', WebkitAppearance:'none', MozAppearance:'none',
+                    borderRadius:0 }}>
+                  {CITIES.map(c => <option key={c} value={c} style={{ background:'#1a1a1a', color:'#fff' }}>{c}</option>)}
+                </select>
+                <span style={{ position:'absolute', right:9, top:'50%', transform:'translateY(-50%)', fontSize:9, color:'#fff', pointerEvents:'none' }}>▾</span>
               </div>
               <div className="cta-search" style={{ position:'relative', margin:0, maxWidth:'none' }}>
                 <input
@@ -2183,9 +2185,11 @@ export default function Landing() {
           <p className="cta-pre">Free · No signup · Instant</p>
           <h2 className="cta-title">Your area.<br/><em>By the numbers.</em></h2>
           <div style={{ position:'relative', width:'100%', maxWidth:480, margin:'0 auto' }}>
-            <div style={{ display:'inline-flex', flexWrap:'wrap', gap:4, padding:4, background:'rgba(255,255,255,0.06)', borderRadius:0, marginBottom:12 }}>
-              {CITIES.map(c => (
-                <button key={c} onClick={() => {
+            <div style={{ position:'relative', display:'inline-block', marginBottom:12 }}>
+              <select
+                value={ctaCity}
+                onChange={e => {
+                  const c = e.target.value
                   setCtaCity(c)
                   if (ctaQ.trim().length > 0) {
                     const s = ctaQ.toLowerCase()
@@ -2193,9 +2197,12 @@ export default function Landing() {
                       .filter(([pin, name]) => cityFor(pin) === c && (name.toLowerCase().includes(s) || pin.includes(s))).slice(0,6))
                   }
                 }}
-                  style={{ fontSize:13, fontWeight:600, padding:'6px 14px', borderRadius:0, cursor:'pointer', border:'none',
-                    background: ctaCity===c ? '#7a1f2b' : 'transparent', color: ctaCity===c ? 'white' : 'rgba(255,255,255,0.6)' }}>{c}</button>
-              ))}
+                style={{ fontSize:13, fontWeight:600, padding:'7px 30px 7px 14px', borderRadius:0, cursor:'pointer',
+                  border:'1px solid rgba(255,255,255,0.12)', background:'rgba(255,255,255,0.06)', color:'#fff',
+                  appearance:'none', WebkitAppearance:'none', MozAppearance:'none' }}>
+                {CITIES.map(c => <option key={c} value={c} style={{ background:'#1a1a1a', color:'#fff' }}>{c}</option>)}
+              </select>
+              <span style={{ position:'absolute', right:12, top:'50%', transform:'translateY(-50%)', fontSize:10, color:'rgba(255,255,255,0.6)', pointerEvents:'none' }}>▾</span>
             </div>
             <div className="cta-search" style={{ position:'relative' }}>
               <input

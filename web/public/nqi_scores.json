@@ -1,5 +1,99 @@
 [
   {
+    "pin_code": "ldh-dugri",
+    "city": "Ludhiana",
+    "scores": {
+      "schools": 90
+    },
+    "weights_base": {
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "schools": 1.0
+    },
+    "dimensions_scored": 1,
+    "dimensions_total": 8,
+    "nqi_composite": 90,
+    "grade": "A+",
+    "area_profile": {
+      "zone_type": null,
+      "representativeness": "unknown",
+      "note": "Zone type unknown — treat this score as a broad area average.",
+      "crime_note": "Crime reflects the whole police-station jurisdiction, which is typically larger than any single colony within this PIN."
+    },
+    "scored_at": "2026-08-06T10:32:19.745854",
+    "total_cognizable_crimes": null,
+    "schools_count": 6,
+    "schools_cbse": 6,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Ryan International School, Dugri",
+        "board": "CBSE",
+        "address": "2537, Phase 2, Urban Estate Dugri, Ludhiana – 141003",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "MGM Public School",
+        "board": "CBSE",
+        "address": "Urban Estate, Phase I, Dugri, Ludhiana",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Bal Bharati Public School",
+        "board": "CBSE",
+        "address": "Phase 2, Urban Estate, Dugri, Ludhiana",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Ram Lal Bhasin Public School",
+        "board": "CBSE",
+        "address": "Phase I, Dugri, Ludhiana",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Green Land Convent School",
+        "board": "CBSE",
+        "address": "Phase II, Dugri, Ludhiana",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "B C M School (Dugri Road)",
+        "board": "CBSE",
+        "address": "Basant Avenue, Dugri Road, Ludhiana",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null,
+    "crime_percentile": null,
+    "crime_tier": null,
+    "price_tier": 5,
+    "price_context": {
+      "tier": 5,
+      "label": "Value",
+      "rate_sqft": [
+        433,
+        656
+      ],
+      "rate_type": "land",
+      "rate_exact": true,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Dugri / Urban Estate Dugri — Ludhiana collector rate 2025-26, Jagdish Nagar Dugri row, ₹3,900-5,900/sq yd",
+      "source": "Govt of Punjab — Ludhiana collector rate 2025-26",
+      "circle_rate_note": "'Circle rate' and 'collector rate' are the SAME thing — the government's minimum property value, used to calculate stamp duty and registration charges. Delhi/UP call it circle rate; Haryana calls it collector rate.",
+      "market_gap_note": "Actual market prices in NCR typically run 20–70% ABOVE the circle rate (highest in prime Delhi & Gurugram, per Anarock/industry data). The circle rate is only the legal floor — budget for the difference in your own funds, since home loans are usually capped near this valuation.",
+      "disclaimer": "Government minimum valuation, not market price. Figures are indicative Rs/sq ft bands unless marked exact, and a single PIN can span cheaper and pricier pockets. Not part of the NQI score."
+    }
+  },
+  {
     "pin_code": "110010",
     "city": "Delhi NCR",
     "scores": {
@@ -3838,6 +3932,86 @@
       "land_exact": false,
       "basis": "Kaushambi (metro) — Ghaziabad circle rates (igrsup.gov.in)",
       "source": "Govt of UP",
+      "circle_rate_note": "'Circle rate' and 'collector rate' are the SAME thing — the government's minimum property value, used to calculate stamp duty and registration charges. Delhi/UP call it circle rate; Haryana calls it collector rate.",
+      "market_gap_note": "Actual market prices in NCR typically run 20–70% ABOVE the circle rate (highest in prime Delhi & Gurugram, per Anarock/industry data). The circle rate is only the legal floor — budget for the difference in your own funds, since home loans are usually capped near this valuation.",
+      "disclaimer": "Government minimum valuation, not market price. Figures are indicative Rs/sq ft bands unless marked exact, and a single PIN can span cheaper and pricier pockets. Not part of the NQI score."
+    }
+  },
+  {
+    "pin_code": "asr-majitha-road",
+    "city": "Amritsar",
+    "scores": {
+      "schools": 75
+    },
+    "weights_base": {
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "schools": 1.0
+    },
+    "dimensions_scored": 1,
+    "dimensions_total": 8,
+    "nqi_composite": 75,
+    "grade": "B+",
+    "area_profile": {
+      "zone_type": null,
+      "representativeness": "unknown",
+      "note": "Zone type unknown — treat this score as a broad area average.",
+      "crime_note": "Crime reflects the whole police-station jurisdiction, which is typically larger than any single colony within this PIN."
+    },
+    "scored_at": "2026-08-06T10:32:19.745896",
+    "total_cognizable_crimes": null,
+    "schools_count": 4,
+    "schools_cbse": 4,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Sri Guru Harkrishan Sr. Sec. Public School",
+        "board": "CBSE",
+        "address": "Majitha Road Bypass, Amritsar – 143001",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Shri Ram Ashram Public School",
+        "board": "CBSE",
+        "address": "Majitha Road, Amritsar – 143001",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Bright Land School",
+        "board": "CBSE",
+        "address": "Village Pandori Wariach, Majitha Road, Amritsar – 143008",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "The Millennium School (Majitha Road campus)",
+        "board": "CBSE",
+        "address": "SG Enclave, Majitha Road, Amritsar – 143001",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null,
+    "crime_percentile": null,
+    "crime_tier": null,
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        3722,
+        3889
+      ],
+      "rate_type": "land",
+      "rate_exact": true,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Majitha Road — Amritsar collector rate 2025-26, Circle 110 Sr.5, ₹33,500→35,000/sq yd res (+4.47%)",
+      "source": "Govt of Punjab — Sub Registrar Amritsar-1 collector rate 2025-26",
       "circle_rate_note": "'Circle rate' and 'collector rate' are the SAME thing — the government's minimum property value, used to calculate stamp duty and registration charges. Delhi/UP call it circle rate; Haryana calls it collector rate.",
       "market_gap_note": "Actual market prices in NCR typically run 20–70% ABOVE the circle rate (highest in prime Delhi & Gurugram, per Anarock/industry data). The circle rate is only the legal floor — budget for the difference in your own funds, since home loans are usually capped near this valuation.",
       "disclaimer": "Government minimum valuation, not market price. Figures are indicative Rs/sq ft bands unless marked exact, and a single PIN can span cheaper and pricier pockets. Not part of the NQI score."
@@ -10873,6 +11047,138 @@
     }
   },
   {
+    "pin_code": "ldh-sarabha-nagar",
+    "city": "Ludhiana",
+    "scores": {
+      "schools": 60
+    },
+    "weights_base": {
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "schools": 1.0
+    },
+    "dimensions_scored": 1,
+    "dimensions_total": 8,
+    "nqi_composite": 60,
+    "grade": "B",
+    "area_profile": {
+      "zone_type": null,
+      "representativeness": "unknown",
+      "note": "Zone type unknown — treat this score as a broad area average.",
+      "crime_note": "Crime reflects the whole police-station jurisdiction, which is typically larger than any single colony within this PIN."
+    },
+    "scored_at": "2026-08-06T10:32:19.745809",
+    "total_cognizable_crimes": null,
+    "schools_count": 2,
+    "schools_cbse": 2,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Guru Nanak Public School",
+        "board": "CBSE",
+        "address": "Sarabha Nagar, Ludhiana – 141001",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "Sacred Heart Convent School",
+        "board": "CBSE",
+        "address": "P.B. 370, Sarabha Nagar, Ludhiana – 141001",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null,
+    "crime_percentile": null,
+    "crime_tier": null,
+    "price_tier": 2,
+    "price_context": {
+      "tier": 2,
+      "label": "Upper",
+      "rate_sqft": [
+        2689,
+        6722
+      ],
+      "rate_type": "land",
+      "rate_exact": true,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Sarabha Nagar — Ludhiana Municipal Corporation collector rate 2025-26, Zone D Block 20 West (core Blocks B&A/F-K row, ₹24,200-60,500/sq yd; premium Block C/D/E variant up to ₹38,000/69,600/sq yd converted here as the range low/high)",
+      "source": "Govt of Punjab — Ludhiana collector rate 2025-26",
+      "circle_rate_note": "'Circle rate' and 'collector rate' are the SAME thing — the government's minimum property value, used to calculate stamp duty and registration charges. Delhi/UP call it circle rate; Haryana calls it collector rate.",
+      "market_gap_note": "Actual market prices in NCR typically run 20–70% ABOVE the circle rate (highest in prime Delhi & Gurugram, per Anarock/industry data). The circle rate is only the legal floor — budget for the difference in your own funds, since home loans are usually capped near this valuation.",
+      "disclaimer": "Government minimum valuation, not market price. Figures are indicative Rs/sq ft bands unless marked exact, and a single PIN can span cheaper and pricier pockets. Not part of the NQI score."
+    }
+  },
+  {
+    "pin_code": "ldh-model-town",
+    "city": "Ludhiana",
+    "scores": {
+      "schools": 60
+    },
+    "weights_base": {
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "schools": 1.0
+    },
+    "dimensions_scored": 1,
+    "dimensions_total": 8,
+    "nqi_composite": 60,
+    "grade": "B",
+    "area_profile": {
+      "zone_type": null,
+      "representativeness": "unknown",
+      "note": "Zone type unknown — treat this score as a broad area average.",
+      "crime_note": "Crime reflects the whole police-station jurisdiction, which is typically larger than any single colony within this PIN."
+    },
+    "scored_at": "2026-08-06T10:32:19.745880",
+    "total_cognizable_crimes": null,
+    "schools_count": 2,
+    "schools_cbse": 2,
+    "schools_icse": 0,
+    "schools_state": 0,
+    "schools_list": [
+      {
+        "name": "Guru Nanak International Public School (Gujarkhan Campus)",
+        "board": "CBSE",
+        "address": "Model Town (Gujarkhan Campus), Ludhiana",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "BCM Arya Model Sr. Sec. School",
+        "board": "CBSE",
+        "address": "Shastri Nagar, Ishmeet Singh Road, Near G.T.B. Hospital, Model Town, Ludhiana – 141002",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null,
+    "crime_percentile": null,
+    "crime_tier": null,
+    "price_tier": 3,
+    "price_context": {
+      "tier": 3,
+      "label": "Mid",
+      "rate_sqft": [
+        1533,
+        4222
+      ],
+      "rate_type": "land",
+      "rate_exact": true,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Model Town — Ludhiana collector rate 2025-26, Zone D Block 18 (core row ₹13,800/sq yd res; sub-block variants ₹11,400-17,500/sq yd, converted here as the range low/high; commercial ₹38,000/sq yd)",
+      "source": "Govt of Punjab — Ludhiana collector rate 2025-26",
+      "circle_rate_note": "'Circle rate' and 'collector rate' are the SAME thing — the government's minimum property value, used to calculate stamp duty and registration charges. Delhi/UP call it circle rate; Haryana calls it collector rate.",
+      "market_gap_note": "Actual market prices in NCR typically run 20–70% ABOVE the circle rate (highest in prime Delhi & Gurugram, per Anarock/industry data). The circle rate is only the legal floor — budget for the difference in your own funds, since home loans are usually capped near this valuation.",
+      "disclaimer": "Government minimum valuation, not market price. Figures are indicative Rs/sq ft bands unless marked exact, and a single PIN can span cheaper and pricier pockets. Not part of the NQI score."
+    }
+  },
+  {
     "pin_code": "110073",
     "city": "Delhi NCR",
     "scores": {
@@ -15574,6 +15880,72 @@
       "land_exact": true,
       "basis": "Delhi MCD Category G",
       "source": "Govt of NCT of Delhi — MCD circle rates (land rate 2014 notification; apartment band indicative)",
+      "circle_rate_note": "'Circle rate' and 'collector rate' are the SAME thing — the government's minimum property value, used to calculate stamp duty and registration charges. Delhi/UP call it circle rate; Haryana calls it collector rate.",
+      "market_gap_note": "Actual market prices in NCR typically run 20–70% ABOVE the circle rate (highest in prime Delhi & Gurugram, per Anarock/industry data). The circle rate is only the legal floor — budget for the difference in your own funds, since home loans are usually capped near this valuation.",
+      "disclaimer": "Government minimum valuation, not market price. Figures are indicative Rs/sq ft bands unless marked exact, and a single PIN can span cheaper and pricier pockets. Not part of the NQI score."
+    }
+  },
+  {
+    "pin_code": "asr-rani-ka-bagh",
+    "city": "Amritsar",
+    "scores": {
+      "schools": 20
+    },
+    "weights_base": {
+      "schools": 0.1
+    },
+    "weights_applied": {
+      "schools": 1.0
+    },
+    "dimensions_scored": 1,
+    "dimensions_total": 8,
+    "nqi_composite": 20,
+    "grade": "D",
+    "area_profile": {
+      "zone_type": null,
+      "representativeness": "unknown",
+      "note": "Zone type unknown — treat this score as a broad area average.",
+      "crime_note": "Crime reflects the whole police-station jurisdiction, which is typically larger than any single colony within this PIN."
+    },
+    "scored_at": "2026-08-06T10:32:19.745913",
+    "total_cognizable_crimes": null,
+    "schools_count": 2,
+    "schools_cbse": 0,
+    "schools_icse": 0,
+    "schools_state": 1,
+    "schools_list": [
+      {
+        "name": "Jagat Jyoti Senior Secondary School",
+        "board": "Punjab State Board",
+        "address": "Rani Ka Bagh, Ward No. 44, Verka, Amritsar Cantonment – 143001",
+        "pass_pct": null,
+        "distance_km": null
+      },
+      {
+        "name": "St Jude School",
+        "board": "Not confirmed",
+        "address": "Opposite Khasa Cantonment, G T Road, Rani Ka Bagh, Amritsar – 143001",
+        "pass_pct": null,
+        "distance_km": null
+      }
+    ],
+    "schools_avg_pass": null,
+    "crime_percentile": null,
+    "crime_tier": null,
+    "price_tier": 1,
+    "price_context": {
+      "tier": 1,
+      "label": "Premium",
+      "rate_sqft": [
+        4222,
+        4222
+      ],
+      "rate_type": "land",
+      "rate_exact": true,
+      "land_sqft": null,
+      "land_exact": false,
+      "basis": "Rani Ka Bagh — Amritsar collector rate 2025-26, Circle 109 Sr.8, ₹38,000/sq yd res (flat, no revision from prior year)",
+      "source": "Govt of Punjab — Sub Registrar Amritsar-1 collector rate 2025-26",
       "circle_rate_note": "'Circle rate' and 'collector rate' are the SAME thing — the government's minimum property value, used to calculate stamp duty and registration charges. Delhi/UP call it circle rate; Haryana calls it collector rate.",
       "market_gap_note": "Actual market prices in NCR typically run 20–70% ABOVE the circle rate (highest in prime Delhi & Gurugram, per Anarock/industry data). The circle rate is only the legal floor — budget for the difference in your own funds, since home loans are usually capped near this valuation.",
       "disclaimer": "Government minimum valuation, not market price. Figures are indicative Rs/sq ft bands unless marked exact, and a single PIN can span cheaper and pricier pockets. Not part of the NQI score."

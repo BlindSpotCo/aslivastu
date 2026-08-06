@@ -159,6 +159,18 @@ def run():
     print(f"  Neighbour fills:   {neighbour_hits} pins")
     print(f"  No data:           {zero_hits} pins")
 
+    # ── Punjab (city 3/4) — merge in the individually-researched locality
+    # records. Not from this CSV (NCR_STATES doesn't cover Punjab, and these
+    # are locality slugs, not PINs) — see scrapers/punjab_data.py for the
+    # real, sourced data and why it's kept separate.
+    try:
+        from scrapers.punjab_data import schools_records as _punjab_schools
+        punjab = _punjab_schools()
+        result.update(punjab)
+        print(f"  Punjab (manual):   {len(punjab)} localities")
+    except Exception as e:
+        print(f"  Punjab schools merge failed: {e}")
+
     OUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     OUT_FILE.write_text(json.dumps(result, indent=2, ensure_ascii=False))
     print(f"Saved → {OUT_FILE}")

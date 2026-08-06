@@ -115,6 +115,26 @@ def merge():
     except Exception as e:
         log.error(f"Bengaluru seed merge failed: {e}")
 
+    # ── Punjab (city 3/4) — inject the minimal, honest seed dataset. Unlike
+    # the Bengaluru block above, this does NOT carry estimated crime/infra/
+    # power/water/roads/sewerage fields — only pin_code/city/sources. See
+    # scrapers/punjab_data.py for why.
+    try:
+        from scrapers.punjab_data import master_records as _pb_records
+        for r in _pb_records():
+            pin = r["pin_code"]
+            master[pin]["pin_code"] = pin
+            for k, v in r.items():
+                if k == "sources":
+                    for s in v:
+                        if s not in master[pin]["sources"]:
+                            master[pin]["sources"].append(s)
+                    continue
+                master[pin][k] = v
+        log.info("Punjab seed merged.")
+    except Exception as e:
+        log.error(f"Punjab seed merge failed: {e}")
+
     final = [v for v in master.values() if v.get("pin_code")]
     for r in final:
         r["data_completeness"] = len(set(r.get("sources",[])))
